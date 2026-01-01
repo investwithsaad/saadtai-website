@@ -49,131 +49,131 @@ export const multifamilyInvestorFAQs: FAQ[] = [
   {
     id: 'realistic-cap-rate-capital-region',
     q: 'What\'s a realistic cap rate for a 2-unit vs 3-4 unit property in the Capital Region right now?',
-    a: 'Cap rates vary by property type and condition, but expect ranges that reflect current market conditions in Albany/Schenectady area.'
+    a: 'In today\'s market, most small multifamily properties trade in a mid- to high-single-digit cap rate range, depending on location, condition, and upside. 2-unit properties in stronger neighborhoods often trade closer to 6–7%; 3–4 unit properties may trade slightly higher, especially when there\'s operational upside. Cap rates meaningfully above market usually rely on aggressive rent assumptions or understated expenses—that\'s a red flag.'
   },
   {
     id: 'multifamily-deal-pencils-underwriting',
     q: 'How do I know if a multifamily deal actually pencils, or if I\'m missing something in the underwriting?',
-    a: 'Thorough underwriting requires verifying rent rolls, researching market comps, and stress-testing assumptions against conservative benchmarks.'
+    a: 'A deal pencils when it still works under conservative assumptions, not best-case scenarios. That means realistic expenses (taxes, insurance, maintenance, vacancy), room for unexpected repairs or rent softness, and cash flow that still makes sense after reserves. If the deal only works on paper or requires perfect execution, it\'s a warning sign.'
   },
   {
     id: 'closing-costs-multifamily-property',
     q: 'What should I expect to pay for inspections, appraisals, and title work on a 3-unit property?',
-    a: 'Closing costs typically range from 2-5% of purchase price and include inspections, appraisals, title insurance, and lender fees.'
+    a: 'Typical Capital Region ranges: Inspections $700–$1,200+, Appraisal $600–$900, Attorney/title/recording $2,000–$3,500. Most buyers should budget $3,500–$5,500 in upfront costs before closing.'
   },
   {
     id: 'offmarket-vs-mls-multifamily',
     q: 'Should I be looking for off-market deals, or are MLS properties equally solid in this market?',
-    a: 'Off-market deals often offer better pricing and reduced competition, but both channels have solid properties depending on your criteria.'
+    a: 'Public listings maximize exposure and pricing. Off-market sales trade some price for simplicity, speed, and privacy. The right approach depends on your priorities. Generally, off-market deals often offer better pricing and reduced competition, but MLS properties are equally solid depending on your criteria.'
   },
   {
     id: 'single-family-to-multifamily-transition',
     q: 'I\'m buying my first multifamily after single-family flips. What\'s different about how I should evaluate it?',
-    a: 'Multifamily evaluation emphasizes tenant stability, rent roll quality, and operational metrics rather than exit strategies.'
+    a: 'Multifamily evaluation emphasizes tenant stability, rent roll quality, and operational metrics rather than exit strategies. Focus on normalized income, realistic expenses, and the quality of existing tenants. Strong tenants provide stability; operational risk is more important than appreciation upside.'
   },
   {
     id: 'multifamily-closing-timeline',
     q: 'How long should closing actually take from offer to keys in this market?',
-    a: 'Standard closings take 30-60 days depending on financing, inspections, and appraisal timelines in the Capital Region market.'
+    a: 'Conventional financing: 35–50 days. Cash or local portfolio lenders: 14–30 days. Tenant issues, inspections, or municipal items can extend timelines and should be planned for. Work backward from your desired close date and build in buffer.'
   },
   {
     id: 'financing-programs-2-4-unit',
     q: 'What financing programs actually work for 2-4 unit properties, and which lenders aren\'t just tire-kickers?',
-    a: 'Conventional, FHA, and portfolio lenders all offer programs for 2-4 unit properties; relationships matter for reliable execution.'
+    a: 'Most buyers rely on conventional agency loans and local lenders that regularly finance small multifamily. Conventional agency loans for 2–4 unit investment properties typically cap around 75% LTV. Local banks and credit unions can offer flexibility when the property and borrower profile are strong. Straightforward deal structures tend to move faster and close more reliably. The biggest risk isn\'t leverage—it\'s choosing a lender who can\'t execute.'
   },
   // SELLING QUESTIONS
   {
     id: 'selling-4unit-burned-out',
-    q: 'I\'ve owned this 4-unit for 10 years and I\'m burned out. What\'s the realistic timeline and process to sell?',
-    a: 'Selling typically takes 60-120 days with proper marketing and positioning, including tenant transition planning and negotiations.'
+    q: 'How quickly can you get my property on the market, and what do you need from me?',
+    a: 'I can typically bring a multifamily property to market within 3–4 days. For tenant-occupied properties, I\'ll need current leases, rent roll, tenant information, and most recent property tax bill. You\'ll also notify tenants professionally that the property will be listed. After that, I handle everything—pricing, positioning, marketing, buyer coordination, and execution—so the process stays smooth and controlled.'
   },
   {
     id: 'selling-with-difficult-tenant',
     q: 'I want to sell, but I have a difficult tenant situation. Can I still get market value?',
-    a: 'Problem tenants impact value but don\'t prevent sales; transparent communication and transition planning protect your proceeds.'
+    a: 'Yes—but expectations matter. Clean, cooperative buildings attract the strongest pricing. Tenant issues typically narrow the buyer pool and impact value. The right strategy minimizes disruption while protecting your outcome. Transparent communication about tenant situations actually protects value more than hiding problems.'
   },
   {
     id: '1031-exchange-vs-reinvestment',
-    q: 'Should I do a 1031 exchange, or just take my proceeds and reinvest? What\'s the play here?',
-    a: 'A 1031 exchange defers taxes but requires strict timelines; direct reinvestment offers flexibility but triggers tax liability.'
+    q: 'Should I do a 1031 exchange, or just take my proceeds and reinvest?',
+    a: 'A 1031 can make sense if you plan to stay invested, already know what you want to buy next, and are comfortable with strict timelines. In some cases, flexibility and optionality are more valuable than tax deferral. Evaluate your personal situation and goals before deciding.'
   },
   {
     id: 'offmarket-sale-premium',
-    q: 'If I\'m selling off-market vs. listing, how much more can I realistically get?',
-    a: 'Off-market sales typically attract serious investor buyers willing to close faster, often capturing similar or better values than MLS.'
+    q: 'If I\'m selling off-market vs. listing publicly, how much does that realistically affect price?',
+    a: 'Generally, public listings maximize exposure and pricing. Off-market sales trade some price for simplicity, speed, and privacy. The right approach depends on your priorities—do you want maximum exposure and top dollar, or do you value privacy and certainty of close?'
   },
   {
     id: 'property-worth-cap-rate',
-    q: 'What\'s my property actually worth — cap rate-wise — and how do I know the number isn\'t BS?',
-    a: 'Market value depends on comparable sales, current cap rates, and operational metrics; independent analysis confirms accuracy.'
+    q: 'What\'s my property actually worth—and how do I know the number isn\'t inflated?',
+    a: 'Real value comes from actual income (not projections), normalized expenses, and comparable closed sales (not asking prices). We analyze your property against recent sales, market rents, and realistic operating expenses. If the numbers only work on paper, the value isn\'t real.'
   },
   {
     id: 'unwinding-portfolio-strategy',
-    q: 'I want to unwind my portfolio (5 properties) over 2-3 years. What\'s the strategy to maximize proceeds?',
-    a: 'Strategic sequencing based on market timing, tax optimization, and reinvestment goals can maximize total returns across multiple sales.'
+    q: 'I want to unwind multiple properties over the next few years. What\'s the smart way to do that?',
+    a: 'Most owners benefit from selling weaker performers first, timing stronger assets strategically, and using proceeds to simplify or upgrade their portfolio. This is portfolio planning, not just selling real estate. We think through the sequence and tax implications across multiple transactions.'
   },
   {
     id: 'selling-two-properties-redeploy',
-    q: 'I\'m planning to sell 2 properties at once to redeploy into larger multifamily. What should I know?',
-    a: 'Coordinating multiple sales requires synchronized closings and 1031 exchange timing to efficiently redeploy capital.'
+    q: 'I\'m planning to sell two properties at once to move into larger multifamily. What should I know?',
+    a: 'Key considerations: coordinating timelines, ensuring clean documentation, and preparing for deeper lender review on the acquisition side. Preparation directly affects deal size and leverage you\'ll be approved for. We handle the coordination so both sales support your purchase strategy.'
   },
   // MAIN PAGE QUESTIONS
   {
     id: 'investor-specialist-vs-traditional-agent',
     q: 'What\'s the difference between working with a traditional agent vs. someone who specializes in multifamily investor deals?',
-    a: 'Investor specialists understand underwriting, financing, and portfolio strategy; traditional agents focus on transaction volume.'
+    a: 'Traditional agents focus on retail buyers. Multifamily specialists focus on numbers, risk, and long-term outcomes. That difference compounds over time. Specialists ask detailed questions about income and expenses, stress-test assumptions, and aren\'t afraid to say no to bad deals.'
   },
   {
     id: 'advisor-understands-investor-math',
-    q: 'How do I know if my real estate advisor actually understands investor math, or if they\'re just trying to close deals?',
-    a: 'True investor advisors analyze cap rates, cash flow, and conservative scenarios rather than pushing for quick transactions.'
+    q: 'How do I know if my advisor actually understands investor math?',
+    a: 'They should ask detailed questions about income and expenses, stress-test assumptions, and be willing to say no to bad deals. If every deal sounds great, something\'s wrong. Real advisors prioritize your long-term portfolio health over transaction volume.'
   },
   {
     id: 'scaling-portfolio-3-5-properties',
-    q: 'What does "scaling a portfolio" actually look like for someone with 3-5 properties in the Capital Region?',
-    a: 'Scaling involves strategic acquisitions, portfolio optimization, and leveraging equity to compound growth over time.'
+    q: 'What does "scaling a portfolio" actually look like for someone with a few multifamily properties?',
+    a: 'Scaling usually means fewer headaches (not just more doors), better locations and cleaner assets, and improved financing flexibility. Growth without control isn\'t progress. It\'s about strategic consolidation and quality, not just quantity.'
   },
   {
     id: 'buying-selling-frequency-wealth-building',
-    q: 'How often should I be buying/selling to actually build wealth as a multifamily investor?',
-    a: 'Strategic timing based on market conditions and personal goals typically means 1-3 transactions annually for active portfolios.'
+    q: 'How often should I be buying or selling to build real long-term wealth?',
+    a: 'Most disciplined investors buy selectively, sell strategically, and avoid constant churn. Consistency beats speed. Higher transaction frequency usually signals reactive decision-making rather than strategic planning.'
   },
   // VIP INVESTOR LIST QUESTIONS
   {
     id: 'investor-group-membership-benefits',
-    q: 'What does it take to join an active investor group that actually finds deals and shares intelligence?',
-    a: 'Active groups require serious investors with capital, a commitment to deal flow, and willingness to collaborate on acquisitions.'
+    q: 'What does it take to join an active investor group that actually shares real opportunities?',
+    a: 'Real groups expect ability to execute, clear criteria, and active participation. If it feels passive, it usually is. Active groups require commitment—members who can close when they say they will and contribute to the network.'
   },
   {
     id: 'deals-per-month-sourcing',
-    q: 'How many deals per month can a serious investor realistically source in the Albany/Saratoga area?',
-    a: 'Serious investors with strong networks and deal criteria can source 3-8 qualified deals monthly in the Capital Region market.'
+    q: 'How many real deals can a serious investor source in this market each month?',
+    a: 'Realistically: 1–3 strong opportunities per month, with 1 accepted deal every 1–2 months. Higher volume usually means lower quality. Focus on deal quality over quantity—most chasing volume end up with weaker positions.'
   },
   {
     id: 'missing-mls-only-strategy',
-    q: 'What am I missing if I\'m only looking at MLS listings?',
-    a: 'MLS-only investors miss off-market opportunities, wholesaler deals, and properties available before public listing.'
+    q: 'What am I missing if I\'m only looking at publicly listed properties?',
+    a: 'You miss less competitive situations, direct owner conversations, and properties that never hit the public market. Public listings build discipline. Experience expands options. Both channels matter, but off-market access gives you an edge.'
   },
   // CALCULATOR PAGE QUESTIONS
   {
     id: 'property-offer-decision-calculator',
-    q: 'I found a property at $X price with $Y rent roll — should I make an offer, or is this a pass?',
-    a: 'Use your calculator with conservative assumptions about vacancy, expenses, and cap rate targets to inform offer decisions.'
+    q: 'I found a property at $X with $Y in rent—should I make an offer or walk away?',
+    a: 'If conservative assumptions don\'t leave room for error, it\'s a pass or a lower offer. Run the numbers with realistic vacancy (7%+), actual market rents, and normalized expenses. If it only works with perfect execution, walk away or adjust your offer.'
   },
   {
     id: 'dscr-requirements-3unit',
     q: 'What debt service coverage ratio do lenders actually require for a 3-unit property right now?',
-    a: 'Most lenders require 1.2-1.25x DSCR for investor-occupied 2-4 unit properties in the current lending environment.'
+    a: 'Most lenders require 1.2-1.25x DSCR for investor-occupied 2-4 unit properties in the current lending environment. This means your net operating income needs to be 20-25% higher than your mortgage payment to qualify.'
   },
   {
     id: 'cashoncash-return-2unit',
-    q: 'How much cash-on-cash return should I expect from a 2-unit in this market?',
-    a: 'Capital Region 2-units typically produce 6-12% cash-on-cash returns depending on down payment and financing.'
+    q: 'What cash-on-cash return should I realistically expect from a 2-unit?',
+    a: 'Turnkey properties: 5–8%. Value-add opportunities: higher with proper execution. Returns follow discipline. Don\'t chase yield without understanding risk—conservative underwriting protects your downside.'
   },
   {
     id: 'comparing-properties-same-cap-rate',
-    q: 'How do I compare two properties with the same cap rate to figure out which is actually the better investment?',
-    a: 'Compare tenant quality, market growth, maintenance needs, and management requirements beyond just cap rate numbers.'
+    q: 'How do I compare two properties with the same cap rate?',
+    a: 'Look beyond the cap rate: tenant stability, expense predictability, capital needs, and exit flexibility. Same cap doesn\'t mean same risk. Two 6% cap rate properties can have vastly different risk profiles based on tenant quality and deferred maintenance.'
   },
   // ORIGINAL QUESTIONS
   {
