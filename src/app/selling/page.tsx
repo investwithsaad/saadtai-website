@@ -183,7 +183,7 @@ export default function SellerPage() {
       {/* Real-World Expertise Section */}
       <Section background='white'>
         <Container>
-          <div className="flex flex-row gap-8 max-w-5xl mx-auto items-center">
+          <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto items-center">
             <FadeIn>
               <div>
                 <Heading size="h2" className="mb-6">
@@ -208,7 +208,7 @@ export default function SellerPage() {
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <div style={{ marginLeft: 'auto', width: '267px' }}>
+              <div className="w-full md:w-auto md:ml-auto" style={{ width: '267px' }}>
                 <iframe
                     src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1165003828549043%2F&show_text=false&width=267&t=0"
                     width="267"
