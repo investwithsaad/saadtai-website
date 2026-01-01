@@ -166,7 +166,7 @@ export default function TermsOfService() {
               </Text>
               <Text className="text-gray-700">
                 <strong>Email:</strong> saadtherealtor1@gmail.com<br />
-                <strong>Phone:</strong> (518) 348-9535
+                <strong>Phone:</strong> (518) 667-9351
               </Text>
             </div>
 

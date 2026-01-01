@@ -77,7 +77,7 @@ export const generateServiceSchema = (title: string, description: string) => ({
     "@type": "Organization",
     "name": "Saad Tai Realtor®",
     "url": "https://saadtherealtor.com",
-    "telephone": "+1-518-348-9535",
+    "telephone": "+1-518-667-9351",
     "email": "saadtherealtor1@gmail.com"
   },
   "areaServed": ["Albany, NY", "Schenectady, NY"],

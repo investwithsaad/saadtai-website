@@ -18,7 +18,7 @@ export const companyInfo = {
   description: "Invest with Saad specializes in strategic guidance for small multifamily investors in the Capital Region. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management. With 10+ years of boots-on-the-ground market knowledge, we help you avoid costly mistakes and maximize your portfolio returns.",
 
   contact: {
-    phone: "+1 518-348-9535",
+    phone: "+1 518-667-9351",
     email: "saadtherealtor1@gmail.com",
     address: {
       street: "Albany to Schenectady Area",

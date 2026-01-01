@@ -185,7 +185,7 @@ export default function PrivacyPolicy() {
               <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
                 <Text className="text-gray-700 mb-2"><strong>Property Offerz LLC</strong></Text>
                 <Text className="text-gray-700 mb-2"><strong>Email:</strong> saadtherealtor1@gmail.com</Text>
-                <Text className="text-gray-700"><strong>Phone:</strong> (518) 348-9535</Text>
+                <Text className="text-gray-700"><strong>Phone:</strong> (518) 667-9351</Text>
               </div>
               <Text className="text-gray-700">We aim to respond within a reasonable timeframe and in accordance with applicable laws.</Text>
             </div>

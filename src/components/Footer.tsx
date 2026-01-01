@@ -110,13 +110,13 @@ export function Footer() {
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773c.423 1.157 1.03 2.268 1.87 3.109.84.84 1.952 1.447 3.109 1.87l.773-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                   </svg>
                   <a
-                    href="tel:+15183489535"
+                    href="tel:+15186679351"
                     className="transition-colors"
                     style={{ color: COLORS.white }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.secondary)}
                     onMouseLeave={(e) => (e.currentTarget.style.color = COLORS.white)}
                   >
-                    (518) 348-9535
+                    (518) 667-9351
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
