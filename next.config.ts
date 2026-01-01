@@ -74,11 +74,11 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://snap.licdn.com https://umami-production-25e0.up.railway.app https://serveinfo.up.railway.app https://va.vercel-scripts.com https://ddwl4m2hdecbv.cloudfront.net https://assets.calendly.com https://connect.facebook.net https://www.clarity.ms https://widgetbe.com",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://snap.licdn.com https://umami-production-25e0.up.railway.app https://saadinfo.up.railway.app https://va.vercel-scripts.com https://ddwl4m2hdecbv.cloudfront.net https://assets.calendly.com https://connect.facebook.net https://www.clarity.ms https://widgetbe.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
               "img-src 'self' data: https: blob:",
               "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://umami-production-25e0.up.railway.app https://serveinfo.up.railway.app https://calendly.com https://assets.calendly.com https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://widgetbe.com",
+              "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://umami-production-25e0.up.railway.app https://saadinfo.up.railway.app https://calendly.com https://assets.calendly.com https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://widgetbe.com",
               "frame-src 'self' https://calendly.com https://www.facebook.com",
               "frame-ancestors 'self'",
               "base-uri 'self'",
