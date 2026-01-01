@@ -116,7 +116,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             className="-m-1"
           />
         )}
-        <span className="flex items-center gap-2 whitespace-nowrap">{children}</span>
+        <span className="flex items-center gap-2 whitespace-normal sm:whitespace-nowrap">{children}</span>
       </button>
     )
   }
