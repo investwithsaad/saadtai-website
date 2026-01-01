@@ -1,0 +1,248 @@
+/**
+ * SCHEMA MARKUP GENERATORS
+ *
+ * Reusable functions to generate JSON-LD schema markup for various content types.
+ * These improve AI visibility and structured data understanding.
+ *
+ * Used for: SEO, Featured Snippets, Google Rich Results, LLM training data
+ */
+
+import { ReactNode } from 'react'
+import { getTitleAsString } from '@/lib/solution-helpers'
+import { companyInfo } from '@/data/company-info'
+import { fundingSolutions } from '@/data/solutions'
+
+// ============================================================================
+// ORGANIZATION SCHEMA (Global - Add to Layout)
+// ============================================================================
+
+export const getOrganizationSchema = (config?: {
+  aggregateRating?: {
+    ratingValue: number
+    reviewCount: number
+  }
+}) => ({
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness", "RealEstateAgent"],
+  "@id": "https://saadtherealtor.com",
+  "name": companyInfo.name,
+  "description": companyInfo.description,
+  "url": "https://saadtherealtor.com",
+  "telephone": companyInfo.contact.phone,
+  "email": companyInfo.contact.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": companyInfo.contact.address.street,
+    "addressLocality": companyInfo.contact.address.city,
+    "addressRegion": companyInfo.contact.address.state,
+    "postalCode": companyInfo.contact.address.zip,
+    "addressCountry": companyInfo.contact.address.country
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "USA"
+  },
+  "foundingDate": "2015",
+  "founder": {
+    "@type": "Person",
+    "name": "Saad Tai",
+    "knows": "Real Estate",
+    "url": "https://saadtherealtor.com"
+  },
+  "knowsAbout": ["Real Estate", "Home Buying", "Home Selling", "Home Valuation"],
+  "sameAs": [
+    "https://www.facebook.com/saadtherealtor",
+    "https://www.instagram.com/saadtherealtor"
+  ],
+  ...(config?.aggregateRating && {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": config.aggregateRating.ratingValue,
+      "reviewCount": config.aggregateRating.reviewCount
+    }
+  })
+})
+
+// ============================================================================
+// ARTICLE/BLOG POST SCHEMA
+// ============================================================================
+
+export const getArticleSchema = (article: {
+  headline: string
+  description: string
+  image?: string
+  datePublished: string
+  dateModified?: string
+  author?: {
+    name: string
+    url?: string
+  }
+  content: string
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": article.headline,
+  "description": article.description,
+  "image": article.image,
+  "datePublished": article.datePublished,
+  "dateModified": article.dateModified || article.datePublished,
+  "author": {
+    "@type": "Person",
+    "name": article.author?.name || "Saad Tai Real Estate",
+    ...(article.author?.url && { "url": article.author.url })
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Saad Tai Real Estate",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://saadtherealtor.com/logo.png"
+    }
+  },
+  "articleBody": article.content
+})
+
+// ============================================================================
+// BREADCRUMB SCHEMA (Navigation Context)
+// ============================================================================
+
+export const getBreadcrumbSchema = (items: Array<{
+  name: string
+  url: string
+}>) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url
+  }))
+})
+
+// ============================================================================
+// PERSON SCHEMA (Founder/Team)
+// ============================================================================
+
+export const getPersonSchema = (person: {
+  name: string
+  jobTitle: string
+  description: string
+  linkedinUrl?: string
+  image?: string
+  education?: {
+    school: string
+    degree: string
+  }
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": person.name,
+  "jobTitle": person.jobTitle,
+  "description": person.description,
+  "image": person.image,
+  ...(person.linkedinUrl && { "sameAs": person.linkedinUrl }),
+  ...(person.education && {
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": person.education.school,
+      "educationalCredentialAwarded": person.education.degree
+    }
+  })
+})
+
+// ============================================================================
+// HOW-TO SCHEMA (Process Steps)
+// ============================================================================
+
+export const getHowToSchema = (howTo: {
+  name: string
+  description: string
+  image?: string
+  steps: Array<{
+    name: string
+    description: string
+    image?: string
+  }>
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": howTo.name,
+  "description": howTo.description,
+  ...(howTo.image && { "image": howTo.image }),
+  "step": howTo.steps.map((step, index) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "name": step.name,
+    "text": step.description,
+    ...(step.image && { "image": step.image })
+  }))
+})
+
+// ============================================================================
+// COMPARISON SCHEMA (For comparison tables)
+// ============================================================================
+
+export const getComparisonSchema = (comparison: {
+  title: string
+  description: string
+  items: Array<{
+    name: string
+    pros: string[]
+    cons: string[]
+  }>
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": comparison.title,
+  "description": comparison.description,
+  "articleBody": `Comparison of: ${comparison.items.map(i => i.name).join(", ")}`
+})
+
+// ============================================================================
+// HELPER: Create Full Page Schema Bundle
+// ============================================================================
+
+export const getFullPageSchemaBundle = (config: {
+  organizationData: any
+  pageSchemas: any[]
+  breadcrumbs?: any
+}) => [
+  config.organizationData,
+  ...(config.breadcrumbs ? [config.breadcrumbs] : []),
+  ...config.pageSchemas
+]
+
+// ============================================================================
+// IMPLEMENTATION HELPERS
+// ============================================================================
+
+/**
+ * Convert schema object to JSON string for script tag
+ * Use in: <script dangerouslySetInnerHTML={{__html: schemaToScript(schema)}} />
+ */
+export const schemaToScript = (schema: any): string => {
+  return JSON.stringify(schema, null, 2)
+}
+
+/**
+ * Create script tag component data
+ */
+export const createSchemaScript = (schema: any) => ({
+  type: "application/ld+json",
+  dangerouslySetInnerHTML: {
+    __html: schemaToScript(schema)
+  }
+})
+
+export default {
+  getOrganizationSchema,
+  getArticleSchema,
+  getBreadcrumbSchema,
+  getPersonSchema,
+  getHowToSchema,
+  getComparisonSchema,
+  getFullPageSchemaBundle,
+  schemaToScript,
+  createSchemaScript
+}

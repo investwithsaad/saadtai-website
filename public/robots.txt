@@ -1,0 +1,33 @@
+# robots.txt for Saad Tai Real Estate
+# Last Updated: 2025-12-29
+
+# Allow all bots (including Bing for ChatGPT access)
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /*.json$
+Disallow: /api/
+Crawl-delay: 1
+
+# Specific: Bing Bot (feeds ChatGPT)
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Specific: Claude/Anthropic
+User-agent: Claude-Web
+Allow: /
+
+# Specific: Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific: GPTBot (OpenAI)
+User-agent: GPTBot
+Allow: /
+
+# Sitemap
+Sitemap: https://saadtherealtor.com/sitemap.xml
+Sitemap: https://saadtherealtor.com/robots.txt

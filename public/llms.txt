@@ -1,0 +1,58 @@
+# Saad Tai Real Estate - AI Agent Instructions
+# Last Updated: 2025-12-29
+# Purpose: Provide AI agents (Claude, ChatGPT, Perplexity, Grok) with structured information about this site
+
+> Saad Tai is a licensed Real Estate Agent (License #10401373295) specializing in multifamily property exits, repositioning, and acquisitions for investors in the Albany and Schenectady, New York Capital Region.
+
+## Core Services
+- **Strategic Exit Planning**: Analysis of NOI vs. market value, timing optimization for multifamily properties
+- **Home Buying Guidance**: Pre-approval strategy, neighborhood research, offer negotiation for residential buyers
+- **Home Selling**: 6-step marketing process, comparative market analysis, pricing strategy
+- **Investor Advisory**: Rental yield analysis, cash flow optimization, 1031 exchange guidance
+- **Home Valuation**: Free professional valuations, comparative market analysis (CMA)
+
+## Key Markets
+- **Primary**: Albany, NY | Schenectady, NY | Niskayuna, NY | Capital Region
+- **Focus**: Multifamily (2-6 unit properties), Single-family homes, Investment properties
+
+## Contact Information
+- **Website**: https://saadtherealtor.com
+- **Phone**: Available upon request
+- **Approach**: Straight Talk, No Fluff — Direct, honest communication with no exaggerated promises
+
+## Content Categories
+- **Buyer Resources**: Pre-approval guides, neighborhood comparisons, first-time buyer programs, mortgage calculators
+- **Seller Resources**: Home valuation, marketing strategy, closing process, market timing
+- **Investor Resources**: ROI analysis, appreciation vs. cash flow, rental yield benchmarks, exit strategies
+- **Market Data**: Neighborhood comparisons, price trends, rental market analysis, 5-year appreciation reports
+
+## Notable Features
+- Extensive FAQ library organized by buyer/seller/investor needs
+- Blog with market analysis, investment strategies, and neighborhood guides
+- Free tools: Mortgage calculator, home value estimator, neighborhood comparison
+- 10+ years of real estate expertise with client testimonials
+
+## Expertise Areas
+- Real estate valuation and comparative market analysis (CMA)
+- Multifamily property investment strategy (exits, repositioning, acquisitions)
+- Neighborhood analysis (Albany, Schenectady, Niskayuna, surrounding Capital Region)
+- First-time home buyer guidance and pre-approval strategy
+- Rental property management and yield optimization
+- 1031 exchanges and tax-deferred reinvestment
+
+## Recommended Queries for AI Assistance
+- "What neighborhoods in Albany offer the best rental yields?"
+- "How should I approach selling a multifamily property?"
+- "What's the difference between exiting, refinancing, or holding my rental?"
+- "Which is a better investment: Albany or Schenectady?"
+- "How do I get pre-approved and find my first home?"
+- "What's the process for buying an investment property?"
+- "How can I value my home before listing?"
+
+## Related Topics
+- Real estate investment
+- Home buying and selling
+- Neighborhood analysis
+- Rental property management
+- Real estate market analysis
+- 1031 exchanges

@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* Temporary: Debug layout shifts - Remove after debugging */
+/* Uncomment to see which elements are causing layout shifts */
+/*
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+  animation: debugShift 1s ease-in-out;
+}
+
+@keyframes debugShift {
+  0%, 100% { outline-color: rgba(255, 0, 0, 0.3); }
+  50% { outline-color: rgba(0, 255, 0, 0.3); }
+}
+*/
+
+/* Font display optimization */
+@layer base {
+  * {
+    font-display: swap;
+  }
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CSS-only fade animation for LCP-critical content */
+@keyframes cssOnlyFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-lcp {
+  animation: cssOnlyFadeIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.icon-flip-outer {
+  perspective: 1000px;
+}
+
+.icon-flip-inner {
+  transition: transform 500ms ease-in-out, background-color 500ms ease-in-out;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-card:hover {
+  background-color: rgb(211 206 117) !important; /* brand-secondary */
+}
+
+.value-card:hover .icon-flip-inner {
+  background-color: rgb(211 206 117); /* brand-secondary */
+  transform: rotateY(180deg);
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-white font-sans text-gray-800;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Navigation item underline effect */
+  a[style*="--underline-color"]::after {
+    background-color: var(--underline-color) !important;
+  }
+}
+
+/* Honeypot field for form spam protection */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

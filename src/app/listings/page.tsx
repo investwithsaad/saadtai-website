@@ -1,0 +1,145 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
+import { listings } from '@/data/listings'
+import { LeadFormModal } from '@/components/LeadFormModal'
+
+export default function ListingsPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedAddress, setSelectedAddress] = useState<string>('')
+
+  const handleInquiry = (address: string) => {
+    setSelectedAddress(address)
+    setIsModalOpen(true)
+  }
+
+  return (
+    <>
+      {/* Hero Section */}
+      <Section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
+        <Container>
+          <FadeIn className="max-w-3xl mx-auto text-center">
+            <Heading size="h1" className="font-heading mb-4">
+              Available Listings
+            </Heading>
+            <Text size="lg" className="text-gray-700">
+              Explore multifamily investment properties across Albany County, Schenectady County, and Rensselaer County. Browse our active listings or contact us for more information.
+            </Text>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      {/* Listings Grid */}
+      <Section background="white">
+        <Container>
+          <StaggerContainer>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {listings.map((listing) => (
+                <StaggerItem key={listing.id}>
+                  <Card className="flex flex-col h-full">
+                    <div className="mb-4 flex items-start justify-between gap-4">
+                      <div>
+                        <Heading size="h3" className="font-heading mb-2">
+                          {listing.address}
+                        </Heading>
+                        <Text className="text-gray-600 mb-4">
+                          {listing.city}, {listing.state} {listing.zip}
+                        </Text>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <span className={`inline-block px-3 py-1 rounded text-xs font-semibold whitespace-nowrap ${
+                          listing.status === 'under-contract' ? 'bg-yellow-100 text-yellow-800' :
+                          listing.status === 'sold' ? 'bg-gray-100 text-gray-800' :
+                          'bg-green-100 text-green-800'
+                        }`}>
+                          {listing.status === 'under-contract' ? 'Pending' :
+                           listing.status === 'sold' ? 'Sold' :
+                           'Active'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="mb-4 pb-4 border-b border-gray-200">
+                      <div className="flex flex-wrap gap-4 text-sm">
+                        {listing.bedrooms && (
+                          <div>
+                            <Text className="text-gray-600">Bedrooms</Text>
+                            <Text className="font-semibold">{listing.bedrooms}</Text>
+                          </div>
+                        )}
+                        {listing.bathrooms && (
+                          <div>
+                            <Text className="text-gray-600">Bathrooms</Text>
+                            <Text className="font-semibold">{listing.bathrooms}</Text>
+                          </div>
+                        )}
+                        {listing.squareFeet && (
+                          <div>
+                            <Text className="text-gray-600">Sq Ft</Text>
+                            <Text className="font-semibold">{listing.squareFeet.toLocaleString()}</Text>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <Text className="text-sm text-gray-600 mb-2">
+                        <span className="font-semibold">{listing.propertyType}</span>
+                      </Text>
+                      <Text className="text-gray-700 text-sm mb-3">
+                        {listing.description}
+                      </Text>
+                      {listing.features.length > 0 && (
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {listing.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+                    <div className="mt-auto pt-4">
+                      <Button
+                        variant="default"
+                        className="w-full"
+                        onClick={() => handleInquiry(`${listing.address}, ${listing.city}, ${listing.state} ${listing.zip}`)}
+                      >
+                        Inquire About This Property
+                      </Button>
+                    </div>
+                  </Card>
+                </StaggerItem>
+              ))}
+            </div>
+          </StaggerContainer>
+
+          <div className="mt-16 text-center flex flex-col items-center">
+            <Heading size="h2" className="font-heading mb-4">
+              Can't Find What You're Looking For?
+            </Heading>
+            <Text className="text-gray-700 mb-8">
+              Let us help you find the perfect home. Our team can assist with properties not listed here.
+            </Text>
+            <Link href="/contact-us">
+              <Button variant="default">
+                Get in Touch
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Inquiry Modal */}
+      <LeadFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        prefillComments={`I want to know more about ${selectedAddress}`}
+      />
+    </>
+  )
+}
