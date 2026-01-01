@@ -21,7 +21,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: "Find Off-Market Multifamily Deals in Albany | Saad Tai Real Estate",
+  title: "Find Off-Market Multifamily Deals | Invest with Saad",
   description: "Learn how to stop competing for the same seller leads as other multifamily investors. Find off-market deals without PropStream, mailers, or cold calling.",
   robots: "noindex, nofollow",
 }

@@ -3,10 +3,10 @@ import { InvestmentCalculator } from '@/components/InvestmentCalculator'
 import { Container, Section, Heading, Text } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: 'Investment Property Calculator | Real Estate ROI Analysis',
+  title: 'Investment Calculator | Invest with Saad',
   description: 'Calculate cap rate, cash-on-cash return, NOI, and multi-year projections for rental property investments. Free real estate calculator with tax benefits and exit analysis.',
   openGraph: {
-    title: 'Investment Property Calculator',
+    title: 'Investment Calculator | Invest with Saad',
     description: 'Analyze rental property deals with professional-grade calculations',
     images: [
       {

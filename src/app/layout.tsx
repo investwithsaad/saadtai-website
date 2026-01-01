@@ -21,28 +21,28 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: "Saad Tai Real Estate Agent | Multifamily Investing | Albany, Schenectady, Rensselaer NY",
-  description: "Real estate agent specializing in 2-4 unit multifamily investing. Serving Albany County, Schenectady County, and Rensselaer County. 10+ years of experience. Straight talk, no fluff.",
-  keywords: "real estate agent, Albany County, Schenectady County, Rensselaer County, multifamily investing, 2-4 unit properties, home buying, home selling, real estate valuation, realtor",
+  title: "Invest with Saad | Multifamily Investment Advisor | Albany, Schenectady",
+  description: "Strategic guidance for multifamily investors. Helping investors in the Capital Region buy smarter, sell faster, and plan better exits. Off-market deals, investor analysis, portfolio strategy. 10+ years of experience.",
+  keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
   openGraph: {
-    title: "Saad Tai Real Estate Agent | Home Buying & Selling | Albany, Schenectady",
-    description: "Expert real estate guidance for home buying, selling, and valuation. Licensed Realtor® serving Albany & Schenectady. Straight talk, no fluff approach.",
+    title: "Invest with Saad | Multifamily Investment Advisor",
+    description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",
     url: "https://saadtherealtor.com/",
-    siteName: "Saad Tai Real Estate",
+    siteName: "Invest with Saad",
     type: "website",
     images: [
       {
         url: "https://saadtherealtor.com/main-bg.png",
         width: 1200,
         height: 628,
-        alt: "Saad Tai Real Estate Agent",
+        alt: "Invest with Saad - Multifamily Investment Advisor",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saad Tai Real Estate Agent | Albany, Schenectady",
-    description: "Licensed Realtor® with 10+ years of experience. Home buying, selling, and valuation for Albany & Schenectady area.",
+    title: "Invest with Saad | Multifamily Investment Advisor",
+    description: "Scale smarter. Exit cleaner. Strategic guidance for small multifamily investors in the Capital Region.",
   },
   robots: "index, follow",
 }

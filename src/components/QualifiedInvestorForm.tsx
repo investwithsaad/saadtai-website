@@ -8,13 +8,13 @@ import { COLORS } from '@/lib/colors'
 import { trackFormSubmission } from '@/lib/tracking'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error' | 'disqualified'
-type FormStep = 'deals-completed' | 'deals-last-year' | 'frustration' | 'name' | 'phone' | 'email'
+type FormStep = 'units-selling' | 'timeline' | 'condition' | 'name' | 'phone' | 'email'
 
 export interface QualifiedInvestorFormProps {
   onSuccess?: () => void
 }
 
-const steps: FormStep[] = ['deals-completed', 'deals-last-year', 'frustration', 'name', 'phone', 'email']
+const steps: FormStep[] = ['units-selling', 'timeline', 'condition', 'name', 'phone', 'email']
 
 export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps) {
   const [state, setState] = useState<FormState>('idle')
@@ -24,21 +24,15 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
     name: '',
     email: '',
     phone: '',
-    dealsCompleted: '',
-    dealsLastYear: '',
-    frustration: '',
+    unitsSelling: '',
+    timeline: '',
+    condition: '',
   })
 
   const currentStep = steps[currentStepIndex]
   const progress = ((currentStepIndex + 1) / steps.length) * 100
 
   const handleNext = () => {
-    // Check for disqualification on deals-completed step
-    if (currentStep === 'deals-completed' && formData.dealsCompleted === '0') {
-      setState('disqualified')
-      return
-    }
-
     if (currentStepIndex < steps.length - 1) {
       setCurrentStepIndex(currentStepIndex + 1)
       setErrorMsg('')
@@ -77,9 +71,9 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
             name: formData.name,
             email: formData.email,
             phone: formData.phone,
-            dealsCompleted: formData.dealsCompleted,
-            dealsLastYear: formData.dealsLastYear,
-            frustration: formData.frustration,
+            unitsSelling: formData.unitsSelling,
+            timeline: formData.timeline,
+            condition: formData.condition,
             timestamp: new Date().toISOString(),
             isQualified: true,
           },
@@ -164,27 +158,25 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
           transition={{ duration: 0.2 }}
           className="min-h-24"
         >
-          {/* Deals Completed */}
-          {currentStep === 'deals-completed' && (
+          {/* Units Selling */}
+          {currentStep === 'units-selling' && (
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-semibold text-slate-900 block mb-3">
-                  How many multifamily deals have you completed?
+                  How many properties are you looking to sell?
                 </label>
                 <div className="space-y-2">
-                  {['0', '1-3', '4-6', '7+'].map((option) => (
-                    <label key={option} className="flex items-center gap-3 p-3 border-2 rounded-lg cursor-pointer transition-all" style={{ borderColor: formData.dealsCompleted === option ? COLORS.primary : '#e5e7eb' }}>
+                  {['1-2', '3-4', '5+'].map((option) => (
+                    <label key={option} className="flex items-center gap-3 p-3 border-2 rounded-lg cursor-pointer transition-all" style={{ borderColor: formData.unitsSelling === option ? COLORS.primary : '#e5e7eb' }}>
                       <input
                         type="radio"
-                        name="dealsCompleted"
+                        name="unitsSelling"
                         value={option}
-                        checked={formData.dealsCompleted === option}
+                        checked={formData.unitsSelling === option}
                         onChange={(e) => handleRadioChange(e, true)}
                         className="w-4 h-4"
                       />
-                      <span className="text-slate-700">
-                        {option === '0' ? 'None - I\'m just starting out' : option === '7+' ? '7 or more deals' : option + ' deals'}
-                      </span>
+                      <span className="text-slate-700">{option} properties</span>
                     </label>
                   ))}
                 </div>
@@ -192,27 +184,25 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
             </div>
           )}
 
-          {/* Deals Last Year */}
-          {currentStep === 'deals-last-year' && (
+          {/* Timeline */}
+          {currentStep === 'timeline' && (
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-semibold text-slate-900 block mb-3">
-                  How many deals have you closed in the last 12-18 months?
+                  How soon are you looking to sell?
                 </label>
                 <div className="space-y-2">
-                  {['0', '1', '2-3', '4+'].map((option) => (
-                    <label key={option} className="flex items-center gap-3 p-3 border-2 rounded-lg cursor-pointer transition-all" style={{ borderColor: formData.dealsLastYear === option ? COLORS.primary : '#e5e7eb' }}>
+                  {['0-3 months', '3-6 months', '6-12 months', '1+ years'].map((option) => (
+                    <label key={option} className="flex items-center gap-3 p-3 border-2 rounded-lg cursor-pointer transition-all" style={{ borderColor: formData.timeline === option ? COLORS.primary : '#e5e7eb' }}>
                       <input
                         type="radio"
-                        name="dealsLastYear"
+                        name="timeline"
                         value={option}
-                        checked={formData.dealsLastYear === option}
+                        checked={formData.timeline === option}
                         onChange={(e) => handleRadioChange(e, true)}
                         className="w-4 h-4"
                       />
-                      <span className="text-slate-700">
-                        {option === '0' ? 'None' : option === '4+' ? '4 or more deals' : option + ' deal' + (option === '1' ? '' : 's')}
-                      </span>
+                      <span className="text-slate-700">{option}</span>
                     </label>
                   ))}
                 </div>
@@ -220,21 +210,29 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
             </div>
           )}
 
-          {/* Frustration */}
-          {currentStep === 'frustration' && (
+          {/* Condition */}
+          {currentStep === 'condition' && (
             <div className="space-y-4">
-              <label className="text-sm font-semibold text-slate-900 block">
-                What's your biggest frustration with multifamily investing right now?
-              </label>
-              <FormInput
-                as="textarea"
-                name="frustration"
-                placeholder="Tell us what's keeping you from closing more deals..."
-                rows={4}
-                value={formData.frustration}
-                onChange={handleChange}
-                disabled={state === 'submitting'}
-              />
+              <div>
+                <label className="text-sm font-semibold text-slate-900 block mb-3">
+                  What is the condition of the property?
+                </label>
+                <div className="space-y-2">
+                  {['Excellent', 'Good', 'Fair', 'Needs Work'].map((option) => (
+                    <label key={option} className="flex items-center gap-3 p-3 border-2 rounded-lg cursor-pointer transition-all" style={{ borderColor: formData.condition === option ? COLORS.primary : '#e5e7eb' }}>
+                      <input
+                        type="radio"
+                        name="condition"
+                        value={option}
+                        checked={formData.condition === option}
+                        onChange={(e) => handleRadioChange(e, true)}
+                        className="w-4 h-4"
+                      />
+                      <span className="text-slate-700">{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -302,7 +300,7 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
       )}
 
       {/* Navigation Buttons - Only show for non-radio steps */}
-      {(currentStep !== 'deals-completed' && currentStep !== 'deals-last-year') && (
+      {(currentStep !== 'units-selling' && currentStep !== 'timeline' && currentStep !== 'condition') && (
         <div className="flex gap-3">
           {currentStepIndex > 0 && (
             <motion.button
@@ -322,7 +320,6 @@ export function QualifiedInvestorForm({ onSuccess }: QualifiedInvestorFormProps)
             onClick={currentStepIndex === steps.length - 1 ? handleSubmit : handleNext}
             disabled={
               state === 'submitting' ||
-              (currentStep === 'frustration' && !formData.frustration) ||
               (currentStep === 'name' && !formData.name) ||
               (currentStep === 'phone' && !formData.phone) ||
               (currentStep === 'email' && !formData.email)

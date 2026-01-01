@@ -1,8 +1,9 @@
 /**
- * SAAD TAI - REAL ESTATE AGENT
+ * SAAD TAI - MULTIFAMILY INVESTMENT ADVISOR
  *
- * Master information hub for the real estate business
- * Location: Albany/Schenectady, NY area
+ * Master information hub for the investment advisory business
+ * Focus: Multifamily property investing & portfolio strategy
+ * Location: Albany/Schenectady, NY area (Capital Region)
  * License: #10401373295
  */
 
@@ -11,10 +12,10 @@
 // ============================================================================
 
 export const companyInfo = {
-  name: "Saad Tai",
-  tagline: "Real Estate Agent & Licensed Realtor",
+  name: "Invest with Saad",
+  tagline: "Multifamily Investment Advisor & Portfolio Strategy Guide",
 
-  description: "Saad Tai is a licensed real estate agent serving the Albany to Schenectady area with expertise in buying, selling, and valuing properties. With boots-on-the-ground neighborhood knowledge and a commitment to straight talk with zero pressure, Saad helps clients navigate every step of their real estate journey.",
+  description: "Invest with Saad specializes in strategic guidance for small multifamily investors in the Capital Region. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management. With 10+ years of boots-on-the-ground market knowledge, we help you avoid costly mistakes and maximize your portfolio returns.",
 
   contact: {
     phone: "+1 518-348-9535",
@@ -49,10 +50,10 @@ export const companyInfo = {
 
 export const founder = {
   name: "Saad Tai",
-  title: "Realtor® & Real Estate Agent",
-  background: "Licensed real estate agent with deep neighborhood knowledge of Albany to Schenectady area. Specializes in strategic home selling, buyer representation, and property valuation.",
-  motivation: "Real estate is my day job, night hobby, and weekend conversation starter. I treat every client's move like it's my own money on the line.",
-  personalStory: `I've walked, shown, or knocked on just about every street from Albany to Schenectady. That boots-on-the-ground insight helps you price right, spot hidden value, and avoid surprises.`,
+  title: "Multifamily Investment Advisor & Real Estate Specialist",
+  background: "Real estate investment specialist with 10+ years of experience helping small multifamily investors in the Capital Region. Deep market knowledge of Albany, Schenectady, and surrounding areas. Specializes in deal analysis, portfolio strategy, and investor-grade transaction management.",
+  motivation: "Real estate investing is my day job, night hobby, and weekend conversation starter. I treat every client's investment like it's my own money on the line—because I only recommend deals that actually work.",
+  personalStory: `I've walked, analyzed, and closed properties across every neighborhood from Albany to Schenectady. That boots-on-the-ground insight helps investors identify opportunities, avoid overpaying, and time their exits strategically.`,
 
   credentials: {
     certifications: ["Realtor®"],
@@ -151,28 +152,33 @@ export const businessProcess = [
 // ============================================================================
 
 export const competitivePositioning = {
-  tagline: "Straight Talk, Territory Knowledge, Results",
+  tagline: "Scale Smarter. Exit Cleaner. Maximize Your Earnings.",
 
   differentiators: [
     {
-      label: "Honest & Direct",
-      description: "No fluff, no pressure. You get honest answers about pricing, market conditions, and your options. If something doesn't make sense, I'll tell you."
+      label: "Investor-Grade Analysis",
+      description: "Conservative underwriting, cap rate focus, and investor-grade property analysis. I don't recommend deals based on fantasy numbers—only deals that actually pencil and fit your criteria."
     },
     {
-      label: "Deep Local Knowledge",
-      description: "I've walked every street from Albany to Schenectady. That boots-on-the-ground insight means I spot hidden value and avoid surprises."
+      label: "Off-Market Sourcing",
+      description: "Access to off-market deals and an investor network (lenders, property managers, contractors, attorneys). You get opportunities before they hit the MLS."
     },
     {
-      label: "Always Available",
-      description: "Late-night questions? Weekend showings? I'm responsive and present. Text, call, email—you get fast responses when it matters."
+      label: "Portfolio Strategy & Exits",
+      description: "Help with timing, 1031 exchange coordination, and strategic exit planning. My focus is on growing your portfolio, not just closing transactions."
+    },
+    {
+      label: "Responsive & Direct",
+      description: "I call you back within 24 hours. Straight talk about what works and what doesn't. I make money when deals close—so I only recommend moves that work for you."
     }
   ],
 
   competitiveComparisons: {
     vs_other_agents: {
-      your_advantage_1: "Personalized attention vs. treating you as just another transaction",
-      your_advantage_2: "Deep neighborhood knowledge vs. surface-level listings",
-      your_advantage_3: "24/7 responsiveness vs. office hours mentality"
+      your_advantage_1: "Investor specialist vs. generalist agents who don't understand multifamily",
+      your_advantage_2: "Off-market deal access vs. competing on MLS listings",
+      your_advantage_3: "Portfolio strategy focus vs. transaction-focused approach",
+      your_advantage_4: "Network of investor resources vs. limited service offerings"
     }
   }
 }
@@ -183,28 +189,39 @@ export const competitivePositioning = {
 
 export const qualificationCriteria = {
   general: {
-    seller_profile: "Homeowners looking to sell quickly, strategically, or on their terms",
-    buyer_profile: "First-time buyers, investors, and families searching for their next home",
-    investor_profile: "Real estate investors looking for acquisition, flip, or rental opportunities",
-    ideal_geography: "Albany to Schenectady area (Capital Region, NY)"
+    primary_profile: "Small multifamily investors (2-10+ units) looking to buy, sell, or optimize their portfolio",
+    investor_personas: [
+      "The Scaling Investor - Own 5-10+ units, actively buying and selling",
+      "The Accidental Owner - Inherited or accumulated 2-6 units, looking for a better strategy",
+      "The Capital Recycler - Selling properties and looking to redeploy capital strategically"
+    ],
+    ideal_geography: "Capital Region, NY (Albany, Schenectady, Troy, and surrounding areas)"
   },
 
   serviceTypes: {
-    selling: {
-      description: "Home selling with strategic marketing and expert negotiation",
-      ideal_for: ["Busy professionals", "Rental property owners", "Downsizers", "Quick sales"]
+    offMarketSourcing: {
+      description: "Access to off-market deals before they hit the MLS",
+      ideal_for: ["Investors looking for below-market opportunities"]
     },
-    buying: {
-      description: "Home buying with expert guidance and market knowledge",
-      ideal_for: ["First-time homebuyers", "Investors", "Relocating families"]
+    investorAnalysis: {
+      description: "Investor-grade property analysis with cap rates, cash flow, and true returns",
+      ideal_for: ["Serious investors who want honest numbers, not fantasy projections"]
     },
-    investment: {
-      description: "Investment property guidance and acquisition strategy",
-      ideal_for: ["Real estate investors", "Portfolio builders", "Fix-and-flip opportunities"]
+    portfolioStrategy: {
+      description: "Strategic planning for buying, selling, and portfolio optimization",
+      ideal_for: ["Investors looking to scale or time their exits strategically"]
+    },
+    exitPlanning: {
+      description: "1031 exchange coordination and exit strategy planning",
+      ideal_for: ["Investors ready to sell and redeploy capital"]
     }
   },
 
-  disqualifiers: []
+  disqualifiers: [
+    "Investors looking for quick flips without long-term strategy",
+    "Deal hunters who won't take time to analyze properly",
+    "Clients expecting unrealistic returns or market-beating guarantees"
+  ]
 }
 
 // ============================================================================
@@ -212,24 +229,24 @@ export const qualificationCriteria = {
 // ============================================================================
 
 export const messagingTemplates = {
-  sellingValue: {
-    headline: "Ready to Sell? Let's Get You Top Dollar.",
-    message: "With my proven 6-step marketing strategy and deep knowledge of every neighborhood, I'll attract serious buyers and negotiate the best price for you."
+  investorValue: {
+    headline: "Scale Smarter. Exit Cleaner. Maximize Your Earnings.",
+    message: "Strategic guidance for multifamily investors. Buy better deals with investor-grade analysis, access off-market opportunities, and plan exits that maximize your portfolio returns."
   },
 
-  buyingValue: {
-    headline: "Find Your Dream Home With Expert Guidance",
-    message: "I've walked every street from Albany to Schenectady. Let me use that knowledge to help you find the right property at the right price."
+  portfolioStrategy: {
+    headline: "Grow Your Portfolio With Discipline",
+    message: "I help you identify opportunities that fit your criteria, analyze them honestly, and execute strategically. Off-market deals, investor networks, and responsive transaction management—that's how we scale."
   },
 
-  trustMessage: {
-    headline: "Straight Talk, No Pressure",
-    message: "Honest answers. Clear numbers. I treat your move like it's my own money on the line—because your success is my success."
+  straightTalkMessage: {
+    headline: "Straight Talk. Only Deals That Pencil.",
+    message: "I don't recommend deals based on fantasy rents. Conservative analysis, honest numbers, and investor-grade underwriting. I make money when deals close—so I only recommend moves that work for you."
   },
 
-  availabilityMessage: {
-    headline: "Always Here for You",
-    message: "Text, call, or email—anytime. Late-night questions? Weekend showings? I'm responsive and present when you need me."
+  responsivePartnerMessage: {
+    headline: "Your Responsive Investment Partner",
+    message: "I call you back within 24 hours. Direct communication. Strategic guidance. I treat your portfolio like it's my own—because your success is how I succeed."
   }
 }
 

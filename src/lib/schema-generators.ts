@@ -23,9 +23,10 @@ export const getOrganizationSchema = (config?: {
   }
 }) => ({
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "RealEstateAgent"],
+  "@type": ["Organization", "LocalBusiness", "FinancialService"],
   "@id": "https://saadtherealtor.com",
   "name": companyInfo.name,
+  "alternateName": "Invest with Saad",
   "description": companyInfo.description,
   "url": "https://saadtherealtor.com",
   "telephone": companyInfo.contact.phone,
@@ -38,18 +39,44 @@ export const getOrganizationSchema = (config?: {
     "postalCode": companyInfo.contact.address.zip,
     "addressCountry": companyInfo.contact.address.country
   },
-  "areaServed": {
-    "@type": "Country",
-    "name": "USA"
-  },
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "New York"
+    },
+    {
+      "@type": "City",
+      "name": "Albany"
+    },
+    {
+      "@type": "City",
+      "name": "Schenectady"
+    },
+    {
+      "@type": "City",
+      "name": "Troy"
+    }
+  ],
   "foundingDate": "2015",
   "founder": {
     "@type": "Person",
     "name": "Saad Tai",
-    "knows": "Real Estate",
+    "jobTitle": "Multifamily Investment Advisor",
+    "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
     "url": "https://saadtherealtor.com"
   },
-  "knowsAbout": ["Real Estate", "Home Buying", "Home Selling", "Home Valuation"],
+  "knowsAbout": [
+    "Multifamily Investing",
+    "Small Multifamily Properties",
+    "Cap Rate Analysis",
+    "Cash Flow Analysis",
+    "1031 Exchange Strategy",
+    "Investment Property Analysis",
+    "Portfolio Strategy",
+    "Real Estate Market Analysis",
+    "Off-Market Deal Sourcing",
+    "Investment Property Valuation"
+  ],
   "sameAs": [
     "https://www.facebook.com/saadtherealtor",
     "https://www.instagram.com/saadtherealtor"
@@ -88,12 +115,12 @@ export const getArticleSchema = (article: {
   "dateModified": article.dateModified || article.datePublished,
   "author": {
     "@type": "Person",
-    "name": article.author?.name || "Saad Tai Real Estate",
+    "name": article.author?.name || "Invest with Saad",
     ...(article.author?.url && { "url": article.author.url })
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Saad Tai Real Estate",
+    "name": "Invest with Saad",
     "logo": {
       "@type": "ImageObject",
       "url": "https://saadtherealtor.com/logo.png"

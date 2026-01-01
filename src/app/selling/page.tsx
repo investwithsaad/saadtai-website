@@ -13,8 +13,18 @@ import {
   Text
 } from '@/components/ui'
 import { COLORS } from '@/lib/colors'
-import { aboutRealtorFAQs } from '@/data/faq-data'
+import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
+
+// Filter for selling-related FAQs
+const sellingFAQs = multifamilyInvestorFAQs.filter(faq =>
+  faq.id.includes('selling') ||
+  faq.id.includes('1031') ||
+  faq.id.includes('offmarket-sale') ||
+  faq.id.includes('property-worth') ||
+  faq.id.includes('unwinding') ||
+  faq.id.includes('redeploy')
+)
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
@@ -405,7 +415,7 @@ export default function SellerPage() {
 
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto">
-                <FAQAccordion items={aboutRealtorFAQs} />
+                <FAQAccordion items={sellingFAQs} />
               </div>
             </FadeIn>
           </div>

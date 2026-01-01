@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { fundingSolutions } from '@/data/solutions'
 import { blogPosts } from '@/data/blog-posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,14 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }))
 
-  // Dynamic solution routes
-  const solutionRoutes = fundingSolutions.map((solution) => ({
-    url: `${baseUrl}/solutions/${solution.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.9,
-  }))
-
   // Dynamic blog routes
   const blogRoutes = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.id}`,
@@ -41,5 +32,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...routes, ...solutionRoutes, ...blogRoutes]
+  return [...routes, ...blogRoutes]
 }

@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props) {
     : "https://saadtherealtor.com/main-bg.png"
 
   return {
-    title: `${blogPost.title} | Saad Tai Real Estate`,
+    title: `${blogPost.title} | Invest with Saad`,
     description: blogPost.excerpt,
     openGraph: {
       title: blogPost.title,

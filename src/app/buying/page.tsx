@@ -13,8 +13,18 @@ import {
   Text
 } from '@/components/ui'
 import { COLORS } from '@/lib/colors'
-import { homeBuyingFAQs, neighborhoodComparisonFAQs } from '@/data/faq-data'
+import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
+
+// Filter for buying-related FAQs
+const buyingFAQs = multifamilyInvestorFAQs.filter(faq =>
+  faq.id.includes('cap-rate') ||
+  faq.id.includes('pencils') ||
+  faq.id.includes('closing-costs') ||
+  faq.id.includes('offmarket') ||
+  faq.id.includes('multifamily-closing') ||
+  faq.id.includes('financing-programs')
+)
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { MortgageCalculator } from '@/components/MortgageCalculator'
 import { AffordabilityCalculator } from '@/components/AffordabilityCalculator'
@@ -306,7 +316,7 @@ export default function BuyerPage() {
 
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto">
-                <FAQAccordion items={[...homeBuyingFAQs, ...neighborhoodComparisonFAQs]} />
+                <FAQAccordion items={buyingFAQs} />
               </div>
             </FadeIn>
           </div>

@@ -1,7 +1,8 @@
-# robots.txt for Saad Tai Real Estate
-# Last Updated: 2025-12-29
+# robots.txt for Invest with Saad
+# Optimized for both traditional SEO and AI discovery
+# Last Updated: 2025-12-31
 
-# Allow all bots (including Bing for ChatGPT access)
+# Allow all bots (including AI crawlers and Bing for ChatGPT access)
 User-agent: *
 Allow: /
 Disallow: /admin
@@ -18,6 +19,7 @@ Crawl-delay: 1
 # Specific: Claude/Anthropic
 User-agent: Claude-Web
 Allow: /
+Crawl-delay: 0
 
 # Specific: Google
 User-agent: Googlebot
@@ -27,7 +29,18 @@ Crawl-delay: 0
 # Specific: GPTBot (OpenAI)
 User-agent: GPTBot
 Allow: /
+Crawl-delay: 0
 
-# Sitemap
+# Specific: Perplexity
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 0
+
+# Specific: Applebot (Siri, Spotlight, etc)
+User-agent: Applebot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap references
 Sitemap: https://saadtherealtor.com/sitemap.xml
-Sitemap: https://saadtherealtor.com/robots.txt
+Sitemap: https://saadtherealtor.com/llms.txt

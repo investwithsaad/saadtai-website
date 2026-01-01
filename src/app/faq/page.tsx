@@ -3,32 +3,24 @@ import FAQClientCategorized from './faq-client-categorized'
 import { Section, Container, Heading, Text, FadeIn } from '@/components/ui'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { Breadcrumb } from '@/components/breadcrumb'
-import {
-  topLevelFAQs,
-  aboutRealtorFAQs,
-  homeBuyingFAQs,
-  neighborhoodComparisonFAQs,
-  investmentFAQs,
-  familyFAQs,
-  urbanProfessionalFAQs
-} from '@/data/faq-data'
+import { faqCategories, multifamilyInvestorFAQs } from '@/data/faq-data'
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Saad Tai Realtor',
-  description: 'Answers to your questions about home buying, selling, neighborhoods, valuations, and the real estate process.',
-  keywords: 'FAQ, frequently asked questions, home buying questions, selling a home, home valuation, neighborhood comparison',
+  title: 'Frequently Asked Questions | Invest with Saad',
+  description: 'Answers to questions about multifamily investing, cap rates, deal analysis, portfolio strategy, and finding off-market deals in the Capital Region.',
+  keywords: 'multifamily investing FAQ, cap rates, investment property questions, portfolio strategy, real estate investor questions, 1031 exchange',
   openGraph: {
-    title: 'Frequently Asked Questions | Saad Tai Realtor',
-    description: 'Get answers to common questions about home buying, selling, neighborhoods, valuations, and more from Saad Tai.',
+    title: 'Frequently Asked Questions | Invest with Saad',
+    description: 'Multifamily investor FAQs covering buying, selling, analysis, and portfolio management in the Capital Region.',
     url: 'https://saadtherealtor.com/faq',
-    siteName: 'Saad Tai Realtor',
+    siteName: 'Invest with Saad',
     type: 'website',
     images: [
       {
         url: "https://saadtherealtor.com/logo.webp",
         width: 1024,
         height: 728,
-        alt: "FAQ - Frequently Asked Questions",
+        alt: "FAQ - Multifamily Investor Questions",
       },
     ],
   },
@@ -37,58 +29,42 @@ export const metadata: Metadata = {
 // Organize FAQs by category
 const categorizedFAQs = [
   {
-    category: 'neighborhood-comparison',
-    categoryName: 'Neighborhood Comparison',
-    description: 'Albany vs Schenectady vs Niskayuna: taxes, schools, costs, and lifestyle',
-    faqs: neighborhoodComparisonFAQs
+    category: 'buying-multifamily',
+    categoryName: 'Buying Multifamily',
+    description: 'Evaluating deals, underwriting, financing, and closing on 2-4 unit properties',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('realistic-cap-rate') || faq.id.includes('multifamily-deal-pencils') || faq.id.includes('closing-costs-multifamily') || faq.id.includes('offmarket-vs-mls') || faq.id.includes('single-family-to-multifamily') || faq.id.includes('multifamily-closing-timeline') || faq.id.includes('financing-programs-2-4-unit'))
   },
   {
-    category: 'buying-process',
-    categoryName: 'Buying Process',
-    description: 'Pre-approval, down payments, closing costs, and how to find your home',
-    faqs: homeBuyingFAQs
+    category: 'selling-multifamily',
+    categoryName: 'Selling & Exit Strategy',
+    description: 'Timing exits, 1031 exchanges, portfolio simplification, and maximizing proceeds',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('selling-4unit') || faq.id.includes('selling-with-difficult') || faq.id.includes('1031-exchange') || faq.id.includes('offmarket-sale') || faq.id.includes('property-worth-cap') || faq.id.includes('unwinding-portfolio') || faq.id.includes('selling-two-properties'))
   },
   {
-    category: 'investment-questions',
-    categoryName: 'Investment & ROI',
-    description: 'Rental yields, cash flow, appreciation, and investment analysis',
-    faqs: investmentFAQs
+    category: 'investor-strategy',
+    categoryName: 'Investor Strategy',
+    description: 'Portfolio scaling, market timing, specialist guidance, and wealth building',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('investor-specialist') || faq.id.includes('advisor-understands') || faq.id.includes('scaling-portfolio') || faq.id.includes('buying-selling-frequency') || faq.id.includes('scaling-investor-timing') || faq.id.includes('accidental-owner') || faq.id.includes('capital-recycler') || faq.id.includes('multifamily-underwriting') || faq.id.includes('portfolio-simplification'))
   },
   {
-    category: 'family-concerns',
-    categoryName: 'Schools & Family',
-    description: 'School districts, safety, family amenities, and total cost of ownership',
-    faqs: familyFAQs
+    category: 'investor-network',
+    categoryName: 'Investor Network & Off-Market',
+    description: 'Deal sourcing, off-market opportunities, and investor community access',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('investor-group') || faq.id.includes('deals-per-month') || faq.id.includes('missing-mls') || faq.id.includes('finding-off-market') || faq.id.includes('tenant-quality') || faq.id.includes('property-manager'))
   },
   {
-    category: 'urban-living',
-    categoryName: 'Urban Professional',
-    description: 'Walkability, commute times, dining, culture, and neighborhood character',
-    faqs: urbanProfessionalFAQs
-  },
-  {
-    category: 'home-selling',
-    categoryName: 'Selling Your Home',
-    description: 'Pricing strategy, marketing, timeline, and maximizing your home\'s value',
-    faqs: aboutRealtorFAQs
+    category: 'calculator-tools',
+    categoryName: 'Analysis & Tools',
+    description: 'Using the investment calculator, comparing properties, and financial metrics',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('property-offer') || faq.id.includes('dscr-requirements') || faq.id.includes('cashoncash-return') || faq.id.includes('comparing-properties') || faq.id.includes('multifamily-financing-small'))
   }
 ]
 
 // Build schema for all FAQs
-const allFAQs = [
-  ...topLevelFAQs,
-  ...aboutRealtorFAQs,
-  ...homeBuyingFAQs,
-  ...neighborhoodComparisonFAQs,
-  ...investmentFAQs,
-  ...familyFAQs,
-  ...urbanProfessionalFAQs
-]
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": allFAQs.map(faq => ({
+  "mainEntity": multifamilyInvestorFAQs.map(faq => ({
     "@type": "Question",
     "name": faq.q,
     "acceptedAnswer": {
@@ -112,10 +88,10 @@ export default function FAQ() {
         <Container>
           <FadeIn className="text-center mb-12">
             <Heading size="h1" className="mb-4 text-olive-900">
-              Frequently Asked Questions
+              Multifamily Investor FAQs
             </Heading>
             <Text size="lg" className="text-gray-700 max-w-3xl mx-auto">
-              Find answers to questions about neighborhoods, buying, selling, investment, schools, and more. Browse by category below.
+              Get answers to your most important questions about buying, selling, analyzing, and scaling your multifamily portfolio in the Capital Region. Browse by category below.
             </Text>
           </FadeIn>
         </Container>

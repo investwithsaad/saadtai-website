@@ -18,11 +18,11 @@ import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Blog | Real Estate Tips & Insights',
-  description: 'Real estate tips, home buying and selling guides, and insights from Saad Tai for the Albany and Schenectady area.',
+  title: 'Blog | Invest with Saad',
+  description: 'Multifamily investment insights, market analysis, and strategies for small investors in the Capital Region. Learn about cap rates, cash flow, property analysis, and portfolio strategy.',
   openGraph: {
-    title: 'Blog | Real Estate Tips & Insights',
-    description: 'Real estate tips, home buying and selling guides, and insights from Saad Tai for the Albany and Schenectady area.',
+    title: 'Blog | Invest with Saad',
+    description: 'Multifamily investment insights and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
     url: 'https://saadtherealtor.com/blog',
     type: 'website',
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "https://saadtherealtor.com/main-bg.png",
         width: 1024,
         height: 728,
-        alt: "Saad Tai Real Estate Blog",
+        alt: "Invest with Saad Real Estate Blog",
       },
     ],
   },
@@ -45,12 +45,12 @@ const formatDate = (isoDate: string): string => {
 const blogCollectionSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Saad Tai Real Estate Blog",
-  "description": "Real estate tips, buying and selling guides, and home valuation insights",
+  "name": "Invest with Saad - Multifamily Investment Blog",
+  "description": "Investment insights, multifamily real estate strategies, and market analysis for small multifamily investors in the Capital Region",
   "url": "https://saadtherealtor.com/blog",
   "mainEntity": {
     "@type": "Blog",
-    "name": "Saad Tai Realtor Blog",
+    "name": "Invest with Saad Blog",
     "blogPosts": blogPosts.map(post => ({
       "@type": "BlogPosting",
       "headline": post.title,
@@ -80,8 +80,8 @@ export default function BlogPage() {
 
       {/* Hero Section */}
       <HeroFadeIn
-        title="Saad Tai Realtor Blog"
-        subtitle="Insights on working capital financing, business growth strategies, and alternative lending for entrepreneurs and business leaders."
+        title="Invest with Saad Blog"
+        subtitle="Multifamily investment strategies, market insights, and portfolio guidance for small investors in the Capital Region."
       />
 
       {/* Blog Posts List */}

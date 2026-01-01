@@ -7,18 +7,17 @@
 import { captureLeadInFUB } from '@/lib/followupboss'
 
 export interface FormSubmissionRequest {
-  formType: 'lead_form' | 'deal_inquiry' | 'valuation' | 'contact_form' | 'qualified_investor_form'
+  formType: 'lead_form' | 'qualified_investor_form' | 'investment_calculator'
   data: {
     firstname?: string
     lastname?: string
     name?: string
     email?: string
     phone?: string
-    company?: string
     comments?: string
-    dealsCompleted?: string
-    dealsLastYear?: string
-    frustration?: string
+    unitsSelling?: string
+    timeline?: string
+    condition?: string
     isQualified?: boolean
     [key: string]: any
   }
@@ -66,7 +65,6 @@ export async function POST(request: Request) {
       source: getSourceForFormType(formType),
       notes,
       tags: getTagsForFormType(formType),
-      customFields: buildCustomFieldsFromData(data),
     })
 
     console.log('FUB result:', result)
@@ -98,28 +96,12 @@ function buildNotesFromFormData(formType: string, data: Record<string, any>): st
 
   // Common fields
   if (data.comments) parts.push(`Comments: ${data.comments}`)
-  if (data.company) parts.push(`Company: ${data.company}`)
 
   // Qualified investor specific
-  if (data.dealsCompleted) parts.push(`Deals Completed: ${data.dealsCompleted}`)
-  if (data.dealsLastYear) parts.push(`Deals Last 12-18 Months: ${data.dealsLastYear}`)
-  if (data.frustration) parts.push(`Main Frustration: ${data.frustration}`)
+  if (data.unitsSelling) parts.push(`Properties to Sell: ${data.unitsSelling}`)
+  if (data.timeline) parts.push(`Sale Timeline: ${data.timeline}`)
+  if (data.condition) parts.push(`Property Condition: ${data.condition}`)
   if (data.isQualified !== undefined) parts.push(`Qualified Lead: ${data.isQualified ? 'Yes' : 'No'}`)
-
-  // Deal inquiry specific
-  if (data.user_role) parts.push(`Role: ${data.user_role}`)
-  if (data.business_industry) parts.push(`Industry: ${data.business_industry}`)
-  if (data.time_in_business) parts.push(`Time in Business: ${data.time_in_business}`)
-  if (data.annual_revenue) parts.push(`Annual Revenue: ${data.annual_revenue}`)
-  if (data.funding_amount) parts.push(`Funding Needed: ${data.funding_amount}`)
-  if (data.owner_credit_score) parts.push(`Credit Score: ${data.owner_credit_score}`)
-  if (data.financing_needs?.length) parts.push(`Financing Needs: ${data.financing_needs.join(', ')}`)
-
-  // Valuation specific
-  if (data.address) parts.push(`Property Address: ${data.address}`)
-  if (data.city) parts.push(`City: ${data.city}`)
-  if (data.state) parts.push(`State: ${data.state}`)
-  if (data.zip) parts.push(`ZIP: ${data.zip}`)
 
   // Timestamp if provided
   if (data.timestamp) parts.push(`Submitted: ${data.timestamp}`)
@@ -133,10 +115,8 @@ function buildNotesFromFormData(formType: string, data: Record<string, any>): st
 function getSourceForFormType(formType: string): string {
   const sourceMap: Record<string, string> = {
     lead_form: 'website_lead_form',
-    deal_inquiry: 'website_deal_inquiry',
-    valuation: 'website_home_valuation',
-    contact_form: 'website_contact_form',
     qualified_investor_form: 'website_qualified_investor',
+    investment_calculator: 'website_investment_calculator',
   }
 
   return sourceMap[formType] || 'website_form'
@@ -151,29 +131,9 @@ function getTagsForFormType(formType: string): string[] {
 
   const tagMap: Record<string, string[]> = {
     lead_form: [baseTag, webLeadTag, 'form-submission'],
-    deal_inquiry: [baseTag, webLeadTag, 'deal-inquiry'],
-    valuation: [baseTag, webLeadTag, 'seller-lead', 'valuation'],
-    contact_form: [baseTag, webLeadTag, 'contact-inquiry'],
     qualified_investor_form: [baseTag, webLeadTag, 'qualified-investor', 'multifamily-investor'],
+    investment_calculator: [baseTag, webLeadTag, 'calculator'],
   }
 
   return tagMap[formType] || [baseTag, webLeadTag]
-}
-
-/**
- * Build custom fields object from form data
- */
-function buildCustomFieldsFromData(
-  data: Record<string, any>
-): Record<string, any> {
-  const customFields: Record<string, any> = {}
-
-  // Only include fields that have values
-  if (data.company) customFields.company = data.company
-  if (data.business_industry) customFields.industry = data.business_industry
-  if (data.annual_revenue) customFields.annual_revenue = data.annual_revenue
-  if (data.funding_amount) customFields.funding_needed = data.funding_amount
-  if (data.owner_credit_score) customFields.credit_score = data.owner_credit_score
-
-  return customFields
 }

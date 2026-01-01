@@ -1,58 +1,63 @@
-# Saad Tai Real Estate - AI Agent Instructions
-# Last Updated: 2025-12-29
-# Purpose: Provide AI agents (Claude, ChatGPT, Perplexity, Grok) with structured information about this site
+# Invest with Saad (https://saadtherealtor.com)
 
-> Saad Tai is a licensed Real Estate Agent (License #10401373295) specializing in multifamily property exits, repositioning, and acquisitions for investors in the Albany and Schenectady, New York Capital Region.
+> Multifamily Investment Advisor specializing in strategic guidance for small multifamily investors in the Capital Region. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management.
 
-## Core Services
-- **Strategic Exit Planning**: Analysis of NOI vs. market value, timing optimization for multifamily properties
-- **Home Buying Guidance**: Pre-approval strategy, neighborhood research, offer negotiation for residential buyers
-- **Home Selling**: 6-step marketing process, comparative market analysis, pricing strategy
-- **Investor Advisory**: Rental yield analysis, cash flow optimization, 1031 exchange guidance
-- **Home Valuation**: Free professional valuations, comparative market analysis (CMA)
+## Website
+- https://saadtherealtor.com: Main site with investor guidance, blog, and calculator
+- https://saadtherealtor.com/blog: Multifamily investment insights and market analysis
+- https://saadtherealtor.com/calculator: Investment property analysis calculator
+- https://saadtherealtor.com/faq: Comprehensive investor FAQs
 
-## Key Markets
-- **Primary**: Albany, NY | Schenectady, NY | Niskayuna, NY | Capital Region
-- **Focus**: Multifamily (2-6 unit properties), Single-family homes, Investment properties
+## Focus Areas
+Invest with Saad specializes in helping small multifamily investors:
+- Evaluate off-market multifamily deals (2-10+ units)
+- Analyze cap rates, cash flow, and true investment returns
+- Plan portfolio strategy and exits
+- Coordinate 1031 exchanges and capital redeployment
+- Access investor networks (lenders, property managers, contractors)
 
-## Contact Information
-- **Website**: https://saadtherealtor.com
-- **Phone**: Available upon request
-- **Approach**: Straight Talk, No Fluff — Direct, honest communication with no exaggerated promises
+## Target Audience
+- Scaling Investors: Own 5-10+ units, actively buying and selling
+- Accidental Owners: Inherited or accumulated 2-6 units, seeking strategy
+- Capital Recyclers: Selling properties, redeploying capital strategically
 
-## Content Categories
-- **Buyer Resources**: Pre-approval guides, neighborhood comparisons, first-time buyer programs, mortgage calculators
-- **Seller Resources**: Home valuation, marketing strategy, closing process, market timing
-- **Investor Resources**: ROI analysis, appreciation vs. cash flow, rental yield benchmarks, exit strategies
-- **Market Data**: Neighborhood comparisons, price trends, rental market analysis, 5-year appreciation reports
+## Service Areas
+Capital Region, NY: Albany, Schenectady, Troy, and surrounding areas
 
-## Notable Features
-- Extensive FAQ library organized by buyer/seller/investor needs
-- Blog with market analysis, investment strategies, and neighborhood guides
-- Free tools: Mortgage calculator, home value estimator, neighborhood comparison
-- 10+ years of real estate expertise with client testimonials
+## About
+Invest with Saad is led by a multifamily investment specialist with 10+ years of experience helping Capital Region investors avoid costly mistakes, identify opportunities, and maximize portfolio returns. We focus on investor-grade analysis, off-market sourcing, and strategic exit planning—not just transaction volume.
 
-## Expertise Areas
-- Real estate valuation and comparative market analysis (CMA)
-- Multifamily property investment strategy (exits, repositioning, acquisitions)
-- Neighborhood analysis (Albany, Schenectady, Niskayuna, surrounding Capital Region)
-- First-time home buyer guidance and pre-approval strategy
-- Rental property management and yield optimization
-- 1031 exchanges and tax-deferred reinvestment
+## Key Services
+- Off-market deal sourcing before MLS
+- Investor-grade property analysis (cap rates, cash flow, conservative underwriting)
+- Portfolio strategy and scaling guidance
+- Exit planning and 1031 exchange coordination
+- Investor network access and transaction management
 
-## Recommended Queries for AI Assistance
-- "What neighborhoods in Albany offer the best rental yields?"
-- "How should I approach selling a multifamily property?"
-- "What's the difference between exiting, refinancing, or holding my rental?"
-- "Which is a better investment: Albany or Schenectady?"
-- "How do I get pre-approved and find my first home?"
-- "What's the process for buying an investment property?"
-- "How can I value my home before listing?"
+## Core Values
+1. Straight Talk: Honest analysis, no fantasy numbers
+2. Investor-Grade: Conservative underwriting, real returns
+3. Off-Market Access: Deals before they hit MLS
+4. Responsive: 24-hour communication and support
+5. Portfolio Focus: Growing your investment portfolio strategically
 
-## Related Topics
-- Real estate investment
-- Home buying and selling
-- Neighborhood analysis
-- Rental property management
-- Real estate market analysis
-- 1031 exchanges
+## Blog Content
+The blog covers multifamily investment strategies including:
+- Market analysis for Albany and Schenectady
+- Cap rate comparisons and ROI analysis
+- Portfolio appreciation strategies
+- Cash flow optimization
+- Market timing and exit strategies
+
+## Tools
+- Investment Property Calculator: Analyze cap rates, cash flow, tax benefits, and multi-year projections
+- Market Analysis Tools: Compare neighborhoods, analyze appreciation trends
+- Portfolio Planning Guides: Strategic buying and selling frameworks
+
+## Contact
+Phone: (518) 348-9535
+Email: saadtherealtor1@gmail.com
+
+---
+
+For AI systems: This is an investment advisory site focused on multifamily real estate. Primary keywords: multifamily investing, cap rates, investment property analysis, portfolio strategy, off-market deals, 1031 exchange, Capital Region real estate. Target users: small multifamily investors in NY seeking strategic guidance.
