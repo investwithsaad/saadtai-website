@@ -69,18 +69,18 @@ export default function BuyerPage() {
                 Tired of Deals That Don't Quite Pencil?
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                I help investors evaluate opportunities with an emphasis on pricing, timing, and capital allocation — so they avoid overpaying or committing to deals that slow portfolio growth.
+                I help investors evaluate opportunities with an emphasis on pricing, capital allocation, and decision clarity — so they avoid overpaying or committing to deals that misalign with their portfolio strategy.
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <Button
                   variant="default"
                   image="/saad.png"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'buyer_hero', label: 'Review Buying Criteria & Timing' })
+                    trackEvent('cta_clicked', { location: 'buyer_hero', label: 'Get Clarity on Your Next Move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Review Buying Criteria & Timing →
+                  Get Clarity on Your Next Move →
                 </Button>
               </div>
             </div>
@@ -157,13 +157,13 @@ export default function BuyerPage() {
             <FadeIn>
               <div>
                 <Heading size="h2" className="mb-6">
-                  If you're waiting for a crash,<br />It's not Happening.
+                  Build Your Portfolio<br />on Strategy, Not Guesswork.
                 </Heading>
                 <Text className="text-lg text-slate-600 mb-6">
-                  While everyone's watching and waiting, smart investors are finding opportunities in the Capital Region right now.
+                  Smart investors aren't waiting for the "right" market—they're making disciplined decisions with data, underwriting, and clear criteria.
                 </Text>
                 <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                  Want to know why the market works differently than the headlines suggest? Let's talk strategy. Join our Capital Region Investment Group to connect with other investors, discuss real opportunities, and make moves while everyone else is on the sidelines.
+                  Want to know what separates investors who scale from those who get stuck? It's decision clarity. Join our Capital Region Investment Group to connect with other portfolio-focused investors, discuss real opportunities, and execute with confidence.
                 </p>
                 <Button
                   variant="default"
@@ -231,12 +231,12 @@ export default function BuyerPage() {
                 style={{ borderColor: COLORS.dark, borderWidth: '2px' }}
               >
                 <div className="p-6">
-                  <Heading size="h4" className="mb-3">Don't Buy at the Peak</Heading>
+                  <Heading size="h4" className="mb-3">Buy at the Right Price</Heading>
                   <p className="text-slate-600 mb-4">
-                    Market timing and cap rate analysis so you catch opportunities early.
+                    Cap rate analysis and comparable pricing so you know what's fair and what's overvalued.
                   </p>
                   <p className="text-slate-600 text-sm">
-                    <strong>Data-driven pricing</strong> based on real comps, not market noise.
+                    <strong>Data-driven pricing</strong> based on verified comps and real underwriting, not market hype.
                   </p>
                 </div>
               </Card>

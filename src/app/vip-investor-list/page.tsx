@@ -128,18 +128,6 @@ export default function VIPInvestorListPage() {
               </Text>
             </div>
 
-            {/* Stats */}
-            <div className="mb-16 pt-8 border-t border-gray-200 grid grid-cols-2 gap-8">
-              <div>
-                <p className="text-4xl font-bold" style={{ color: COLORS.dark }}>$4.1M</p>
-                <p className="text-slate-600 text-sm mt-2">Volume Sold This Year</p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold" style={{ color: COLORS.dark }}>13</p>
-                <p className="text-slate-600 text-sm mt-2">Days on Market Average</p>
-              </div>
-            </div>
-
             {/* CTA */}
             <div className="text-center">
               <div className="flex justify-center mt-8">

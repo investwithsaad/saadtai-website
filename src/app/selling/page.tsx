@@ -74,11 +74,11 @@ export default function SellerPage() {
                   variant="default"
                   image="/saad.png"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_hero', label: 'Request an Exit Strategy Review' })
+                    trackEvent('cta_clicked', { location: 'seller_hero', label: 'Get Clarity on Your Next Move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Request an Exit Strategy Review →
+                  Get Clarity on Your Next Move →
                 </Button>
               </div>
             </div>
@@ -198,11 +198,11 @@ export default function SellerPage() {
                 <Button
                   variant="default"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_expertise', label: 'Get the Game Plan' })
+                    trackEvent('cta_clicked', { location: 'seller_expertise', label: 'Start a Strategy Conversation' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Get the Game Plan →
+                  Start a Strategy Conversation →
                 </Button>
               </div>
             </FadeIn>
@@ -347,11 +347,11 @@ export default function SellerPage() {
               variant="default"
               image="/saad.png"
               onClick={() => {
-                trackEvent('cta_clicked', { location: 'seller_cta', label: 'Lets Talk' })
+                trackEvent('cta_clicked', { location: 'seller_cta', label: 'Start a Strategy Conversation' })
                 setIsModalOpen(true)
               }}
             >
-              Schedule a Consultation →
+              Start a Strategy Conversation →
             </Button>
           </div>
         </Container>

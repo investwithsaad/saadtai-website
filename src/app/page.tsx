@@ -84,11 +84,11 @@ export default function Home() {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white'>
-                Scale Smarter. Exit Cleaner. <br />
-                Maximize <i>Your</i> Earnings.
+                Source Faster. Close Cleaner. <br />
+                Exit Sharper. Scale Harder.
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                Helping multifamily investors make better buying, selling, and exit decisions<br />through timing, strategy, and disciplined execution.
+                I help multifamily investors make better buying, selling, and exit decisions<br />through strategy and disciplined execution.
               </Text>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -326,11 +326,11 @@ export default function Home() {
                   variant="default"
                   image="/saad.png"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'proof_results', label: 'Let\'s Talk' })
+                    trackEvent('cta_clicked', { location: 'proof_results', label: 'Get Clarity on Your Next Move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Let's Talk →
+                  Get Clarity on Your Next Move →
                 </Button>
               </div>
             </FadeIn>
@@ -393,11 +393,11 @@ export default function Home() {
                     variant="default"
                     image="/saad.png"
                     onClick={() => {
-                      trackEvent('cta_clicked', { location: 'testimonials', label: 'Let\'s Talk' })
+                      trackEvent('cta_clicked', { location: 'testimonials', label: 'Start a Strategy Conversation' })
                       setIsModalOpen(true)
                     }}
                   >
-                    Let's Talk →
+                    Start a Strategy Conversation →
                   </Button>
                 </div>
               </div>
@@ -503,11 +503,11 @@ export default function Home() {
                 <Button
                   variant="secondary"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'investor_type', label: 'Let\'s Talk' })
+                    trackEvent('cta_clicked', { location: 'investor_type', label: 'Get Clarity on Your Next Move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Let's Talk →
+                  Get Clarity on Your Next Move →
                 </Button>
               </div>
             </FadeIn>
@@ -570,11 +570,11 @@ export default function Home() {
               <Button
                 variant="secondary"
                 onClick={() => {
-                  trackEvent('cta_clicked', { location: 'strategic_advantage', label: 'Let\'s Talk' })
+                  trackEvent('cta_clicked', { location: 'strategic_advantage', label: 'Start a Strategy Conversation' })
                   setIsModalOpen(true)
                 }}
               >
-                Let's Talk →
+                Start a Strategy Conversation →
               </Button>
             </div>
           </FadeIn>
@@ -604,11 +604,11 @@ export default function Home() {
                     <Button
                       variant="default"
                       onClick={() => {
-                        trackEvent('cta_clicked', { location: 'what_you_get', label: 'Fill out the quick form' })
+                        trackEvent('cta_clicked', { location: 'what_you_get', label: 'Start a Strategy Conversation' })
                         setIsModalOpen(true)
                       }}
                     >
-                      Fill out the form
+                      Start a Strategy Conversation
                     </Button>
                   </div>
                 </div>
@@ -675,19 +675,6 @@ export default function Home() {
                 <p className="text-slate-600 text-sm">
                   I make money when deals close. That means I only recommend moves that actually work for you. No pressure. No pitch. Just strategy.
                 </p>
-              </div>
-
-              <div className="mt-12 flex justify-center">
-                <Button
-                  variant="default"
-                  image="/saad.png"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'what_you_get', label: 'Let\'s Get Started' })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  Let's Get Started →
-                </Button>
               </div>
             </div>
           </FadeIn>
