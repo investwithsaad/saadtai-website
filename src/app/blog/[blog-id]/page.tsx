@@ -51,8 +51,8 @@ export async function generateMetadata({ params }: Props) {
 
   // Use blog post image if available, fallback to logo
   const imageUrl = blogPost.image
-    ? `https://saadtherealtor.com${blogPost.image}`
-    : "https://saadtherealtor.com/main-bg.png"
+    ? `https://investwithsaad.com${blogPost.image}`
+    : "https://investwithsaad.com/main-bg.png"
 
   return {
     title: `${blogPost.title} | Invest with Saad`,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title: blogPost.title,
       description: blogPost.excerpt,
-      url: `https://saadtherealtor.com/blog/${blogPost.id}`,
+      url: `https://investwithsaad.com/blog/${blogPost.id}`,
       type: 'article',
       images: [
         {
@@ -101,7 +101,7 @@ export default async function BlogPost({ params }: Props) {
     datePublished: formattedDate,
     author: {
       name: blogPost.author,
-      url: 'https://saadtherealtor.com/about-us'
+      url: 'https://investwithsaad.com/about-us'
     },
     content: fullArticleBody
   })

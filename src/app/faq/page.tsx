@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Frequently Asked Questions | Invest with Saad',
     description: 'Multifamily investor FAQs covering buying, selling, analysis, and portfolio management in the Capital Region.',
-    url: 'https://saadtherealtor.com/faq',
+    url: 'https://investwithsaad.com/faq',
     siteName: 'Invest with Saad',
     type: 'website',
     images: [
       {
-        url: "https://saadtherealtor.com/logo.webp",
+        url: "https://investwithsaad.com/logo.webp",
         width: 1024,
         height: 728,
         alt: "FAQ - Multifamily Investor Questions",

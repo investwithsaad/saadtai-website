@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog | Invest with Saad',
     description: 'Multifamily investment insights and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
-    url: 'https://saadtherealtor.com/blog',
+    url: 'https://investwithsaad.com/blog',
     type: 'website',
     images: [
       {
-        url: "https://saadtherealtor.com/main-bg.png",
+        url: "https://investwithsaad.com/main-bg.png",
         width: 1024,
         height: 728,
         alt: "Invest with Saad Real Estate Blog",
@@ -47,7 +47,7 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "Invest with Saad - Multifamily Investment Blog",
   "description": "Investment insights, multifamily real estate strategies, and market analysis for small multifamily investors in the Capital Region",
-  "url": "https://saadtherealtor.com/blog",
+  "url": "https://investwithsaad.com/blog",
   "mainEntity": {
     "@type": "Blog",
     "name": "Invest with Saad Blog",
