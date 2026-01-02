@@ -8,7 +8,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build --webpack"
+    "analyze": "ANALYZE=true next build --webpack",
+    "sanity:dev": "sanity dev",
+    "sanity:build": "sanity build",
+    "sanity:deploy": "sanity deploy",
+    "sanity:start": "sanity start",
+    "setup:sanity": "ts-node scripts/setup-sanity.ts",
+    "migrate:sanity": "ts-node scripts/migrate-to-sanity.ts"
   },
   "browserslist": [
     "chrome >= 90",
@@ -20,13 +26,18 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.1",
     "@react-google-maps/api": "^2.20.8",
+    "@sanity/vision": "^3.45.0",
     "@tailwindcss/postcss": "^4.1.17",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.554.0",
     "next": "^16.1.1",
+    "next-sanity": "^9.3.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "recharts": "^3.6.0"
+    "react-is": "^19.2.3",
+    "recharts": "^3.6.0",
+    "sanity": "^3.45.0",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.1.1",
@@ -38,6 +49,7 @@
     "postcss": "^8.5.6",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17",
+    "ts-node": "^10.9.2",
     "typescript": "~5.9.3"
   }
 }
