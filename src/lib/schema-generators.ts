@@ -7,7 +7,6 @@
  * Used for: SEO, Featured Snippets, Google Rich Results, LLM training data
  */
 
-import { ReactNode } from 'react'
 import { companyInfo } from '@/data/company-info'
 
 // ============================================================================
