@@ -14,7 +14,7 @@
     "sanity:deploy": "sanity deploy",
     "sanity:start": "sanity start",
     "setup:sanity": "ts-node scripts/setup-sanity.ts",
-    "migrate:sanity": "ts-node scripts/migrate-to-sanity.ts"
+    "migrate:sanity": "ts-node scripts/migrate-data-to-sanity.ts"
   },
   "browserslist": [
     "chrome >= 90",
@@ -46,6 +46,7 @@
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.22",
     "class-variance-authority": "^0.7.1",
+    "dotenv": "^17.2.3",
     "postcss": "^8.5.6",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17",
