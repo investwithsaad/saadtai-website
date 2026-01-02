@@ -21,10 +21,7 @@ export async function getBlogPost(slug: string) {
 export async function getBlogPostBySlug(slug: string) {
   return client.fetch(
     `
-    *[_type == "blogPost" && slug.current == $slug][0] {
-      ...,
-      relatedSolutions[]->
-    }
+    *[_type == "blogPost" && slug.current == $slug][0]
     `,
     { slug }
   )
@@ -97,24 +94,6 @@ export async function getTestimonials(onlyHomepage = true) {
   return client.fetch(`
     *[_type == "testimonial" ${filter}] | order(_createdAt desc)
   `)
-}
-
-/**
- * Solution Queries
- */
-export async function getSolutions() {
-  return client.fetch(`
-    *[_type == "solution"] | order(title asc)
-  `)
-}
-
-export async function getSolution(slug: string) {
-  return client.fetch(
-    `
-    *[_type == "solution" && slug.current == $slug][0]
-    `,
-    { slug }
-  )
 }
 
 /**

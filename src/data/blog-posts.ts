@@ -14,8 +14,6 @@ export interface BlogPost {
   category: string
   image?: string // path to blog post image
   content: BlogPostContent[]
-  relatedSolutions?: string[] // solution IDs
-  relatedIndustries?: string[] // real estate related categories
 }
 
 export const blogPosts: BlogPost[] = [
@@ -28,8 +26,6 @@ export const blogPosts: BlogPost[] = [
     author: "Saad Tai",
     date: "2025-12-20",
     category: "Investment",
-    relatedSolutions: ["home-buying", "home-valuation"],
-    relatedIndustries: ["investors", "real-estate"],
     content: [
       { type: 'p', text: "If you're eyeing investment properties in New York's Capital Region, you've probably faced this dilemma: Albany or Schenectady? Albany is the state capital, known for stability and long-term growth, while Schenectady has been making waves as a cash flow hotspot. Both offer strong opportunities—but the numbers tell slightly different stories." },
       { type: 'h2', text: "Home Prices in 2025" },
@@ -51,8 +47,6 @@ export const blogPosts: BlogPost[] = [
     author: "Saad Tai",
     date: "2025-12-18",
     category: "Investment",
-    relatedSolutions: ["home-buying", "home-valuation"],
-    relatedIndustries: ["investors", "real-estate"],
     content: [
       { type: 'p', text: "When you look beyond short-term cash flow, appreciation is what really builds wealth in real estate. And over the past five years, both Albany and Schenectady have quietly outperformed many other Upstate markets." },
       { type: 'h2', text: "5-Year Appreciation (2020–2025)" },

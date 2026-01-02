@@ -17,23 +17,11 @@ export const pageMetaData: Record<string, PageMeta> = {
     keywords: "real estate agent Albany NY, homes for sale Albany, realtor Schenectady, buy sell home, real estate Upstate NY",
     canonical: "https://saadtherealtor.com/"
   },
-  solutions: {
-    title: "Real Estate Services | Home Selling, Buying, Valuations | Saad Tai",
-    description: "Expert real estate services: home selling with 6-step marketing, buyer representation, and free home valuations. Albany & Schenectady area.",
-    keywords: "home selling, home buying, home valuation, real estate services, realtor services",
-    canonical: "https://saadtherealtor.com/solutions"
-  },
   caseStudies: {
     title: "Client Testimonials & Success Stories | Saad Tai Realtor",
     description: "Real client testimonials from satisfied buyers and sellers. See why clients trust Saad Tai for their real estate needs.",
     keywords: "real estate testimonials, client reviews, home selling success, buyer testimonials",
     canonical: "https://saadtherealtor.com/case-studies"
-  },
-  partners: {
-    title: "Partnerships & Affiliations | Saad Tai",
-    description: "Strategic partnerships with lenders, inspectors, and title companies to serve you better.",
-    keywords: "real estate partnerships, lenders, home inspectors",
-    canonical: "https://saadtherealtor.com/partners"
   },
   aboutUs: {
     title: "About Saad Tai | Real Estate Agent License #10401373295 | Albany NY",

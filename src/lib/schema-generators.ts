@@ -8,9 +8,7 @@
  */
 
 import { ReactNode } from 'react'
-import { getTitleAsString } from '@/lib/solution-helpers'
 import { companyInfo } from '@/data/company-info'
-import { fundingSolutions } from '@/data/solutions'
 
 // ============================================================================
 // ORGANIZATION SCHEMA (Global - Add to Layout)

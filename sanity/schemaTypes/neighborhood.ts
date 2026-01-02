@@ -1,6 +1,6 @@
 /**
  * Neighborhood Schema
- * Market data and buyer personas for neighborhoods
+ * Market data for neighborhoods - keep it minimal and focused
  */
 
 export default {
@@ -30,10 +30,11 @@ export default {
       description: 'Short marketing tagline',
     },
     {
-      name: 'shortDescription',
-      title: 'Short Description',
+      name: 'description',
+      title: 'Description',
       type: 'text',
-      rows: 3,
+      rows: 4,
+      description: 'Overview of the neighborhood',
     },
     {
       name: 'marketData',
@@ -73,97 +74,11 @@ export default {
       ],
     },
     {
-      name: 'buyerPersonas',
-      title: 'Buyer Personas',
-      type: 'object',
-      fields: [
-        {
-          name: 'valueInvestor',
-          title: 'Value Investor',
-          type: 'text',
-          rows: 3,
-        },
-        {
-          name: 'urbanProfessional',
-          title: 'Urban Professional',
-          type: 'text',
-          rows: 3,
-        },
-        {
-          name: 'qualityOfLifeFamily',
-          title: 'Quality of Life Family',
-          type: 'text',
-          rows: 3,
-        },
-      ],
-    },
-    {
-      name: 'highIntentQuestions',
-      title: 'High-Intent Q&A',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'category',
-              title: 'Category',
-              type: 'string',
-              options: {
-                list: [
-                  { title: 'Taxes', value: 'taxes' },
-                  { title: 'Schools', value: 'schools' },
-                  { title: 'Cost', value: 'cost' },
-                  { title: 'Lifestyle', value: 'lifestyle' },
-                  { title: 'Investment', value: 'investment' },
-                  { title: 'Commute', value: 'commute' },
-                ],
-              },
-            },
-            {
-              name: 'question',
-              title: 'Question',
-              type: 'string',
-            },
-            {
-              name: 'answer',
-              title: 'Answer',
-              type: 'text',
-              rows: 4,
-            },
-          ],
-          preview: {
-            select: {
-              question: 'question',
-              category: 'category',
-            },
-            prepare({ question, category }: any) {
-              return {
-                title: question,
-                subtitle: `[${category}]`,
-              };
-            },
-          },
-        },
-      ],
-    },
-    {
       name: 'features',
-      title: 'Features',
+      title: 'Key Features',
       type: 'array',
       of: [{ type: 'string' }],
-    },
-    {
-      name: 'lifestyle',
-      title: 'Lifestyle Description',
-      type: 'text',
-      rows: 3,
-    },
-    {
-      name: 'demographics',
-      title: 'Demographics',
-      type: 'text',
-      rows: 3,
+      description: 'Main highlights and amenities',
     },
   ],
   preview: {
