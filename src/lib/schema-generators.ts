@@ -210,6 +210,32 @@ export const getHowToSchema = (howTo: {
 })
 
 // ============================================================================
+// REVIEW SCHEMA (For testimonials/reviews)
+// ============================================================================
+
+export const getReviewSchema = (review: {
+  reviewRating: number
+  reviewBody: string
+  author: string
+  datePublished?: string
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": review.reviewRating,
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "reviewBody": review.reviewBody,
+  "author": {
+    "@type": "Person",
+    "name": review.author
+  },
+  ...(review.datePublished && { "datePublished": review.datePublished })
+})
+
+// ============================================================================
 // COMPARISON SCHEMA (For comparison tables)
 // ============================================================================
 
