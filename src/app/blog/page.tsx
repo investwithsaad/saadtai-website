@@ -19,7 +19,11 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Blog | Invest with Saad',
-  description: 'Multifamily investment insights, market analysis, and strategies for small investors in the Capital Region. Learn about cap rates, cash flow, property analysis, and portfolio strategy.',
+  description: 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
+  keywords: 'multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis',
+  alternates: {
+    canonical: 'https://investwithsaad.com/blog',
+  },
   openGraph: {
     title: 'Blog | Invest with Saad',
     description: 'Multifamily investment insights and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
@@ -33,6 +37,11 @@ export const metadata: Metadata = {
         alt: "Invest with Saad Real Estate Blog",
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Invest with Saad',
+    description: 'Multifamily investment insights and strategies for Capital Region investors.',
   },
 }
 

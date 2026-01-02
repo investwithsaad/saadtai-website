@@ -18,6 +18,8 @@ import { COLORS } from '@/lib/colors'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { trackEvent } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
+import { SchemaRenderer } from '@/components/SchemaRenderer'
+import { getReviewSchema } from '@/lib/schema-generators'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -65,8 +67,23 @@ export default function Home() {
       tag: "Homeowner"
     }
   ]
+
+  // Generate Review schemas for testimonials (all 5-star reviews)
+  const reviewSchemas = testimonials.map((testimonial) =>
+    getReviewSchema({
+      reviewRating: 5,
+      reviewBody: testimonial.text,
+      author: testimonial.author,
+    })
+  )
+
   return (
     <>
+      {/* Render Review schemas */}
+      {reviewSchemas.map((schema, i) => (
+        <SchemaRenderer key={i} schema={schema} />
+      ))}
+
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image

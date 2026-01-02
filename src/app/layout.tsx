@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Invest with Saad | Multifamily Investment Advisor | Albany, Schenectady",
   description: "Clarity before you commit capital. I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, investor analysis, portfolio strategy.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
+  alternates: {
+    canonical: "https://investwithsaad.com/",
+  },
   openGraph: {
     title: "Invest with Saad | Multifamily Investment Advisor",
     description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",

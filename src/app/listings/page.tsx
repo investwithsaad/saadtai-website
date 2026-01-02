@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 'use client'
 
 import { useState } from 'react'
@@ -5,6 +7,34 @@ import Link from 'next/link'
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
 import { listings } from '@/data/listings'
 import { LeadFormModal } from '@/components/LeadFormModal'
+
+export const metadata: Metadata = {
+  title: 'Multifamily Listings | Investment Properties | Invest with Saad',
+  description: 'Browse available multifamily investment properties in the Capital Region. Off-market opportunities and MLS listings for small multifamily investors.',
+  keywords: 'multifamily listings, investment properties for sale, real estate listings Albany, multifamily properties',
+  alternates: {
+    canonical: 'https://investwithsaad.com/listings',
+  },
+  openGraph: {
+    title: 'Multifamily Listings | Investment Properties',
+    description: 'Available multifamily investment properties across the Capital Region',
+    url: 'https://investwithsaad.com/listings',
+    type: 'website',
+    images: [
+      {
+        url: 'https://investwithsaad.com/main-bg.png',
+        width: 1200,
+        height: 628,
+        alt: 'Multifamily Listings',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Multifamily Listings | Invest with Saad',
+    description: 'Investment properties available across the Capital Region.',
+  },
+}
 
 export default function ListingsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
