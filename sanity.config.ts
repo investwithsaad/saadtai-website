@@ -4,16 +4,16 @@ import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './sanity/schemaTypes'
 
 // Load Sanity project configuration from environment variables
-// Vite uses VITE_ prefix, fall back to NEXT_PUBLIC_ for compatibility
-const projectId = (import.meta.env.VITE_SANITY_PROJECT_ID as string) || 'gdcsnoeu'
-const dataset = (import.meta.env.VITE_SANITY_DATASET as string) || 'production'
+// Next.js uses NEXT_PUBLIC_ prefix for client-side and process.env for server-side
+const projectId = (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string) || 'gdcsnoeu'
+const dataset = (process.env.NEXT_PUBLIC_SANITY_DATASET as string) || 'production'
 
 if (!projectId) {
-  throw new Error('VITE_SANITY_PROJECT_ID is not set in .env.local')
+  throw new Error('NEXT_PUBLIC_SANITY_PROJECT_ID is not set in .env.local')
 }
 
 if (!dataset) {
-  throw new Error('VITE_SANITY_DATASET is not set in .env.local')
+  throw new Error('NEXT_PUBLIC_SANITY_DATASET is not set in .env.local')
 }
 
 export default defineConfig({
