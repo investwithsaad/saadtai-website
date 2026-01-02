@@ -42,5 +42,5 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap references
-Sitemap: https://saadtherealtor.com/sitemap.xml
-Sitemap: https://saadtherealtor.com/llms.txt
+Sitemap: https://investwithsaad.com/sitemap.xml
+Sitemap: https://investwithsaad.com/llms.txt

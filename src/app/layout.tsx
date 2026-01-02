@@ -22,17 +22,17 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: "Invest with Saad | Multifamily Investment Advisor | Albany, Schenectady",
-  description: "Strategic guidance for multifamily investors. Helping investors in the Capital Region buy smarter, sell faster, and plan better exits. Off-market deals, investor analysis, portfolio strategy. 10+ years of experience.",
+  description: "Clarity before you commit capital. I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, investor analysis, portfolio strategy.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
   openGraph: {
     title: "Invest with Saad | Multifamily Investment Advisor",
     description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",
-    url: "https://saadtherealtor.com/",
+    url: "https://investwithsaad.com/",
     siteName: "Invest with Saad",
     type: "website",
     images: [
       {
-        url: "https://saadtherealtor.com/main-bg.png",
+        url: "https://investwithsaad.com/main-bg.png",
         width: 1200,
         height: 628,
         alt: "Invest with Saad - Multifamily Investment Advisor",

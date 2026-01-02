@@ -4,24 +4,42 @@ import { blogPosts } from '@/data/blog-posts'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://investwithsaad.com'
 
-  // Static routes
-  const routes = [
-    '',
-    '/landing',
-    '/buying',
-    '/selling',
-    '/listings',
-    '/calculator',
-    '/faq',
-    '/blog',
-    '/privacy-policy',
-    '/terms-of-service',
-    '/vip-investor-list',
+  // Main navigation routes (highest priority)
+  const mainNavRoutes = [
+    { path: '', priority: 1.0 },
+    { path: '/buying', priority: 0.9 },
+    { path: '/selling', priority: 0.9 },
+    { path: '/listings', priority: 0.9 },
+    { path: '/vip-investor-list', priority: 0.9 },
+    { path: '/blog', priority: 0.8 },
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
+    url: `${baseUrl}${route.path}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
+    priority: route.priority,
+  }))
+
+  // Utility pages
+  const utilityRoutes = [
+    { path: '/calculator', priority: 0.7 },
+    { path: '/faq', priority: 0.7 },
+    { path: '/landing', priority: 0.6 },
+  ].map((route) => ({
+    url: `${baseUrl}${route.path}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: route.priority,
+  }))
+
+  // Legal pages
+  const legalRoutes = [
+    { path: '/privacy-policy', priority: 0.5 },
+    { path: '/terms-of-service', priority: 0.5 },
+  ].map((route) => ({
+    url: `${baseUrl}${route.path}`,
+    lastModified: new Date(),
+    changeFrequency: 'yearly' as const,
+    priority: route.priority,
   }))
 
   // Dynamic blog routes
@@ -29,8 +47,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/blog/${post.id}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.75,
   }))
 
-  return [...routes, ...blogRoutes]
+  return [...mainNavRoutes, ...blogRoutes, ...utilityRoutes, ...legalRoutes]
 }

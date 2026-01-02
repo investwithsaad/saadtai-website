@@ -7,7 +7,6 @@
  * Used for: SEO, Featured Snippets, Google Rich Results, LLM training data
  */
 
-import { ReactNode } from 'react'
 import { companyInfo } from '@/data/company-info'
 
 // ============================================================================
@@ -22,11 +21,17 @@ export const getOrganizationSchema = (config?: {
 }) => ({
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "FinancialService"],
-  "@id": "https://saadtherealtor.com",
+  "@id": "https://investwithsaad.com",
   "name": companyInfo.name,
   "alternateName": "Invest with Saad",
   "description": companyInfo.description,
-  "url": "https://saadtherealtor.com",
+  "url": "https://investwithsaad.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://investwithsaad.com/logo.png",
+    "width": 512,
+    "height": 512
+  },
   "telephone": companyInfo.contact.phone,
   "email": companyInfo.contact.email,
   "address": {
@@ -61,7 +66,7 @@ export const getOrganizationSchema = (config?: {
     "name": "Saad Tai",
     "jobTitle": "Multifamily Investment Advisor",
     "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
-    "url": "https://saadtherealtor.com"
+    "url": "https://investwithsaad.com"
   },
   "knowsAbout": [
     "Multifamily Investing",
@@ -121,7 +126,7 @@ export const getArticleSchema = (article: {
     "name": "Invest with Saad",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://saadtherealtor.com/logo.png"
+      "url": "https://investwithsaad.com/logo.png"
     }
   },
   "articleBody": article.content
