@@ -128,7 +128,7 @@ export function LeadFormModal({ isOpen, onClose, prefillComments }: LeadFormModa
                   <>
                     <h2 className="text-4xl font-bold text-slate-900 mb-6 text-center">Let's talk</h2>
                     <p className="text-slate-600 text-center mb-8 text-sm">
-                      This is a strategy conversation, not a sales pitch. We'll discuss timing, options, and next steps.
+                      This isn't a sales pitch. It's a conversation to think through your situation and next steps.
                     </p>
                     <div className="space-y-4">
                       <LeadFormContent

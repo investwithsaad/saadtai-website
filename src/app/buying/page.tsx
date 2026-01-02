@@ -76,11 +76,11 @@ export default function BuyerPage() {
                   variant="default"
                   image="/saad.png"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'buyer_hero', label: 'Get Clarity on Your Next Move' })
+                    trackEvent('cta_clicked', { location: 'buyer_hero', label: 'Talk through your next move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Get Clarity on Your Next Move →
+                  Talk through your next move →
                 </Button>
               </div>
             </div>
@@ -168,11 +168,11 @@ export default function BuyerPage() {
                 <Button
                   variant="default"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'buyer_expertise', label: 'Join the Group' })
+                    trackEvent('cta_clicked', { location: 'buyer_expertise', label: 'Talk through your next move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Join the Group →
+                  Talk through your next move →
                 </Button>
               </div>
             </FadeIn>

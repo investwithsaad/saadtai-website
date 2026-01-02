@@ -74,11 +74,11 @@ export default function SellerPage() {
                   variant="default"
                   image="/saad.png"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_hero', label: 'Get Clarity on Your Next Move' })
+                    trackEvent('cta_clicked', { location: 'seller_hero', label: 'Talk through your next move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Get Clarity on Your Next Move →
+                  Talk through your next move →
                 </Button>
               </div>
             </div>
@@ -198,11 +198,11 @@ export default function SellerPage() {
                 <Button
                   variant="default"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_expertise', label: 'Start a Strategy Conversation' })
+                    trackEvent('cta_clicked', { location: 'seller_expertise', label: 'Talk through your next move' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Start a Strategy Conversation →
+                  Talk through your next move →
                 </Button>
               </div>
             </FadeIn>
@@ -347,11 +347,11 @@ export default function SellerPage() {
               variant="default"
               image="/saad.png"
               onClick={() => {
-                trackEvent('cta_clicked', { location: 'seller_cta', label: 'Start a Strategy Conversation' })
+                trackEvent('cta_clicked', { location: 'seller_cta', label: 'Talk through your next move' })
                 setIsModalOpen(true)
               }}
             >
-              Start a Strategy Conversation →
+              Talk through your next move →
             </Button>
           </div>
         </Container>

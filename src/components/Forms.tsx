@@ -56,7 +56,8 @@ export function LeadFormContent({
   prefillComments,
 }: LeadFormContentProps) {
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-4">
+    <>
+      <form onSubmit={onSubmit} className="flex flex-col gap-4">
       <FormInput
         type="text"
         name="name"
@@ -147,7 +148,8 @@ export function LeadFormContent({
           We respect your privacy. Your information is secure.
         </Text>
       )}
-    </form>
+      </form>
+    </>
   )
 }
 
