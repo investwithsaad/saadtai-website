@@ -211,7 +211,7 @@ export function Footer() {
             {/* Left: Copyright */}
             <div className="flex-1">
               <Text size="sm" color="white">
-                Copyright © 2025 Saad Tai | <Link href="/privacy-policy" className="transition-colors" style={{ color: COLORS.white }} onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.secondary)} onMouseLeave={(e) => (e.currentTarget.style.color = COLORS.white)}>Privacy Policy</Link>
+                Copyright © 2026 Saad Tai | <Link href="/privacy-policy" className="transition-colors" style={{ color: COLORS.white }} onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.secondary)} onMouseLeave={(e) => (e.currentTarget.style.color = COLORS.white)}>Privacy Policy</Link>
               </Text>
             </div>
 

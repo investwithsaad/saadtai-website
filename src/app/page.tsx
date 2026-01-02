@@ -84,10 +84,10 @@ export default function Home() {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white'>
-                Clarity before you commit capital.
+                Clarity before you<br />commit capital.
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                I help multifamily investors think through buy, sell, and hold decisions — while my team handles the execution that usually eats up your time.
+                I help multifamily investors think through buy, sell, and hold decisions<br />while my team handles the execution that usually eats up your time.
               </Text>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
