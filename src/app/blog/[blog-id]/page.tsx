@@ -173,14 +173,14 @@ export default async function BlogPost({ params }: Props) {
           <SocialShareButtons
             title={blogPost.title}
             excerpt={blogPost.excerpt}
-            url={`https://saadtherealtor.com/blog/${blogPost.id}`}
+            url={`https://investwithsaad.com/blog/${blogPost.id}`}
           />
         </Container>
       </Section>
 
       <CTA
-        title="Ready to take your next real estate step?"
-        text="Schedule a consultation with Saad to discuss your home buying, selling, or valuation needs."
+        title="Ready to make your next real estate move?"
+        text="Let's discuss your home buying, selling, or valuation needs with a personal consultation from Saad."
         buttonText="Schedule a Call"
         href={buildCalendlyUrl(CALENDLY_CONFIG.discovery)}
         useBG={true}

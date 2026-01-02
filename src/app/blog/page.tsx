@@ -55,7 +55,7 @@ const blogCollectionSchema = {
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.excerpt,
-      "url": `https://saadtherealtor.com/blog/${post.id}`,
+      "url": `https://investwithsaad.com/blog/${post.id}`,
       "datePublished": post.date,
       "author": {
         "@type": "Person",
