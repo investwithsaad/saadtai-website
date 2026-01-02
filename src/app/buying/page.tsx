@@ -1,5 +1,3 @@
-import type { Metadata } from 'next'
-
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -17,34 +15,6 @@ import {
 import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
-
-export const metadata: Metadata = {
-  title: 'Buying Multifamily Properties | Off-Market Deals & Analysis | Invest with Saad',
-  description: 'Find off-market multifamily deals with real investor comps and honest underwriting. Strategic guidance for buying multifamily properties in the Capital Region.',
-  keywords: 'buy multifamily property, off-market deals, investment property analysis, cap rate analysis, multifamily investing strategies',
-  alternates: {
-    canonical: 'https://investwithsaad.com/buying',
-  },
-  openGraph: {
-    title: 'Buying Multifamily Properties | Off-Market Deals & Analysis',
-    description: 'Find off-market deals and analyze multifamily properties strategically',
-    url: 'https://investwithsaad.com/buying',
-    type: 'website',
-    images: [
-      {
-        url: 'https://investwithsaad.com/main-bg.png',
-        width: 1200,
-        height: 628,
-        alt: 'Buying Multifamily Properties',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Buying Multifamily Properties | Invest with Saad',
-    description: 'Strategic guidance for buying off-market multifamily deals in the Capital Region.',
-  },
-}
 
 // Filter for buying-related FAQs
 const buyingFAQs = multifamilyInvestorFAQs.filter(faq =>

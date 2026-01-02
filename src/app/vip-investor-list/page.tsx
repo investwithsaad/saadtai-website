@@ -1,5 +1,3 @@
-import type { Metadata } from 'next'
-
 'use client'
 
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
@@ -8,34 +6,6 @@ import { useState, useEffect } from 'react'
 import { trackMetaPageView, trackEvent } from '@/lib/tracking'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { COLORS } from '@/lib/colors'
-
-export const metadata: Metadata = {
-  title: 'VIP Investor List | Get Off-Market Deals | Invest with Saad',
-  description: 'Join the VIP Investor List to receive off-market multifamily deals before they hit the MLS. Direct access to investment opportunities in the Capital Region.',
-  keywords: 'off-market deals, investment opportunities, multifamily deals, real estate investor network',
-  alternates: {
-    canonical: 'https://investwithsaad.com/vip-investor-list',
-  },
-  openGraph: {
-    title: 'VIP Investor List | Get Off-Market Deals',
-    description: 'Exclusive access to off-market multifamily deals in the Capital Region',
-    url: 'https://investwithsaad.com/vip-investor-list',
-    type: 'website',
-    images: [
-      {
-        url: 'https://investwithsaad.com/main-bg.png',
-        width: 1200,
-        height: 628,
-        alt: 'VIP Investor List',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'VIP Investor List | Invest with Saad',
-    description: 'Exclusive access to off-market multifamily deals in the Capital Region.',
-  },
-}
 
 export default function VIPInvestorListPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
