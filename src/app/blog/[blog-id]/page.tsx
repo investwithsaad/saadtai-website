@@ -14,11 +14,8 @@ import { SocialShareButtons } from '@/components/SocialShareButtons'
 import { RenderInlineLinks } from '@/lib/inline-links'
 import { getArticleSchema } from '@/lib/schema-generators'
 import { blogPosts } from '@/data/blog-posts'
-import { fundingSolutions } from '@/data/solutions'
 import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
 
 interface Props {
   params: {
@@ -180,41 +177,6 @@ export default async function BlogPost({ params }: Props) {
           />
         </Container>
       </Section>
-
-      {/* Related Solutions Section */}
-      {blogPost.relatedSolutions && blogPost.relatedSolutions.length > 0 && (
-        <Section background="white">
-          <Container>
-            <FadeIn className="text-center mb-12">
-              <Heading size="h2" className="mb-4">Related Funding Solutions</Heading>
-              <Text size="lg" className="text-gray-700 mb-8 max-w-2xl mx-auto">
-                Explore the funding solutions mentioned in this article.
-              </Text>
-            </FadeIn>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {blogPost.relatedSolutions.map((solutionId) => {
-                const solution = fundingSolutions.find(s => s.id === solutionId)
-                return solution ? (
-                  <Link key={solutionId} href={`/solutions#${solutionId}`} className="group">
-                    <Card className="p-6 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
-                      <Heading size="h3" className="mb-3 text-olive-900 group-hover:text-gold-500 transition-colors">
-                        {solution.title}
-                      </Heading>
-                      <Text className="text-gray-600 text-sm mb-4">
-                        {solution.description}
-                      </Text>
-                      <div className="text-gold-500 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Learn More <ChevronRight size={16} />
-                      </div>
-                    </Card>
-                  </Link>
-                ) : null
-              })}
-            </div>
-          </Container>
-        </Section>
-      )}
 
       <CTA
         title="Ready to take your next real estate step?"

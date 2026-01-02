@@ -22,16 +22,17 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'category',
-      title: 'Category',
+      name: 'page',
+      title: 'Display Page',
       type: 'string',
       options: {
         list: [
-          { title: 'Buying Multifamily', value: 'buying-multifamily' },
-          { title: 'Selling & Exit Strategy', value: 'selling-exit' },
-          { title: 'Investor Strategy', value: 'investor-strategy' },
-          { title: 'Investor Network', value: 'investor-network' },
-          { title: 'Analysis & Tools', value: 'analysis-tools' },
+          { title: 'Buying Page', value: 'buying' },
+          { title: 'Selling Page', value: 'selling' },
+          { title: 'Landing/Main Page', value: 'landing' },
+          { title: 'VIP Investor List', value: 'vip-investor-list' },
+          { title: 'Calculator Page', value: 'calculator' },
+          { title: 'FAQ Page', value: 'faq' },
         ],
       },
     },
@@ -45,13 +46,13 @@ export default {
   preview: {
     select: {
       title: 'question',
-      category: 'category',
+      page: 'page',
       order: 'order',
     },
-    prepare({ title, category, order }: any) {
+    prepare({ title, page, order }: any) {
       return {
         title: title,
-        subtitle: `[${category}] Order: ${order || 'unset'}`,
+        subtitle: `[${page}] Order: ${order || 'unset'}`,
       };
     },
   },

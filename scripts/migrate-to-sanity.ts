@@ -4,9 +4,10 @@
  *
  * Usage:
  *   npx ts-node scripts/migrate-to-sanity.ts --dataset production --token YOUR_SANITY_TOKEN
+ *
+ * Note: This is a utility script for data migration. It uses Node.js built-in fetch (Node 18+).
  */
 
-import fetch from 'node-fetch'
 import * as fs from 'fs'
 import * as path from 'path'
 

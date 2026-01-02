@@ -119,12 +119,6 @@ export default {
       type: 'string',
       description: 'SEO meta description (60-160 characters)',
     },
-    {
-      name: 'relatedSolutions',
-      title: 'Related Solutions',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'solution' } }],
-    },
   ],
   preview: {
     select: {

@@ -8,9 +8,10 @@ import listing from './listing'
 import faq from './faq'
 import neighborhood from './neighborhood'
 import testimonial from './testimonial'
-import solution from './solution'
 import pageSection from './pageSection'
 import siteSettings from './siteSettings'
+import heroSection from './heroSection'
+import page from './page'
 
 export const schemaTypes = [
   siteSettings,
@@ -19,6 +20,7 @@ export const schemaTypes = [
   faq,
   neighborhood,
   testimonial,
-  solution,
   pageSection,
+  heroSection,
+  page,
 ]
