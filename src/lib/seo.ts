@@ -19,31 +19,31 @@ export const pageMetaData: Record<string, PageMeta> = {
   },
   buying: {
     title: "Buying Multifamily Properties | Off-Market Deals & Analysis | Invest with Saad",
-    description: "Find off-market multifamily deals. Real investor comps, honest underwriting, avoid overpaying. Strategic guidance for buying multifamily properties in the Capital Region.",
+    description: "Strategic guidance for buying multifamily properties. Investor-grade analysis, honest underwriting, cap rate expertise. Avoid costly mistakes. Capital Region focus.",
     keywords: "buy multifamily property, off-market deals, investment property analysis, cap rate analysis, multifamily investing strategies",
     canonical: "https://investwithsaad.com/buying"
   },
   selling: {
     title: "Selling Multifamily Properties | Strategic Exit Planning | Invest with Saad",
-    description: "Sell your multifamily property strategically. 1031 exchange guidance, portfolio simplification, maximize proceeds. Expert exit planning for Capital Region investors.",
+    description: "Strategic exit planning for multifamily investors. 1031 exchange coordination, portfolio optimization, maximize proceeds. Expert execution. Capital Region specialist.",
     keywords: "sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale",
     canonical: "https://investwithsaad.com/selling"
   },
   listings: {
     title: "Multifamily Listings | Investment Properties | Invest with Saad",
-    description: "Browse available multifamily investment properties in the Capital Region. Off-market opportunities and MLS listings for small multifamily investors.",
+    description: "Curated multifamily investment properties in the Capital Region. Expert analysis included. Access both opportunities and MLS listings. Investor-focused.",
     keywords: "multifamily listings, investment properties for sale, real estate listings Albany, multifamily properties",
     canonical: "https://investwithsaad.com/listings"
   },
   vipInvestorList: {
     title: "VIP Investor List | Get Off-Market Deals | Invest with Saad",
-    description: "Join the VIP Investor List to receive off-market multifamily deals before they hit the MLS. Direct access to investment opportunities in the Capital Region.",
+    description: "VIP Investor List for exclusive opportunities. Strategic deals with expert analysis. Investor network access. Capital Region focused.",
     keywords: "off-market deals, investment opportunities, multifamily deals, real estate investor network",
     canonical: "https://investwithsaad.com/vip-investor-list"
   },
   blog: {
     title: "Blog | Multifamily Investment Insights | Invest with Saad",
-    description: "Multifamily investment insights, market analysis, and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.",
+    description: "Data-driven insights on multifamily investing. Market analysis, strategy guides, cap rate expertise. For Capital Region investors building portfolios.",
     keywords: "multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis",
     canonical: "https://investwithsaad.com/blog"
   },

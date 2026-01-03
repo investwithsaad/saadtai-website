@@ -84,6 +84,15 @@ export const getOrganizationSchema = (config?: {
     "https://www.facebook.com/saadtherealtor",
     "https://www.instagram.com/saadtherealtor"
   ],
+  "license": {
+    "@type": "License",
+    "name": "New York Real Estate License",
+    "licenseNumber": "10401373295",
+    "validIn": {
+      "@type": "State",
+      "name": "New York"
+    }
+  },
   ...(config?.aggregateRating && {
     "aggregateRating": {
       "@type": "AggregateRating",
