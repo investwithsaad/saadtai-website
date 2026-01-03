@@ -22,7 +22,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: "Invest with Saad | Multifamily Investment Advisor | Albany, Schenectady",
-  description: "Clarity before you commit capital. I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, investor analysis, portfolio strategy.",
+  description: "Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
     canonical: "https://investwithsaad.com/",
@@ -48,6 +48,14 @@ export const metadata: Metadata = {
     description: "Scale smarter. Exit cleaner. Strategic guidance for small multifamily investors in the Capital Region.",
   },
   robots: "index, follow",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 }
 
 export const viewport: Viewport = {
