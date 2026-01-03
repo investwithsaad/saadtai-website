@@ -230,6 +230,10 @@ export const getReviewSchema = (review: {
 }) => ({
   "@context": "https://schema.org",
   "@type": "Review",
+  "itemReviewed": {
+    "@type": "Organization",
+    "name": "Invest with Saad"
+  },
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": review.reviewRating,
