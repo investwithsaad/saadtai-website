@@ -60,7 +60,7 @@ export default function Home() {
           fill
           className="object-cover object-center"
           priority
-          quality={80}
+          quality={70}
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-black/50"></div>
