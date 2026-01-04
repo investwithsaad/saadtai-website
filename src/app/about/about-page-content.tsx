@@ -16,10 +16,22 @@ import { COLORS } from '@/lib/colors'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
-import { CheckCircle, Award, Briefcase, MapPin, Target, TrendingUp, Brain, Zap, Users } from 'lucide-react'
+import { CheckCircle, Award, Briefcase, MapPin, Target, TrendingUp } from 'lucide-react'
+import { SchemaRenderer } from '@/components/SchemaRenderer'
+import { getReviewSchema } from '@/lib/schema-generators'
+import { testimonials } from '@/data/testimonials'
 
 export default function AboutPageContent() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Generate Review schemas for testimonials (all 5-star reviews)
+  const reviewSchemas = testimonials.map((testimonial) =>
+    getReviewSchema({
+      reviewRating: 5,
+      reviewBody: testimonial.text,
+      author: testimonial.author,
+    })
+  )
 
   useEffect(() => {
     trackMetaPageView('about_page')
@@ -29,35 +41,36 @@ export default function AboutPageContent() {
   const heroRef = useScrollTracking({ sectionName: 'about_hero' })
   const philosophyRef = useScrollTracking({ sectionName: 'about_philosophy' })
   const valuesRef = useScrollTracking({ sectionName: 'about_values' })
-  const storyRef = useScrollTracking({ sectionName: 'about_story' })
   const credentialsRef = useScrollTracking({ sectionName: 'about_credentials' })
-  const approachRef = useScrollTracking({ sectionName: 'about_approach' })
 
-  const straValues = [
+  const processValues = [
     {
-      letter: 'S',
-      title: 'Straight Talk',
-      description: 'Honest answers, clear numbers, zero pressure. If something doesn\'t make sense, I\'ll tell you—and show you the smarter option.'
+      title: 'Process Creates Peace',
+      description: 'Systems, clarity, and structure eliminate anxiety. When you know what comes next, you can focus on strategy instead of logistics.'
     },
     {
-      letter: 'T',
-      title: 'Territory Knowledge',
-      description: 'I\'ve walked, shown, or knocked on just about every street from Albany to Schenectady. That boots-on-the-ground insight helps you price right and spot hidden value.'
+      title: 'Responsibility to Community',
+      description: 'I treat every transaction with respect for all parties—tenants, neighbors, the market. Long-term relationships matter more than quick commissions.'
     },
     {
-      letter: 'R',
-      title: 'Results Focused',
-      description: 'Your goals become my mission. I handle every detail from inspections to negotiations, and I don\'t give up until you get the outcome you deserve.'
+      title: 'Outcomes Over Flash',
+      description: 'I focus on what actually works, not what looks impressive. Conservative analysis, honest numbers, real results. No fantasy projections.'
     },
     {
-      letter: 'A',
-      title: 'Always Available',
-      description: 'Late-night questions? Weekend showings? I\'m here. Text, call, or email—you get fast responses because your move matters.'
+      title: 'Commitment to Long-term',
+      description: 'Your success is built over years, not days. I only recommend moves that fit your long-term strategy, not my short-term incentives.'
     },
     {
-      letter: 'T',
-      title: 'Trust & Integrity',
-      description: 'I treat your investment like it\'s my own money on the line. Your success is my success, and I won\'t quit no matter the circumstance.'
+      title: 'Execution with Discipline',
+      description: 'Strategy means nothing without flawless execution. My team handles the details so nothing slips through the cracks.'
+    },
+    {
+      title: 'Selective by Design',
+      description: 'I turn down deals that don\'t fit your criteria. More opportunities aren\'t better—the right opportunities are. Quality over quantity.'
+    },
+    {
+      title: 'Steady, Not Showy',
+      description: 'No hype, no pressure tactics, no unnecessary drama. Quiet confidence and consistent follow-through build the best relationships.'
     }
   ]
 
@@ -72,6 +85,11 @@ export default function AboutPageContent() {
 
   return (
     <>
+      {/* Render Review schemas */}
+      {reviewSchemas.map((schema, i) => (
+        <SchemaRenderer key={i} schema={schema} />
+      ))}
+
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image
@@ -101,34 +119,69 @@ export default function AboutPageContent() {
       </div>
 
       {/* Philosophy Section */}
-      <Section background='white' className='!pt-2'>
+      <Section background="background">
         <Container>
           <div ref={philosophyRef}>
             <FadeIn>
-              <div className="max-w-3xl mx-auto mb-16">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div>
+              <div className="flex flex-col md:flex-row gap-12 md:gap-16">
+                {/* Left Column - Image and Contact */}
+                <div className="md:w-48 flex-shrink-0">
+                  <div className="sticky top-20">
                     <Image
                       src="/saad.png"
                       alt="Saad Tai"
-                      width={400}
-                      height={500}
-                      className="rounded-lg shadow-lg w-full h-auto object-cover"
+                      width={200}
+                      height={240}
+                      className="w-full rounded-lg mb-6 object-cover"
                     />
+                    <Heading size="h3">SAAD TAI</Heading>
+                    <p className="text-slate-600 mb-6">
+                      REALTOR®<br />
+                      LIC. #10401373295
+                    </p>
                   </div>
-                  <div>
-                    <Heading size="h2" className="mb-6">
-                      Straight Talk, No Fluff
-                    </Heading>
-                    <Text className="text-lg text-slate-600 mb-6 leading-relaxed">
-                      Real estate is my day job, night hobby, and weekend conversation starter. I've learned that most investors don't need another salesman pitching fantasy numbers—they need <span className="font-semibold">honest guidance, strategic clarity, and someone who treats their deal like it's their own money on the line.</span>
-                    </Text>
-                    <Text className="text-lg text-slate-600 mb-6 leading-relaxed">
-                      That's why I built my business differently. I handle strategy and sourcing. My team handles the execution—showings, paperwork, logistics. That way, you get both: clear strategic guidance AND expert execution.
-                    </Text>
-                    <Text className="text-lg text-slate-600 leading-relaxed">
-                      When I work with you—whether you're buying your first multifamily or managing a portfolio across multiple neighborhoods—you get direct access. I call you back within 24 hours. I tell you when a deal doesn't pencil. I don't give up when things get complicated.
-                    </Text>
+                </div>
+
+                {/* Right Column - Content */}
+                <div className="flex-1">
+                  <Heading size="h2">Straight Talk. No Fluff.</Heading>
+
+                  <div className="space-y-6 text-slate-700 leading-relaxed mb-8 max-w-2xl">
+                    <p>
+                      <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving the Capital region. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
+                    </p>
+
+                    <p>
+                      My approach: <span className="font-semibold">Honest communication. Neighborhood expertise. Responsiveness.</span> I don't do everything myself—that's my secret. I leverage showing assistants, a paperwork specialist, and a transaction coordinator so I stay focused on what matters: finding you better deals, negotiating hard on your behalf, and building your investor network. I've managed execution across multiple transactions simultaneously—up to 20 residential units under contract concurrently.
+                    </p>
+
+                    <p>
+                      Whether you're closing your first duplex or managing a portfolio across multiple markets, the principle is the same: I connect you with vetted property managers, contractors, attorneys, lenders, and other investors. You're not just buying or selling a property—you're plugging into an ecosystem that lets you operate and scale efficiently.
+                    </p>
+
+                    <div className="p-4 bg-slate-100 rounded-lg border-l-4" style={{ borderColor: COLORS.secondary }}>
+                      <p className="text-slate-900 font-semibold text-sm mb-1">Direct Access</p>
+                      <p className="text-slate-600 text-sm">
+                        You can text or call me directly. I respond within 24 hours—usually within 2 hours.
+                      </p>
+                    </div>
+
+                    <p className="font-semibold text-slate-900 mt-8">
+                      If you're looking for an advisor who understands portfolio strategy, moves fast, and actually takes your calls...
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 mt-2">
+                    <Button
+                      variant="default"
+                      image="/saad.png"
+                      onClick={() => {
+                        trackEvent('cta_clicked', { location: 'about_philosophy', label: 'Talk through your next move' })
+                        setIsModalOpen(true)
+                      }}
+                    >
+                      Talk through your next move →
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -144,29 +197,31 @@ export default function AboutPageContent() {
             <FadeIn>
               <div className="max-w-3xl mx-auto text-center mb-16">
                 <Heading size="h2" className="mb-6">
-                  How I Work: The STRAT Approach
+                  How I Work: The PROCESS
                 </Heading>
                 <Text className="text-lg text-slate-600">
-                  Five core principles that guide every transaction and relationship
+                  Seven core principles that guide every transaction and relationship
                 </Text>
               </div>
             </FadeIn>
 
             <StaggerContainer>
-              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-                {straValues.map((value, index) => (
+              <div className="space-y-6">
+                {processValues.map((value, index) => (
                   <FadeIn key={index}>
-                    <Card className="h-full">
-                      <div className="p-6 flex flex-col h-full">
-                        <div className="text-4xl font-bold mb-4" style={{ color: COLORS.secondary }}>
-                          {value.letter}
+                    <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                      <div className="p-6 md:grid-cols-2 gap-8">
+                        <div>
+                          <h3 className="font-serif text-lg font-bold text-slate-900">
+                            <strong className='text-3xl' style={{ color: COLORS.secondary }}>{value.title.charAt(0)}</strong>
+                            {value.title.substring(1)}
+                          </h3>
                         </div>
-                        <h3 className="font-serif text-xl font-bold mb-3 text-slate-900">
-                          {value.title}
-                        </h3>
-                        <p className="text-slate-600 text-sm leading-relaxed flex-grow">
-                          {value.description}
-                        </p>
+                        <div>
+                          <p className="text-slate-600 text-sm leading-relaxed">
+                            {value.description}
+                          </p>
+                        </div>
                       </div>
                     </Card>
                   </FadeIn>
@@ -177,183 +232,64 @@ export default function AboutPageContent() {
         </Container>
       </Section>
 
-      {/* Background & Story Section */}
-      <Section background='white'>
-        <Container>
-          <div ref={storyRef}>
-            <FadeIn>
-              <div className="max-w-3xl mx-auto">
-                <Heading size="h2" className="mb-12">
-                  How I Help Investors Win
-                </Heading>
 
-                <div className="space-y-8 text-slate-700 leading-relaxed">
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">
-                      Strategy + Execution
-                    </h3>
-                    <p>
-                      Most investors are drowning in the details—showings, inspections, paperwork, negotiations. That's where I'm different. I handle the strategic side (analysis, sourcing, deal structure). My team handles the execution (logistics, paperwork, coordination). That way, you get <span className="font-semibold">clarity on whether to move AND expert execution if you do.</span>
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">
-                      Investor-Grade Analysis
-                    </h3>
-                    <p>
-                      I analyze properties the way you should: cap rates, cash flow, conservative assumptions, no fantasy projections. If something doesn't pencil, you'll hear it from me. I don't have an incentive to push bad deals—I only make money when you win.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">
-                      Network & Resources
-                    </h3>
-                    <p>
-                      You get access to my network: vetted lenders, property managers, contractors, attorneys. You're not just buying a property—you're plugging into a full ecosystem of professionals who understand investor-grade real estate.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">
-                      Direct Access
-                    </h3>
-                    <p>
-                      You can text or call me directly. I respond within 24 hours, usually faster. No middleman. No "I'll get back to you tomorrow." When your deal needs attention, you get it.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Credentials & Proof Section */}
+      {/* Testimonials Section */}
       <Section background='background'>
         <Container>
           <div ref={credentialsRef}>
             <FadeIn>
-              <div className="max-w-3xl mx-auto">
-                <Heading size="h2" className="mb-12 text-center">
-                  Credentials & Track Record
+              <div className="max-w-3xl mx-auto text-center mb-16">
+                <Heading size="h2">
+                  What My Clients Say
                 </Heading>
+              </div>
+            </FadeIn>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-12">
-                  {credentials.map((cred, index) => {
-                    const IconComponent = cred.icon
-                    return (
-                      <div key={index} style={{ opacity: 0, transform: 'translateY(20px)' }} className="fade-in flex gap-4">
-                        <IconComponent size={24} className="flex-shrink-0" style={{ color: COLORS.secondary }} />
-                        <p className="text-slate-700 font-semibold">{cred.text}</p>
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {testimonials.map((testimonial, i) => (
+                <Card key={i} className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-start gap-1">
+                        {[...Array(5)].map((_, idx) => (
+                          <span key={idx} className="text-yellow-400 text-lg">★</span>
+                        ))}
                       </div>
-                    )
-                  })}
-                </div>
-
-                <div className="bg-white rounded-lg p-8 border-2" style={{ borderColor: COLORS.primary }}>
-                  <h3 className="font-serif text-2xl font-bold text-slate-900 mb-6">
-                    What Clients Say
-                  </h3>
-                  <div className="space-y-6">
-                    <div>
-                      <p className="text-slate-700 italic mb-2">
-                        "Saad is one of the most professional realtors I've worked with. He's hardworking, creative, and doesn't sit back waiting for deals—he actively sources them. That's rare to find. Highly recommend."
-                      </p>
-                      <p className="font-semibold text-slate-900">— Jeremy Davis, Real Estate Investor</p>
+                      {testimonial.tag && (
+                        <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: COLORS.secondary, color: 'white' }}>
+                          {testimonial.tag}
+                        </span>
+                      )}
                     </div>
-                    <div>
-                      <p className="text-slate-700 italic mb-2">
-                        "What makes Saad amazing is his ability to listen and make you feel like you're the most important person in the room. It's his follow-through that sets him apart. He heard every word and delivered."
-                      </p>
-                      <p className="font-semibold text-slate-900">— Michael Downton, Client</p>
-                    </div>
-                    <div>
-                      <p className="text-slate-700 italic mb-2">
-                        "As a first-time seller, I was nervous about the whole process. Saad explained everything, was incredibly patient, and responded instantly to any question I had. Great realtor and genuinely a great guy."
-                      </p>
-                      <p className="font-semibold text-slate-900">— Christine DeGennaro, First-Time Seller</p>
-                    </div>
+                    <p className="text-slate-700 mb-4 italic">
+                      "{testimonial.text}"
+                    </p>
+                    <p className="font-semibold text-slate-900">
+                      — {testimonial.author}
+                    </p>
                   </div>
-                </div>
+                </Card>
+              ))}
+            </StaggerContainer>
+
+            <FadeIn className="mt-16">
+              <div className="flex justify-center">
+                <Button
+                  variant="default"
+                  image="/saad.png"
+                  onClick={() => {
+                    trackEvent('cta_clicked', { location: 'about_testimonials', label: 'Talk through your next move' })
+                    setIsModalOpen(true)
+                  }}
+                >
+                  Talk through your next move →
+                </Button>
               </div>
             </FadeIn>
           </div>
         </Container>
       </Section>
 
-      {/* Approach & Philosophy Section */}
-      <Section background='white'>
-        <Container>
-          <div ref={approachRef}>
-            <FadeIn>
-              <div className="max-w-3xl mx-auto">
-                <Heading size="h2" className="mb-12">
-                  How I Help Investors Win
-                </Heading>
-
-                <div className="grid md:grid-cols-3 gap-8 mb-12">
-                  <Card>
-                    <div className="p-6">
-                      <Brain size={32} className="mb-4" style={{ color: COLORS.secondary }} />
-                      <h3 className="font-serif text-lg font-bold text-slate-900 mb-3">
-                        Strategy First
-                      </h3>
-                      <p className="text-slate-600 text-sm">
-                        Before we look at properties, I understand your goals, timeline, and investment criteria. Then we build a plan that works.
-                      </p>
-                    </div>
-                  </Card>
-
-                  <Card>
-                    <div className="p-6">
-                      <Zap size={32} className="mb-4" style={{ color: COLORS.secondary }} />
-                      <h3 className="font-serif text-lg font-bold text-slate-900 mb-3">
-                        Honest Analysis
-                      </h3>
-                      <p className="text-slate-600 text-sm">
-                        I run conservative underwriting. If a deal doesn't actually pencil, you'll hear it from me—not a cheerleader telling you it's perfect.
-                      </p>
-                    </div>
-                  </Card>
-
-                  <Card>
-                    <div className="p-6">
-                      <Users size={32} className="mb-4" style={{ color: COLORS.secondary }} />
-                      <h3 className="font-serif text-lg font-bold text-slate-900 mb-3">
-                        Network Access
-                      </h3>
-                      <p className="text-slate-600 text-sm">
-                        Vetted lenders, property managers, contractors, attorneys—you're not just buying a property, you're connecting to a full ecosystem.
-                      </p>
-                    </div>
-                  </Card>
-                </div>
-
-                <div className="bg-slate-50 rounded-lg p-8 border-l-4" style={{ borderColor: COLORS.secondary }}>
-                  <p className="text-slate-900 font-semibold mb-3 text-lg">
-                    Ready to talk about your next move?
-                  </p>
-                  <p className="text-slate-700 mb-6">
-                    Whether you're buying, selling, or planning your next strategic move, I'm here to give you honest guidance and execute with precision. Let's talk about what's possible for your portfolio.
-                  </p>
-                  <Button
-                    variant="default"
-                    image="/saad.png"
-                    onClick={() => {
-                      trackEvent('cta_clicked', { location: 'about_cta', label: 'Talk through your next move' })
-                      setIsModalOpen(true)
-                    }}
-                  >
-                    Talk through your next move →
-                  </Button>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </Section>
 
       {/* Lead Form Modal */}
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
