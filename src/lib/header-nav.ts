@@ -37,6 +37,11 @@ export const headerNavConfig: HeaderNavConfig = {
     },
     {
       type: 'link',
+      label: 'About',
+      href: '/about'
+    },
+    {
+      type: 'link',
       label: 'VIP Investor List',
       href: '/vip-investor-list'
     },
