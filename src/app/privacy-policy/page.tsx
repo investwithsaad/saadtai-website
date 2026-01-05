@@ -1,6 +1,14 @@
+import type { Metadata } from 'next'
 import { Container, Heading, Text, Section } from '@/components/ui'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { COLORS as BRAND_COLORS } from '@/lib/colors'
+import { createPageMetadata } from '@/lib/metadata-factory'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Privacy Policy | Saad Tai',
+  description: 'Read our privacy policy to understand how we collect, use, and protect your personal information.',
+  path: '/privacy-policy',
+})
 
 export default function PrivacyPolicy() {
   return (

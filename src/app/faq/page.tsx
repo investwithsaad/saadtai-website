@@ -4,35 +4,15 @@ import { Section, Container, Heading, Text, FadeIn } from '@/components/ui'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { faqCategories, multifamilyInvestorFAQs } from '@/data/faq-data'
+import { createPageMetadata } from '@/lib/metadata-factory'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Investor FAQs | Saad Tai',
   description: 'Answers to your multifamily investing questions about cap rates, deal analysis, portfolio strategy, and finding off-market deals.',
+  path: '/faq',
   keywords: 'multifamily investing FAQ, cap rates, investment property questions, portfolio strategy, real estate investor questions, 1031 exchange',
-  alternates: {
-    canonical: 'https://www.investwithsaad.com/faq',
-  },
-  openGraph: {
-    title: 'Investor FAQs | Saad Tai',
-    description: 'Multifamily investor FAQs covering buying, selling, analysis, and portfolio management in the Capital Region.',
-    url: 'https://www.investwithsaad.com/faq',
-    siteName: 'Invest with Saad',
-    type: 'website',
-    images: [
-      {
-        url: "https://www.investwithsaad.com/logo.webp",
-        width: 1024,
-        height: 728,
-        alt: "FAQ - Multifamily Investor Questions",
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Investor FAQs | Saad Tai',
-    description: 'Answers to multifamily investor questions about deals, analysis, and strategy.',
-  },
-}
+  ogImage: '/House1.webp',
+})
 
 // Organize FAQs by category
 const categorizedFAQs = [

@@ -5,6 +5,7 @@ import { COLORS } from '@/lib/colors'
 import { Text } from '@/components/ui'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getBreadcrumbSchema } from '@/lib/schema-generators'
+import { BASE_URL } from '@/lib/metadata-factory'
 
 export interface BreadcrumbItem {
   label: string
@@ -25,7 +26,7 @@ export function Breadcrumb({ items, renderSchema = true }: BreadcrumbProps) {
   // Convert visual breadcrumbs to full URLs for schema
   const schemaItems = allItems.map(item => ({
     name: item.label,
-    url: item.href ? `https://www.investwithsaad.com${item.href}` : 'https://www.investwithsaad.com'
+    url: item.href ? `${BASE_URL}${item.href}` : `${BASE_URL}`
   }))
 
   const breadcrumbSchema = getBreadcrumbSchema(schemaItems)

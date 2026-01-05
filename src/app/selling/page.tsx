@@ -3,34 +3,15 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getHowToSchema } from '@/lib/schema-generators'
 import SellerPageContent from './seller-page-content'
 import { SELLING_PROCESS_STEPS } from './constants'
+import { createPageMetadata } from '@/lib/metadata-factory'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Selling Multifamily Properties | Saad Tai',
   description: 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
+  path: '/selling',
   keywords: 'sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale',
-  alternates: {
-    canonical: 'https://www.investwithsaad.com/selling',
-  },
-  openGraph: {
-    title: 'Selling Multifamily Properties | Saad Tai',
-    description: 'Expert exit planning and 1031 exchange coordination for multifamily investors',
-    url: 'https://www.investwithsaad.com/selling',
-    type: 'website',
-    images: [
-      {
-        url: 'https://www.investwithsaad.com/main-bg.png',
-        width: 1200,
-        height: 628,
-        alt: 'Selling Multifamily Properties',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Selling Multifamily Properties | Saad Tai',
-    description: 'Strategic exit planning and 1031 exchange guidance for Capital Region investors.',
-  },
-}
+  ogImage: '/home seller.webp',
+})
 
 // Generate the schema once on the server
 const sellingProcessSchema = getHowToSchema({

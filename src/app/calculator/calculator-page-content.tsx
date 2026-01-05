@@ -16,9 +16,6 @@ export function CalculatorPageContent() {
     setHasAccess(localStorage.getItem('calculator_access_granted') === 'true')
   }, [])
 
-  // Prevent hydration mismatch by waiting for mount
-  if (!mounted) return null
-
   return (
     <AnimatePresence mode="wait">
       {!hasAccess ? (

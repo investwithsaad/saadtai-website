@@ -15,6 +15,7 @@ import { RenderInlineLinks } from '@/lib/inline-links'
 import { getArticleSchema } from '@/lib/schema-generators'
 import { blogPosts } from '@/data/blog-posts'
 import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
+import { BASE_URL } from '@/lib/metadata-factory'
 import { notFound } from 'next/navigation'
 
 interface Props {
@@ -51,19 +52,19 @@ export async function generateMetadata({ params }: Props) {
 
   // Use blog post image if available, fallback to logo
   const imageUrl = blogPost.image
-    ? `https://www.investwithsaad.com${blogPost.image}`
-    : "https://www.investwithsaad.com/main-bg.png"
+    ? `${BASE_URL}${blogPost.image}`
+    : `${BASE_URL}/main-bg.png`
 
   return {
     title: `${blogPost.title} | Saad Tai`,
     description: blogPost.excerpt,
     alternates: {
-      canonical: `https://www.investwithsaad.com/blog/${blogPost.id}`,
+      canonical: `${BASE_URL}/blog/${blogPost.id}`,
     },
     openGraph: {
       title: blogPost.title,
       description: blogPost.excerpt,
-      url: `https://www.investwithsaad.com/blog/${blogPost.id}`,
+      url: `${BASE_URL}/blog/${blogPost.id}`,
       type: 'article',
       images: [
         {
@@ -104,7 +105,7 @@ export default async function BlogPost({ params }: Props) {
     datePublished: formattedDate,
     author: {
       name: blogPost.author,
-      url: 'https://www.investwithsaad.com/about-us'
+      url: `${BASE_URL}/about`
     },
     content: fullArticleBody
   })
@@ -176,7 +177,7 @@ export default async function BlogPost({ params }: Props) {
           <SocialShareButtons
             title={blogPost.title}
             excerpt={blogPost.excerpt}
-            url={`https://www.investwithsaad.com/blog/${blogPost.id}`}
+            url={`${BASE_URL}/blog/${blogPost.id}`}
           />
         </Container>
       </Section>

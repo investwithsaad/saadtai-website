@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/data/blog-posts'
+import { BASE_URL } from '@/lib/metadata-factory'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.investwithsaad.com'
 
   // Main navigation routes (highest priority)
   const mainNavRoutes = [
@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/vip-investor-list', priority: 0.9 },
     { path: '/blog', priority: 0.8 },
   ].map((route) => ({
-    url: `${baseUrl}${route.path}`,
+    url: `${BASE_URL}${route.path}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: route.priority,
@@ -23,9 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const utilityRoutes = [
     { path: '/calculator', priority: 0.7 },
     { path: '/faq', priority: 0.7 },
-    { path: '/landing', priority: 0.6 },
   ].map((route) => ({
-    url: `${baseUrl}${route.path}`,
+    url: `${BASE_URL}${route.path}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: route.priority,
@@ -36,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/privacy-policy', priority: 0.5 },
     { path: '/terms-of-service', priority: 0.5 },
   ].map((route) => ({
-    url: `${baseUrl}${route.path}`,
+    url: `${BASE_URL}${route.path}`,
     lastModified: new Date(),
     changeFrequency: 'yearly' as const,
     priority: route.priority,
@@ -44,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dynamic blog routes
   const blogRoutes = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.id}`,
+    url: `${BASE_URL}/blog/${post.id}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.75,
