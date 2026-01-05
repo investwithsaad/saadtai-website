@@ -25,17 +25,17 @@ export const metadata: Metadata = {
   description: "Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
-    canonical: "https://investwithsaad.com/",
+    canonical: "https://www.investwithsaad.com/",
   },
   openGraph: {
     title: "Invest with Saad | Multifamily Investment Advisor",
     description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",
-    url: "https://investwithsaad.com/",
+    url: "https://www.investwithsaad.com/",
     siteName: "Invest with Saad",
     type: "website",
     images: [
       {
-        url: "https://investwithsaad.com/main-bg.png",
+        url: "https://www.investwithsaad.com/main-bg.png",
         width: 1200,
         height: 628,
         alt: "Invest with Saad - Multifamily Investment Advisor",

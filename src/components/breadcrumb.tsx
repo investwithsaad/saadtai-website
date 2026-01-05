@@ -25,7 +25,7 @@ export function Breadcrumb({ items, renderSchema = true }: BreadcrumbProps) {
   // Convert visual breadcrumbs to full URLs for schema
   const schemaItems = allItems.map(item => ({
     name: item.label,
-    url: item.href ? `https://investwithsaad.com${item.href}` : 'https://investwithsaad.com'
+    url: item.href ? `https://www.investwithsaad.com${item.href}` : 'https://www.investwithsaad.com'
   }))
 
   const breadcrumbSchema = getBreadcrumbSchema(schemaItems)

@@ -9,16 +9,16 @@ export const metadata: Metadata = {
   description: 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
   keywords: 'sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale',
   alternates: {
-    canonical: 'https://investwithsaad.com/selling',
+    canonical: 'https://www.investwithsaad.com/selling',
   },
   openGraph: {
     title: 'Selling Multifamily Properties | Strategic Exit Planning',
     description: 'Expert exit planning and 1031 exchange coordination for multifamily investors',
-    url: 'https://investwithsaad.com/selling',
+    url: 'https://www.investwithsaad.com/selling',
     type: 'website',
     images: [
       {
-        url: 'https://investwithsaad.com/main-bg.png',
+        url: 'https://www.investwithsaad.com/main-bg.png',
         width: 1200,
         height: 628,
         alt: 'Selling Multifamily Properties',

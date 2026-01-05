@@ -51,16 +51,19 @@ export async function generateMetadata({ params }: Props) {
 
   // Use blog post image if available, fallback to logo
   const imageUrl = blogPost.image
-    ? `https://investwithsaad.com${blogPost.image}`
-    : "https://investwithsaad.com/main-bg.png"
+    ? `https://www.investwithsaad.com${blogPost.image}`
+    : "https://www.investwithsaad.com/main-bg.png"
 
   return {
     title: `${blogPost.title} | Invest with Saad`,
     description: blogPost.excerpt,
+    alternates: {
+      canonical: `https://www.investwithsaad.com/blog/${blogPost.id}`,
+    },
     openGraph: {
       title: blogPost.title,
       description: blogPost.excerpt,
-      url: `https://investwithsaad.com/blog/${blogPost.id}`,
+      url: `https://www.investwithsaad.com/blog/${blogPost.id}`,
       type: 'article',
       images: [
         {
@@ -101,7 +104,7 @@ export default async function BlogPost({ params }: Props) {
     datePublished: formattedDate,
     author: {
       name: blogPost.author,
-      url: 'https://investwithsaad.com/about-us'
+      url: 'https://www.investwithsaad.com/about-us'
     },
     content: fullArticleBody
   })
@@ -173,7 +176,7 @@ export default async function BlogPost({ params }: Props) {
           <SocialShareButtons
             title={blogPost.title}
             excerpt={blogPost.excerpt}
-            url={`https://investwithsaad.com/blog/${blogPost.id}`}
+            url={`https://www.investwithsaad.com/blog/${blogPost.id}`}
           />
         </Container>
       </Section>
