@@ -21,14 +21,14 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: "Invest with Saad | Multifamily Investment Advisor | Albany, Schenectady",
+  title: "Multifamily Investment Advisor | Saad Tai",
   description: "Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
     canonical: "https://www.investwithsaad.com/",
   },
   openGraph: {
-    title: "Invest with Saad | Multifamily Investment Advisor",
+    title: "Multifamily Investment Advisor | Saad Tai",
     description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",
     url: "https://www.investwithsaad.com/",
     siteName: "Invest with Saad",
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
         url: "https://www.investwithsaad.com/main-bg.png",
         width: 1200,
         height: 628,
-        alt: "Invest with Saad - Multifamily Investment Advisor",
+        alt: "Multifamily Investment Advisor Saad Tai",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Invest with Saad | Multifamily Investment Advisor",
+    title: "Multifamily Investment Advisor | Saad Tai",
     description: "Scale smarter. Exit cleaner. Strategic guidance for small multifamily investors in the Capital Region.",
   },
   robots: "index, follow",

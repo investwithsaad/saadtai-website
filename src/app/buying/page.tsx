@@ -75,6 +75,7 @@ export default function BuyerPage() {
                 <Button
                   variant="default"
                   image="/saad.png"
+                  imageAlt="Saad Tai profile photo"
                   onClick={() => {
                     trackEvent('cta_clicked', { location: 'buyer_hero', label: 'Talk through your next move' })
                     setIsModalOpen(true)

@@ -21,9 +21,8 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: "Find Off-Market Multifamily Deals | Invest with Saad",
+  title: "Off-Market Multifamily Deals | Saad Tai",
   description: "Learn how to stop competing for the same seller leads as other multifamily investors. Find off-market deals without PropStream, mailers, or cold calling.",
-  robots: "noindex, nofollow",
 }
 
 export default function LandingLayout({

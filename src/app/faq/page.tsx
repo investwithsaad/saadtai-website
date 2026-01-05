@@ -6,14 +6,14 @@ import { Breadcrumb } from '@/components/breadcrumb'
 import { faqCategories, multifamilyInvestorFAQs } from '@/data/faq-data'
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Invest with Saad',
+  title: 'Investor FAQs | Saad Tai',
   description: 'Answers to your multifamily investing questions about cap rates, deal analysis, portfolio strategy, and finding off-market deals.',
   keywords: 'multifamily investing FAQ, cap rates, investment property questions, portfolio strategy, real estate investor questions, 1031 exchange',
   alternates: {
     canonical: 'https://www.investwithsaad.com/faq',
   },
   openGraph: {
-    title: 'Frequently Asked Questions | Invest with Saad',
+    title: 'Investor FAQs | Saad Tai',
     description: 'Multifamily investor FAQs covering buying, selling, analysis, and portfolio management in the Capital Region.',
     url: 'https://www.investwithsaad.com/faq',
     siteName: 'Invest with Saad',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Frequently Asked Questions | Invest with Saad',
+    title: 'Investor FAQs | Saad Tai',
     description: 'Answers to multifamily investor questions about deals, analysis, and strategy.',
   },
 }

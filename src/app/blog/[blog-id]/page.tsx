@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props) {
     : "https://www.investwithsaad.com/main-bg.png"
 
   return {
-    title: `${blogPost.title} | Invest with Saad`,
+    title: `${blogPost.title} | Saad Tai`,
     description: blogPost.excerpt,
     alternates: {
       canonical: `https://www.investwithsaad.com/blog/${blogPost.id}`,

@@ -5,14 +5,14 @@ import SellerPageContent from './seller-page-content'
 import { SELLING_PROCESS_STEPS } from './constants'
 
 export const metadata: Metadata = {
-  title: 'Selling Multifamily Properties | Strategic Exit Planning | Invest with Saad',
+  title: 'Selling Multifamily Properties | Saad Tai',
   description: 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
   keywords: 'sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale',
   alternates: {
     canonical: 'https://www.investwithsaad.com/selling',
   },
   openGraph: {
-    title: 'Selling Multifamily Properties | Strategic Exit Planning',
+    title: 'Selling Multifamily Properties | Saad Tai',
     description: 'Expert exit planning and 1031 exchange coordination for multifamily investors',
     url: 'https://www.investwithsaad.com/selling',
     type: 'website',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Selling Multifamily Properties | Invest with Saad',
+    title: 'Selling Multifamily Properties | Saad Tai',
     description: 'Strategic exit planning and 1031 exchange guidance for Capital Region investors.',
   },
 }
