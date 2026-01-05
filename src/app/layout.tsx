@@ -73,12 +73,11 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} ${lora.variable}`}>
       <head>
         {/* Preconnect to critical third-party origins */}
-        <link rel="preconnect" href="https://umami-production-25e0.up.railway.app" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://umami-production-25e0.up.railway.app" />
-        <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        <link rel="preconnect" href="https://www.clarity.ms" />
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://capig.datah04.com" />
+        <link rel="dns-prefetch" href="https://capig.datah04.com" />
 
         {/* Schema Markup */}
         <SchemaRenderer schema={getOrganizationSchema()} />
@@ -88,7 +87,7 @@ export default function RootLayout({
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         )}
 
@@ -97,7 +96,7 @@ export default function RootLayout({
           <>
             <Script
               id="meta-pixel"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
               dangerouslySetInnerHTML={{
                 __html: `
                   !function(f,b,e,v,n,t,s)
@@ -130,7 +129,7 @@ export default function RootLayout({
           <Script
             id="meta-param-builder"
             src="https://capi-automation.s3.us-east-2.amazonaws.com/public/client_js/capiParamBuilder/clientParamBuilder.bundle.js"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         )}
 
@@ -138,7 +137,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
           <Script
             id="clarity-script"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(c,l,a,r,i,t,y){
