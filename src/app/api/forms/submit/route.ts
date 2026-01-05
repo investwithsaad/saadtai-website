@@ -7,7 +7,7 @@
 import { captureLeadInFUB } from '@/lib/followupboss'
 
 export interface FormSubmissionRequest {
-  formType: 'lead_form' | 'qualified_investor_form' | 'investment_calculator'
+  formType: 'lead_form' | 'qualified_investor_form' | 'investment_calculator' | 'calculator_access'
   data: {
     firstname?: string
     lastname?: string
@@ -38,7 +38,8 @@ export async function POST(request: Request) {
       )
     }
 
-    if (!data.phone) {
+    // Calculator access only requires email, not phone
+    if (formType !== 'calculator_access' && !data.phone) {
       return Response.json(
         { error: 'Phone is required' },
         { status: 400 }
@@ -117,6 +118,7 @@ function getSourceForFormType(formType: string): string {
     lead_form: 'website_lead_form',
     qualified_investor_form: 'website_qualified_investor',
     investment_calculator: 'website_investment_calculator',
+    calculator_access: 'website_calculator_access',
   }
 
   return sourceMap[formType] || 'website_form'
@@ -133,6 +135,7 @@ function getTagsForFormType(formType: string): string[] {
     lead_form: [baseTag, webLeadTag, 'form-submission'],
     qualified_investor_form: [baseTag, webLeadTag, 'qualified-investor', 'multifamily-investor'],
     investment_calculator: [baseTag, webLeadTag, 'calculator'],
+    calculator_access: [baseTag, webLeadTag, 'calculator-access', 'high-intent'],
   }
 
   return tagMap[formType] || [baseTag, webLeadTag]
