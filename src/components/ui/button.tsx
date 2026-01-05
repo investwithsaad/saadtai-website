@@ -25,11 +25,12 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
   image?: string
+  imageAlt?: string
   variant?: "default" | "secondary"
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", style, asChild, image, children, ...props }, ref) => {
+  ({ className, variant = "default", style, asChild, image, imageAlt = "Button image", children, ...props }, ref) => {
     const baseStyle: React.CSSProperties = style || {}
 
     // Apply variant-specific styles using COLORS
@@ -110,7 +111,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {image && (
           <Image
             src={image}
-            alt=""
+            alt={imageAlt}
             width={64}
             height={64}
             className="-m-1"

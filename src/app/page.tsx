@@ -79,6 +79,7 @@ export default function Home() {
                 <Button
                   variant="default"
                   image="/saad.png"
+                  imageAlt="Saad Tai profile photo"
                   onClick={() => {
                     trackEvent('cta_clicked', { location: 'hero', label: 'Talk through your next move' })
                     setIsModalOpen(true)
@@ -312,6 +313,7 @@ export default function Home() {
                 <Button
                   variant="default"
                   image="/saad.png"
+                  imageAlt="Saad Tai profile photo"
                   onClick={() => {
                     trackEvent('cta_clicked', { location: 'proof_results', label: 'Talk through your next move' })
                     setIsModalOpen(true)
@@ -372,6 +374,7 @@ export default function Home() {
                 <Button
                   variant="default"
                   image="/saad.png"
+                  imageAlt="Saad Tai profile photo"
                   onClick={() => {
                     trackEvent('cta_clicked', { location: 'testimonials', label: 'Talk through your next move' })
                     setIsModalOpen(true)
@@ -726,6 +729,7 @@ export default function Home() {
                   <Button
                     variant="default"
                     image="/saad.png"
+                    imageAlt="Saad Tai profile photo"
                     onClick={() => {
                       trackEvent('cta_clicked', { location: 'about_me', label: 'Talk through your next move' })
                       setIsModalOpen(true)

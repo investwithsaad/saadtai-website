@@ -43,22 +43,10 @@ export const getOrganizationSchema = (config?: {
     "addressCountry": companyInfo.contact.address.country
   },
   "areaServed": [
-    {
-      "@type": "State",
-      "name": "New York"
-    },
-    {
-      "@type": "City",
-      "name": "Albany"
-    },
-    {
-      "@type": "City",
-      "name": "Schenectady"
-    },
-    {
-      "@type": "City",
-      "name": "Troy"
-    }
+    "New York",
+    "Albany",
+    "Schenectady",
+    "Troy"
   ],
   "foundingDate": "2015",
   "founder": {
@@ -66,7 +54,8 @@ export const getOrganizationSchema = (config?: {
     "name": "Saad Tai",
     "jobTitle": "Multifamily Investment Advisor",
     "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
-    "url": "https://www.investwithsaad.com"
+    "url": "https://www.investwithsaad.com",
+    "license": "New York Real Estate License #10401373295"
   },
   "knowsAbout": [
     "Multifamily Investing",
@@ -84,15 +73,6 @@ export const getOrganizationSchema = (config?: {
     "https://www.facebook.com/saadtherealtor",
     "https://www.instagram.com/saadtherealtor"
   ],
-  "license": {
-    "@type": "License",
-    "name": "New York Real Estate License",
-    "licenseNumber": "10401373295",
-    "validIn": {
-      "@type": "State",
-      "name": "New York"
-    }
-  },
   ...(config?.aggregateRating && {
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -135,7 +115,9 @@ export const getArticleSchema = (article: {
     "name": "Invest with Saad",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.investwithsaad.com/logo.png"
+      "url": "https://www.investwithsaad.com/logo.png",
+      "width": 512,
+      "height": 512
     }
   },
   "articleBody": article.content
@@ -237,8 +219,8 @@ export const getReviewSchema = (review: {
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": review.reviewRating,
-    "bestRating": "5",
-    "worstRating": "1"
+    "bestRating": 5,
+    "worstRating": 1
   },
   "reviewBody": review.reviewBody,
   "author": {

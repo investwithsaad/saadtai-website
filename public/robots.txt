@@ -43,4 +43,3 @@ Crawl-delay: 1
 
 # Sitemap references
 Sitemap: https://www.investwithsaad.com/sitemap.xml
-Sitemap: https://www.investwithsaad.com/llms.txt

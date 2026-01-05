@@ -3,7 +3,7 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import AboutPageContent from './about-page-content'
 
 export const metadata: Metadata = {
-  title: 'Saad Tai | Multifamily Investment Advisor | Capital Region Real Estate',
+  title: 'Saad Tai | Multifamily Investment Advisor',
   description: 'Saad Tai is a licensed real estate advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and investor-grade transaction management for Capital Region investors.',
   keywords: 'Saad Tai, multifamily investment advisor, real estate advisor Albany, Schenectady, capital region, investment properties, cap rates, portfolio strategy',
   alternates: {

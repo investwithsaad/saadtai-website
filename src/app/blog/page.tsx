@@ -18,14 +18,14 @@ import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Blog | Invest with Saad',
+  title: 'Multifamily Investment Blog | Saad Tai',
   description: 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
   keywords: 'multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis',
   alternates: {
     canonical: 'https://www.investwithsaad.com/blog',
   },
   openGraph: {
-    title: 'Blog | Invest with Saad',
+    title: 'Multifamily Investment Blog | Saad Tai',
     description: 'Multifamily investment insights and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
     url: 'https://www.investwithsaad.com/blog',
     type: 'website',
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
         url: "https://www.investwithsaad.com/main-bg.png",
         width: 1024,
         height: 728,
-        alt: "Invest with Saad Real Estate Blog",
+        alt: "Multifamily Investment Blog by Saad Tai",
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog | Invest with Saad',
+    title: 'Multifamily Investment Blog | Saad Tai',
     description: 'Multifamily investment insights and strategies for Capital Region investors.',
   },
 }
