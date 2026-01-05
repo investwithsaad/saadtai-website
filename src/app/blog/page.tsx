@@ -22,16 +22,16 @@ export const metadata: Metadata = {
   description: 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
   keywords: 'multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis',
   alternates: {
-    canonical: 'https://investwithsaad.com/blog',
+    canonical: 'https://www.investwithsaad.com/blog',
   },
   openGraph: {
     title: 'Blog | Invest with Saad',
     description: 'Multifamily investment insights and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
-    url: 'https://investwithsaad.com/blog',
+    url: 'https://www.investwithsaad.com/blog',
     type: 'website',
     images: [
       {
-        url: "https://investwithsaad.com/main-bg.png",
+        url: "https://www.investwithsaad.com/main-bg.png",
         width: 1024,
         height: 728,
         alt: "Invest with Saad Real Estate Blog",
@@ -56,7 +56,7 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "Invest with Saad - Multifamily Investment Blog",
   "description": "Investment insights, multifamily real estate strategies, and market analysis for small multifamily investors in the Capital Region",
-  "url": "https://investwithsaad.com/blog",
+  "url": "https://www.investwithsaad.com/blog",
   "mainEntity": {
     "@type": "Blog",
     "name": "Invest with Saad Blog",
@@ -64,7 +64,7 @@ const blogCollectionSchema = {
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.excerpt,
-      "url": `https://investwithsaad.com/blog/${post.id}`,
+      "url": `https://www.investwithsaad.com/blog/${post.id}`,
       "datePublished": post.date,
       "author": {
         "@type": "Person",

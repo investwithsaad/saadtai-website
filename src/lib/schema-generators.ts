@@ -21,14 +21,14 @@ export const getOrganizationSchema = (config?: {
 }) => ({
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "FinancialService"],
-  "@id": "https://investwithsaad.com",
+  "@id": "https://www.investwithsaad.com",
   "name": companyInfo.name,
   "alternateName": "Invest with Saad",
   "description": companyInfo.description,
-  "url": "https://investwithsaad.com",
+  "url": "https://www.investwithsaad.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://investwithsaad.com/logo.png",
+    "url": "https://www.investwithsaad.com/logo.png",
     "width": 512,
     "height": 512
   },
@@ -66,7 +66,7 @@ export const getOrganizationSchema = (config?: {
     "name": "Saad Tai",
     "jobTitle": "Multifamily Investment Advisor",
     "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
-    "url": "https://investwithsaad.com"
+    "url": "https://www.investwithsaad.com"
   },
   "knowsAbout": [
     "Multifamily Investing",
@@ -135,7 +135,7 @@ export const getArticleSchema = (article: {
     "name": "Invest with Saad",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://investwithsaad.com/logo.png"
+      "url": "https://www.investwithsaad.com/logo.png"
     }
   },
   "articleBody": article.content

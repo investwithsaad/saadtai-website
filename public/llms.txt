@@ -1,12 +1,12 @@
-# Invest with Saad (https://investwithsaad.com)
+# Invest with Saad (https://www.investwithsaad.com)
 
 > Multifamily Investment Advisor specializing in strategic guidance for small multifamily investors in the Capital Region. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management.
 
 ## Website
-- https://investwithsaad.com: Main site with investor guidance, blog, and calculator
-- https://investwithsaad.com/blog: Multifamily investment insights and market analysis
-- https://investwithsaad.com/calculator: Investment property analysis calculator
-- https://investwithsaad.com/faq: Comprehensive investor FAQs
+- https://www.investwithsaad.com: Main site with investor guidance, blog, and calculator
+- https://www.investwithsaad.com/blog: Multifamily investment insights and market analysis
+- https://www.investwithsaad.com/calculator: Investment property analysis calculator
+- https://www.investwithsaad.com/faq: Comprehensive investor FAQs
 
 ## Focus Areas
 Invest with Saad specializes in helping small multifamily investors:

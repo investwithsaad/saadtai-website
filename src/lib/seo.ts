@@ -15,49 +15,49 @@ export const pageMetaData: Record<string, PageMeta> = {
     title: "Invest with Saad | Multifamily Investment Advisor | Albany, Schenectady",
     description: "Clarity before you commit capital. I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, investor analysis, portfolio strategy.",
     keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
-    canonical: "https://investwithsaad.com/"
+    canonical: "https://www.investwithsaad.com/"
   },
   buying: {
     title: "Buying Multifamily Properties | Off-Market Deals & Analysis | Invest with Saad",
     description: "Strategic guidance for buying multifamily properties. Investor-grade analysis, honest underwriting, cap rate expertise. Avoid costly mistakes. Capital Region focus.",
     keywords: "buy multifamily property, off-market deals, investment property analysis, cap rate analysis, multifamily investing strategies",
-    canonical: "https://investwithsaad.com/buying"
+    canonical: "https://www.investwithsaad.com/buying"
   },
   selling: {
     title: "Selling Multifamily Properties | Strategic Exit Planning | Invest with Saad",
     description: "Strategic exit planning for multifamily investors. 1031 exchange coordination, portfolio optimization, maximize proceeds. Expert execution. Capital Region specialist.",
     keywords: "sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale",
-    canonical: "https://investwithsaad.com/selling"
+    canonical: "https://www.investwithsaad.com/selling"
   },
   listings: {
     title: "Multifamily Listings | Investment Properties | Invest with Saad",
     description: "Curated multifamily investment properties in the Capital Region. Expert analysis included. Access both opportunities and MLS listings. Investor-focused.",
     keywords: "multifamily listings, investment properties for sale, real estate listings Albany, multifamily properties",
-    canonical: "https://investwithsaad.com/listings"
+    canonical: "https://www.investwithsaad.com/listings"
   },
   vipInvestorList: {
     title: "VIP Investor List | Get Off-Market Deals | Invest with Saad",
     description: "VIP Investor List for exclusive opportunities. Strategic deals with expert analysis. Investor network access. Capital Region focused.",
     keywords: "off-market deals, investment opportunities, multifamily deals, real estate investor network",
-    canonical: "https://investwithsaad.com/vip-investor-list"
+    canonical: "https://www.investwithsaad.com/vip-investor-list"
   },
   blog: {
     title: "Blog | Multifamily Investment Insights | Invest with Saad",
     description: "Data-driven insights on multifamily investing. Market analysis, strategy guides, cap rate expertise. For Capital Region investors building portfolios.",
     keywords: "multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis",
-    canonical: "https://investwithsaad.com/blog"
+    canonical: "https://www.investwithsaad.com/blog"
   },
   privacy: {
     title: "Privacy Policy | Invest with Saad",
     description: "Read Invest with Saad's privacy policy to understand how we protect your information.",
     keywords: "privacy policy, data protection",
-    canonical: "https://investwithsaad.com/privacy-policy"
+    canonical: "https://www.investwithsaad.com/privacy-policy"
   },
   terms: {
     title: "Terms of Service | Invest with Saad",
     description: "Review Invest with Saad's terms of service.",
     keywords: "terms of service, legal",
-    canonical: "https://investwithsaad.com/terms-of-service"
+    canonical: "https://www.investwithsaad.com/terms-of-service"
   }
 }
 
@@ -70,7 +70,7 @@ export const generateServiceSchema = (title: string, description: string) => ({
   "provider": {
     "@type": "Organization",
     "name": "Saad Tai Realtor®",
-    "url": "https://investwithsaad.com",
+    "url": "https://www.investwithsaad.com",
     "telephone": "+1-518-667-9351",
     "email": "saadtherealtor1@gmail.com"
   },

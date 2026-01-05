@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { blogPosts } from '@/data/blog-posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://investwithsaad.com'
+  const baseUrl = 'https://www.investwithsaad.com'
 
   // Main navigation routes (highest priority)
   const mainNavRoutes = [
