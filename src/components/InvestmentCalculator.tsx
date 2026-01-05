@@ -3,9 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { DEFAULT_INVESTMENT_INPUTS, InvestmentInputs, CalculatorUIState } from '@/lib/calculators/investment-types'
 import { calculateInvestmentMetrics } from '@/lib/calculators/investment-calculations'
-import { Button } from '@/components/ui/button'
 import { Heading, Text } from '@/components/ui'
-import { Lock } from 'lucide-react'
 
 // Will import input section components when created
 // import { PropertyInputs } from './InvestmentCalculator/InputSections/PropertyInputs'
@@ -18,10 +16,10 @@ import { Lock } from 'lucide-react'
  *
  * Features:
  * - Real-time calculation with memoization
- * - Lead capture gating with localStorage persistence
  * - Accordion input sections for mobile UX
  * - Tabbed results view
  * - Debounced updates for performance
+ * - Email gating handled by landing page (no need for duplicate capture)
  */
 export function InvestmentCalculator() {
   // ==========================================
@@ -30,14 +28,10 @@ export function InvestmentCalculator() {
 
   const [inputs, setInputs] = useState<InvestmentInputs>(DEFAULT_INVESTMENT_INPUTS)
   const [uiState, setUiState] = useState<CalculatorUIState>({
-    hasSubmittedLead: false,
-    isLeadModalOpen: false,
     showResults: false,
     activeResultsTab: 'summary',
     expandedSections: new Set(['property']),
-    isSubmitting: false,
-    error: null,
-  })
+  } as CalculatorUIState)
 
   // Debounce calculations for performance (300ms)
   const [debouncedInputs, setDebouncedInputs] = useState<InvestmentInputs>(inputs)
@@ -59,18 +53,6 @@ export function InvestmentCalculator() {
   }, [debouncedInputs])
 
   // ==========================================
-  // LEAD CAPTURE PERSISTENCE
-  // ==========================================
-
-  // On mount, check if user previously submitted lead
-  useEffect(() => {
-    const hasAccess = localStorage.getItem('investment_calculator_access')
-    if (hasAccess === 'true') {
-      setUiState(prev => ({ ...prev, hasSubmittedLead: true }))
-    }
-  }, [])
-
-  // ==========================================
   // EVENT HANDLERS
   // ==========================================
 
@@ -78,66 +60,6 @@ export function InvestmentCalculator() {
     setInputs(prev => ({ ...prev, ...newInputs }))
     // Always show results once user starts calculating
     setUiState(prev => ({ ...prev, showResults: true }))
-  }
-
-  const handleViewFullAnalysis = () => {
-    if (!uiState.hasSubmittedLead) {
-      setUiState(prev => ({ ...prev, isLeadModalOpen: true }))
-    } else {
-      setUiState(prev => ({ ...prev, activeResultsTab: 'projections' }))
-    }
-  }
-
-  const handleLeadSubmit = (leadData: any) => {
-    setUiState(prev => ({ ...prev, isSubmitting: true }))
-
-    // Prepare data to send to API
-    const calculatorResults = JSON.stringify({
-      purchasePrice: inputs.purchasePrice,
-      capRate: metrics.capRate,
-      cashOnCashReturn: metrics.cashOnCashReturn,
-      monthlyCashFlow: metrics.monthlyCashFlow,
-      totalROI: metrics.saleAnalysis.totalROI,
-      annualNOI: metrics.noi,
-    })
-
-    // Call form submission API
-    fetch('/api/forms/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        formType: 'investment_calculator',
-        data: {
-          ...leadData,
-          calculatorResults,
-        },
-      }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          setUiState(prev => ({
-            ...prev,
-            hasSubmittedLead: true,
-            isLeadModalOpen: false,
-            isSubmitting: false,
-          }))
-          localStorage.setItem('investment_calculator_access', 'true')
-        } else {
-          setUiState(prev => ({
-            ...prev,
-            error: data.message || 'Failed to submit lead',
-            isSubmitting: false,
-          }))
-        }
-      })
-      .catch(error => {
-        setUiState(prev => ({
-          ...prev,
-          error: 'An error occurred. Please try again.',
-          isSubmitting: false,
-        }))
-      })
   }
 
   const toggleSection = (section: string) => {
@@ -253,53 +175,27 @@ export function InvestmentCalculator() {
               <MetricItem
                 label="Cap Rate"
                 value={`${metrics.capRate.toFixed(2)}%`}
-                unlocked={true}
               />
               <MetricItem
                 label="Cash-on-Cash Return"
                 value={`${metrics.cashOnCashReturn.toFixed(2)}%`}
-                unlocked={true}
               />
               <MetricItem
                 label="Monthly Cash Flow"
                 value={`$${metrics.monthlyCashFlow.toLocaleString('en-US', { maximumFractionDigits: 0 })}`}
-                unlocked={true}
               />
               <MetricItem
                 label="Total ROI"
                 value={`${metrics.saleAnalysis.totalROI.toFixed(2)}%`}
-                unlocked={uiState.hasSubmittedLead}
               />
               <MetricItem
                 label="Equity Multiple"
                 value={`${metrics.saleAnalysis.equityMultiple.toFixed(2)}x`}
-                unlocked={uiState.hasSubmittedLead}
               />
             </div>
-
-            {/* CTA Button */}
-            <Button
-              onClick={handleViewFullAnalysis}
-              className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2"
-            >
-              {uiState.hasSubmittedLead ? 'View Full Analysis' : 'Get Full Analysis'}
-            </Button>
-
-            {!uiState.hasSubmittedLead && (
-              <p className="text-xs text-gray-600 text-center mt-3">
-                Lead capture required for detailed breakdown
-              </p>
-            )}
           </div>
         </div>
       </div>
-
-      {/* Error Message */}
-      {uiState.error && (
-        <div className="bg-red-50 border border-red-200 p-4 m-6 rounded-lg text-red-700">
-          {uiState.error}
-        </div>
-      )}
 
       {/* Results Section - Below inputs on mobile, same as sticky on desktop */}
       {uiState.showResults && (
@@ -309,22 +205,8 @@ export function InvestmentCalculator() {
             inputs={inputs}
             activeTab={uiState.activeResultsTab}
             onTabChange={(tab: 'summary' | 'cashflow' | 'projections' | 'sale') => setUiState(prev => ({ ...prev, activeResultsTab: tab }))}
-            isLocked={!uiState.hasSubmittedLead}
-            onUnlockClick={() => setUiState(prev => ({ ...prev, isLeadModalOpen: true }))}
           />
         </div>
-      )}
-
-      {/* Lead Capture Modal - Will integrate LeadFormModal when available */}
-      {uiState.isLeadModalOpen && (
-        <LeadCaptureGate
-          isOpen={uiState.isLeadModalOpen}
-          onClose={() => setUiState(prev => ({ ...prev, isLeadModalOpen: false }))}
-          onSubmit={handleLeadSubmit}
-          isSubmitting={uiState.isSubmitting}
-          metrics={metrics}
-          inputs={inputs}
-        />
       )}
     </div>
   )
@@ -361,23 +243,17 @@ function AccordionSection({ title, isOpen, onToggle, children }: AccordionSectio
 interface MetricItemProps {
   label: string
   value: string
-  unlocked: boolean
 }
 
-function MetricItem({ label, value, unlocked }: MetricItemProps) {
+function MetricItem({ label, value }: MetricItemProps) {
   return (
-    <div className={`relative ${!unlocked ? 'opacity-50' : ''}`}>
+    <div>
       <div className="flex justify-between items-start mb-1">
         <Text size="sm" className="text-gray-700">
           {label}
         </Text>
       </div>
       <div className="text-2xl font-bold text-gray-900">{value}</div>
-      {!unlocked && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Lock className="w-4 h-4 text-gray-400" />
-        </div>
-      )}
     </div>
   )
 }
@@ -760,68 +636,11 @@ function FormInput({ label, type, value, onChange, prefix, suffix }: FormInputPr
 }
 
 // Placeholder components - will be created as separate files
-function ResultsSection({ metrics, inputs, activeTab, onTabChange, isLocked, onUnlockClick }: any) {
+function ResultsSection({ metrics, inputs, activeTab, onTabChange }: any) {
   return (
     <div className="space-y-6">
       <Heading size="h3">Investment Analysis Results</Heading>
       <p className="text-gray-600">Results section coming in Phase 5...</p>
-    </div>
-  )
-}
-
-function LeadCaptureGate({ isOpen, onClose, onSubmit, isSubmitting, metrics, inputs }: any) {
-  const [formData, setFormData] = React.useState({ name: '', email: '', phone: '' })
-
-  const handleSubmit = () => {
-    onSubmit(formData)
-  }
-
-  return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-md w-full p-6 space-y-4">
-        <Heading size="h3">Get Your Full Investment Analysis</Heading>
-        <Text size="sm" className="text-gray-600">
-          Enter your information to unlock detailed projections, charts, and sale analysis
-        </Text>
-
-        <div className="space-y-3">
-          <FormInput
-            label="Full Name"
-            type="text"
-            value={formData.name}
-            onChange={(value) => setFormData(prev => ({ ...prev, name: value }))}
-          />
-          <FormInput
-            label="Email"
-            type="email"
-            value={formData.email}
-            onChange={(value) => setFormData(prev => ({ ...prev, email: value }))}
-          />
-          <FormInput
-            label="Phone"
-            type="tel"
-            value={formData.phone}
-            onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))}
-          />
-        </div>
-
-        <div className="flex gap-3">
-          <button
-            onClick={onClose}
-            disabled={isSubmitting}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 disabled:opacity-50"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50"
-          >
-            {isSubmitting ? 'Submitting...' : 'Get Access'}
-          </button>
-        </div>
-      </div>
     </div>
   )
 }
