@@ -176,6 +176,7 @@ export function trackEvent(
     cta_clicked: 'Lead',
     form_submit_lead_form: 'Lead',
     form_submit_contact_form: 'Contact',
+    form_submit_calculator_access: 'Lead',
     chatbot_session_start: 'InitiateCheckout',
     chatbot_schedule_call: 'Schedule',
   }
