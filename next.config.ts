@@ -74,7 +74,7 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://snap.licdn.com https://saadinfo.up.railway.app https://va.vercel-scripts.com https://ddwl4m2hdecbv.cloudfront.net https://assets.calendly.com https://connect.facebook.net https://www.clarity.ms https://widgetbe.com https://capi-automation.s3.us-east-2.amazonaws.com https://scripts.clarity.ms",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://snap.licdn.com https://saadinfo.up.railway.app https://va.vercel-scripts.com https://ddwl4m2hdecbv.cloudfront.net https://assets.calendly.com https://connect.facebook.net https://www.facebook.com https://www.clarity.ms https://widgetbe.com https://capi-automation.s3.us-east-2.amazonaws.com https://scripts.clarity.ms",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
               "img-src 'self' data: https: blob:",
               "font-src 'self' data: https://fonts.gstatic.com",
