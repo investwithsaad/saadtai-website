@@ -3,6 +3,7 @@ import Script from "next/script"
 import { LayoutContent } from "@/app/layout-content"
 import { SchemaRenderer } from "@/components/SchemaRenderer"
 import { getOrganizationSchema } from "@/lib/schema-generators"
+import { BASE_URL } from "@/lib/metadata-factory"
 import "@/app/globals.css"
 import { Poppins, Lora } from 'next/font/google'
 
@@ -25,17 +26,17 @@ export const metadata: Metadata = {
   description: "Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
-    canonical: "https://www.investwithsaad.com/",
+    canonical: `${BASE_URL}/`,
   },
   openGraph: {
     title: "Multifamily Investment Advisor | Saad Tai",
     description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",
-    url: "https://www.investwithsaad.com/",
+    url: `${BASE_URL}/`,
     siteName: "Invest with Saad",
     type: "website",
     images: [
       {
-        url: "https://www.investwithsaad.com/main-bg.png",
+        url: `${BASE_URL}/main-bg.png`,
         width: 1200,
         height: 628,
         alt: "Multifamily Investment Advisor Saad Tai",
@@ -73,12 +74,11 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} ${lora.variable}`}>
       <head>
         {/* Preconnect to critical third-party origins */}
-        <link rel="preconnect" href="https://umami-production-25e0.up.railway.app" />
-        <link rel="dns-prefetch" href="https://umami-production-25e0.up.railway.app" />
-        <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        <link rel="preconnect" href="https://www.clarity.ms" />
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://saadinfo.up.railway.app" />
+        <link rel="preconnect" href="https://capig.datah04.com" />
+        <link rel="dns-prefetch" href="https://capig.datah04.com" />
 
         {/* Schema Markup */}
         <SchemaRenderer schema={getOrganizationSchema()} />
@@ -88,7 +88,7 @@ export default function RootLayout({
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         )}
 
@@ -97,7 +97,7 @@ export default function RootLayout({
           <>
             <Script
               id="meta-pixel"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
               dangerouslySetInnerHTML={{
                 __html: `
                   !function(f,b,e,v,n,t,s)
@@ -130,7 +130,7 @@ export default function RootLayout({
           <Script
             id="meta-param-builder"
             src="https://capi-automation.s3.us-east-2.amazonaws.com/public/client_js/capiParamBuilder/clientParamBuilder.bundle.js"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         )}
 
@@ -138,7 +138,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
           <Script
             id="clarity-script"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(c,l,a,r,i,t,y){

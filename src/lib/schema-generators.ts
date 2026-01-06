@@ -8,6 +8,7 @@
  */
 
 import { companyInfo } from '@/data/company-info'
+import { BASE_URL } from '@/lib/metadata-factory'
 
 // ============================================================================
 // ORGANIZATION SCHEMA (Global - Add to Layout)
@@ -21,16 +22,16 @@ export const getOrganizationSchema = (config?: {
 }) => ({
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "FinancialService"],
-  "@id": "https://www.investwithsaad.com",
+  "@id": `${BASE_URL}/`,
   "name": companyInfo.name,
   "alternateName": "Invest with Saad",
   "description": companyInfo.description,
-  "url": "https://www.investwithsaad.com",
+  "url": `${BASE_URL}/`,
   "logo": {
     "@type": "ImageObject",
-    "url": "https://www.investwithsaad.com/logo.png",
-    "width": 512,
-    "height": 512
+    "url": `${BASE_URL}/logo.png`,
+    "width": 603,
+    "height": 607
   },
   "telephone": companyInfo.contact.phone,
   "email": companyInfo.contact.email,
@@ -54,7 +55,7 @@ export const getOrganizationSchema = (config?: {
     "name": "Saad Tai",
     "jobTitle": "Multifamily Investment Advisor",
     "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
-    "url": "https://www.investwithsaad.com",
+    "url": `${BASE_URL}/`,
     "license": "New York Real Estate License #10401373295"
   },
   "knowsAbout": [
@@ -115,9 +116,9 @@ export const getArticleSchema = (article: {
     "name": "Invest with Saad",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.investwithsaad.com/logo.png",
-      "width": 512,
-      "height": 512
+      "url": `${BASE_URL}/logo.png`,
+      "width": 603,
+      "height": 607
     }
   },
   "articleBody": article.content

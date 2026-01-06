@@ -16,34 +16,16 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { blogPosts } from '@/data/blog-posts'
 import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import Link from 'next/link'
+import { createPageMetadata } from '@/lib/metadata-factory'
+import { BASE_URL } from '@/lib/metadata-factory'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Multifamily Investment Blog | Saad Tai',
   description: 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
+  path: '/blog',
   keywords: 'multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis',
-  alternates: {
-    canonical: 'https://www.investwithsaad.com/blog',
-  },
-  openGraph: {
-    title: 'Multifamily Investment Blog | Saad Tai',
-    description: 'Multifamily investment insights and strategies for Capital Region investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
-    url: 'https://www.investwithsaad.com/blog',
-    type: 'website',
-    images: [
-      {
-        url: "https://www.investwithsaad.com/main-bg.png",
-        width: 1024,
-        height: 728,
-        alt: "Multifamily Investment Blog by Saad Tai",
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Multifamily Investment Blog | Saad Tai',
-    description: 'Multifamily investment insights and strategies for Capital Region investors.',
-  },
-}
+  ogImage: '/House1.webp',
+})
 
 const formatDate = (isoDate: string): string => {
   const date = new Date(isoDate + 'T00:00:00Z')
@@ -56,7 +38,7 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "Invest with Saad - Multifamily Investment Blog",
   "description": "Investment insights, multifamily real estate strategies, and market analysis for small multifamily investors in the Capital Region",
-  "url": "https://www.investwithsaad.com/blog",
+  "url": `${BASE_URL}/blog`,
   "mainEntity": {
     "@type": "Blog",
     "name": "Invest with Saad Blog",
@@ -64,7 +46,7 @@ const blogCollectionSchema = {
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.excerpt,
-      "url": `https://www.investwithsaad.com/blog/${post.id}`,
+      "url": `${BASE_URL}/blog/${post.id}`,
       "datePublished": post.date,
       "author": {
         "@type": "Person",

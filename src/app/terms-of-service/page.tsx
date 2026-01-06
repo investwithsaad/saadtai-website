@@ -1,6 +1,13 @@
 import { Container, Heading, Text, Section } from '@/components/ui'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { COLORS as BRAND_COLORS } from '@/lib/colors'
+import { createPageMetadata } from '@/lib/metadata-factory'
+
+export const metadata = createPageMetadata({
+  title: 'Terms of Service | Saad Tai',
+  description: 'Review our terms of service and important disclaimers for using our website and services.',
+  path: '/terms-of-service',
+})
 
 export default function TermsOfService() {
   return (
