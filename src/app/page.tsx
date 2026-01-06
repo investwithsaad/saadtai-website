@@ -702,7 +702,7 @@ export default function Home() {
 
                 <div className="space-y-6 text-slate-700 leading-relaxed mb-8 max-w-2xl">
                   <p>
-                    <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving the Capital region. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
+                    <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving all across New York State, with deep expertise in the Capital region. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
                   </p>
 
                   <p>
