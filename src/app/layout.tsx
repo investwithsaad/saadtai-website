@@ -119,6 +119,17 @@ export default function RootLayout({
           {children}
         </LayoutContent>
         <CookieConsentBanner />
+        <Script
+          id="register-sw"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').catch(() => {})
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )
