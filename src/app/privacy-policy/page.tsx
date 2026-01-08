@@ -145,17 +145,55 @@ export default function PrivacyPolicy() {
                 6. Analytics & Cookies
               </Heading>
               <Text className="text-gray-700 mb-4">
-                We use cookies for session operation, preferences, and security. We also use analytics services (e.g., Google Analytics) to help understand usage.
+                We use cookies for session operation, preferences, and security. We also use analytics services and tracking technologies to help understand usage and measure marketing effectiveness.
               </Text>
               <Text className="text-gray-700">
-                For details on Google’s practices, see <a href="https://policies.google.com/privacy?hl=en" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. You can opt out by installing the Google Analytics opt-out browser add-on.
+                For details on Google's practices, see <a href="https://policies.google.com/privacy?hl=en" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. You can opt out by installing the Google Analytics opt-out browser add-on.
+              </Text>
+            </div>
+
+            {/* Tracking Tools & Services */}
+            <div className="mb-12">
+              <Heading size="h2" className="text-olive-900 mb-4">
+                7. Tracking Tools and Services
+              </Heading>
+              <Text className="text-gray-700 mb-6">
+                We use the following tracking and analytics services. You can choose whether to allow these services by accepting or declining when prompted on our website.
+              </Text>
+
+              <Heading size="h4" className="text-olive-800 mb-3">Meta Pixel (Facebook Conversion Tracking)</Heading>
+              <Text className="text-gray-700 mb-4">
+                We use Meta Pixel to track conversions, optimize ads, and understand how visitors use our website. This includes tracking form submissions, page views, and user interactions. Meta may use this data to show you relevant ads on Facebook and Instagram.
+              </Text>
+              <Text className="text-gray-700 mb-6">
+                Learn more: <a href="https://www.facebook.com/privacy/explanation" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Meta Privacy Policy</a>
+              </Text>
+
+              <Heading size="h4" className="text-olive-800 mb-3">Umami Analytics</Heading>
+              <Text className="text-gray-700 mb-6">
+                We use Umami Analytics to understand how visitors interact with our website, including pages visited, time spent, and user behavior. Umami is a privacy-focused alternative that does not use cookies to identify users and complies with GDPR.
+              </Text>
+
+              <Heading size="h4" className="text-olive-800 mb-3">Microsoft Clarity</Heading>
+              <Text className="text-gray-700 mb-6">
+                We use Microsoft Clarity to record how visitors use our website, including mouse movements, scrolls, and clicks. This helps us improve user experience and identify technical issues. Clarity does not identify you personally but may collect session recordings.
+              </Text>
+
+              <Heading size="h4" className="text-olive-800 mb-3">LinkedIn Insight Tag</Heading>
+              <Text className="text-gray-700 mb-6">
+                We use the LinkedIn Insight Tag to track conversions and understand the effectiveness of LinkedIn advertising campaigns on our website.
+              </Text>
+
+              <Heading size="h4" className="text-olive-800 mb-3">Cookie Consent Preference</Heading>
+              <Text className="text-gray-700">
+                We store your cookie consent choice in a cookie named "cookie-consent" so we remember whether you have accepted or declined marketing and tracking cookies. This preference is stored for one year.
               </Text>
             </div>
 
             {/* Third-Party Links */}
             <div className="mb-12">
               <Heading size="h2" className="text-olive-900 mb-4">
-                7. Links to Other Sites
+                8. Links to Other Sites
               </Heading>
               <Text className="text-gray-700">
                 Our Service may link to external sites not operated by us. Please review their privacy policies; we are not responsible for third-party practices.
@@ -165,7 +203,7 @@ export default function PrivacyPolicy() {
             {/* Children's Privacy */}
             <div className="mb-12">
               <Heading size="h2" className="text-olive-900 mb-4">
-                8. Children’s Privacy
+                9. Children's Privacy
               </Heading>
               <Text className="text-gray-700">
                 The Service does not address anyone under 18. We do not knowingly collect Personal Data from children. If a child provides data, we will delete it.
@@ -175,7 +213,7 @@ export default function PrivacyPolicy() {
             {/* Policy Updates */}
             <div className="mb-12">
               <Heading size="h2" className="text-olive-900 mb-4">
-                9. Changes to This Policy
+                10. Changes to This Policy
               </Heading>
               <Text className="text-gray-700">
                 We may update this Privacy Policy periodically. Changes will be posted on this page with an updated effective date. Significant changes may be communicated by email or a prominent notice.
@@ -185,7 +223,7 @@ export default function PrivacyPolicy() {
             {/* Contact Us */}
             <div className="mb-12">
               <Heading size="h2" className="text-olive-900 mb-4">
-                10. Contact Us
+                11. Contact Us
               </Heading>
               <Text className="text-gray-700 mb-4">
                 For questions about this Privacy Policy, please contact:
