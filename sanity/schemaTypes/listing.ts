@@ -117,6 +117,15 @@ export default {
       title: 'Days On Market',
       type: 'number',
     },
+    {
+      name: 'image',
+      title: 'Property Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description: 'Main property listing image',
+    },
   ],
   preview: {
     select: {

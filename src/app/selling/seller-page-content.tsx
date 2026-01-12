@@ -30,12 +30,25 @@ const sellingFAQs = multifamilyInvestorFAQs.filter(faq =>
   faq.id.includes('redeploy')
 )
 
-export default function SellerPageContent() {
+interface SellerPageContentProps {
+  hero?: {
+    headline?: string
+    description?: string
+    ctaText?: string
+  }
+}
+
+export default function SellerPageContent({ hero }: SellerPageContentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     trackMetaPageView('selling_page')
   }, [])
+
+  // Defaults from migration
+  const heroTitle = hero?.headline || 'Exit on Your Timeline.'
+  const heroSubtitle = hero?.description || 'I help owners evaluate whether to hold, reposition, or sell — and when selling makes sense, target the right buyers to maximize net outcome, not just headline price.'
+  const heroCtaText = hero?.ctaText || 'Talk through your next move →'
 
   // Scroll tracking refs
   const heroRef = useScrollTracking({ sectionName: 'seller_hero' })
@@ -64,10 +77,15 @@ export default function SellerPageContent() {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white'>
-                Exit on <i>Your</i> Timeline.
+                {heroTitle.split('\n').map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    {i < heroTitle.split('\n').length - 1 && <br />}
+                  </span>
+                ))}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                I help owners evaluate whether to hold, reposition, or sell — and when selling makes sense, target the right buyers to maximize net outcome, not just headline price.
+                {heroSubtitle}
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <Button
@@ -75,11 +93,11 @@ export default function SellerPageContent() {
                   image="/saad.png"
                   imageAlt="Saad Tai profile photo"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_hero', label: 'Talk through your next move' })
+                    trackEvent('cta_clicked', { location: 'seller_hero', label: heroCtaText })
                     setIsModalOpen(true)
                   }}
                 >
-                  Talk through your next move →
+                  {heroCtaText} →
                 </Button>
               </div>
             </div>

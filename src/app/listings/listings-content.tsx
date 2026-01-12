@@ -2,11 +2,37 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
-import { listings } from '@/data/listings'
 import { LeadFormModal } from '@/components/LeadFormModal'
 
-export function ListingsContent() {
+interface ListingImage {
+  asset?: {
+    url?: string
+  }
+}
+
+interface Listing {
+  id: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  bedrooms?: number
+  bathrooms?: number
+  squareFeet?: number
+  propertyType: string
+  features: string[]
+  description: string
+  status: string
+  image?: ListingImage
+}
+
+interface ListingsContentProps {
+  listings: Listing[]
+}
+
+export function ListingsContent({ listings }: ListingsContentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedAddress, setSelectedAddress] = useState<string>('')
 
@@ -38,8 +64,20 @@ export function ListingsContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {listings.map((listing) => (
                 <StaggerItem key={listing.id}>
-                  <Card className="flex flex-col h-full">
-                    <div className="mb-4 flex items-start justify-between gap-4">
+                  <Card className="flex flex-col h-full overflow-hidden">
+                    {listing.image?.asset?.url && (
+                      <div className="relative w-full h-48 bg-gray-200 mb-4">
+                        <Image
+                          src={listing.image.asset.url}
+                          alt={listing.address}
+                          fill
+                          className="object-cover"
+                          quality={75}
+                        />
+                      </div>
+                    )}
+                    <div className="px-4 pt-4 pb-0">
+                      <div className="mb-4 flex items-start justify-between gap-4">
                       <div>
                         <Heading size="h3" className="font-heading mb-2">
                           {listing.address}
@@ -111,6 +149,7 @@ export function ListingsContent() {
                       >
                         Inquire About This Property
                       </Button>
+                    </div>
                     </div>
                   </Card>
                 </StaggerItem>

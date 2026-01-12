@@ -12,6 +12,7 @@
     "sanity:dev": "sanity dev",
     "sanity:build": "sanity build",
     "sanity:deploy": "sanity deploy",
+    "sanity:login": "sanity login",
     "sanity:start": "sanity start",
     "setup:sanity": "ts-node scripts/setup-sanity.ts",
     "migrate:sanity": "ts-node scripts/migrate-data-to-sanity.ts"

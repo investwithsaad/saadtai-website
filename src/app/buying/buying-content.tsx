@@ -31,13 +31,26 @@ const buyingFAQs = multifamilyInvestorFAQs.filter(faq =>
   faq.id.includes('financing-programs')
 )
 
-export function BuyingContent() {
+interface BuyingContentProps {
+  hero?: {
+    headline?: string
+    description?: string
+    ctaText?: string
+  }
+}
+
+export function BuyingContent({ hero }: BuyingContentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     trackMetaPageView('buying_page')
   }, [])
   const [activeCalculator, setActiveCalculator] = useState<'affordability' | 'mortgage'>('affordability')
+
+  // Defaults from migration
+  const heroTitle = hero?.headline || 'Tired of Deals That Don\'t Quite Pencil?'
+  const heroSubtitle = hero?.description || 'I help investors evaluate opportunities with an emphasis on pricing, capital allocation, and decision clarity — so they avoid overpaying or committing to deals that misalign with their portfolio strategy.'
+  const heroCtaText = hero?.ctaText || 'Talk through your next move →'
 
   // Scroll tracking refs
   const heroRef = useScrollTracking({ sectionName: 'buyer_hero' })
@@ -66,10 +79,15 @@ export function BuyingContent() {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white'>
-                Tired of Deals That Don't Quite Pencil?
+                {heroTitle.split('\n').map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    {i < heroTitle.split('\n').length - 1 && <br />}
+                  </span>
+                ))}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                I help investors evaluate opportunities with an emphasis on pricing, capital allocation, and decision clarity — so they avoid overpaying or committing to deals that misalign with their portfolio strategy.
+                {heroSubtitle}
               </Text>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                 <Button
@@ -77,11 +95,11 @@ export function BuyingContent() {
                   image="/saad.png"
                   imageAlt="Saad Tai profile photo"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'buyer_hero', label: 'Talk through your next move' })
+                    trackEvent('cta_clicked', { location: 'buyer_hero', label: heroCtaText })
                     setIsModalOpen(true)
                   }}
                 >
-                  Talk through your next move →
+                  {heroCtaText} →
                 </Button>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { BuyingContent } from './buying-content'
+import { getPage } from '@/lib/sanity.queries'
 
 export const metadata = createPageMetadata({
   title: 'Multifamily Investment Advisor | Saad Tai',
@@ -9,6 +10,8 @@ export const metadata = createPageMetadata({
   ogImage: '/home buyer.webp',
 })
 
-export default function BuyingPage() {
-  return <BuyingContent />
+export default async function BuyingPage() {
+  const page = await getPage('buying')
+
+  return <BuyingContent hero={page?.hero} />
 }

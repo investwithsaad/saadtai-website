@@ -40,15 +40,6 @@ export default {
       validation: (Rule: any) => Rule.required(),
       description: 'Main hero section for this page',
     },
-    {
-      name: 'sections',
-      title: 'Page Sections',
-      type: 'array',
-      of: [
-        { type: 'reference', to: { type: 'pageSection' } },
-      ],
-      description: 'Additional sections below the hero (optional)',
-    },
   ],
   preview: {
     select: {

@@ -1,5 +1,6 @@
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { ListingsContent } from './listings-content'
+import { getListings } from '@/lib/sanity.queries'
 
 export const metadata = createPageMetadata({
   title: 'Multifamily Investment Properties | Saad Tai',
@@ -9,6 +10,8 @@ export const metadata = createPageMetadata({
   ogImage: '/House1.webp',
 })
 
-export default function ListingsPage() {
-  return <ListingsContent />
+export default async function ListingsPage() {
+  const listings = await getListings()
+
+  return <ListingsContent listings={listings} />
 }

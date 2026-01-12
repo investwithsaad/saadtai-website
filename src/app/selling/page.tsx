@@ -4,6 +4,7 @@ import { getHowToSchema } from '@/lib/schema-generators'
 import SellerPageContent from './seller-page-content'
 import { SELLING_PROCESS_STEPS } from './constants'
 import { createPageMetadata } from '@/lib/metadata-factory'
+import { getPage } from '@/lib/sanity.queries'
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Selling Multifamily Properties | Saad Tai',
@@ -23,12 +24,14 @@ const sellingProcessSchema = getHowToSchema({
   }))
 })
 
-export default function SellerPage() {
+export default async function SellerPage() {
+  const page = await getPage('selling')
+
   return (
     <>
       {/* Render HowTo schema */}
       <SchemaRenderer schema={sellingProcessSchema} />
-      <SellerPageContent />
+      <SellerPageContent hero={page?.hero} />
 
     </>
   )
