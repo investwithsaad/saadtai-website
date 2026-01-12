@@ -54,7 +54,7 @@ export function HomeContent({ hero }: HomeContentProps) {
   )
 
   // Defaults from migration
-  const heroTitle = hero?.headline || 'Clarity before you\ncommit capital.'
+  const heroTitle = hero?.headline || 'Clarity before thou\ncommitest capital.'
   const heroSubtitle = hero?.description || 'I help multifamily investors think through buy, sell, and hold decisions\nwhile my team handles the execution that usually eats up your time.'
   const heroCtaText = hero?.ctaText || 'Talk through your next move →'
 
