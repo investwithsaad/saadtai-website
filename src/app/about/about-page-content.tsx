@@ -21,8 +21,17 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
 
-export default function AboutPageContent() {
+interface AboutPageContentProps {
+  hero?: any
+}
+
+export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Defaults from Sanity or fallback
+  const heroHeadline = hero?.headline || 'Straight Talk. No Fluff.'
+  const heroDescription = hero?.description || 'Licensed REALTOR® serving all across New York State, with deep expertise in the Capital region. I\'m a portfolio-focused advisor—not just a transaction agent.'
+  const heroCtaText = hero?.ctaText || 'Talk through your next move'
 
   // Generate Review schemas for testimonials (all 5-star reviews)
   const reviewSchemas = testimonials.map((testimonial) =>
@@ -107,10 +116,10 @@ export default function AboutPageContent() {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white' className="mb-6">
-                Hi, I'm Saad Tai
+                {heroHeadline}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                Multifamily investment advisor. I help investors think through buy, sell, and hold decisions while my team handles the execution. Strategic guidance. Honest analysis. Direct access.
+                {heroDescription}
               </Text>
               <Text color='white' className="text-white/80 mb-4 italic">Licensed Realtor® | NY License #10401373295</Text>
             </div>

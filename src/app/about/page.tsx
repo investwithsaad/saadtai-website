@@ -3,14 +3,18 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import AboutPageContent from './about-page-content'
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { BASE_URL } from '@/lib/metadata-factory'
+import { getPage } from '@/lib/sanity.queries'
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'Saad Tai | Multifamily Investment Advisor',
-  description: 'Saad Tai is a licensed real estate advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and investor-grade transaction management for Capital Region investors.',
-  path: '/about',
-  keywords: 'Saad Tai, multifamily investment advisor, real estate advisor Albany, Schenectady, capital region, investment properties, cap rates, portfolio strategy',
-  ogImage: '/saad tai 2.png',
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPage('about')
+
+  return createPageMetadata({
+    title: page?.title || 'Saad Tai | Multifamily Investment Advisor',
+    description: page?.description || 'Saad Tai is a licensed real estate advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and investor-grade transaction management for Capital Region investors.',
+    path: '/about',
+    ogImage: page?.ogImage?.asset?.url || '/saad tai 2.png',
+  })
+}
 
 // Person Schema for Saad Tai
 const saadTaiPersonSchema = {
@@ -69,12 +73,14 @@ const saadTaiPersonSchema = {
   }
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const page = await getPage('about')
+
   return (
     <>
       {/* Render Person schema */}
       <SchemaRenderer schema={saadTaiPersonSchema} />
-      <AboutPageContent />
+      <AboutPageContent hero={page?.hero} />
     </>
   )
 }
