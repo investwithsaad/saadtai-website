@@ -5,8 +5,7 @@ export const DescriptionInput = (props: any) => {
   const length = value.length
 
   const getColor = (): string => {
-    if (length < 80 || length > 170) return '#ef4444'
-    if (length < 120 || length > 160) return '#fbbf24'
+    if (length < 110 || length > 160) return '#ef4444'
     return '#22c55e'
   }
 

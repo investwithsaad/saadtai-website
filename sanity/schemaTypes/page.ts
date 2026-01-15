@@ -41,10 +41,10 @@ export default {
       },
       validation: (Rule: any) =>
         Rule.required()
-          .min(80)
-          .max(170)
-          .warning('Meta description should be 120-160 characters for best SEO results'),
-      description: 'SEO meta description (80-170 characters recommended: 120-160). This appears in search results.',
+          .min(110)
+          .max(160)
+          .warning('Meta description should be 110-160 characters (Google recommendation)'),
+      description: 'SEO meta description (110-160 characters). Used by Google for snippets and Facebook for link previews. Longer descriptions may be truncated.',
     },
     {
       name: 'ogImage',
