@@ -32,7 +32,6 @@ export default async function SellerPage() {
       {/* Render HowTo schema */}
       <SchemaRenderer schema={sellingProcessSchema} />
       <SellerPageContent hero={page?.hero} />
-
     </>
   )
 }

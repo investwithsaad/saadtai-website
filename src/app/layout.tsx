@@ -67,6 +67,9 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
+// Global revalidate - 24 hour fallback for all routes (overridden by webhook)
+export const revalidate = 86400
+
 export default function RootLayout({
   children,
 }: {
