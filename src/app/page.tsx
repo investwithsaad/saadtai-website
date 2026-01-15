@@ -9,6 +9,7 @@ export async function generateMetadata() {
     title: page?.title || 'Multifamily Investment Advisor | Saad Tai',
     description: page?.description || 'Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.',
     path: '/',
+    ogImage: page?.ogImage?.asset?.url,
   })
 }
 

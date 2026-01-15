@@ -51,6 +51,11 @@ export async function getPage(slug: string) {
       title,
       slug,
       description,
+      ogImage {
+        asset -> {
+          url
+        }
+      },
       hero {
         headline,
         description,

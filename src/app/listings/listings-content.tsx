@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
 import { LeadFormModal } from '@/components/LeadFormModal'
@@ -164,11 +163,15 @@ export function ListingsContent({ listings }: ListingsContentProps) {
             <Text className="text-gray-700 mb-8">
               Let us help you find the perfect home. Our team can assist with properties not listed here.
             </Text>
-            <Link href="/contact-us">
-              <Button variant="default">
-                Get in Touch
-              </Button>
-            </Link>
+            <Button
+              variant="default"
+              onClick={() => {
+                setSelectedAddress('')
+                setIsModalOpen(true)
+              }}
+            >
+              Get in Touch
+            </Button>
           </div>
         </Container>
       </Section>

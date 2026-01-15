@@ -9,6 +9,7 @@ export async function generateMetadata() {
     title: page?.title || 'Multifamily Investment Advisor | Saad Tai',
     description: page?.description || 'Get expert guidance on multifamily property investments, capital allocation, and deal evaluation to avoid overpaying and make confident investment decisions.',
     path: '/buying',
+    ogImage: page?.ogImage?.asset?.url,
   })
 }
 

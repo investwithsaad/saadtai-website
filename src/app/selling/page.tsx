@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.title || 'Selling Multifamily Properties | Saad Tai',
     description: page?.description || 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
     path: '/selling',
+    ogImage: page?.ogImage?.asset?.url,
   })
 }
 
