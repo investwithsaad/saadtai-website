@@ -131,8 +131,8 @@ export function ListingsContent({ listings }: ListingsContentProps) {
                       </Text>
                       {listing.features.length > 0 && (
                         <ul className="text-sm text-gray-600 space-y-1">
-                          {listing.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start">
+                          {listing.features.map((feature) => (
+                            <li key={feature} className="flex items-start">
                               <span className="mr-2">•</span>
                               <span>{feature}</span>
                             </li>
