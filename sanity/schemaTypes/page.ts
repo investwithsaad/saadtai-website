@@ -13,7 +13,7 @@ export default {
       title: 'Page Title',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
-      description: 'Internal name for the page',
+      description: 'Internal name for the page (e.g., "Home", "Buying", "Selling")',
     },
     {
       name: 'slug',
@@ -24,7 +24,8 @@ export default {
         maxLength: 96,
       },
       validation: (Rule: any) => Rule.required(),
-      description: 'URL-friendly identifier (e.g., "home", "buying", "selling")',
+      readOnly: true,
+      description: 'System identifier - automatically generated from title',
     },
     {
       name: 'description',
@@ -44,12 +45,12 @@ export default {
   preview: {
     select: {
       title: 'title',
-      hero: 'hero',
+      headline: 'hero.headline',
     },
-    prepare({ title, hero }: any) {
+    prepare({ title, headline }: any) {
       return {
         title: title,
-        subtitle: hero?.headline || 'No hero configured',
+        subtitle: headline || 'No hero configured',
       };
     },
   },

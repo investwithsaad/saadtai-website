@@ -47,7 +47,10 @@ export async function getPage(slug: string) {
   return client.fetch(
     `
     *[_type == "page" && slug.current == $slug][0] {
-      ...,
+      _id,
+      title,
+      slug,
+      description,
       hero {
         headline,
         description,
