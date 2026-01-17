@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn how to sell tenant-occupied properties without endless showings or price drops. Real strategy beats perfect conditions every time.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2026-01-17",
+    date: "2025-10-15",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Reality Check" },
@@ -98,7 +98,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn the exact system for identifying investment properties with strong cash flow and appreciation potential. Master cap rates, cash-on-cash returns, and the metrics that actually predict success.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2026-01-17",
+    date: "2025-11-15",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Missing Piece in Most Real Estate Education" },
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn how to sell rental properties with tenants in place at full market value while minimizing disruption. Discover the quiet sale strategy that attracts serious investor buyers.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2026-01-17",
+    date: "2025-12-15",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Landlord's Dilemma" },
