@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn how to sell tenant-occupied properties without endless showings or price drops. Real strategy beats perfect conditions every time.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2025-10-15",
+    date: "2025-01-23",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Reality Check" },
@@ -98,7 +98,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn the exact system for identifying investment properties with strong cash flow and appreciation potential. Master cap rates, cash-on-cash returns, and the metrics that actually predict success.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2025-11-15",
+    date: "2025-02-06",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Missing Piece in Most Real Estate Education" },
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn how to sell rental properties with tenants in place at full market value while minimizing disruption. Discover the quiet sale strategy that attracts serious investor buyers.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2025-12-15",
+    date: "2025-02-20",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Landlord's Dilemma" },
@@ -173,7 +173,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn the exact framework professional investors use to evaluate multifamily deals. Master cash flow analysis, value-add potential, and exit strategies that separate winners from losers.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2026-01-15",
+    date: "2025-03-06",
     category: "Investment",
     content: [
       { type: 'h2', text: "Why Most Agents Get Multifamily Deals Wrong" },
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn the exact 60-second screening process to analyze multifamily deals. Master NOI, cap rate, and cash flow calculations that eliminate bad deals before you waste time.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2026-01-29",
+    date: "2025-03-20",
     category: "Investment",
     content: [
       { type: 'h2', text: "Why Most Investors Make Bad Decisions" },
@@ -240,7 +240,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Real Capital Region market update: tight inventory, strong buyer interest, and the tools (1031 exchanges) to make the right decision about your property.",
     authorImage: "/saad.png",
     author: "Saad Tai",
-    date: "2026-02-12",
+    date: "2025-04-03",
     category: "Investment",
     content: [
       { type: 'h2', text: "The Question Every Landlord Is Asking" },
@@ -268,6 +268,53 @@ export const blogPosts: BlogPost[] = [
       { type: 'p', text: "Here's what I'm seeing on the ground:\n\n✓ Well-priced properties are moving quickly — Sometimes with multiple offers\n✓ Buyers are serious — They're 1031 investors and experienced operators\n✓ Rents are holding steady — Despite rate volatility, rental demand remains strong\n✓ Values are stable — Limited supply keeps downward pressure off prices\n\nThis creates an opportunity window. It's not a forever situation. Markets change.\n\nIf you're thinking about selling: This is a decent environment to do it. Serious buyers are in the market.\n\nIf you're holding: Strong cash flow properties should keep producing for years. No need to rush.\n\nIf you're considering a 1031 exchange: The numbers work. You can defer significant taxes and potentially scale into a better property." },
       { type: 'h2', text: "What Your Property Is Actually Worth (And What You Should Do)" },
       { type: 'p', text: "The best decision starts with clarity. Knowing what your property is worth today, what it generates in cash flow, and what your tax situation looks like—that's the foundation for any good decision.\n\nIf you're wondering what your property would go for right now, or what the tax implications of a sale or 1031 would be—I can help.\n\nSend me a quick message with a snapshot of your property (location, units, rents, expenses). No pressure. No sales pitch. Just useful information.\n\nI'll send back a custom breakdown of what your property is likely worth, what the market conditions look like in your neighborhood, and what your options actually are.\n\nThe market is moving. Make sure your decision is based on facts, not emotion." }
+    ]
+  },
+  {
+    id: "house-hacking-live-free-real-estate",
+    title: "Live for Free: The House Hacking Strategy That Actually Works",
+    subtitle: "Buy a Duplex with 3.5% Down and Have Tenants Pay Your Mortgage",
+    excerpt: "The complete house hacking guide: how to buy a multi-unit property with FHA financing, live for free, and build wealth while tenants pay your mortgage.",
+    authorImage: "/saad.png",
+    author: "Saad Tai",
+    date: "2025-04-17",
+    category: "Investment",
+    content: [
+      { type: 'h2', text: "The Math That Changes Everything" },
+      { type: 'p', text: "Here's a question most people never ask themselves: \"What if I could buy a property and have my tenants pay for my entire mortgage?\"\n\nIt sounds too good to be true. But it's not. It's called house hacking, and it's one of the most accessible paths into real estate investing.\n\nThe math is simple:\n• Buy a duplex or multi-unit property with just 3.5% down (FHA loan)\n• Live in one unit\n• Rent out the other units\n• Tenants pay your mortgage\n• You live essentially for free while building wealth" },
+      { type: 'h2', text: "How House Hacking Works: The $300,000 Example" },
+      { type: 'p', text: "Let's use real numbers:\n\nThe Purchase:\n• Duplex purchase price: $300,000\n• FHA down payment (3.5%): $10,500\n• Your out-of-pocket cost: $10,500\n\nThe Monthly Income:\n• Unit 1 (where you live): Your cost is your share of the mortgage\n• Unit 2 (tenant-occupied): $1,500/month in rent\n\nThe Monthly Payment:\n• Total mortgage (PITI): $2,000/month\n• Your share: $1,000/month (roughly)\n• Tenant pays: $1,500/month\n\nThe Result:\n• You live in your unit for approximately $1,000/month\n• The tenant's rent ($1,500) more than covers the mortgage\n• You're essentially building equity for free" },
+      { type: 'h2', text: "Why This Strategy Works" },
+      { type: 'h3', text: "1. Reduced Living Expenses" },
+      { type: 'p', text: "Housing is typically your biggest monthly cost. If you can cut that expense to near-zero while building equity, everything changes.\n\nInstead of:\n• Renting for $1,200/month (and building zero equity)\n\nYou're:\n• Living in a property you own (and building $500+ in equity per month)\n\nOver 10 years, that's $60,000+ in equity from living costs you would have paid anyway." },
+      { type: 'h3', text: "2. Lower Entry Barrier to Real Estate" },
+      { type: 'p', text: "Traditional real estate investing requires 20-25% down payments. That's $60,000-$75,000 on a $300,000 property.\n\nHouse hacking with FHA requires 3.5% down. That's $10,500.\n\nFHA financing removes the biggest barrier to entry for new investors." },
+      { type: 'h3', text: "3. Building Equity Using Other People's Money" },
+      { type: 'p', text: "This is the wealth multiplier moment:\n\nYour tenant pays your mortgage. That mortgage payment includes principal. That principal becomes your equity.\n\nOver 30 years, your tenant essentially pays down your loan while you:\n• Live in the property\n• Collect appreciation\n• Build ownership\n\nThis is leverage working for you." },
+      { type: 'h3', text: "4. Perfect Training Ground for Landlording" },
+      { type: 'p', text: "Most new investors don't know how to manage tenants, handle maintenance issues, or balance P&L.\n\nHouse hacking gives you real-world experience without the overhead. You live there. You see issues firsthand. You learn the business while still getting paid to stay." },
+      { type: 'h2', text: "The Three Levels of House Hacking" },
+      { type: 'h3', text: "Level 1: Duplex (2 Units)" },
+      { type: 'p', text: "Example: $300,000 duplex\n• Down payment: $10,500\n• Monthly rent from tenant: $1,500\n• Your monthly housing cost: ~$500\n• Annual savings: $6,000+\n\nEntry level. Simple. Proven." },
+      { type: 'h3', text: "Level 2: Triplex (3 Units)" },
+      { type: 'p', text: "Example: $400,000 triplex\n• Down payment: $14,000\n• Total rental income: $3,000/month (two tenant units)\n• Your monthly housing cost: ~$200\n• Annual savings: $14,400+\n\nMore complex but higher returns. Requires self-sufficiency test with FHA (property must generate enough income to cover expenses)." },
+      { type: 'h3', text: "Level 3: Fourplex (4 Units)" },
+      { type: 'p', text: "Example: $480,000 fourplex\n• Down payment: $16,800\n• Total rental income: $4,200/month (three tenant units)\n• Your monthly housing cost: ~-$100 (you actually make money each month)\n• Annual income: $1,200+\n\nNow you're profiting. The property generates positive cash flow while you live there." },
+      { type: 'h2', text: "The Real Numbers: A Fourplex Example" },
+      { type: 'p', text: "Let's look at what sophisticated house hackers are doing right now:\n\nProperty Details:\n• Purchase price: $480,000\n• FHA down payment (3.5%): $16,800\n• Loan amount: $463,200\n\nMonthly Income:\n• Unit 1 (where owner lives): N/A (owner-occupied)\n• Unit 2: $1,350/month\n• Unit 3: $1,400/month\n• Unit 4: $1,425/month\n• Total monthly rent: $4,175\n\nMonthly Expenses:\n• Mortgage (PITI): $3,100\n• Property management (8%): $334\n• Maintenance reserve (5%): $209\n• Vacancy reserve (5%): $209\n• Total monthly expenses: $3,852\n\nMonthly Result:\n• Income: $4,175\n• Expenses: $3,852\n• Monthly cash flow: +$323\n• Annual cash flow: +$3,876\n\nThe kicker: The owner lives for free AND makes money each month." },
+      { type: 'h2', text: "The FHA Rules You Need to Know" },
+      { type: 'h3', text: "Occupancy Requirement" },
+      { type: 'p', text: "You must live in one of the units as your primary residence. This isn't optional—it's how you qualify for FHA's owner-occupant rates and down payment requirements.\n\nYou have 60 days after closing to move in and must stay for at least 1 year." },
+      { type: 'h3', text: "Self-Sufficiency Test (3+ Unit Properties)" },
+      { type: 'p', text: "For properties with 3+ units, FHA requires the rental income to be sufficient to cover the mortgage. Specifically, 75% of the expected rental income is used in your debt-to-income calculation.\n\nWhat this means: You can't buy a property that won't support itself. The numbers have to work." },
+      { type: 'h3', text: "Reserve Requirements" },
+      { type: 'p', text: "For 3-4 unit properties, you'll need to have 3 months of PITI (Principal, Interest, Taxes, Insurance) in reserves after closing.\n\nExample: If your PITI is $3,100/month, you need $9,300 in reserves.\n\nThis ensures you can cover payments if there's a vacancy." },
+      { type: 'h2', text: "Why House Hacking Beats Traditional Investing" },
+      { type: 'p', text: "Traditional approach:\n• Rent an apartment for $1,200/month\n• Build zero equity\n• After 10 years: $144,000 spent, $0 in assets\n\nHouse hacking approach:\n• Own a duplex, live in one unit for $1,000/month\n• Tenant pays $1,500/month (more than covering your share)\n• Build $500+/month in equity\n• After 10 years: $120,000 out of pocket, $60,000+ in equity built, plus appreciation\n\nThe difference: You turned your housing expense into an investment." },
+      { type: 'h2', text: "The Perfect First Investment" },
+      { type: 'p', text: "House hacking is ideal if you:\n\n✓ Want to start investing with minimal down payment\n✓ Want to learn landlording without the overwhelming responsibility of managing multiple properties\n✓ Want to reduce your housing costs while building wealth\n✓ Are willing to live with tenants for 1-3 years\n✓ Want leverage and cash flow without being a professional investor" },
+      { type: 'h2', text: "Finding House Hacking Opportunities" },
+      { type: 'p', text: "The best house hacks in the Capital Region aren't always obvious. You need to know:\n• Which neighborhoods are attracting tenants\n• Which property types cash flow best (duplexes vs triplexes vs fourplexes)\n• What rents the market will support\n• How to model the financials correctly\n\nIf you're curious about what house hacking opportunities exist in our market, send me a message.\n\nI regularly see properties that would work perfectly as house hacks—where the rental income covers the mortgage and then some, leaving you living essentially for free while building equity.\n\nI'll send you some current opportunities and walk through the numbers. No obligation. Just good data to see if this strategy makes sense for your situation." }
     ]
   }
 ]
