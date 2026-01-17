@@ -58,5 +58,37 @@ export const blogPosts: BlogPost[] = [
       { type: 'h2', text: "The Investor Takeaway" },
       { type: 'p', text: "For buy-and-hold investors, appreciation is the silent wealth-builder. Both Albany and Schenectady show you don't need risky, explosive markets to build long-term value. Instead, you get steady equity gains + reliable rental income—a winning combination for 2025 and beyond." }
     ]
+  },
+  {
+    id: "selling-tenant-occupied-property-strategy",
+    title: "Selling Tenant-Occupied Properties: Proof You Don't Need Perfect Conditions to Close",
+    subtitle: "Close More Deals With Limited Access and Uncooperative Tenants",
+    excerpt: "Learn how to sell tenant-occupied properties without endless showings or price drops. Real strategy beats perfect conditions every time.",
+    authorImage: "/saad.png",
+    author: "Saad Tai",
+    date: "2026-01-17",
+    category: "Investment",
+    content: [
+      { type: 'h2', text: "The Reality Check" },
+      { type: 'p', text: "Not every listing goes smoothly. And that's okay.\n\nRecently, we closed on three properties under less-than-ideal circumstances. Minimal private showings. Only a couple of open houses. Tenants who weren't exactly rolling out the red carpet. And yet—we still got them sold.\n\nIf you've ever wondered how to sell a property with tenants living in it, or felt frustrated by limited access and uncooperative renters, you're not alone. But here's what we've learned: you don't always need 15 tours, three price drops, and a miracle. Sometimes, you just need the right game plan." },
+      { type: 'h2', text: "The Challenge: Selling Occupied Rental Property" },
+      { type: 'h3', text: "Why Tenant-Occupied Properties Are Tougher to Sell" },
+      { type: 'p', text: "Selling an occupied rental property comes with unique obstacles that owner-occupied homes simply don't face:\n\n• Limited showing availability – Tenants set the pace\n• Reduced buyer appeal – Buyers struggle to envision themselves in the space\n• Property presentation challenges – It's hard to keep a lived-in space showing ready\n• Tenant cooperation issues – Not all tenants welcome the disruption\n\nMost occupied properties take longer to sell and typically fetch lower prices than vacant ones. But \"typical\" doesn't have to be your story." },
+      { type: 'h3', text: "Understanding Your Legal Rights and Tenant Responsibilities" },
+      { type: 'p', text: "Before you list, understand the legal framework:\n\n• Notice requirements: You must typically give tenants 24 hours' notice before showings (varies by state)\n• Lease transfers: The existing lease automatically transfers to the new owner—you can't simply end it\n• Tenant rights: Tenants have the right to \"quiet enjoyment\" of the property\n• Disclosure: Buyers must be informed of the existing lease and tenant occupancy\n\nThis isn't just legal compliance; it's the foundation of your selling strategy." },
+      { type: 'h2', text: "The Winning Strategy: What Actually Works" },
+      { type: 'h3', text: "1. Reframe Your Approach to Tenant-Occupied Property Showings" },
+      { type: 'p', text: "Instead of fighting the \"limited access\" problem, work with it. Showing a tenant-occupied property doesn't mean losing the sale—it means being strategic.\n\nOur approach:\n• Set a predictable schedule: Work with tenants to establish one consistent showing day/time per week\n• Reduce friction: Fewer, better-quality showings beat daily disruptions\n• Focus on qualified buyers: With limited showing windows, you attract serious, motivated buyers who value what they see" },
+      { type: 'h3', text: "2. Make Tenant Cooperation a Priority (With Incentives)" },
+      { type: 'p', text: "Here's the truth: tenant cooperation is the difference between a slow sale and a quick one.\n\nOffer incentives that actually matter:\n• Rent reduction (even $100-200/month makes a difference)\n• Gift cards for their time and inconvenience\n• Moving assistance\n• Flexible lease terms for the new owner\n\nWhen tenants feel valued rather than inconvenienced, they cooperate. And when tenants cooperate, buyers feel the difference." },
+      { type: 'h3', text: "3. Use Virtual Tours and Professional Documentation" },
+      { type: 'p', text: "Can't get enough in-person showings? Don't let that stop you.\n\n• Professional photography and video tours\n• Virtual walkthroughs that showcase the property\n• Pre-listing inspection reports that build buyer confidence\n• Floor plans and rental income documentation for investor buyers\n\nSerious buyers—especially investor buyers—often prefer these tools anyway." },
+      { type: 'h3', text: "4. Know Your Buyer Profile" },
+      { type: 'p', text: "Not all buyers are created equal when it comes to tenant-occupied properties.\n\n• Owner-occupants: Want vacant possession. Negotiate \"cash for keys\" if the tenant won't move voluntarily\n• Investor buyers: Often prefer occupied properties. They're buying the cash flow, not the space\n• Owner-occupants with patience: Will accept the existing lease, especially with discounted pricing\n\nTailor your marketing to these distinct buyer personas." },
+      { type: 'h2', text: "The Bottom Line: Strategy Beats Perfection" },
+      { type: 'p', text: "We sold three properties with minimal showings, no price reductions, and uncooperative tenants. How? Because we had a focused window, a clear game plan, and realistic expectations.\n\nYou don't need:\n• 15 tours\n• Three price drops\n• A miracle\n• Perfect tenant cooperation\n\nYou do need:\n• The right strategy\n• Clear communication\n• Realistic pricing\n• Understanding of your buyer pool\n• Professional execution" },
+      { type: 'h2', text: "Dealing With Access Issues? Let's Create Your Strategy" },
+      { type: 'p', text: "If you're facing challenges with tenant-occupied properties, access limitations, or uncooperative tenants, don't try to force a square peg into a round hole. Each situation is different, and each one has a solution.\n\nReach out, and let's talk through your specific situation. We'll figure out what strategy actually works in real life—not what works in theory.\n\nThe game changes when you have the right plan." }
+    ]
   }
 ]
