@@ -7,8 +7,17 @@ import { trackMetaPageView, trackEvent } from '@/lib/tracking'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { COLORS } from '@/lib/colors'
 
-export function VIPContent() {
+interface VIPContentProps {
+  hero?: any
+}
+
+export function VIPContent({ hero }: VIPContentProps = {}) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Defaults from Sanity or fallback
+  const heroHeadline = hero?.headline || 'VIP Investor Access'
+  const heroDescription = hero?.description || 'Curated 2-4 unit deals. Selective distribution. Fewer bidders. Get in front of serious opportunities before the crowd.'
+  const heroCtaText = hero?.ctaText || 'Join the VIP List'
 
   useEffect(() => {
     trackMetaPageView('vip_investor_list_page')
@@ -21,10 +30,10 @@ export function VIPContent() {
         <Container>
           <FadeIn className="max-w-3xl mx-auto text-center">
             <Heading size="h1" className="font-heading mb-4">
-              VIP Investor Access
+              {heroHeadline}
             </Heading>
             <Text size="lg" className="text-gray-700 mb-8">
-              Curated 2-4 unit deals. Selective distribution. Fewer bidders.<br />Get in front of serious opportunities before the crowd.
+              {heroDescription}
             </Text>
             <div className="flex justify-center">
               <Button

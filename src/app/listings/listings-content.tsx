@@ -29,11 +29,16 @@ interface Listing {
 
 interface ListingsContentProps {
   listings: Listing[]
+  hero?: any
 }
 
-export function ListingsContent({ listings }: ListingsContentProps) {
+export function ListingsContent({ listings, hero }: ListingsContentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedAddress, setSelectedAddress] = useState<string>('')
+
+  // Defaults from Sanity or fallback
+  const heroHeadline = hero?.headline || 'Available Listings'
+  const heroDescription = hero?.description || 'Browse curated multifamily investment properties across the Capital Region.'
 
   const handleInquiry = (address: string) => {
     setSelectedAddress(address)
@@ -47,10 +52,10 @@ export function ListingsContent({ listings }: ListingsContentProps) {
         <Container>
           <FadeIn className="max-w-3xl mx-auto text-center">
             <Heading size="h1" className="font-heading mb-4">
-              Available Listings
+              {heroHeadline}
             </Heading>
             <Text size="lg" className="text-gray-700">
-              Explore multifamily investment properties across Albany County, Schenectady County, and Rensselaer County. Browse our active listings or contact us for more information.
+              {heroDescription}
             </Text>
           </FadeIn>
         </Container>
