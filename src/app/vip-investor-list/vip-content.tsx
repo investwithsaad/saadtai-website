@@ -1,12 +1,12 @@
 'use client'
 
-import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
+import { Section, Container, Heading, Text, FadeIn, Card, StaggerContainer, StaggerItem, Button } from '@/components/ui'
 import { CheckCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { trackMetaPageView, trackEvent } from '@/lib/tracking'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { HeroFadeIn } from '@/components/hero-fade-in'
 import { COLORS } from '@/lib/colors'
-import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 interface VIPContentProps {
   hero?: any
@@ -27,30 +27,15 @@ export function VIPContent({ hero }: VIPContentProps = {}) {
   return (
     <>
       {/* Hero Section */}
-      <Section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <Container>
-          <FadeIn className="max-w-3xl mx-auto text-center">
-            <Heading size="h1" className="font-heading mb-4">
-              {formatTextWithLineBreaks(heroHeadline)}
-            </Heading>
-            <Text size="lg" className="text-gray-700 mb-8">
-              {formatTextWithLineBreaks(heroDescription)}
-            </Text>
-            <div className="flex justify-center">
-              <Button
-                variant="default"
-                onClick={() => {
-                  trackEvent('cta_clicked', { location: 'vip_investor_list_hero', label: 'Request Access' })
-                  setIsModalOpen(true)
-                }}
-                style={{ height: '48px' }}
-              >
-                Request Access →
-              </Button>
-            </div>
-          </FadeIn>
-        </Container>
-      </Section>
+      <HeroFadeIn
+        title={heroHeadline}
+        subtitle={heroDescription}
+        ctaText={heroCtaText}
+        onCtaClick={() => {
+          trackEvent('cta_clicked', { location: 'vip_investor_list_hero', label: heroCtaText })
+          setIsModalOpen(true)
+        }}
+      />
 
       {/* What You Receive Section */}
       <Section background="background">

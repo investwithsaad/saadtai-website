@@ -4,16 +4,18 @@ import { motion } from "framer-motion"
 import { ReactNode } from "react"
 import { COLORS } from "@/lib/colors"
 import { LAYOUT } from "@/lib/layout"
-import { Section, Container, Heading, Text } from "./ui"
+import { Section, Container, Heading, Text, Button } from "./ui"
 import { formatTextWithLineBreaks } from "@/lib/format-text"
 
 interface HeroFadeInProps {
   title: ReactNode
   subtitle?: ReactNode
   compact?: boolean
+  ctaText?: string
+  onCtaClick?: () => void
 }
 
-export const HeroFadeIn = ({ title, subtitle, compact }: HeroFadeInProps) => {
+export const HeroFadeIn = ({ title, subtitle, compact, ctaText, onCtaClick }: HeroFadeInProps) => {
   const formattedTitle = typeof title === 'string' ? formatTextWithLineBreaks(title) : title
   const formattedSubtitle = typeof subtitle === 'string' ? formatTextWithLineBreaks(subtitle) : subtitle
 
@@ -31,9 +33,19 @@ export const HeroFadeIn = ({ title, subtitle, compact }: HeroFadeInProps) => {
               {formattedTitle}
             </Heading>
             {formattedSubtitle && (
-              <Text size="2xl" className="text-white/90">
+              <Text size="2xl" className="text-white/90 mb-8">
                 {formattedSubtitle}
               </Text>
+            )}
+            {ctaText && onCtaClick && (
+              <div className="flex justify-center">
+                <Button
+                  variant="default"
+                  onClick={onCtaClick}
+                >
+                  {ctaText} →
+                </Button>
+              </div>
             )}
           </motion.div>
         </div>
