@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { trackMetaPageView, trackEvent } from '@/lib/tracking'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { COLORS } from '@/lib/colors'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 interface VIPContentProps {
   hero?: any
@@ -30,10 +31,10 @@ export function VIPContent({ hero }: VIPContentProps = {}) {
         <Container>
           <FadeIn className="max-w-3xl mx-auto text-center">
             <Heading size="h1" className="font-heading mb-4">
-              {heroHeadline}
+              {formatTextWithLineBreaks(heroHeadline)}
             </Heading>
             <Text size="lg" className="text-gray-700 mb-8">
-              {heroDescription}
+              {formatTextWithLineBreaks(heroDescription)}
             </Text>
             <div className="flex justify-center">
               <Button

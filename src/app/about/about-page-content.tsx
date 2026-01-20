@@ -20,6 +20,7 @@ import { CheckCircle, Award, Briefcase, MapPin, Target, TrendingUp } from 'lucid
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 interface AboutPageContentProps {
   hero?: any
@@ -117,10 +118,10 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white' className="mb-6">
-                {heroHeadline}
+                {formatTextWithLineBreaks(heroHeadline)}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                {heroDescription}
+                {formatTextWithLineBreaks(heroDescription)}
               </Text>
               <Text color='white' className="text-white/80 mb-4 italic">Licensed Realtor® | NY #10401373295 | FL #SL3651394</Text>
             </div>

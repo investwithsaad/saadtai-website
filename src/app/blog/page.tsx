@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { BASE_URL } from '@/lib/metadata-factory'
 import { getPage } from '@/lib/sanity.queries'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPage('blog')
@@ -108,7 +109,7 @@ export default async function BlogPage() {
                   </Text>
 
                   <Text className="text-gray-700 mb-6 flex-1 leading-relaxed">
-                    {post.excerpt}
+                    {formatTextWithLineBreaks(post.excerpt)}
                   </Text>
 
                   <Button variant="default" className="p-0 flex items-center gap-2 w-fit">

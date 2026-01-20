@@ -29,36 +29,52 @@ export const parseInlineLinks = (text: string) => {
 
 export const RenderInlineLinks = ({ text }: { text: string }) => {
   const parsed = parseInlineLinks(text)
-  
+
+  const renderContent = (content: string | { type: 'link'; text: string; href: string }, idx: number) => {
+    if (typeof content === 'string') {
+      // Handle newlines in plain text
+      return content.split('\n').map((line, lineIdx) => (
+        <span key={`${idx}-${lineIdx}`}>
+          {line}
+          {lineIdx < content.split('\n').length - 1 && <br />}
+        </span>
+      ))
+    }
+    return (
+      <Link
+        key={idx}
+        href={content.href}
+        style={{
+          color: COLORS.primary,
+          paddingLeft: '0.25rem',
+          paddingRight: '0.25rem',
+          marginLeft: '-0.25rem',
+          marginRight: '-0.25rem',
+          borderRadius: '0.25rem',
+          transition: 'background-color 150ms ease-in-out',
+        }}
+        className="hover:bg-[color:var(--bg-color)]"
+      >
+        {content.text}
+      </Link>
+    )
+  }
+
   if (!parsed) {
-    return <>{text}</>
+    // Handle newlines in text when no links are found
+    return <>
+      {text.split('\n').map((line, idx) => (
+        <span key={idx}>
+          {line}
+          {idx < text.split('\n').length - 1 && <br />}
+        </span>
+      ))}
+    </>
   }
 
   return (
     <>
-      {parsed.map((part, idx) => {
-        if (typeof part === 'string') {
-          return part
-        }
-        return (
-          <Link
-            key={idx}
-            href={part.href}
-            style={{
-              color: COLORS.primary,
-              paddingLeft: '0.25rem',
-              paddingRight: '0.25rem',
-              marginLeft: '-0.25rem',
-              marginRight: '-0.25rem',
-              borderRadius: '0.25rem',
-              transition: 'background-color 150ms ease-in-out',
-            }}
-            className="hover:bg-[color:var(--bg-color)]"
-          >
-            {part.text}
-          </Link>
-        )
-      })}
+      {parsed.map((part, idx) => renderContent(part, idx))}
       <style>{`:root { --bg-color: ${COLORS.background}; }`}</style>
     </>
   )

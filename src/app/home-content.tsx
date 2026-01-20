@@ -21,6 +21,7 @@ import { useScrollTracking } from '@/hooks/useScrollTracking'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 interface HomeContentProps {
   hero?: {
@@ -82,15 +83,10 @@ export function HomeContent({ hero }: HomeContentProps) {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white'>
-                {heroTitle.split('\n').map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    {i < heroTitle.split('\n').length - 1 && <br />}
-                  </span>
-                ))}
+                {formatTextWithLineBreaks(heroTitle)}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                {heroSubtitle}
+                {formatTextWithLineBreaks(heroSubtitle)}
               </Text>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { COLORS } from "@/lib/colors"
 import { LAYOUT } from "@/lib/layout"
 import { Section, Container, Heading, Text } from "./ui"
+import { formatTextWithLineBreaks } from "@/lib/format-text"
 
 interface BlogHeroFadeInProps {
   title: string
@@ -54,7 +55,7 @@ export const BlogHeroFadeIn = ({ title, subtitle, date, author, authorTitle, aut
         </Heading>
         {subtitle && (
           <Text size="lg" className="text-white mb-8">
-            {subtitle}
+            {formatTextWithLineBreaks(subtitle)}
           </Text>
         )}
 

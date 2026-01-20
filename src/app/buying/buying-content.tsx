@@ -20,6 +20,7 @@ import { MortgageCalculator } from '@/components/MortgageCalculator'
 import { AffordabilityCalculator } from '@/components/AffordabilityCalculator'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 // Filter for buying-related FAQs
 const buyingFAQs = multifamilyInvestorFAQs.filter(faq =>
@@ -79,12 +80,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white'>
-                {heroTitle.split('\n').map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    {i < heroTitle.split('\n').length - 1 && <br />}
-                  </span>
-                ))}
+                {formatTextWithLineBreaks(heroTitle)}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
                 {heroSubtitle}
