@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { COLORS as BRAND_COLORS } from '@/lib/colors'
 import { trackChatbotSessionStart, trackChatbotMessage, trackChatbotScheduleCall } from '@/lib/tracking'
 import { Button } from '@/components/ui'
-import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 
 interface Message {
   id: string
@@ -131,7 +130,7 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
         sender: 'bot',
         timestamp: new Date(),
         actionButtons: showForm ? [
-          { label: "Schedule a Call", action: 'open_calendly' }
+          { label: "Schedule a Call", action: 'open_form_modal' }
         ] : undefined
       }
       setMessages((prev) => [...prev, botMessage])
@@ -150,7 +149,7 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
   }, [inputValue, messages])
 
   const handleActionButtonClick = useCallback((action: string) => {
-    if (action === 'open_calendly') {
+    if (action === 'open_form_modal') {
       // Track the schedule call action
       trackChatbotScheduleCall()
 

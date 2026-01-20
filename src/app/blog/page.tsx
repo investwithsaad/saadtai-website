@@ -7,14 +7,14 @@ import {
   Text,
   Card,
   StaggerContainer,
-  Button
+  Button,
+  FadeIn
 } from '@/components/ui'
 import { HeroFadeIn } from '@/components/hero-fade-in'
-import { CTA } from '@/components/cta'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
+import { BlogPageCTA } from '@/components/BlogPageCTA'
 import { blogPosts } from '@/data/blog-posts'
-import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import Link from 'next/link'
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { BASE_URL } from '@/lib/metadata-factory'
@@ -122,13 +122,7 @@ export default async function BlogPage() {
       </Section>
 
       {/* CTA Section */}
-      <CTA
-        title="Ready to make your next real estate move?"
-        text="Let's discuss your home buying, selling, or valuation needs with a personal consultation from Saad."
-        buttonText="Schedule a Call"
-        href={buildCalendlyUrl(CALENDLY_CONFIG.discovery)}
-        useBG={true}
-      />
+      <BlogPageCTA />
     </>
   )
 }

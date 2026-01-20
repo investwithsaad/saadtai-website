@@ -701,7 +701,8 @@ export function HomeContent({ hero }: HomeContentProps) {
                   <Heading size="h3">SAAD TAI</Heading>
                   <p className="text-slate-600 mb-6">
                     REALTOR®<br />
-                    LIC. #10401373295
+                    NY LIC. #10401373295<br />
+                    FL LIC. #SL3651394
                   </p>
                   <div className="flex gap-4">
                     <a href="https://www.facebook.com/profile.php?id=61577367974508" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Facebook" className="text-slate-400 hover:text-slate-700 transition-colors">
@@ -720,7 +721,7 @@ export function HomeContent({ hero }: HomeContentProps) {
 
                 <div className="space-y-6 text-slate-700 leading-relaxed mb-8 max-w-2xl">
                   <p>
-                    <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving all across New York State, with deep expertise in the Capital region. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
+                    <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving New York State and Florida, with deep expertise in the Capital Region and Jacksonville. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
                   </p>
 
                   <p>
