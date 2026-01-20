@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
 import { LeadFormModal } from '@/components/LeadFormModal'
-import { formatTextWithLineBreaks } from '@/lib/format-text'
+import { HeroFadeIn } from '@/components/hero-fade-in'
 
 interface ListingImage {
   asset?: {
@@ -49,18 +49,10 @@ export function ListingsContent({ listings, hero }: ListingsContentProps) {
   return (
     <>
       {/* Hero Section */}
-      <Section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <Container>
-          <FadeIn className="max-w-3xl mx-auto text-center">
-            <Heading size="h1" className="font-heading mb-4">
-              {formatTextWithLineBreaks(heroHeadline)}
-            </Heading>
-            <Text size="lg" className="text-gray-700">
-              {formatTextWithLineBreaks(heroDescription)}
-            </Text>
-          </FadeIn>
-        </Container>
-      </Section>
+      <HeroFadeIn
+        title={heroHeadline}
+        subtitle={heroDescription}
+      />
 
       {/* Listings Grid */}
       <Section background="white">

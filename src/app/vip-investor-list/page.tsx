@@ -1,6 +1,7 @@
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { VIPContent } from './vip-content'
 import { getPage } from '@/lib/sanity.queries'
+import { Breadcrumb } from '@/components/breadcrumb'
 
 export async function generateMetadata() {
   const page = await getPage('vip-investor-list')
@@ -15,5 +16,10 @@ export async function generateMetadata() {
 
 export default async function VIPInvestorListPage() {
   const page = await getPage('vip-investor-list')
-  return <VIPContent hero={page?.hero} />
+  return (
+    <>
+      <Breadcrumb items={[{ label: 'VIP Investor List' }]} />
+      <VIPContent hero={page?.hero} />
+    </>
+  )
 }
