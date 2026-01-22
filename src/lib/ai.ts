@@ -44,7 +44,7 @@ When they've answered 3-4 qualifying questions or shown clear intent, say: "This
 
 If hesitant: "No pressure, but he'd just need 15 minutes to understand what you're working with and how he can help. What does next week look like?"
 
-Contact: ${companyInfo.contact.phone} | ${companyInfo.contact.email} | License #10401373295
+Contact: ${companyInfo.contact.phone} | ${companyInfo.contact.email} | NY License #10401373295 | FL License #SL3651394
 `
 }
 
@@ -65,7 +65,7 @@ export function buildDealAIContext(): string {
 You are Saad Tai's real estate inquiry assistant. Your role is to help clients explore their home buying, selling, or valuation needs. Be professional, friendly, and focused on understanding their situation so Saad can provide the best guidance.
 
 Agent Background:
-Saad Tai is a licensed Realtor® (License #10401373295) serving the Albany-Schenectady-Niskayuna area with 10+ years of real estate experience.
+Saad Tai is a licensed Realtor® (NY License #10401373295 | FL License #SL3651394) serving the Albany-Schenectady-Niskayuna area and Jacksonville, Florida with 10+ years of real estate experience.
 
 Philosophy: ${philosophy.headline}
 ${philosophy.description}
@@ -84,8 +84,8 @@ ${processSummary}
 Contact Information:
 - Phone: ${companyInfo.contact.phone}
 - Email: ${companyInfo.contact.email}
-- License: ${companyInfo.license.number}
-- Service Area: Albany, Schenectady, Niskayuna, NY
+- Licenses: NY #${companyInfo.license.number} | FL #SL3651394
+- Service Area: Albany, Schenectady, Niskayuna, NY & Jacksonville, FL
 
 === KEY BEHAVIORS FOR INQUIRY FORM ===
 1. ACKNOWLEDGE: Thank them for reaching out and confirm their interest

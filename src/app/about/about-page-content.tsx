@@ -20,9 +20,19 @@ import { CheckCircle, Award, Briefcase, MapPin, Target, TrendingUp } from 'lucid
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
-export default function AboutPageContent() {
+interface AboutPageContentProps {
+  hero?: any
+}
+
+export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Defaults from Sanity or fallback
+  const heroHeadline = hero?.headline || 'Straight Talk. No Fluff.'
+  const heroDescription = hero?.description || 'Licensed REALTOR® serving New York State and Florida. With deep expertise in New York\'s Capital Region (Albany-Schenectady) and Jacksonville, Florida. I\'m a portfolio-focused advisor—not just a transaction agent.'
+  const heroCtaText = hero?.ctaText || 'Talk through your next move'
 
   // Generate Review schemas for testimonials (all 5-star reviews)
   const reviewSchemas = testimonials.map((testimonial) =>
@@ -75,9 +85,10 @@ export default function AboutPageContent() {
   ]
 
   const credentials = [
-    { icon: Award, text: 'Licensed Realtor® - New York' },
+    { icon: Award, text: 'Licensed Realtor® - New York & Florida' },
     { icon: Briefcase, text: 'NY Real Estate License #10401373295' },
-    { icon: MapPin, text: 'Capital Region Specialist' },
+    { icon: Briefcase, text: 'FL Real Estate License #SL3651394' },
+    { icon: MapPin, text: 'Capital Region & Jacksonville Specialist' },
     { icon: Target, text: 'Specialist in Multifamily Portfolio Strategy' },
     { icon: TrendingUp, text: '95%+ Repeat & Referral Client Rate' },
     { icon: CheckCircle, text: 'Investor-Focused Approach' }
@@ -107,12 +118,12 @@ export default function AboutPageContent() {
           <div className="fade-in-lcp">
             <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
               <Heading size="h1" color='white' className="mb-6">
-                Hi, I'm Saad Tai
+                {formatTextWithLineBreaks(heroHeadline)}
               </Heading>
               <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                Multifamily investment advisor. I help investors think through buy, sell, and hold decisions while my team handles the execution. Strategic guidance. Honest analysis. Direct access.
+                {formatTextWithLineBreaks(heroDescription)}
               </Text>
-              <Text color='white' className="text-white/80 mb-4 italic">Licensed Realtor® | NY License #10401373295</Text>
+              <Text color='white' className="text-white/80 mb-4 italic">Licensed Realtor® | NY #10401373295 | FL #SL3651394</Text>
             </div>
           </div>
         </Container>
@@ -137,7 +148,8 @@ export default function AboutPageContent() {
                     <Heading size="h3">SAAD TAI</Heading>
                     <p className="text-slate-600 mb-6">
                       REALTOR®<br />
-                      LIC. #10401373295
+                      NY LIC. #10401373295<br />
+                      FL LIC. #SL3651394
                     </p>
                   </div>
                 </div>
@@ -148,7 +160,7 @@ export default function AboutPageContent() {
 
                   <div className="space-y-6 text-slate-700 leading-relaxed mb-8 max-w-2xl">
                     <p>
-                      <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving all across New York State, with deep expertise in the Capital region. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
+                      <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving New York State and Florida, with deep expertise in the Capital Region and Jacksonville. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
                     </p>
 
                     <p>

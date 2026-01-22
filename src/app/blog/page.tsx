@@ -7,25 +7,30 @@ import {
   Text,
   Card,
   StaggerContainer,
-  Button
+  Button,
+  FadeIn
 } from '@/components/ui'
 import { HeroFadeIn } from '@/components/hero-fade-in'
-import { CTA } from '@/components/cta'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
+import { BlogPageCTA } from '@/components/BlogPageCTA'
 import { blogPosts } from '@/data/blog-posts'
-import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import Link from 'next/link'
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { BASE_URL } from '@/lib/metadata-factory'
+import { getPage } from '@/lib/sanity.queries'
+import { formatTextWithLineBreaks } from '@/lib/format-text'
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'Multifamily Investment Blog | Saad Tai',
-  description: 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
-  path: '/blog',
-  keywords: 'multifamily investing blog, real estate investment strategies, market analysis, cap rate analysis',
-  ogImage: '/House1.webp',
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPage('blog')
+
+  return createPageMetadata({
+    title: page?.title || 'Multifamily Investment Blog | Saad Tai',
+    description: page?.description || 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
+    path: '/blog',
+    ogImage: page?.ogImage?.asset?.url || '/House1.webp',
+  })
+}
 
 const formatDate = (isoDate: string): string => {
   const date = new Date(isoDate + 'T00:00:00Z')
@@ -56,10 +61,14 @@ const blogCollectionSchema = {
   }
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const page = await getPage('blog')
   const sortedPosts = [...blogPosts].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
+
+  const heroHeadline = page?.hero?.headline || 'Invest with Saad Blog'
+  const heroDescription = page?.hero?.description || 'Multifamily investment strategies, market insights, and portfolio guidance for small investors in the Capital Region.'
 
   return (
     <>
@@ -71,8 +80,8 @@ export default function BlogPage() {
 
       {/* Hero Section */}
       <HeroFadeIn
-        title="Invest with Saad Blog"
-        subtitle="Multifamily investment strategies, market insights, and portfolio guidance for small investors in the Capital Region."
+        title={heroHeadline}
+        subtitle={heroDescription}
       />
 
       {/* Blog Posts List */}
@@ -100,7 +109,7 @@ export default function BlogPage() {
                   </Text>
 
                   <Text className="text-gray-700 mb-6 flex-1 leading-relaxed">
-                    {post.excerpt}
+                    {formatTextWithLineBreaks(post.excerpt)}
                   </Text>
 
                   <Button variant="default" className="p-0 flex items-center gap-2 w-fit">
@@ -114,13 +123,7 @@ export default function BlogPage() {
       </Section>
 
       {/* CTA Section */}
-      <CTA
-        title="Ready to make your next real estate move?"
-        text="Let's discuss your home buying, selling, or valuation needs with a personal consultation from Saad."
-        buttonText="Schedule a Call"
-        href={buildCalendlyUrl(CALENDLY_CONFIG.discovery)}
-        useBG={true}
-      />
+      <BlogPageCTA />
     </>
   )
 }

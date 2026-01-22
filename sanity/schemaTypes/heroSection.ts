@@ -11,9 +11,10 @@ export default {
     {
       name: 'headline',
       title: 'Headline',
-      type: 'string',
+      type: 'text',
+      rows: 3,
       validation: (Rule: any) => Rule.required(),
-      description: 'Main heading (H1)',
+      description: 'Main heading (H1) - use line breaks for multi-line headlines',
     },
     {
       name: 'description',

@@ -47,7 +47,10 @@ export const getOrganizationSchema = (config?: {
     "New York",
     "Albany",
     "Schenectady",
-    "Troy"
+    "Troy",
+    "Florida",
+    "Jacksonville",
+    "Duval County"
   ],
   "foundingDate": "2015",
   "founder": {
@@ -56,7 +59,20 @@ export const getOrganizationSchema = (config?: {
     "jobTitle": "Multifamily Investment Advisor",
     "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
     "url": `${BASE_URL}/`,
-    "license": "New York Real Estate License #10401373295"
+    "license": [
+      {
+        "@type": "License",
+        "name": "New York Real Estate License",
+        "licenseNumber": "10401373295",
+        "validIn": { "@type": "State", "name": "New York" }
+      },
+      {
+        "@type": "License",
+        "name": "Florida Real Estate License",
+        "licenseNumber": "SL3651394",
+        "validIn": { "@type": "State", "name": "Florida" }
+      }
+    ]
   },
   "knowsAbout": [
     "Multifamily Investing",

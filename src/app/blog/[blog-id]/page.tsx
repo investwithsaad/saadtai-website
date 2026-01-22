@@ -4,17 +4,17 @@ import {
   Heading,
   Text,
   FadeIn,
-  Card
+  Card,
+  Button
 } from '@/components/ui'
 import { BlogHeroFadeIn } from '@/components/blog-hero-fade-in'
 import { Breadcrumb } from '@/components/breadcrumb'
-import { CTA } from '@/components/cta'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
+import { BlogPostCTA } from '@/components/BlogPostCTA'
 import { RenderInlineLinks } from '@/lib/inline-links'
 import { getArticleSchema } from '@/lib/schema-generators'
 import { blogPosts } from '@/data/blog-posts'
-import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 import { BASE_URL } from '@/lib/metadata-factory'
 import { notFound } from 'next/navigation'
 
@@ -111,6 +111,21 @@ export default async function BlogPost({ params }: Props) {
   })
 
   return (
+    <BlogPostClient
+      blogPost={blogPost}
+      formattedDate={formattedDate}
+      articleSchema={articleSchema}
+    />
+  )
+}
+
+function BlogPostClient({ blogPost, formattedDate, articleSchema }: {
+  blogPost: any,
+  formattedDate: string,
+  articleSchema: any
+}) {
+
+  return (
     <>
       {/* Schema Markup */}
       <SchemaRenderer schema={articleSchema} />
@@ -137,7 +152,7 @@ export default async function BlogPost({ params }: Props) {
       <Section background="white">
         <Container>
           <FadeIn className="max-w-3xl mx-auto prose prose-lg">
-            {blogPost.content.map((block, index) => {
+            {blogPost.content.map((block: { type: string; text: string }, index: number) => {
               if (block.type === 'h2') {
                 return (
                   <Heading key={index} size="h2">
@@ -182,13 +197,7 @@ export default async function BlogPost({ params }: Props) {
         </Container>
       </Section>
 
-      <CTA
-        title="Ready to make your next real estate move?"
-        text="Let's discuss your home buying, selling, or valuation needs with a personal consultation from Saad."
-        buttonText="Schedule a Call"
-        href={buildCalendlyUrl(CALENDLY_CONFIG.discovery)}
-        useBG={true}
-      />
+      <BlogPostCTA />
     </>
   )
 }

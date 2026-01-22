@@ -67,6 +67,9 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
+// Global revalidate - 24 hour fallback for all routes (overridden by webhook)
+export const revalidate = 86400
+
 export default function RootLayout({
   children,
 }: {
@@ -119,6 +122,17 @@ export default function RootLayout({
           {children}
         </LayoutContent>
         <CookieConsentBanner />
+        <Script
+          id="register-sw"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').catch(() => {})
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )

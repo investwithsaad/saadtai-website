@@ -4,16 +4,16 @@ import { useState } from 'react'
 import {
   ChevronDown
 } from 'lucide-react'
-import { CTA } from '@/components/cta'
+import { LeadFormModal } from '@/components/LeadFormModal'
 import {
   Section,
   Container,
   Heading,
   Text,
   StaggerContainer,
-  Button
+  Button,
+  FadeIn
 } from '@/components/ui'
-import { CALENDLY_CONFIG, buildCalendlyUrl } from '@/config/calendly'
 
 interface FAQItem {
   id: string
@@ -60,6 +60,7 @@ interface FAQClientCategorizedProps {
 
 export default function FAQClientCategorized({ categories }: FAQClientCategorizedProps) {
   const [activeCategory, setActiveCategory] = useState(categories[0]?.category || '')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const activeCategoryData = categories.find(cat => cat.category === activeCategory)
 
@@ -109,13 +110,21 @@ export default function FAQClientCategorized({ categories }: FAQClientCategorize
       )}
 
       {/* Contact Section */}
-      <CTA
-        title="Ready to talk to Saad?"
-        text="Book a personal consultation to discuss your real estate needs, whether buying, selling, or valuating."
-        buttonText="Schedule a Call"
-        href={buildCalendlyUrl(CALENDLY_CONFIG.discovery)}
-        useBG
-      />
+      <Section background="background">
+        <Container>
+          <FadeIn className="flex flex-col items-center text-center">
+            <Heading size="h2">Ready to talk to Saad?</Heading>
+            <Text className="mt-4 text-gray-600 max-w-2xl mx-auto mb-8">
+              Book a personal consultation to discuss your real estate needs, whether buying, selling, or valuating.
+            </Text>
+            <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
+              Schedule a Call
+            </Button>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

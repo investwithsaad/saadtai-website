@@ -886,6 +886,45 @@ async function migratePages() {
         ctaText: 'Talk through your next move →',
       },
     },
+    {
+      _type: 'page',
+      title: 'About',
+      slug: { _type: 'slug', current: 'about' },
+      description: 'About Saad Tai - Multifamily Investment Advisor specializing in buy/sell strategies in upstate New York.',
+    },
+    {
+      _type: 'page',
+      title: 'VIP Investor List',
+      slug: { _type: 'slug', current: 'vip-investor-list' },
+      description: 'Get early access to curated 2-4 unit deals with selective distribution. Fewer bidders, better negotiating power, and verified numbers for serious investors.',
+      hero: {
+        headline: 'Early Access to Off-Market Deals',
+        description: 'Join a selective group of serious investors who get first look at curated multifamily opportunities before they hit the MLS.',
+        ctaText: 'Join the VIP List',
+      },
+    },
+    {
+      _type: 'page',
+      title: 'Blog',
+      slug: { _type: 'slug', current: 'blog' },
+      description: 'Multifamily investment insights and strategies for small investors. Cap rates, cash flow, market analysis, and portfolio guidance.',
+      hero: {
+        headline: 'Invest with Saad Blog',
+        description: 'Multifamily investment strategies, market insights, and portfolio guidance for small investors in the Capital Region.',
+        ctaText: 'Read Articles',
+      },
+    },
+    {
+      _type: 'page',
+      title: 'Listings',
+      slug: { _type: 'slug', current: 'listings' },
+      description: 'Browse available multifamily investment properties and listings across Albany County, Schenectady County, and Rensselaer County. Find your next investment opportunity.',
+      hero: {
+        headline: 'Available Multifamily Investments',
+        description: 'Curated 2-4 unit investment properties across the Capital Region. Verified numbers, honest analysis, investor-grade deals.',
+        ctaText: 'Browse Properties',
+      },
+    },
   ]
 
   for (const page of pages) {

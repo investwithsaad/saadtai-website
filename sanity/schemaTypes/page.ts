@@ -3,6 +3,9 @@
  * Master document for editable pages with hero and sections
  */
 
+import { CharacterCountInput } from '../components/CharacterCountInput'
+import { DescriptionInput } from '../components/DescriptionInput'
+
 export default {
   name: 'page',
   title: 'Page',
@@ -12,8 +15,11 @@ export default {
       name: 'title',
       title: 'Page Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
-      description: 'Internal name for the page',
+      components: {
+        input: CharacterCountInput,
+      },
+      validation: (Rule: any) => Rule.required().min(10).max(70).warning('Title should be 50-60 characters for best SEO results'),
+      description: 'Page title displayed in browser tab and as SEO title (10-70 characters recommended: 50-60)',
     },
     {
       name: 'slug',
@@ -21,17 +27,33 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
-      description: 'URL-friendly identifier (e.g., "home", "buying", "selling")',
+      readOnly: true,
+      description: 'System identifier - automatically generated from page title',
     },
     {
       name: 'description',
       title: 'Meta Description',
       type: 'text',
       rows: 2,
-      description: 'SEO meta description',
+      components: {
+        input: DescriptionInput,
+      },
+      validation: (Rule: any) =>
+        Rule.required()
+          .min(110)
+          .max(160)
+          .warning('Meta description should be 110-160 characters (Google recommendation)'),
+      description: 'SEO meta description (110-160 characters). Used by Google for snippets and Facebook for link previews. Longer descriptions may be truncated.',
+    },
+    {
+      name: 'ogImage',
+      title: 'Open Graph Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description: 'Image for social sharing (1200x630px recommended)',
     },
     {
       name: 'hero',
@@ -40,25 +62,17 @@ export default {
       validation: (Rule: any) => Rule.required(),
       description: 'Main hero section for this page',
     },
-    {
-      name: 'sections',
-      title: 'Page Sections',
-      type: 'array',
-      of: [
-        { type: 'reference', to: { type: 'pageSection' } },
-      ],
-      description: 'Additional sections below the hero (optional)',
-    },
   ],
   preview: {
     select: {
       title: 'title',
-      hero: 'hero',
+      slug: 'slug.current',
+      headline: 'hero.headline',
     },
-    prepare({ title, hero }: any) {
+    prepare({ title, slug, headline }: any) {
       return {
-        title: title,
-        subtitle: hero?.headline || 'No hero configured',
+        title: `${title}`,
+        subtitle: `${slug}`,
       };
     },
   },

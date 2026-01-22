@@ -210,7 +210,7 @@ export function Footer() {
           <div className="flex justify-center py-6 mb-6 border-t border-white/20">
             <div className="text-center">
               <Text size="sm" color="white" className="opacity-90">
-                New York Real Estate License #10401373295 | Realtor®
+                NY License #10401373295 | FL License #SL3651394 | Realtor®
               </Text>
             </div>
           </div>

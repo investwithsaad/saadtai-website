@@ -22,13 +22,11 @@ export interface FormSubmitData {
   funding_amount?: string
   owner_credit_score?: string
   company_state?: string
-  calendly_url?: string
 }
 
 export function useFormSubmit(
   formType: string,
   webhookUrl?: string,
-  calendlyUrl?: string,
   onAfterSubmit?: (data: FormSubmitData) => void
 ) {
   const [success, setSuccess] = useState(false)
@@ -87,7 +85,6 @@ export function useFormSubmit(
       funding_amount: data.funding_amount || '',
       owner_credit_score: data.owner_credit_score || '',
       company_state: data.company_state || '',
-      calendly_url: data.calendly_url || '',
     }
 
     setFormData(submittedFormData)
@@ -108,13 +105,8 @@ export function useFormSubmit(
         onAfterSubmit(submittedFormData)
       }
 
-      if (calendlyUrl) {
-        // Open Calendly in new tab for intro/partner forms
-        window.open(calendlyUrl, '_blank')
-      } else {
-        // Show success page for other forms
-        setSuccess(true)
-      }
+      // Show success page for all forms
+      setSuccess(true)
       form?.reset?.()
       setIsSubmitting(false)
     }, 300)

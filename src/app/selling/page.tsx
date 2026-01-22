@@ -4,14 +4,18 @@ import { getHowToSchema } from '@/lib/schema-generators'
 import SellerPageContent from './seller-page-content'
 import { SELLING_PROCESS_STEPS } from './constants'
 import { createPageMetadata } from '@/lib/metadata-factory'
+import { getPage } from '@/lib/sanity.queries'
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'Selling Multifamily Properties | Saad Tai',
-  description: 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
-  path: '/selling',
-  keywords: 'sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale',
-  ogImage: '/home seller.webp',
-})
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPage('selling')
+
+  return createPageMetadata({
+    title: page?.title || 'Selling Multifamily Properties | Saad Tai',
+    description: page?.description || 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
+    path: '/selling',
+    ogImage: page?.ogImage?.asset?.url,
+  })
+}
 
 // Generate the schema once on the server
 const sellingProcessSchema = getHowToSchema({
@@ -23,13 +27,14 @@ const sellingProcessSchema = getHowToSchema({
   }))
 })
 
-export default function SellerPage() {
+export default async function SellerPage() {
+  const page = await getPage('selling')
+
   return (
     <>
       {/* Render HowTo schema */}
       <SchemaRenderer schema={sellingProcessSchema} />
-      <SellerPageContent />
-
+      <SellerPageContent hero={page?.hero} />
     </>
   )
 }

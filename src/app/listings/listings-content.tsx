@@ -1,14 +1,45 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import Image from 'next/image'
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
-import { listings } from '@/data/listings'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { HeroFadeIn } from '@/components/hero-fade-in'
 
-export function ListingsContent() {
+interface ListingImage {
+  asset?: {
+    url?: string
+  }
+}
+
+interface Listing {
+  id: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  bedrooms?: number
+  bathrooms?: number
+  squareFeet?: number
+  propertyType: string
+  features: string[]
+  description: string
+  status: string
+  image?: ListingImage
+}
+
+interface ListingsContentProps {
+  listings: Listing[]
+  hero?: any
+}
+
+export function ListingsContent({ listings, hero }: ListingsContentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedAddress, setSelectedAddress] = useState<string>('')
+
+  // Defaults from Sanity or fallback
+  const heroHeadline = hero?.headline || 'Available Listings'
+  const heroDescription = hero?.description || 'Browse curated multifamily investment properties across the Capital Region.'
 
   const handleInquiry = (address: string) => {
     setSelectedAddress(address)
@@ -18,18 +49,10 @@ export function ListingsContent() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <Container>
-          <FadeIn className="max-w-3xl mx-auto text-center">
-            <Heading size="h1" className="font-heading mb-4">
-              Available Listings
-            </Heading>
-            <Text size="lg" className="text-gray-700">
-              Explore multifamily investment properties across Albany County, Schenectady County, and Rensselaer County. Browse our active listings or contact us for more information.
-            </Text>
-          </FadeIn>
-        </Container>
-      </Section>
+      <HeroFadeIn
+        title={heroHeadline}
+        subtitle={heroDescription}
+      />
 
       {/* Listings Grid */}
       <Section background="white">
@@ -38,8 +61,20 @@ export function ListingsContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {listings.map((listing) => (
                 <StaggerItem key={listing.id}>
-                  <Card className="flex flex-col h-full">
-                    <div className="mb-4 flex items-start justify-between gap-4">
+                  <Card className="flex flex-col h-full overflow-hidden">
+                    {listing.image?.asset?.url && (
+                      <div className="relative w-full h-48 bg-gray-200 mb-4">
+                        <Image
+                          src={listing.image.asset.url}
+                          alt={listing.address}
+                          fill
+                          className="object-cover"
+                          quality={75}
+                        />
+                      </div>
+                    )}
+                    <div className="px-4 pt-4 pb-0">
+                      <div className="mb-4 flex items-start justify-between gap-4">
                       <div>
                         <Heading size="h3" className="font-heading mb-2">
                           {listing.address}
@@ -93,8 +128,8 @@ export function ListingsContent() {
                       </Text>
                       {listing.features.length > 0 && (
                         <ul className="text-sm text-gray-600 space-y-1">
-                          {listing.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start">
+                          {listing.features.map((feature) => (
+                            <li key={feature} className="flex items-start">
                               <span className="mr-2">•</span>
                               <span>{feature}</span>
                             </li>
@@ -112,6 +147,7 @@ export function ListingsContent() {
                         Inquire About This Property
                       </Button>
                     </div>
+                    </div>
                   </Card>
                 </StaggerItem>
               ))}
@@ -125,11 +161,15 @@ export function ListingsContent() {
             <Text className="text-gray-700 mb-8">
               Let us help you find the perfect home. Our team can assist with properties not listed here.
             </Text>
-            <Link href="/contact-us">
-              <Button variant="default">
-                Get in Touch
-              </Button>
-            </Link>
+            <Button
+              variant="default"
+              onClick={() => {
+                setSelectedAddress('')
+                setIsModalOpen(true)
+              }}
+            >
+              Get in Touch
+            </Button>
           </div>
         </Container>
       </Section>

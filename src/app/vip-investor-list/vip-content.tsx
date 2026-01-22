@@ -1,14 +1,24 @@
 'use client'
 
-import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
+import { Section, Container, Heading, Text, FadeIn, Card, StaggerContainer, StaggerItem, Button } from '@/components/ui'
 import { CheckCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { trackMetaPageView, trackEvent } from '@/lib/tracking'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { HeroFadeIn } from '@/components/hero-fade-in'
 import { COLORS } from '@/lib/colors'
 
-export function VIPContent() {
+interface VIPContentProps {
+  hero?: any
+}
+
+export function VIPContent({ hero }: VIPContentProps = {}) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Defaults from Sanity or fallback
+  const heroHeadline = hero?.headline || 'VIP Investor Access'
+  const heroDescription = hero?.description || 'Curated 2-4 unit deals. Selective distribution. Fewer bidders. Get in front of serious opportunities before the crowd.'
+  const heroCtaText = hero?.ctaText || 'Join the VIP List'
 
   useEffect(() => {
     trackMetaPageView('vip_investor_list_page')
@@ -17,30 +27,15 @@ export function VIPContent() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <Container>
-          <FadeIn className="max-w-3xl mx-auto text-center">
-            <Heading size="h1" className="font-heading mb-4">
-              VIP Investor Access
-            </Heading>
-            <Text size="lg" className="text-gray-700 mb-8">
-              Curated 2-4 unit deals. Selective distribution. Fewer bidders.<br />Get in front of serious opportunities before the crowd.
-            </Text>
-            <div className="flex justify-center">
-              <Button
-                variant="default"
-                onClick={() => {
-                  trackEvent('cta_clicked', { location: 'vip_investor_list_hero', label: 'Request Access' })
-                  setIsModalOpen(true)
-                }}
-                style={{ height: '48px' }}
-              >
-                Request Access →
-              </Button>
-            </div>
-          </FadeIn>
-        </Container>
-      </Section>
+      <HeroFadeIn
+        title={heroHeadline}
+        subtitle={heroDescription}
+        ctaText={heroCtaText}
+        onCtaClick={() => {
+          trackEvent('cta_clicked', { location: 'vip_investor_list_hero', label: heroCtaText })
+          setIsModalOpen(true)
+        }}
+      />
 
       {/* What You Receive Section */}
       <Section background="background">

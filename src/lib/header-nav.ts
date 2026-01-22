@@ -24,9 +24,7 @@ export interface HeaderNavConfig {
   items: NavItem[]
 }
 
-// Import Calendly config instead of hardcoding URL
-// This is re-exported for backwards compatibility
-// Use CALENDLY_CONFIG from @/config/calendly instead
+// Header navigation configuration
 
 export const headerNavConfig: HeaderNavConfig = {
   items: [
