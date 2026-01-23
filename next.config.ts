@@ -6,6 +6,7 @@ const bundleAnalyzer = withBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   // Modern output for better performance
   output: 'standalone',
 

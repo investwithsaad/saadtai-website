@@ -1,33 +1,43 @@
+import fs from 'fs'
+import path from 'path'
+import Markdoc from '@markdoc/markdoc'
 import {
   Section,
   Container,
-  Heading,
-  Text,
   FadeIn,
-  Card,
-  Button
 } from '@/components/ui'
 import { BlogHeroFadeIn } from '@/components/blog-hero-fade-in'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
 import { BlogPostCTA } from '@/components/BlogPostCTA'
-import { RenderInlineLinks } from '@/lib/inline-links'
 import { getArticleSchema } from '@/lib/schema-generators'
-import { blogPosts } from '@/data/blog-posts'
 import { BASE_URL } from '@/lib/metadata-factory'
 import { notFound } from 'next/navigation'
+import { config } from '@/markdoc/config'
+import { renderMarkdoc } from '@/markdoc/renderer'
 
 interface Props {
-  params: {
+  params: Promise<{
     'blog-id': string
-  }
+  }>
+}
+
+// Get all blog post IDs from posts directory
+function getBlogPostIds() {
+  const postsDir = path.join(process.cwd(), 'posts')
+  if (!fs.existsSync(postsDir)) return []
+
+  return fs.readdirSync(postsDir)
+    .filter(file => file.endsWith('.mdoc'))
+    .map(file => file.replace('.mdoc', ''))
 }
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    'blog-id': post.id,
+  const postIds = getBlogPostIds()
+  return postIds.map((id) => ({
+    'blog-id': id,
   }))
 }
 
@@ -40,20 +50,34 @@ const formatDate = (dateString: string) => {
   })
 }
 
+// Read and parse Markdoc file
+function getBlogPost(slug: string) {
+  const postPath = path.join(process.cwd(), 'posts', `${slug}.mdoc`)
+
+  if (!fs.existsSync(postPath)) {
+    return null
+  }
+
+  const source = fs.readFileSync(postPath, 'utf-8')
+  const ast = Markdoc.parse(source)
+  const frontmatter = ast.attributes?.frontmatter || {}
+
+  return {
+    id: slug,
+    ...frontmatter,
+    ast,
+  }
+}
+
 export async function generateMetadata({ params }: Props) {
   const { 'blog-id': blogId } = await params
-  const blogPost = blogPosts.find(p => p.id === blogId)
+  const blogPost = getBlogPost(blogId)
 
   if (!blogPost) {
     return {
       title: 'Blog Post Not Found'
     }
   }
-
-  // Use blog post image if available, fallback to logo
-  const imageUrl = blogPost.image
-    ? `${BASE_URL}${blogPost.image}`
-    : `${BASE_URL}/main-bg.png`
 
   return {
     title: `${blogPost.title} | Saad Tai`,
@@ -66,21 +90,13 @@ export async function generateMetadata({ params }: Props) {
       description: blogPost.excerpt,
       url: `${BASE_URL}/blog/${blogPost.id}`,
       type: 'article',
-      images: [
-        {
-          url: imageUrl,
-          width: 1024,
-          height: 728,
-          alt: blogPost.title,
-        },
-      ],
     },
   }
 }
 
 export default async function BlogPost({ params }: Props) {
   const { 'blog-id': blogId } = await params
-  const blogPost = blogPosts.find(p => p.id === blogId)
+  const blogPost = getBlogPost(blogId)
 
   if (!blogPost) {
     notFound()
@@ -88,15 +104,8 @@ export default async function BlogPost({ params }: Props) {
 
   const formattedDate = formatDate(blogPost.date)
 
-  // Convert blog content array to full text for schema
-  const fullArticleBody = blogPost.content
-    .map((block) => {
-      if (block.type === 'h2' || block.type === 'h3') {
-        return block.text
-      }
-      return block.text
-    })
-    .join('\n\n')
+  // Transform Markdoc AST using config
+  const content = Markdoc.transform(blogPost.ast, config)
 
   // Generate article schema
   const articleSchema = getArticleSchema({
@@ -107,23 +116,8 @@ export default async function BlogPost({ params }: Props) {
       name: blogPost.author,
       url: `${BASE_URL}/about`
     },
-    content: fullArticleBody
+    content: blogPost.excerpt
   })
-
-  return (
-    <BlogPostClient
-      blogPost={blogPost}
-      formattedDate={formattedDate}
-      articleSchema={articleSchema}
-    />
-  )
-}
-
-function BlogPostClient({ blogPost, formattedDate, articleSchema }: {
-  blogPost: any,
-  formattedDate: string,
-  articleSchema: any
-}) {
 
   return (
     <>
@@ -142,50 +136,16 @@ function BlogPostClient({ blogPost, formattedDate, articleSchema }: {
         subtitle={blogPost.subtitle}
         date={formattedDate}
         author={blogPost.author}
-        authorTitle="Realtor"
+        authorTitle="Real Estate Expert"
         authorPhoto={blogPost.authorImage}
         category={blogPost.category}
-        backgroundImage={blogPost.image}
       />
 
       {/* Main Article Content */}
       <Section background="white">
         <Container>
           <FadeIn className="max-w-3xl mx-auto prose prose-lg">
-            {blogPost.content.map((block: { type: string; text: string }, index: number) => {
-              if (block.type === 'h2') {
-                return (
-                  <Heading key={index} size="h2">
-                    {block.text}
-                  </Heading>
-                )
-              }
-
-              if (block.type === 'h3') {
-                return (
-                  <Heading key={index} size="h3">
-                    {block.text}
-                  </Heading>
-                )
-              }
-
-              if (block.type === 'blockquote') {
-                return (
-                  <div key={index} className="p-8 bg-gold-50 border-l-4 border-gold-500 mb-8">
-                    <Text className="text-gray-700 leading-relaxed italic">
-                      {block.text}
-                    </Text>
-                  </div>
-                )
-              }
-
-              // Default to paragraph for 'p' type
-              return (
-                <Text key={index} className="text-gray-700 leading-relaxed mb-6">
-                  <RenderInlineLinks text={block.text} />
-                </Text>
-              )
-            })}
+            {renderMarkdoc(content)}
           </FadeIn>
 
           {/* Social Share Buttons */}
