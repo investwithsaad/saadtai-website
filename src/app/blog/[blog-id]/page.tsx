@@ -23,6 +23,19 @@ interface Props {
   }>
 }
 
+interface BlogPost {
+  id: string
+  title?: string
+  subtitle?: string
+  excerpt?: string
+  date?: string
+  author?: string
+  category?: string
+  authorImage?: string
+  ast?: any
+  [key: string]: any
+}
+
 // Get all blog post IDs from posts directory
 function getBlogPostIds() {
   const postsDir = path.join(process.cwd(), 'posts')
@@ -51,7 +64,7 @@ const formatDate = (dateString: string) => {
 }
 
 // Read and parse Markdoc file
-function getBlogPost(slug: string) {
+function getBlogPost(slug: string): BlogPost | null {
   const postPath = path.join(process.cwd(), 'posts', `${slug}.mdoc`)
 
   if (!fs.existsSync(postPath)) {
@@ -59,8 +72,34 @@ function getBlogPost(slug: string) {
   }
 
   const source = fs.readFileSync(postPath, 'utf-8')
-  const ast = Markdoc.parse(source)
-  const frontmatter = ast.attributes?.frontmatter || {}
+
+  // Extract YAML frontmatter manually
+  const frontmatterMatch = source.match(/^---\n([\s\S]*?)\n---/)
+  let frontmatter: Record<string, any> = {}
+  let contentSource = source
+
+  if (frontmatterMatch) {
+    const yamlContent = frontmatterMatch[1]
+    // Parse YAML manually (simple key: value parsing)
+    const lines = yamlContent.split('\n')
+    for (const line of lines) {
+      const [key, ...valueParts] = line.split(':')
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join(':').trim()
+        // Remove quotes if present
+        const cleanValue = value.replace(/^["']|["']$/g, '')
+        // Convert date strings to strings, numbers to numbers
+        if (cleanValue === 'true') frontmatter[key.trim()] = true
+        else if (cleanValue === 'false') frontmatter[key.trim()] = false
+        else if (!isNaN(Number(cleanValue)) && cleanValue !== '') frontmatter[key.trim()] = Number(cleanValue)
+        else frontmatter[key.trim()] = cleanValue
+      }
+    }
+    // Remove frontmatter from content
+    contentSource = source.replace(/^---\n[\s\S]*?\n---\n/, '')
+  }
+
+  const ast = Markdoc.parse(contentSource)
 
   return {
     id: slug,
@@ -73,7 +112,7 @@ export async function generateMetadata({ params }: Props) {
   const { 'blog-id': blogId } = await params
   const blogPost = getBlogPost(blogId)
 
-  if (!blogPost) {
+  if (!blogPost || !blogPost.title) {
     return {
       title: 'Blog Post Not Found'
     }
@@ -98,25 +137,25 @@ export default async function BlogPost({ params }: Props) {
   const { 'blog-id': blogId } = await params
   const blogPost = getBlogPost(blogId)
 
-  if (!blogPost) {
+  if (!blogPost || !blogPost.title || !blogPost.date) {
     notFound()
   }
 
-  const formattedDate = formatDate(blogPost.date)
+  const formattedDate = formatDate(blogPost.date!)
 
   // Transform Markdoc AST using config
   const content = Markdoc.transform(blogPost.ast, config)
 
   // Generate article schema
   const articleSchema = getArticleSchema({
-    headline: blogPost.title,
-    description: blogPost.excerpt,
+    headline: blogPost.title!,
+    description: blogPost.excerpt!,
     datePublished: formattedDate,
     author: {
-      name: blogPost.author,
+      name: blogPost.author!,
       url: `${BASE_URL}/about`
     },
-    content: blogPost.excerpt
+    content: blogPost.excerpt!
   })
 
   return (
@@ -127,12 +166,12 @@ export default async function BlogPost({ params }: Props) {
       {/* Breadcrumb - includes schema */}
       <Breadcrumb items={[
         { label: 'Blog', href: '/blog' },
-        { label: blogPost.title }
+        { label: blogPost.title! }
       ]} />
 
       {/* Hero Section */}
       <BlogHeroFadeIn
-        title={blogPost.title}
+        title={blogPost.title!}
         subtitle={blogPost.subtitle}
         date={formattedDate}
         author={blogPost.author}
@@ -150,8 +189,8 @@ export default async function BlogPost({ params }: Props) {
 
           {/* Social Share Buttons */}
           <SocialShareButtons
-            title={blogPost.title}
-            excerpt={blogPost.excerpt}
+            title={blogPost.title!}
+            excerpt={blogPost.excerpt!}
             url={`${BASE_URL}/blog/${blogPost.id}`}
           />
         </Container>
