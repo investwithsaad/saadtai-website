@@ -16,6 +16,7 @@ import {
 } from '@/components/ui'
 import { COLORS } from '@/lib/colors'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { EventBanner } from '@/components/EventBanner'
 import { trackEvent } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
@@ -65,6 +66,9 @@ export function HomeContent({ hero }: HomeContentProps) {
       {reviewSchemas.map((schema, i) => (
         <SchemaRenderer key={i} schema={schema} />
       ))}
+
+      {/* Event Banner */}
+      <EventBanner />
 
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
