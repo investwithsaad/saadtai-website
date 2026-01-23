@@ -40,42 +40,57 @@ export function renderMarkdoc(content: any): ReactNode {
         )
       }
 
-      // Default HTML rendering for standard tags
-      const htmlElements: Record<string, any> = {
-        h1: 'h1',
-        h2: 'h2',
-        h3: 'h3',
-        h4: 'h4',
-        h5: 'h5',
-        h6: 'h6',
-        p: 'p',
-        a: 'a',
-        strong: 'strong',
-        em: 'em',
-        code: 'code',
-        pre: 'pre',
-        blockquote: 'blockquote',
-        ul: 'ul',
-        ol: 'ol',
-        li: 'li',
-        table: 'table',
-        thead: 'thead',
-        tbody: 'tbody',
-        tr: 'tr',
-        td: 'td',
-        th: 'th',
-        img: 'img',
-        br: 'br',
-        hr: 'hr',
+      // Heading styles
+      const headingClasses = {
+        h1: 'text-4xl font-bold text-gray-900 mt-8 mb-4',
+        h2: 'text-2xl font-bold text-gray-900 mt-8 mb-4',
+        h3: 'text-xl font-bold text-gray-900 mt-6 mb-3',
+        h4: 'text-lg font-semibold text-gray-900 mt-4 mb-2',
+        h5: 'text-base font-semibold text-gray-900 mt-4 mb-2',
+        h6: 'text-sm font-semibold text-gray-900 mt-4 mb-2',
       }
 
-      const Tag = htmlElements[name]
-      if (Tag) {
+      // Render headings with proper styling
+      if (name in headingClasses) {
+        const Tag = name as keyof typeof headingClasses
+        return (
+          <Tag key={keyCounter++} className={headingClasses[Tag]}>
+            {renderMarkdoc(children)}
+          </Tag>
+        )
+      }
+
+      // Other element styles
+      const elementConfig: Record<string, { tag: string; className?: string }> = {
+        p: { tag: 'p', className: 'text-gray-700 mb-4 leading-relaxed' },
+        a: { tag: 'a', className: 'text-blue-600 hover:text-blue-800 underline' },
+        strong: { tag: 'strong', className: 'font-semibold text-gray-900' },
+        em: { tag: 'em', className: 'italic text-gray-700' },
+        code: { tag: 'code', className: 'bg-gray-100 text-gray-900 px-2 py-1 rounded text-sm font-mono' },
+        pre: { tag: 'pre', className: 'bg-gray-800 text-gray-100 p-4 rounded overflow-x-auto mb-4' },
+        blockquote: { tag: 'blockquote', className: 'border-l-4 border-gray-300 pl-4 py-2 text-gray-600 italic mb-4' },
+        ul: { tag: 'ul', className: 'list-disc list-inside text-gray-700 space-y-2 mb-4 ml-2' },
+        ol: { tag: 'ol', className: 'list-decimal list-inside text-gray-700 space-y-2 mb-4 ml-2' },
+        li: { tag: 'li', className: 'text-gray-700' },
+        hr: { tag: 'hr', className: 'border-t border-gray-300 my-6' },
+        table: { tag: 'table', className: 'w-full border-collapse mb-4' },
+        thead: { tag: 'thead', className: 'bg-gray-100' },
+        tbody: { tag: 'tbody', className: '' },
+        tr: { tag: 'tr', className: 'border-b border-gray-300' },
+        td: { tag: 'td', className: 'px-4 py-2 text-gray-700' },
+        th: { tag: 'th', className: 'px-4 py-2 text-left font-semibold text-gray-900' },
+        img: { tag: 'img', className: 'max-w-full h-auto rounded mb-4' },
+        br: { tag: 'br', className: '' },
+      }
+
+      const config = elementConfig[name]
+      if (config) {
+        const Tag = config.tag as any
         if (name === 'img') {
-          return <Tag key={keyCounter++} {...attributes} />
+          return <Tag key={keyCounter++} className={config.className} {...attributes} />
         }
         return (
-          <Tag key={keyCounter++} {...attributes}>
+          <Tag key={keyCounter++} className={config.className} {...attributes}>
             {renderMarkdoc(children)}
           </Tag>
         )

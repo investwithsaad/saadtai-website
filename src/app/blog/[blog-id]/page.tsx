@@ -144,7 +144,7 @@ export default async function BlogPost({ params }: Props) {
       {/* Main Article Content */}
       <Section background="white">
         <Container>
-          <FadeIn className="max-w-3xl mx-auto prose prose-lg">
+          <FadeIn className="max-w-3xl mx-auto">
             {renderMarkdoc(content)}
           </FadeIn>
 
