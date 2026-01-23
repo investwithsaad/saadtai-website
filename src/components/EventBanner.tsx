@@ -10,7 +10,7 @@ export function EventBanner() {
   const [isClosed, setIsClosed] = useState(false)
 
   useEffect(() => {
-    // Check if banner has been closed by user
+    // Check if banner has been closed by user in this session
     if (typeof window !== 'undefined') {
       const wasClosed = sessionStorage.getItem('eventBannerClosed')
       if (wasClosed) {

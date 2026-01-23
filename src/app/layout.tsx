@@ -24,6 +24,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: "Multifamily Investment Advisor | Saad Tai",
   description: "Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",

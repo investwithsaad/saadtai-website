@@ -67,7 +67,6 @@ export function HomeContent({ hero }: HomeContentProps) {
         <SchemaRenderer key={i} schema={schema} />
       ))}
 
-      {/* Event Banner */}
       <EventBanner />
 
       {/* Hero Section */}
@@ -78,7 +77,7 @@ export function HomeContent({ hero }: HomeContentProps) {
           fill
           className="object-cover object-center"
           priority
-          quality={70}
+          quality={75}
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-black/50"></div>
@@ -262,15 +261,15 @@ export function HomeContent({ hero }: HomeContentProps) {
                 className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 lg:col-span-4"
                 style={{ borderColor: COLORS.dark, borderWidth: '2px' }}
               >
-                <div className="w-full h-80 bg-slate-200 overflow-hidden">
+                <div className="relative w-full h-80 bg-slate-200 overflow-hidden">
                   <Image
                     src="/429 1st St.webp"
                     alt="429 1st St property"
-                    width={960}
-                    height={320}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     quality={75}
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-4">
@@ -284,15 +283,15 @@ export function HomeContent({ hero }: HomeContentProps) {
                 className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 lg:col-span-5"
                 style={{ borderColor: COLORS.dark }}
               >
-                <div className="w-full h-80 bg-slate-200 overflow-hidden">
+                <div className="relative w-full h-80 bg-slate-200 overflow-hidden">
                   <Image
                     src="/12 Tyler St.webp"
                     alt="12 Tyler St property"
-                    width={1022}
-                    height={320}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     quality={75}
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 42vw"
                   />
                 </div>
                 <div className="p-4">
@@ -306,15 +305,15 @@ export function HomeContent({ hero }: HomeContentProps) {
                 className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 lg:col-span-3"
                 style={{ borderColor: COLORS.dark }}
               >
-                <div className="w-full h-80 bg-slate-200 overflow-hidden">
+                <div className="relative w-full h-80 bg-slate-200 overflow-hidden">
                   <Image
                     src="/553 Morris St.webp"
                     alt="553 Morris Ave property"
-                    width={992}
-                    height={320}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     quality={75}
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
                   />
                 </div>
                 <div className="p-4">

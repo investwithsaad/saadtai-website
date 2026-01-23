@@ -16,6 +16,7 @@ import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { EventBanner } from '@/components/EventBanner'
 import { MortgageCalculator } from '@/components/MortgageCalculator'
 import { AffordabilityCalculator } from '@/components/AffordabilityCalculator'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
@@ -63,6 +64,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
 
   return (
     <>
+      <EventBanner />
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image
@@ -71,7 +73,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
           fill
           className="object-cover object-center"
           priority
-          quality={80}
+          quality={75}
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-black/50"></div>

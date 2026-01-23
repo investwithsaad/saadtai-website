@@ -109,13 +109,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         }}
       >
         {image && (
-          <Image
-            src={image}
-            alt={imageAlt}
-            width={64}
-            height={64}
-            className="-m-1"
-          />
+          <div className="relative w-16 h-16 -m-1 overflow-hidden">
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              sizes="64px"
+            />
+          </div>
         )}
         <span className="flex items-center gap-2 whitespace-normal sm:whitespace-nowrap">{children}</span>
       </button>
