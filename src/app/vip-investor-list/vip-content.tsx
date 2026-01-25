@@ -5,6 +5,7 @@ import { CheckCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { trackMetaPageView, trackEvent } from '@/lib/tracking'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { EventBanner } from '@/components/EventBanner'
 import { HeroFadeIn } from '@/components/hero-fade-in'
 import { COLORS } from '@/lib/colors'
 
@@ -26,6 +27,7 @@ export function VIPContent({ hero }: VIPContentProps = {}) {
 
   return (
     <>
+      <EventBanner />
       {/* Hero Section */}
       <HeroFadeIn
         title={heroHeadline}

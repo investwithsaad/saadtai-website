@@ -16,6 +16,7 @@ import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { EventBanner } from '@/components/EventBanner'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
 import { SELLING_PROCESS_STEPS } from './constants'
@@ -61,6 +62,7 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
 
   return (
     <>
+      <EventBanner />
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image
@@ -293,15 +295,15 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
                 className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 lg:col-span-4"
                 style={{ borderColor: COLORS.dark, borderWidth: '2px' }}
               >
-                <div className="w-full h-80 bg-slate-200 overflow-hidden">
+                <div className="relative w-full h-80 bg-slate-200 overflow-hidden">
                   <Image
                     src="/429 1st St.webp"
                     alt="429 1st St property"
-                    width={960}
-                    height={320}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     quality={75}
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-4">
@@ -315,15 +317,15 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
                 className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 lg:col-span-5"
                 style={{ borderColor: COLORS.dark }}
               >
-                <div className="w-full h-80 bg-slate-200 overflow-hidden">
+                <div className="relative w-full h-80 bg-slate-200 overflow-hidden">
                   <Image
                     src="/12 Tyler St.webp"
                     alt="12 Tyler St property"
-                    width={1022}
-                    height={320}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     quality={75}
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 42vw"
                   />
                 </div>
                 <div className="p-4">
@@ -337,15 +339,15 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
                 className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 lg:col-span-3"
                 style={{ borderColor: COLORS.dark }}
               >
-                <div className="w-full h-80 bg-slate-200 overflow-hidden">
+                <div className="relative w-full h-80 bg-slate-200 overflow-hidden">
                   <Image
                     src="/553 Morris St.webp"
                     alt="553 Morris Ave property"
-                    width={992}
-                    height={320}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     quality={75}
                     loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
                   />
                 </div>
                 <div className="p-4">

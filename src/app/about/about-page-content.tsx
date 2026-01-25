@@ -14,6 +14,7 @@ import {
 } from '@/components/ui'
 import { COLORS } from '@/lib/colors'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { EventBanner } from '@/components/EventBanner'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
 import { CheckCircle, Award, Briefcase, MapPin, Target, TrendingUp } from 'lucide-react'
@@ -100,6 +101,8 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
       {reviewSchemas.map((schema, i) => (
         <SchemaRenderer key={i} schema={schema} />
       ))}
+
+      <EventBanner />
 
       {/* Hero Section */}
       <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">

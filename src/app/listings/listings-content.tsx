@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Section, Container, Heading, Text, Button, FadeIn, Card, StaggerContainer, StaggerItem } from '@/components/ui'
 import { LeadFormModal } from '@/components/LeadFormModal'
+import { EventBanner } from '@/components/EventBanner'
 import { HeroFadeIn } from '@/components/hero-fade-in'
 
 interface ListingImage {
@@ -48,6 +49,7 @@ export function ListingsContent({ listings, hero }: ListingsContentProps) {
 
   return (
     <>
+      <EventBanner />
       {/* Hero Section */}
       <HeroFadeIn
         title={heroHeadline}

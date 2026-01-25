@@ -14,6 +14,7 @@ import { HeroFadeIn } from '@/components/hero-fade-in'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { BlogPageCTA } from '@/components/BlogPageCTA'
+import { EventBanner } from '@/components/EventBanner'
 import { blogPosts } from '@/data/blog-posts'
 import Link from 'next/link'
 import { createPageMetadata } from '@/lib/metadata-factory'
@@ -77,6 +78,8 @@ export default async function BlogPage() {
 
       {/* Breadcrumb - includes schema */}
       <Breadcrumb items={[{ label: 'Blog' }]} />
+
+      <EventBanner />
 
       {/* Hero Section */}
       <HeroFadeIn
