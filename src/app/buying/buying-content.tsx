@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import {
   Section,
   Container,
@@ -12,6 +11,7 @@ import {
   Heading,
   Text
 } from '@/components/ui'
+import { HeroSection } from '@/components/HeroSection'
 import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
@@ -21,7 +21,6 @@ import { MortgageCalculator } from '@/components/MortgageCalculator'
 import { AffordabilityCalculator } from '@/components/AffordabilityCalculator'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
-import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 // Filter for buying-related FAQs
 const buyingFAQs = multifamilyInvestorFAQs.filter(faq =>
@@ -49,10 +48,6 @@ export function BuyingContent({ hero }: BuyingContentProps) {
   }, [])
   const [activeCalculator, setActiveCalculator] = useState<'affordability' | 'mortgage'>('affordability')
 
-  // Defaults from migration
-  const heroTitle = hero?.headline || 'Tired of Deals That Don\'t Quite Pencil?'
-  const heroSubtitle = hero?.description || 'I help investors evaluate opportunities with an emphasis on pricing, capital allocation, and decision clarity — so they avoid overpaying or committing to deals that misalign with their portfolio strategy.'
-  const heroCtaText = hero?.ctaText || 'Talk through your next move →'
 
   // Scroll tracking refs
   const heroRef = useScrollTracking({ sectionName: 'buyer_hero' })
@@ -66,44 +61,17 @@ export function BuyingContent({ hero }: BuyingContentProps) {
     <>
       <EventBanner />
       {/* Hero Section */}
-      <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
-        <Image
-          src="/home buyer.webp"
-          alt="Home Buyer Background"
-          fill
-          className="object-cover object-center"
-          priority
-          quality={75}
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        <Container className="relative z-10">
-          <div className="fade-in-lcp">
-            <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
-              <Heading size="h1" color='white'>
-                {formatTextWithLineBreaks(heroTitle)}
-              </Heading>
-              <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                {heroSubtitle}
-              </Text>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button
-                  variant="default"
-                  image="/saad.png"
-                  imageAlt="Saad Tai profile photo"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'buyer_hero', label: heroCtaText })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  {heroCtaText} →
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
+      <HeroSection
+        ref={heroRef}
+        headline={hero?.headline || ''}
+        description={hero?.description || ''}
+        ctaText={hero?.ctaText || 'Talk through your next move'}
+        backgroundImage="/home buyer.webp"
+        onCtaClick={() => {
+          trackEvent('cta_clicked', { location: 'buyer_hero', label: hero?.ctaText || 'Talk through your next move' })
+          setIsModalOpen(true)
+        }}
+      />
 
       {/* The Problem Section */}
       <Section background='dark' className='!pt-0'>
@@ -194,7 +162,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.2}>
+            {/* <FadeIn delay={0.2}>
               <div className="w-full md:w-auto md:ml-auto" style={{ width: '267px' }}>
                 <iframe
                     src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F665808239899279%2F&show_text=false&width=267&t=0"
@@ -207,7 +175,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 />
               </div>
-            </FadeIn>
+            </FadeIn> */}
           </div>
         </Container>
       </Section>

@@ -4,14 +4,23 @@ import { getHowToSchema } from '@/lib/schema-generators'
 import SellerPageContent from './seller-page-content'
 import { SELLING_PROCESS_STEPS } from './constants'
 import { createPageMetadata } from '@/lib/metadata-factory'
-import { getPage } from '@/lib/sanity.queries'
+// TODO: Re-enable Sanity when environment variables are configured
+// import { getPage } from '@/lib/sanity.queries'
 
-export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPage('selling')
+const defaultHero = {
+  headline: 'Exit on Your Timeline\nExit with [Clarity]',
+  description: 'Our system tells you if now is the right time,\npositions your property properly,\nand finds the right buyer at the right price.\nYou maximize proceeds without the chaos.',
+  ctaText: 'Talk through your next move'
+}
+
+export function generateMetadata(): Metadata {
+  // TODO: Re-enable Sanity fetch
+  // const page = await getPage('selling')
+  const page: any = null
 
   return createPageMetadata({
-    title: page?.title || 'Selling Multifamily Properties | Saad Tai',
-    description: page?.description || 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
+    title: page?.title || 'Exit on Your Timeline | Maximize Multifamily Sale Price',
+    description: page?.description || 'Our system tells you if now is the right time, positions your property properly, and finds the right buyer at the right price. Maximize proceeds without chaos in Albany, Schenectady, Capital Region, and Jacksonville.',
     path: '/selling',
     ogImage: page?.ogImage?.asset?.url,
   })
@@ -27,14 +36,16 @@ const sellingProcessSchema = getHowToSchema({
   }))
 })
 
-export default async function SellerPage() {
-  const page = await getPage('selling')
+export default function SellerPage() {
+  // TODO: Re-enable Sanity fetch
+  // const page = await getPage('selling')
+  const page: any = null
 
   return (
     <>
       {/* Render HowTo schema */}
       <SchemaRenderer schema={sellingProcessSchema} />
-      <SellerPageContent hero={page?.hero} />
+      <SellerPageContent hero={page?.hero || defaultHero} />
     </>
   )
 }

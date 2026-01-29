@@ -182,14 +182,16 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           style={{
             position: 'fixed',
-            bottom: '100px',
-            right: '20px',
-            width: '288px',
+            bottom: '16px',
+            right: 'calc(16px + 75px + 16px)',
+            width: 'auto',
             zIndex: 40,
-            borderRadius: '12px',
-            backgroundColor: 'white',
+            borderRadius: '0px',
+            backgroundColor: BRAND_COLORS.secondary,
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
             cursor: 'pointer',
+            borderColor: BRAND_COLORS.dark,
+            borderWidth: '2px',
           }}
           onClick={() => {
             setIsOpen(true)
@@ -202,7 +204,7 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
               width: '100%',
             }}
           >
-            <div className="flex justify-between items-start gap-2">
+            <div className="flex justify-between items-center gap-2">
               <div className="flex-1">
                 <p className="font-semibold text-gray-900">Have any questions?</p>
               </div>
@@ -211,7 +213,7 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
                   e.stopPropagation()
                   setShowNotification(false)
                 }}
-                className="text-gray-400 hover:text-gray-600 flex-shrink-0 leading-none transition-colors cursor-pointer"
+                className="text-black hover:text-gray-800 flex-shrink-0 leading-none transition-colors cursor-pointer"
               >
                 ✕
               </button>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { blogPosts } from '@/data/blog-posts'
+import { getBlogPosts } from '@/lib/blog-utils'
 
 interface RelatedPostsProps {
   category?: string
@@ -11,6 +11,7 @@ export function RelatedPosts({ category, limit = 3 }: RelatedPostsProps) {
     return null
   }
 
+  const blogPosts = getBlogPosts()
   // Filter posts by category (excluding current post if needed)
   const relatedPosts = blogPosts
     .filter((post) => post.category === category)

@@ -144,7 +144,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 transition-transform duration-300 flex-shrink-0 hover:opacity-80">
             <Image
               src="/logo.png"
-              alt="Saad Tai Real Estate"
+              alt="Invest with Saad - Multifamily Real Estate Investment Advisor"
               className="w-auto h-10 rounded-full"
               width={60}
               height={60}

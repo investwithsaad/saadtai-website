@@ -890,7 +890,7 @@ async function migratePages() {
       _type: 'page',
       title: 'About',
       slug: { _type: 'slug', current: 'about' },
-      description: 'About Saad Tai - Multifamily Investment Advisor specializing in buy/sell strategies in upstate New York.',
+      description: 'About Saad Tai - Multifamily Investment Advisor specializing in buy/sell strategies in New York and Florida.',
     },
     {
       _type: 'page',

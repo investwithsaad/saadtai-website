@@ -31,7 +31,7 @@ async function addAboutPage() {
     _type: 'page',
     title: 'About',
     slug: { _type: 'slug', current: 'about' },
-    description: 'About Saad Tai - Multifamily Investment Advisor specializing in buy/sell strategies in upstate New York.',
+    description: 'About Saad Tai - Multifamily Investment Advisor specializing in buy/sell strategies in New York and Florida.',
     hero: {
       headline: 'Straight Talk. No Fluff.',
       description: 'Licensed REALTOR® serving all across New York State, with deep expertise in the Capital region. I\'m a portfolio-focused advisor—not just a transaction agent.',

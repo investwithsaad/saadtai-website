@@ -14,6 +14,7 @@ import {
   Heading,
   Text
 } from '@/components/ui'
+import { HeroSection } from '@/components/HeroSection'
 import { COLORS } from '@/lib/colors'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { EventBanner } from '@/components/EventBanner'
@@ -34,6 +35,7 @@ interface HomeContentProps {
 
 export function HomeContent({ hero }: HomeContentProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [prefillComments, setPrefillComments] = useState<string | undefined>(undefined)
 
   // Scroll tracking refs
   const heroRef = useScrollTracking({ sectionName: 'hero' })
@@ -55,11 +57,6 @@ export function HomeContent({ hero }: HomeContentProps) {
     })
   )
 
-  // Defaults from migration
-  const heroTitle = hero?.headline || 'Clarity before thou\ncommitest capital.'
-  const heroSubtitle = hero?.description || 'I help multifamily investors think through buy, sell, and hold decisions\nwhile my team handles the execution that usually eats up your time.'
-  const heroCtaText = hero?.ctaText || 'Talk through your next move'
-
   return (
     <>
       {/* Render Review schemas */}
@@ -70,93 +67,36 @@ export function HomeContent({ hero }: HomeContentProps) {
       <EventBanner />
 
       {/* Hero Section */}
-      <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
-        <Image
-          src="/Home image.webp"
-          alt="Home Background"
-          fill
-          className="object-cover object-center"
-          priority
-          quality={75}
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        <Container className="relative z-10">
-          <div className="fade-in-lcp">
-            <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
-              <Heading size="h1" color='white'>
-                {formatTextWithLineBreaks(heroTitle)}
-              </Heading>
-              <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                {formatTextWithLineBreaks(heroSubtitle)}
-              </Text>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button
-                  variant="default"
-                  image="/saad.png"
-                  imageAlt="Saad Tai profile photo"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'hero', label: heroCtaText })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  {heroCtaText} →
-                </Button>
-              </div>
-              <Text color="white" className='text-xs mt-3'>
-                No obligation. Just a strategy conversation.
-              </Text>
-            </div>
-          </div>
-        </Container>
-      </div>
+      <HeroSection
+        ref={heroRef}
+        headline={hero?.headline || ''}
+        description={hero?.description || ''}
+        ctaText={hero?.ctaText || 'Talk through your next move'}
+        onCtaClick={() => {
+          trackEvent('cta_clicked', { location: 'hero', label: hero?.ctaText || 'Talk through your next move' })
+          setIsModalOpen(true)
+        }}
+      />
 
       {/* The Problem Section */}
       <Section background='dark' className='!pt-0'>
         <Container>
-          <div ref={problemRef} className="max-w-3xl mx-auto">
+          <div ref={problemRef} className="max-w-7xl mx-auto">
             <FadeIn>
-              <div className="text-center mb-12">
+              <div className="mb-12">
                 <Heading size="h2" color='white' className='!mt-6'>
-                  Are you Buying or Selling?
+                  Investors Face Confusion at Critical Moments
                 </Heading>
                 <Text size="lg" color='white'>
-                  Most investors are leaving money on the table because they're doing this alone.<br />I help you make the move with confidence—and maximize the outcome.
+                  <strong style={{ color: COLORS.secondary }}>Buyers</strong> have spreadsheets, contractor estimates, and comps—data everywhere but no confidence in the true picture. Is this deal actually solid, or are you missing something critical?<br /><br />
+                  <strong style={{ color: COLORS.secondary }}>Sellers</strong> have offers coming in. Intuition says one thing. Market intel says another. You're making a six-figure decision with incomplete information.<br /><br />
+                  <strong style={{ color: COLORS.secondary }}>If you're holding,</strong> the keep-or-sell decision haunts you. More analysis doesn't help. You need someone you trust to cut through the noise and tell you what matters.
                 </Text>
               </div>
             </FadeIn>
           </div>
           <div ref={whatIDoRef}>
-            <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Buying Section */}
-              <FadeIn>
-                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="w-full h-64 bg-slate-200 overflow-hidden">
-                    <Image
-                      src="/house3.webp"
-                      alt="Find Your Home"
-                      width={600}
-                      height={400}
-                      className="w-full h-full object-cover"
-                      quality={75}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <Heading size="h3" className="!mb-4">Buying Your Next Asset</Heading>
-                    <p className="text-slate-600 mb-6 flex-grow">
-                      Off-market deals, real investor comps, and honest underwriting. I help you avoid overpaying and find the deals that actually pencil.
-                    </p>
-                    <Link href="/buying" className="inline-block">
-                      <Button variant="default" className="w-full">
-                        Explore Buying <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
-              </FadeIn>
+            <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
 
               {/* Selling Section */}
               <FadeIn delay={0.2}>
@@ -173,13 +113,41 @@ export function HomeContent({ hero }: HomeContentProps) {
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
-                    <Heading size="h3" className="!mb-4">Selling Your Investment</Heading>
+                    <Heading size="h3" className="!mb-4">For Sellers</Heading>
                     <p className="text-slate-600 mb-6 flex-grow">
-                      Right time, right buyer, right price. I connect you with serious investors and help you maximize proceeds from your portfolio.
+                      Our system handles professional photography, tenant coordination, buyer qualification, and negotiation.<br />You maximize proceeds without the chaos.
                     </p>
                     <Link href="/selling" className="inline-block">
                       <Button variant="default" className="w-full">
                         Explore Selling <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                </Card>
+              </FadeIn>
+
+              {/* Buying Section */}
+              <FadeIn>
+                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                  <div className="w-full h-64 bg-slate-200 overflow-hidden">
+                    <Image
+                      src="/house3.webp"
+                      alt="Find Your Home"
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover"
+                      quality={75}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <Heading size="h3" className="!mb-4">For Buyers</Heading>
+                    <p className="text-slate-600 mb-6 flex-grow">
+                      Our system finds off-market deals, runs rigorous underwriting, and coordinates due diligence.<br />You avoid overpaying and close with confidence.
+                    </p>
+                    <Link href="/buying" className="inline-block">
+                      <Button variant="default" className="w-full">
+                        Explore Buying <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>
                   </div>
@@ -190,18 +158,175 @@ export function HomeContent({ hero }: HomeContentProps) {
         </Container>
       </Section>
 
-      {/* Credibility Stats Section */}
+
+      {/* Testimonials Section */}
       <Section background='background'>
         <Container>
+          <div ref={testimonialsRef}>
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {testimonials.map((testimonial, i) => (
+                <Card key={i} className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                  <div className="p-6">
+                    <p className="text-slate-700 mb-4 italic">
+                      "{testimonial.text}"
+                    </p>
+                    <p className="font-semibold text-slate-900">
+                      — {testimonial.author}{testimonial.tag && `, ${testimonial.tag}`}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </StaggerContainer>
+          </div>
+        </Container>
+      </Section>
+
+      {/* The Real Cost of Getting It Wrong - Deep Pain Dive */}
+      <Section background='dark'>
+        <Container>
           <FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <p className="text-5xl font-bold" style={{ color: COLORS.dark }}>13</p>
-                <p className="text-slate-600 text-sm mt-2">Days on Market Average</p>
+            <div className="max-w-4xl mx-auto">
+              <Heading size="h2" color='white' className='text-center mb-4'>
+                What Happens When You Get It Wrong
+              </Heading>
+              <Text size="lg" color='white' className='text-center mb-12 italic'>
+                The cost isn't just money. It's opportunity lost, years wasted, and growth arrested.
+              </Text>
+
+              <div className="space-y-8">
+                {/* Buyer Trap */}
+                <div className="p-8 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: `1px solid ${COLORS.secondary}` }}>
+                  <div className="flex gap-4 items-start mb-6">
+                    <div className="text-3xl font-bold flex-shrink-0" style={{ color: COLORS.secondary }}>1</div>
+                    <div>
+                      <Heading size="h3" color='white' className='mb-2'>The Buyer's Trap: Overpaying for Confidence</Heading>
+                      <Text color='white' className='mb-4'>
+                        You see a deal, run some numbers, and your gut says go. You bid. You win. Three months later, a similar property sells for $50K less. Or your actual rent comes in 8% below your underwriting. Now you're locked into poor returns for the next 10 years.
+                      </Text>
+                      <Text color='white' className='text-sm' style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                        <strong className='font-semibold'>The real cost:</strong> $50K on a single deal. $500K+ across a portfolio over a decade. And worse—that capital should have been deployed elsewhere.
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Seller Trap */}
+                <div className="p-8 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: `1px solid ${COLORS.secondary}` }}>
+                  <div className="flex gap-4 items-start mb-6">
+                    <div className="text-3xl font-bold flex-shrink-0" style={{ color: COLORS.secondary }}>2</div>
+                    <div>
+                      <Heading size="h3" color='white' className='mb-2'>The Seller's Paralysis: Timing Agony</Heading>
+                      <Text color='white' className='mb-4'>
+                        Market's softening. Or is it? You hold. Rates drop, demand surges, and your neighbor's identical building goes for $150K more. Or you wait too long, the window closes, and you end up selling at the worst time. You made a six-figure decision based on gut feeling and half-read market reports.
+                      </Text>
+                      <Text color='white' className='text-sm' style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                        <strong className='font-semibold'>The real cost:</strong> Leaving $100K-200K on the table, or worse—holding dead capital for 2-3 extra years that could have been redeployed.
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hold Trap */}
+                <div className="p-8 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: `1px solid ${COLORS.secondary}` }}>
+                  <div className="flex gap-4 items-start mb-6">
+                    <div className="text-3xl font-bold flex-shrink-0" style={{ color: COLORS.secondary }}>3</div>
+                    <div>
+                      <Heading size="h3" color='white' className='mb-2'>The Hold Trap: Stuck Between Stories</Heading>
+                      <Text color='white' className='mb-4'>
+                        You're keeping a property. Is it still worth keeping? The original thesis was strong, but markets shift. Tenants change. Tax policy shifts. You're asking yourself the same questions every six months and never moving. Meanwhile, better opportunities pass by.
+                      </Text>
+                      <Text color='white' className='text-sm' style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                        <strong className='font-semibold'>The real cost:</strong> Three years of lost optionality. Capital that could have been earning 15% ROI sitting at 4%. Peace of mind traded for persistent doubt.
+                      </Text>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-5xl font-bold text-green-700">97%</p>
-                <p className="text-slate-600 text-sm mt-2">Sell at or Above Asking Price</p>
+
+              <div className="mt-12 p-8 rounded-lg text-center" style={{ backgroundColor: COLORS.secondary, color: COLORS.dark }}>
+                <p className="text-lg font-semibold mb-2">
+                  These aren't hypothetical costs. These happen to good investors all the time.
+                </p>
+                <p className="text-sm mb-6">
+                  The problem isn't that you're bad at this. It's that you're operating alone, without the data, market context, and honest feedback you need to make confident moves.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      {/* What Changes With Clarity - Transformation Narrative */}
+      <Section background='white'>
+        <Container>
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <div className='text-center mb-4'>
+                <Heading size="h2" className='mb-0'>
+                  {formatTextWithLineBreaks('What Changes When You Have [Clarity]')}
+                </Heading>
+              </div>
+              <Text size="lg" className='text-center mb-12 text-slate-600'>
+                These aren't small shifts. They're foundational changes to how you make decisions.
+              </Text>
+
+              <div className="space-y-6">
+                {/* Buyers Benefit */}
+                <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
+                    <Heading size="h4" className='mb-0'>Buyers stop overpaying</Heading>
+                  </div>
+                  <Text className='text-slate-700 mb-3'>
+                    You see real comps, real rent potential, real exit scenarios. You bid with confidence because you know your numbers are solid. You close on deals that actually pencil.
+                  </Text>
+                  <p className="text-sm text-slate-600 italic">
+                    Average: <strong>Buyers save $30-80K per deal through honest underwriting and strategic positioning.</strong>
+                  </p>
+                </div>
+
+                {/* Sellers Benefit */}
+                <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
+                    <Heading size="h4" className='mb-0'>Sellers exit with confidence, not regret</Heading>
+                  </div>
+                  <Text className='text-slate-700 mb-3'>
+                    You know the market. You know your timing. You know what price is realistic and when to push for more. You sell fast, at the right price, without second-guessing yourself for the next five years.
+                  </Text>
+                  <p className="text-sm text-slate-600 italic">
+                    Average: <strong>Sellers achieve 97% at/above asking price, closed in 13 days, with complete confidence in their exit.</strong>
+                  </p>
+                </div>
+
+                {/* Holders Benefit */}
+                <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
+                    <Heading size="h4" className='mb-0'>Holders make peace with their decision</Heading>
+                  </div>
+                  <Text className='text-slate-700 mb-3'>
+                    You have a clear thesis for why you're holding. You know the economics. You know your exit window. When doubt creeps in, you have data, not just feelings. You sleep better.
+                  </Text>
+                  <p className="text-sm text-slate-600 italic">
+                    Result: <strong>You operate from strategy, not anxiety. You have space to grow.</strong>
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <Button
+                  variant="default"
+                  image="/saad.png"
+                  imageAlt="Saad Tai profile photo"
+                  className='mx-auto'
+                  onClick={() => {
+                    trackEvent('cta_clicked', { location: 'what_changes_clarity', label: 'Experience this shift yourself' })
+                    setIsModalOpen(true)
+                  }}
+                >
+                  Experience the shift yourself →
+                </Button>
               </div>
             </div>
           </FadeIn>
@@ -209,17 +334,34 @@ export function HomeContent({ hero }: HomeContentProps) {
       </Section>
 
       {/* Proof Section */}
-      <Section background='white'>
+      <Section background='dark'>
         <Container>
           <div ref={proofRef}>
             <FadeIn>
-              <div className="max-w-3xl text-center mx-auto mb-16">
-                <Heading size="h2">
-                  Fast Sales, Strong Prices
+              <div className="max-w-3xl text-center mx-auto mb-12">
+                <Heading size="h2" color='white'>
+                  {formatTextWithLineBreaks('[Clarity] That Gets Results')}
                 </Heading>
-                <Text className="text-lg text-slate-600">
-                  When I list investor-grade multifamily, it moves—typically above asking, within days.
+                <Text size="lg" color='white'>
+                  My system moves investor-grade multifamily fast,<br />typically above asking and within days.
                 </Text>
+              </div>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+                <div className="text-center">
+                  <p className="text-5xl font-bold" style={{ color: COLORS.secondary }}>13</p>
+                  <p className="text-white text-sm mt-2">Average days to sale<br />for listings</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-5xl font-bold text-white">97%</p>
+                  <p className="text-white text-sm mt-2">At or above asking price<br />(last 12 months)</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-5xl font-bold" style={{ color: COLORS.secondary }}>300+</p>
+                  <p className="text-white text-sm mt-2">Deals analyzed<br />in past 5 years</p>
+                </div>
               </div>
             </FadeIn>
 
@@ -227,17 +369,17 @@ export function HomeContent({ hero }: HomeContentProps) {
               <div
                 className="max-w-5xl mx-auto p-8 rounded overflow-hidden"
                 style={{
-                  backgroundColor: COLORS.dark,
-                  border: `1px solid ${COLORS.dark}`
+                  backgroundColor: COLORS.secondary,
+                  border: `1px solid ${COLORS.secondary}`
                 }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div className="text-center md:text-left">
-                    <h3 className="text-2xl font-bold mb-3" style={{ color: COLORS.white }}>Major Sale: The John Hooper House</h3>
-                    <p className="mb-2" style={{ color: COLORS.white }}>
+                    <h3 className="text-2xl font-bold mb-3" style={{ color: COLORS.dark }}>Major Sale: The John Hooper House</h3>
+                    <p className="mb-2" style={{ color: COLORS.dark }}>
                       153 2nd Ave, Troy
                     </p>
-                    <p style={{ color: COLORS.white }}>
+                    <p style={{ color: COLORS.dark }}>
                       A documented Underground Railroad stop, once owned by Harriet Tubman's cousin, featured in HBO's <em>The Gilded Age</em>. Successfully closed on one of Troy's most significant historical properties.
                     </p>
                   </div>
@@ -324,359 +466,169 @@ export function HomeContent({ hero }: HomeContentProps) {
                 </div>
               </Card>
             </StaggerContainer>
-
-            <FadeIn className="mt-16">
-              <div className="flex justify-center">
-                <Button
-                  variant="default"
-                  image="/saad.png"
-                  imageAlt="Saad Tai profile photo"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'proof_results', label: 'Talk through your next move' })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  Talk through your next move →
-                </Button>
-              </div>
-            </FadeIn>
           </div>
         </Container>
       </Section>
 
-      {/* Testimonials Section */}
-      <Section background='background'>
-        <Container>
-          <div ref={testimonialsRef}>
-            <FadeIn>
-              <div className="max-w-3xl mx-auto text-center mb-16">
-                <Heading size="h2">
-                  What My Clients Say
-                </Heading>
-                <Text className="text-lg text-slate-600">
-                  From investors who've achieved their goals
-                </Text>
-              </div>
-            </FadeIn>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {testimonials.map((testimonial, i) => (
-                <Card key={i} className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-start gap-1">
-                        {[...Array(5)].map((_, idx) => (
-                          <span key={idx} className="text-yellow-400 text-lg">★</span>
-                        ))}
-                      </div>
-                      {testimonial.tag && (
-                        <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: COLORS.secondary, color: 'white' }}>
-                          {testimonial.tag}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-slate-700 mb-4 italic">
-                      "{testimonial.text}"
-                    </p>
-                    <p className="font-semibold text-slate-900">
-                      — {testimonial.author}
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </StaggerContainer>
-
-            <FadeIn className="mt-16">
-              <div className="flex justify-center">
-                <Button
-                  variant="default"
-                  image="/saad.png"
-                  imageAlt="Saad Tai profile photo"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'testimonials', label: 'Talk through your next move' })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  Talk through your next move →
-                </Button>
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Who I Work With */}
-      <Section background="white">
-        <Container>
-          <div ref={whoIWorkWithRef}>
-            <FadeIn>
-              <div className="max-w-3xl text-center mx-auto mb-16">
-                <Heading size="h2">
-                  Three Types of Investors. One Goal: Smart Moves.
-                </Heading>
-              </div>
-            </FadeIn>
-
-            <StaggerContainer className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <FadeIn>
-                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="p-6 flex flex-col h-full">
-                    <Heading size="h3" className="mb-2">The Scaling Investor</Heading>
-                    <p className="text-slate-600 text-sm font-semibold mb-4" style={{ color: COLORS.secondary }}>Own 5-10+ units, actively buying/selling</p>
-                    <p className="text-slate-700 mb-6 flex-grow">
-                      You're growing your portfolio but the admin is drowning you. You need someone who understands cap rates, timing, and 1031 exchanges—not retail real estate nonsense.
-                    </p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Coordinate multiple sales and acquisitions</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Time exits for maximum returns</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Find deals that pencil</span>
-                      </li>
-                    </ul>
-                  </div>
-                </Card>
-              </FadeIn>
-
-              <FadeIn delay={0.1}>
-                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="p-6 flex flex-col h-full">
-                    <Heading size="h3" className="mb-2">The Accidental Owner</Heading>
-                    <p className="text-slate-600 text-sm font-semibold mb-4" style={{ color: COLORS.secondary }}>Inherited/accumulated 2-6 units, tired</p>
-                    <p className="text-slate-700 mb-6 flex-grow">
-                      You're burned out. Whether you inherited these properties or they just piled up over time, you want out—but you also care about doing right by the families living there.
-                    </p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Unwind with respect and clarity</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Maximize proceeds on your terms</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Fair tenant transitions</span>
-                      </li>
-                    </ul>
-                  </div>
-                </Card>
-              </FadeIn>
-
-              <FadeIn delay={0.2}>
-                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="p-6 flex flex-col h-full">
-                    <Heading size="h3" className="mb-2">The Capital Recycler</Heading>
-                    <p className="text-slate-600 text-sm font-semibold mb-4" style={{ color: COLORS.secondary }}>Selling multiple properties, redeploying</p>
-                    <p className="text-slate-700 mb-6 flex-grow">
-                      You're moving capital strategically. Maybe exiting one market, upgrading into larger buildings, or repositioning your entire portfolio. You need precision timing.
-                    </p>
-                    <ul className="space-y-2 text-sm text-slate-600">
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>1031 exchange coordination</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Multi-property portfolio strategy</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-brand-secondary">→</span>
-                        <span>Market timing and buyer alignment</span>
-                      </li>
-                    </ul>
-                  </div>
-                </Card>
-              </FadeIn>
-            </StaggerContainer>
-
-            <FadeIn className="mt-12">
-              <div className="flex justify-center">
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'investor_type', label: 'Talk through your next move' })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  Talk through your next move →
-                </Button>
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Strategic Advantages */}
-      <Section background="background">
-        <Container>
-          <div ref={howIWorkRef}>
-            <FadeIn>
-              <div className="max-w-3xl text-center mx-auto mb-16">
-              <Heading size="h2">
-                Your Strategic Advantage: Time, Intelligence, Network
-              </Heading>
-              <Text size="lg" className="text-slate-600 mt-4">
-                I leverage a team so deals don't stall, deadlines aren't missed, and investors can move capital without disruption.
-              </Text>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2} className="mb-16">
-            <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-              <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                <div className="p-6">
-                  <TrendingUp className="w-8 h-8 text-brand-secondary mb-4" />
-                  <Heading size="h4" className="mb-3">More Deals, Less Admin</Heading>
-                  <p className="text-slate-600">
-                    My team handles showings, paperwork, and closing logistics—so I'm free to source deals and negotiate on your behalf.
-                  </p>
-                </div>
-              </Card>
-              <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                <div className="p-6">
-                  <Target className="w-8 h-8 text-brand-secondary mb-4" />
-                  <Heading size="h4" className="mb-3">Early Access & Real Comps</Heading>
-                  <p className="text-slate-600">
-                    Off-market deal flow before it hits the MLS, with verified rent rolls and honest underwriting so you avoid overpaying.
-                  </p>
-                </div>
-              </Card>
-              <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                <div className="p-6">
-                  <Users className="w-8 h-8 text-brand-secondary mb-4" />
-                  <Heading size="h4" className="mb-3">Investor Network & Resources</Heading>
-                  <p className="text-slate-600">
-                    Connected to vetted lenders, property managers, contractors, attorneys—you're not just buying a property, you're building an ecosystem.
-                  </p>
-                </div>
-              </Card>
-            </div>
-          </FadeIn>
-
-          <FadeIn className="mt-12">
-            <div className="flex flex-col items-center">
-              <p className="text-slate-600 mb-6">
-                Sounds like the kind of partnership you're looking for?
-              </p>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  trackEvent('cta_clicked', { location: 'strategic_advantage', label: 'Talk through your next move' })
-                  setIsModalOpen(true)
-                }}
-              >
-                Talk through your next move →
-              </Button>
-            </div>
-          </FadeIn>
-          </div>
-        </Container>
-      </Section>
-
-      {/* What You Get */}
+      {/* Your Next Move - Journey-Based CTAs */}
       <Section background="white">
         <Container>
           <div ref={whatYouGetRef}>
             <FadeIn>
-              <div className="max-w-3xl mx-auto">
-              <Heading size="h2">
-                Here's Exactly What Happens Next
-              </Heading>
-              <Text size="lg" className="text-slate-600 mb-12">
-                No surprises. No pressure. Just straight steps to clarity on your move.
-              </Text>
-
-              <div className="space-y-8">
-                <div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full text-black font-bold flex-shrink-0" style={{ backgroundColor: COLORS.secondary }}>
-                      1
-                    </div>
-                    <Button
-                      variant="default"
-                      onClick={() => {
-                        trackEvent('cta_clicked', { location: 'what_you_get', label: 'Talk through your next move' })
-                        setIsModalOpen(true)
-                      }}
-                    >
-                      Talk through your next move
-                    </Button>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-start gap-4 mb-3">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full text-black font-bold flex-shrink-0" style={{ backgroundColor: COLORS.secondary }}>
-                      2
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900">I call you within 24 hours</h3>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-start gap-4 mb-3">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full text-black font-bold flex-shrink-0" style={{ backgroundColor: COLORS.secondary }}>
-                      3
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900">I give you my honest assessment</h3>
-                      <p className="text-slate-600 mt-2">In that call, you'll get clarity on:</p>
-                    </div>
-                  </div>
-                  <ul className="ml-12 space-y-2 text-slate-600">
-                    <li className="flex gap-2">
-                      <span className="text-brand-secondary font-bold">→</span>
-                      <span>Whether NOW is the right time for your move (or if you should wait)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-brand-secondary font-bold">→</span>
-                      <span>What comparable properties actually closed for (not wishful thinking)</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-brand-secondary font-bold">→</span>
-                      <span>Exactly what your next steps are if you decide to move</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-start gap-4">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full text-black font-bold flex-shrink-0" style={{ backgroundColor: COLORS.secondary }}>
-                      4
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900">If you're ready, I'll take care of the rest</h3>
-                      <p className="text-slate-600 mt-2">
-                        Showings, inspections, negotiations, closing logistics. My team manages the details so you focus on the strategy.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="max-w-4xl mx-auto text-center mb-16">
+                <Heading size="h2">
+                  Which Journey Are You On?
+                </Heading>
+                <Text size="lg" className="text-slate-600 mt-4">
+                  {formatTextWithLineBreaks("Your path forward depends on where you are right now. Pick your journey and let's get to [Clarity] together.")}
+                </Text>
               </div>
 
-              <div className="mt-12 p-6 rounded-lg" style={{ backgroundColor: COLORS.background }}>
-                <p className="text-slate-900 font-semibold text-lg mb-2">
-                  The Bottom Line
+              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+                {/* Buying Journey */}
+                <FadeIn>
+                  <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                    <div className="p-8 flex flex-col h-full">
+                      <div className="mb-6">
+                        <Heading size="h3" className="mb-2">You're Buying</Heading>
+                        <p className="text-sm text-slate-600">Looking for your next deal—whether it's a 2-plex or a 12-unit. You want honest underwriting and confidence in your numbers.</p>
+                      </div>
+                      <div className="flex-grow mb-6">
+                        <p className="text-slate-700 mb-4 font-semibold">You'll get:</p>
+                        <ul className="space-y-2 text-sm text-slate-600">
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.secondary }}>→</span>
+                            <span>Off-market deals with verified rent rolls</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.secondary }}>→</span>
+                            <span>Conservative underwriting & cap rate analysis</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.secondary }}>→</span>
+                            <span>Fast lender network & 1031 coordination</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <Button
+                        variant="default"
+                        onClick={() => {
+                          trackEvent('cta_clicked', { location: 'buying_journey', label: "I'm buying" })
+                          setPrefillComments("I want to talk about buying")
+                          setIsModalOpen(true)
+                        }}
+                        className="w-full"
+                      >
+                        {formatTextWithLineBreaks('Get [Clarity] on Buying')}
+                      </Button>
+                    </div>
+                  </Card>
+                </FadeIn>
+
+                {/* Selling Journey */}
+                <FadeIn delay={0.1}>
+                  <Card className="!overflow-hidden !shadow-none !rounded-none !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px', backgroundColor: COLORS.secondary }}>
+                    <div className="p-8 flex flex-col h-full">
+                      <div className="mb-6">
+                        <Heading size="h3" className="mb-2" style={{ color: COLORS.dark }}>You're Selling</Heading>
+                        <p className="text-sm" style={{ color: COLORS.dark }}>Ready to exit one or more properties. You want maximum price, fast close, and zero buyer drama.</p>
+                      </div>
+                      <div className="flex-grow mb-6">
+                        <p className="mb-4 font-semibold" style={{ color: COLORS.dark }}>You'll get:</p>
+                        <ul className="space-y-2 text-sm" style={{ color: COLORS.dark }}>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.dark }}>→</span>
+                            <span>Tenant coordination & property showings</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.dark }}>→</span>
+                            <span>Direct outreach to qualified investor buyers</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.dark }}>→</span>
+                            <span>Professional marketing & negotiation</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <Button
+                        variant="default"
+                        onClick={() => {
+                          trackEvent('cta_clicked', { location: 'selling_journey', label: "I'm selling" })
+                          setPrefillComments("I want to talk about selling")
+                          setIsModalOpen(true)
+                        }}
+                        className="w-full"
+                      >
+                        {formatTextWithLineBreaks('Get [Clarity] on Selling')}
+                      </Button>
+                    </div>
+                  </Card>
+                </FadeIn>
+
+                {/* Holding Journey */}
+                <FadeIn delay={0.2}>
+                  <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                    <div className="p-8 flex flex-col h-full">
+                      <div className="mb-6">
+                        <Heading size="h3" className="mb-2">You're Holding</Heading>
+                        <p className="text-sm text-slate-600">You have properties under your belt. Unsure if you should keep holding or exit. You need a decision framework.</p>
+                      </div>
+                      <div className="flex-grow mb-6">
+                        <p className="text-slate-700 mb-4 font-semibold">You'll get:</p>
+                        <ul className="space-y-2 text-sm text-slate-600">
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.secondary }}>→</span>
+                            <span>Keep-vs-sell analysis</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.secondary }}>→</span>
+                            <span>Portfolio optimization strategy</span>
+                          </li>
+                          <li className="flex gap-2">
+                            <span style={{ color: COLORS.secondary }}>→</span>
+                            <span>Ongoing quarterly check-ins</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <Button
+                        variant="default"
+                        onClick={() => {
+                          trackEvent('cta_clicked', { location: 'holding_journey', label: "I'm holding" })
+                          setPrefillComments("I want to talk about holding")
+                          setIsModalOpen(true)
+                        }}
+                        className="w-full"
+                      >
+                        {formatTextWithLineBreaks('Get [Clarity] on Holding')}
+                      </Button>
+                    </div>
+                  </Card>
+                </FadeIn>
+              </div>
+
+              <div className="max-w-3xl mx-auto p-8 rounded-lg" style={{ backgroundColor: COLORS.background }}>
+                <p className="text-slate-900 font-semibold text-center mb-4">
+                  Regardless of your journey, the first step is always the same.
                 </p>
-                <p className="text-slate-700 mb-3">
-                  This call exists to answer ONE question: <strong>Does it make sense for you to move right now, and if so, what's the best way to do it?</strong>
-                </p>
-                <p className="text-slate-600 text-sm">
-                  I make money when deals close. That means I only recommend moves that actually work for you. No pressure. No pitch. Just strategy.
+                <div className="space-y-3 text-slate-700 mb-6">
+                  <div className="flex gap-3">
+                    <span className="font-bold" style={{ color: COLORS.secondary }}>1.</span>
+                    <span>{formatTextWithLineBreaks('We talk about where you are and what\'s keeping you from moving with [Clarity]')}</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold" style={{ color: COLORS.secondary }}>2.</span>
+                    <span>I give you honest feedback—whether now is the right time and what the smartest move looks like</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold" style={{ color: COLORS.secondary }}>3.</span>
+                    <span>If it makes sense, we execute. My team handles the details. You make the decisions.</span>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-600 text-center">
+                  <strong>No surprises. No pressure. No pitch.</strong> Just strategy that actually works.
                 </p>
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
           </div>
         </Container>
       </Section>
@@ -734,27 +686,17 @@ export function HomeContent({ hero }: HomeContentProps) {
                   <div className="p-4 bg-slate-100 rounded-lg border-l-4" style={{ borderColor: COLORS.secondary }}>
                     <p className="text-slate-900 font-semibold text-sm mb-1">Direct Access</p>
                     <p className="text-slate-600 text-sm">
-                      You can text or call me directly. I respond within 24 hours—usually within 2 hours.
+                      You can text or call me directly. I respond within 2 hours—usually within 30 minutes.
                     </p>
                   </div>
-
-                  <p className="font-semibold text-slate-900 mt-8">
-                    If you're looking for an advisor who understands portfolio strategy, moves fast, and actually takes your calls...
-                  </p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                  <Button
-                    variant="default"
-                    image="/saad.png"
-                    imageAlt="Saad Tai profile photo"
-                    onClick={() => {
-                      trackEvent('cta_clicked', { location: 'about_me', label: 'Talk through your next move' })
-                      setIsModalOpen(true)
-                    }}
-                  >
-                    Talk through your next move →
-                  </Button>
+                  <Link href="/about">
+                    <Button imageAlt="Saad Tai profile photo">
+                      Learn more about Saad →
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -764,7 +706,14 @@ export function HomeContent({ hero }: HomeContentProps) {
       </Section>
 
       {/* Lead Form Modal */}
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LeadFormModal 
+        isOpen={isModalOpen} 
+        onClose={() => {
+          setIsModalOpen(false)
+          setPrefillComments(undefined)
+        }} 
+        prefillComments={prefillComments}
+      />
     </>
   )
 }

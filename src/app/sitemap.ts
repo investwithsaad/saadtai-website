@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
-import { blogPosts } from '@/data/blog-posts'
+import { getBlogPosts } from '@/lib/blog-utils'
 import { BASE_URL } from '@/lib/metadata-factory'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const blogPosts = getBlogPosts()
 
   // Main navigation routes (highest priority)
   const mainNavRoutes = [

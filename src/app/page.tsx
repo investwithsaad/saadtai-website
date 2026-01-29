@@ -1,20 +1,28 @@
-import { getPage } from '@/lib/sanity.queries'
+// import { getPage } from '@/lib/sanity.queries'
 import { HomeContent } from './home-content'
 import { createPageMetadata } from '@/lib/metadata-factory'
 
+const defaultHero = {
+  headline: 'The Proven System\nto Buy or Exit Multifamily\nProperties with [Clarity]',
+  description: 'Professional underwriting, photography, tenant coordination,\nand buyer alignment—all handled. You get a clear decision\nwithout managing the chaos.',
+  ctaText: 'Talk through your next move'
+}
+
 export async function generateMetadata() {
-  const page = await getPage('home')
+  // TODO: Re-enable Sanity when environment variables are configured
+  // const page = await getPage('home')
 
   return createPageMetadata({
-    title: page?.title || 'Multifamily Investment Advisor | Saad Tai',
-    description: page?.description || 'Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.',
+    title: 'Buy or Exit Multifamily Properties with Clarity | Saad Tai',
+    description: 'Professional underwriting, photography, tenant coordination, and buyer alignment—all handled. Get clear decisions without chaos in Albany, Schenectady, Capital Region, and Jacksonville.',
     path: '/',
-    ogImage: page?.ogImage?.asset?.url,
+    ogImage: undefined,
   })
 }
 
 export default async function Home() {
-  const page = await getPage('home')
+  // TODO: Re-enable Sanity when environment variables are configured
+  // const page = await getPage('home')
 
-  return <HomeContent hero={page?.hero} />
+  return <HomeContent hero={defaultHero} />
 }
