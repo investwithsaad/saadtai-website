@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { LayoutContent } from "@/app/layout-content"
 import { SchemaRenderer } from "@/components/SchemaRenderer"
-import { getOrganizationSchema } from "@/lib/schema-generators"
+import { getOrganizationSchema, getWebsiteSchema } from "@/lib/schema-generators"
 import { BASE_URL } from "@/lib/metadata-factory"
 import { CookieConsentBanner } from "@/components/CookieConsent"
 import { TrackingScripts } from "@/components/TrackingScripts"
@@ -25,8 +25,8 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: "Multifamily Investment Advisor | Saad Tai | Albany & Jacksonville",
-  description: "Expert multifamily investment advisor in Albany, NY and Jacksonville, FL. Clear analysis on buying, selling, and portfolio strategy. 1031 exchanges, cap rates, deal analysis.",
+  title: "Clarity for Buy, Sell, Hold Decisions | Saad Tai",
+  description: "I help multifamily investors think through buy, sell, and hold decisions. Off-market deals, rigorous analysis, and execution. Albany, NY & Jacksonville, FL.",
   keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany NY, Schenectady NY, Jacksonville FL, Capital Region, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
     canonical: `${BASE_URL}/`,
@@ -88,6 +88,7 @@ export default function RootLayout({
 
         {/* Schema Markup */}
         <SchemaRenderer schema={getOrganizationSchema()} />
+        <SchemaRenderer schema={getWebsiteSchema()} />
 
         {/* Umami Analytics */}
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
