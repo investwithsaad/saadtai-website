@@ -1,7 +1,7 @@
 /**
  * SAAD TAI - CLIENT TESTIMONIALS
  *
- * Real client testimonials and success stories from investwithsaad.com
+ * Real client testimonials and success stories from saadtherealtor.com
  */
 
 export interface FundingCase {

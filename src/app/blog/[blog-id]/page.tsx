@@ -175,7 +175,7 @@ export default async function BlogPost({ params }: Props) {
         subtitle={blogPost.subtitle}
         date={formattedDate}
         author={blogPost.author}
-        authorTitle="Real Estate Expert"
+        authorTitle="Real Estate Investor | NY License #10401373295 | FL License #SL3651394"
         authorPhoto={blogPost.authorImage}
         category={blogPost.category}
       />
