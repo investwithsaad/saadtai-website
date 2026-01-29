@@ -275,7 +275,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                 <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
-                    <Heading size="h4" className='mb-0'>Buyers stop overpaying</Heading>
+                    <Heading size="h3" className='mb-0'>Buyers stop overpaying</Heading>
                   </div>
                   <Text className='text-slate-700 mb-3'>
                     You see real comps, real rent potential, real exit scenarios. You bid with confidence because you know your numbers are solid. You close on deals that actually pencil.
@@ -289,7 +289,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                 <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
-                    <Heading size="h4" className='mb-0'>Sellers exit with confidence, not regret</Heading>
+                    <Heading size="h3" className='mb-0'>Sellers exit with confidence, not regret</Heading>
                   </div>
                   <Text className='text-slate-700 mb-3'>
                     You know the market. You know your timing. You know what price is realistic and when to push for more. You sell fast, at the right price, without second-guessing yourself for the next five years.
@@ -303,7 +303,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                 <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
-                    <Heading size="h4" className='mb-0'>Holders make peace with their decision</Heading>
+                    <Heading size="h3" className='mb-0'>Holders make peace with their decision</Heading>
                   </div>
                   <Text className='text-slate-700 mb-3'>
                     You have a clear thesis for why you're holding. You know the economics. You know your exit window. When doubt creeps in, you have data, not just feelings. You sleep better.
@@ -461,7 +461,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                 <div className="p-4">
                   <h3 className="text-lg font-bold mb-3" style={{ color: COLORS.dark }}>553 Morris Ave (2-Family)</h3>
                   <p className="text-slate-600">
-                    <span className="font-semibold text-green-600">Above ask</span>, <span className="font-semibold">2 days</span>
+                    <span className="font-semibold text-green-700">Above ask</span>, <span className="font-semibold">2 days</span>
                   </p>
                 </div>
               </Card>

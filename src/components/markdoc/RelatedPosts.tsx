@@ -26,7 +26,7 @@ export function RelatedPosts({ category, limit = 3 }: RelatedPostsProps) {
       <h3 className="text-2xl font-bold mb-6">Related Articles</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {relatedPosts.map((post) => (
-          <Link key={post.id} href={`/blog/${post.id}`}>
+          <Link key={post.id} href={`/blog/${post.id}`} aria-label={`Read article: ${post.title}`}>
             <div className="group cursor-pointer h-full">
               <div className="border border-gray-200 rounded-lg p-4 h-full hover:border-primary transition-colors">
                 <h4 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors line-clamp-2">

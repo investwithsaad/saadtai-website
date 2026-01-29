@@ -322,7 +322,7 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
                 <div className="p-4">
                   <h3 className="text-lg font-bold mb-3" style={{ color: COLORS.dark }}>553 Morris Ave (2-Family)</h3>
                   <p className="text-slate-600">
-                    <span className="font-semibold text-green-600">Above ask</span>, <span className="font-semibold">2 days</span>
+                    <span className="font-semibold text-green-700">Above ask</span>, <span className="font-semibold">2 days</span>
                   </p>
                 </div>
               </Card>
