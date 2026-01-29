@@ -25,7 +25,7 @@ export const getOrganizationSchema = (config?: {
   "@id": `${BASE_URL}/`,
   "name": companyInfo.name,
   "alternateName": "Invest with Saad",
-  "description": companyInfo.description,
+  "description": "I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, rigorous analysis, portfolio strategy.",
   "url": `${BASE_URL}/`,
   "logo": {
     "@type": "ImageObject",
@@ -90,6 +90,30 @@ export const getOrganizationSchema = (config?: {
     "https://www.facebook.com/saadtherealtor",
     "https://www.instagram.com/saadtherealtor"
   ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Multifamily Investment Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Buying Guidance & Deal Analysis",
+        "description": "Think through acquisition decisions with rigorous underwriting. Find off-market deals and close with confidence.",
+        "url": `${BASE_URL}/buying`
+      },
+      {
+        "@type": "Offer",
+        "name": "Strategic Selling & Exit Planning",
+        "description": "Plan your exit with clarity. Maximize proceeds and sell at or above asking price with professional execution.",
+        "url": `${BASE_URL}/selling`
+      },
+      {
+        "@type": "Offer",
+        "name": "Investment Education & Resources",
+        "description": "Learn multifamily fundamentals: cap rate analysis, deal evaluation, market strategy, and more.",
+        "url": `${BASE_URL}/blog`
+      }
+    ]
+  },
   ...(config?.aggregateRating && {
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -248,6 +272,29 @@ export const getReviewSchema = (review: {
 })
 
 // ============================================================================
+// WEBSITE SCHEMA (For sitelinks and search actions)
+// ============================================================================
+
+export const getWebsiteSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${BASE_URL}/#website`,
+  "url": `${BASE_URL}/`,
+  "name": "Invest with Saad - Multifamily Investment Advisor",
+  "description": "Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL",
+  "potentialAction": [
+    {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${BASE_URL}/blog?search={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  ]
+})
+
+// ============================================================================
 // COMPARISON SCHEMA (For comparison tables)
 // ============================================================================
 
@@ -305,6 +352,7 @@ export const createSchemaScript = (schema: any) => ({
 
 export default {
   getOrganizationSchema,
+  getWebsiteSchema,
   getArticleSchema,
   getBreadcrumbSchema,
   getPersonSchema,
