@@ -53,7 +53,7 @@ export function EventBanner() {
             href="/events/master-prospecting-2026"
             className="px-4 py-2 bg-white text-slate-900 rounded font-semibold hover:bg-slate-100 transition-colors whitespace-nowrap text-sm"
           >
-            Learn More
+            Register for Training
           </Link>
           <button
             onClick={handleClose}
