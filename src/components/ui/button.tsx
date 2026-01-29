@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { COLORS } from "@/lib/colors"
 
 const buttonVariants = cva(
-  "relative z-10 flex items-center gap-4 pl-3 pr-4 py-3 text-base font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "relative z-10 flex flex-wrap items-center gap-4 pl-3 pr-4 py-3 text-base font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -119,7 +119,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             />
           </div>
         )}
-        <span className="flex items-center gap-2 whitespace-normal sm:whitespace-nowrap">{children}</span>
+        <span className="flex items-center gap-2">{children}</span>
       </button>
     )
   }

@@ -145,7 +145,7 @@ export function LeadFormContent({
 
       {showPrivacyText && !isSubmitting && (
         <Text size="sm" className="text-gray-600 text-center">
-          We respect your privacy. Your information is secure.
+          We respect your privacy. Your information is secure. Expect a response within 24 hours.
         </Text>
       )}
       </form>

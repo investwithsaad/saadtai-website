@@ -12,6 +12,7 @@ import {
   Heading,
   Text
 } from '@/components/ui'
+import { HeroSection } from '@/components/HeroSection'
 import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
 import FAQAccordion from '@/components/FAQAccordion'
@@ -20,7 +21,6 @@ import { EventBanner } from '@/components/EventBanner'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
 import { SELLING_PROCESS_STEPS } from './constants'
-import { formatTextWithLineBreaks } from '@/lib/format-text'
 
 // Filter for selling-related FAQs
 const sellingFAQs = multifamilyInvestorFAQs.filter(faq =>
@@ -47,10 +47,6 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
     trackMetaPageView('selling_page')
   }, [])
 
-  // Defaults from migration
-  const heroTitle = hero?.headline || 'Exit on Your Timeline.'
-  const heroSubtitle = hero?.description || 'I help owners evaluate whether to hold, reposition, or sell — and when selling makes sense, target the right buyers to maximize net outcome, not just headline price.'
-  const heroCtaText = hero?.ctaText || 'Talk through your next move →'
 
   // Scroll tracking refs
   const heroRef = useScrollTracking({ sectionName: 'seller_hero' })
@@ -64,44 +60,17 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
     <>
       <EventBanner />
       {/* Hero Section */}
-      <div ref={heroRef} className="relative h-auto flex items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
-        <Image
-          src="/home seller.webp"
-          alt="Home Seller Background"
-          fill
-          className="object-cover object-center"
-          priority
-          quality={75}
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        <Container className="relative z-10">
-          <div className="fade-in-lcp">
-            <div className="max-w-3xl mx-auto text-center pb-8 pt-16">
-              <Heading size="h1" color='white'>
-                {formatTextWithLineBreaks(heroTitle)}
-              </Heading>
-              <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
-                {heroSubtitle}
-              </Text>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button
-                  variant="default"
-                  image="/saad.png"
-                  imageAlt="Saad Tai profile photo"
-                  onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_hero', label: heroCtaText })
-                    setIsModalOpen(true)
-                  }}
-                >
-                  {heroCtaText} →
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
+      <HeroSection
+        ref={heroRef}
+        headline={hero?.headline || ''}
+        description={hero?.description || ''}
+        ctaText={hero?.ctaText || 'Talk through your next move'}
+        backgroundImage="/home seller.webp"
+        onCtaClick={() => {
+          trackEvent('cta_clicked', { location: 'seller_hero', label: hero?.ctaText || 'Talk through your next move' })
+          setIsModalOpen(true)
+        }}
+      />
 
       {/* Valuation Section */}
       <Section background='white' className='!pt-2'>
@@ -224,7 +193,7 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.2}>
+            {/* <FadeIn delay={0.2}>
               <div className="w-full md:w-auto md:ml-auto" style={{ width: '267px' }}>
                 <iframe
                     src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1165003828549043%2F&show_text=false&width=267&t=0"
@@ -237,7 +206,7 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 />
               </div>
-            </FadeIn>
+            </FadeIn> */}
           </div>
         </Container>
       </Section>
