@@ -37,7 +37,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
       <div ref={ref} className="relative h-auto flex pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image
           src={backgroundImage}
-          alt="Hero Background"
+          alt="Multifamily real estate investment advisor Saad Tai - expert guidance on property investing"
           fill
           className="object-cover object-center"
           priority
@@ -69,7 +69,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                 <Button
                   variant="default"
                   image={showProfile ? '/saad.png' : undefined}
-                  imageAlt={showProfile ? 'Saad Tai profile photo' : undefined}
+                  imageAlt={showProfile ? 'Saad Tai - multifamily real estate investment advisor' : undefined}
                   onClick={handleCtaClick}
                 >
                   {ctaText} →

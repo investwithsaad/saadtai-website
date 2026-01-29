@@ -31,7 +31,7 @@ export function Footer() {
             >
               <Image
                 src="/saadlicenced image.png"
-                alt="Saad Licenced Badge"
+                alt="Saad Tai licensed real estate professional - New York multifamily investment specialist"
                 width={750}
                 height={550}
                 className="h-auto cursor-pointer transition-all"
@@ -64,7 +64,7 @@ export function Footer() {
             <div className="flex flex-col items-start gap-6">
               <Image
                 src="/real.png"
-                alt="Real Estate Logo"
+                alt="Invest with Saad - multifamily real estate investment services"
                 width={120}
                 height={60}
                 className="h-auto"
@@ -228,7 +228,7 @@ export function Footer() {
             <div className="flex justify-center flex-1">
               <Image
                 src="/footersmallimg.png"
-                alt="Footer Logo"
+                alt="Invest with Saad - multifamily real estate advisory"
                 width={40}
                 height={40}
                 className="h-auto"

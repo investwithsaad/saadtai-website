@@ -19,8 +19,8 @@ export function generateMetadata(): Metadata {
   const page: any = null
 
   return createPageMetadata({
-    title: page?.title || 'Selling Multifamily Properties | Saad Tai',
-    description: page?.description || 'Sell your multifamily property strategically with 1031 exchange guidance and expert exit planning for Capital Region investors.',
+    title: page?.title || 'Exit on Your Timeline | Maximize Multifamily Sale Price',
+    description: page?.description || 'Our system tells you if now is the right time, positions your property properly, and finds the right buyer at the right price. Maximize proceeds without chaos in Albany, Schenectady, Capital Region, and Jacksonville.',
     path: '/selling',
     ogImage: page?.ogImage?.asset?.url,
   })

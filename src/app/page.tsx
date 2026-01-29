@@ -13,8 +13,8 @@ export async function generateMetadata() {
   // const page = await getPage('home')
 
   return createPageMetadata({
-    title: 'Multifamily Investment Advisor | Saad Tai',
-    description: 'Clear analysis on multifamily buying, selling, and hold decisions. Help avoiding overpayment, finding undervalued deals, and timing exits.',
+    title: 'Buy or Exit Multifamily Properties with Clarity | Saad Tai',
+    description: 'Professional underwriting, photography, tenant coordination, and buyer alignment—all handled. Get clear decisions without chaos in Albany, Schenectady, Capital Region, and Jacksonville.',
     path: '/',
     ogImage: undefined,
   })

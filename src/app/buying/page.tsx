@@ -15,8 +15,8 @@ export function generateMetadata() {
   const page: any = null
 
   return createPageMetadata({
-    title: page?.title || 'Multifamily Investment Advisor | Saad Tai',
-    description: page?.description || 'Get expert guidance on multifamily property investments, capital allocation, and deal evaluation to avoid overpaying and make confident investment decisions.',
+    title: page?.title || 'Multifamily Deals That Pencil | Expert Investment Analysis',
+    description: page?.description || 'Our system evaluates opportunities with rigorous underwriting, honest comps, and portfolio alignment. You avoid overpaying and close with confidence in Albany, Schenectady, Capital Region, and Jacksonville.',
     path: '/buying',
     ogImage: page?.ogImage?.asset?.url,
   })

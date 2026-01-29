@@ -25,15 +25,15 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: "Multifamily Investment Advisor | Saad Tai",
-  description: "Clarity on multifamily investment decisions. Real estate advisor specializing in buy/sell strategies in upstate New York.",
-  keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, small multifamily, portfolio strategy, cash flow analysis",
+  title: "Multifamily Investment Advisor | Saad Tai | Albany & Jacksonville",
+  description: "Expert multifamily investment advisor in Albany, NY and Jacksonville, FL. Clear analysis on buying, selling, and portfolio strategy. 1031 exchanges, cap rates, deal analysis.",
+  keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany NY, Schenectady NY, Jacksonville FL, Capital Region, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
     canonical: `${BASE_URL}/`,
   },
   openGraph: {
-    title: "Multifamily Investment Advisor | Saad Tai",
-    description: "Strategic guidance for multifamily investors. Scale smarter, exit cleaner, maximize earnings in the Capital Region.",
+    title: "Multifamily Investment Advisor | Saad Tai | Albany & Jacksonville",
+    description: "Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL. Scale smarter, exit cleaner, maximize earnings.",
     url: `${BASE_URL}/`,
     siteName: "Invest with Saad",
     type: "website",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Multifamily Investment Advisor | Saad Tai",
-    description: "Scale smarter. Exit cleaner. Strategic guidance for small multifamily investors in the Capital Region.",
+    description: "Scale smarter. Exit cleaner. Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL.",
   },
   robots: "index, follow",
   icons: {
