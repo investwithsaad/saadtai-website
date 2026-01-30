@@ -21,12 +21,13 @@
 - Buying hero + intro: [src/app/buying/page.tsx](src/app/buying/page.tsx#L1-L18), [src/app/buying/buying-content.tsx](src/app/buying/buying-content.tsx#L41-L96)
 - Selling hero + intro: [src/app/selling/page.tsx](src/app/selling/page.tsx#L1-L20), [src/app/selling/seller-page-content.tsx](src/app/selling/seller-page-content.tsx#L45-L96)
 
-### 2) Segment CTAs by Intent
+### 2) Segment CTAs by Intent ✅ DONE
 **Why:** Current CTAs are mostly the same; visitors with different intent need different hooks.
 
 **Actions**
-- [ ] Add distinct CTAs for buyers, sellers, and investors on Home.
-- [ ] Add a second CTA on Blog page for “Download a guide” or “Get market report.”
+- [x] Add distinct CTAs for buyers, sellers, and investors on Home.
+- [x] Add a second CTA on Blog page for "Download a guide" or "Get market report."
+  - Added "Use the Investment Calculator" button alongside "Schedule a Call" on blog CTA.
 
 **Where**
 - Home hero CTA and section CTAs: [src/app/home-content.tsx](src/app/home-content.tsx#L70-L77)
@@ -95,20 +96,6 @@
 **Where**
 - Blog list: [src/app/blog/page.tsx](src/app/blog/page.tsx#L1-L80)
 - Posts: [posts](posts)
-
-### 8) Add Proof + E‑E‑A‑T Signals Globally
-**Why:** Your authority is present but not maximized on every page.
-
-**Actions**
-- [ ] Add “About Saad Tai” block with licenses on Buy/Sell/Blog pages.
-- [ ] Add “Data sources & methodology” sections for market posts.
-
-**Where**
-- Buying page content: [src/app/buying/buying-content.tsx](src/app/buying/buying-content.tsx#L41-L96)
-- Selling page content: [src/app/selling/seller-page-content.tsx](src/app/selling/seller-page-content.tsx#L45-L96)
-- Blog CTA or post templates
-
----
 
 ## Success Metrics (Track Monthly)
 

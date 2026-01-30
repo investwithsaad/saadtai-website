@@ -79,7 +79,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https: blob:",
               "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://saadinfo.up.railway.app https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://q.clarity.ms https://e.clarity.ms https://c.clarity.ms https://j.clarity.ms https://widgetbe.com https://capig.datah04.com https://umami-production-25e0.up.railway.app",
+              "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://saadinfo.up.railway.app https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://q.clarity.ms https://e.clarity.ms https://c.clarity.ms https://j.clarity.ms https://y.clarity.ms https://widgetbe.com https://capig.datah04.com https://umami-production-25e0.up.railway.app",
               "frame-src 'self' https://www.facebook.com https://m.facebook.com",
               "frame-ancestors 'self'",
               "base-uri 'self'",
