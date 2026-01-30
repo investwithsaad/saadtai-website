@@ -21,8 +21,6 @@ interface ChatbotProps {
 
 export function Chatbot({ userRole }: ChatbotProps = {}) {
   const [isOpen, setIsOpen] = useState(false)
-  const [showNotification, setShowNotification] = useState(false)
-  const [hasShownNotification, setHasShownNotification] = useState(false)
   const [aiContext, setAiContext] = useState('')
   const [storedUserRole, setStoredUserRole] = useState<string | undefined>(userRole)
   const [messages, setMessages] = useState<Message[]>([
@@ -35,6 +33,7 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
   ])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [showChat, setShowChat] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
 
@@ -59,30 +58,16 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
     }
   }, [messages, isOpen, isLoading])
 
-  // Show notification after delay
+  // Show chat button when user scrolls below the fold
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowNotification(true)
-      setHasShownNotification(true)
-    }, 10000)
+    const handleScroll = () => {
+      // Show chat when user has scrolled more than 500px down
+      setShowChat(window.scrollY > 500)
+    }
 
-    return () => clearTimeout(timer)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // // Show notification on scroll
-  // useEffect(() => {
-  //   if (hasShownNotification || isOpen) return
-
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 1000 && !hasShownNotification) {
-  //       setShowNotification(true)
-  //       setHasShownNotification(true)
-  //     }
-  //   }
-
-  //   window.addEventListener('scroll', handleScroll)
-  //   return () => window.removeEventListener('scroll', handleScroll)
-  // }, [hasShownNotification, isOpen])
 
   const handleSendMessage = useCallback(async () => {
     if (!inputValue.trim()) return
@@ -169,127 +154,93 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
     }
   }, [aiContext])
 
+  const handleOpenChat = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <>
-      {/* Notification - appears above chatbot */}
-      <AnimatePresence>
-        {showNotification && !isOpen && (
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          style={{
-            position: 'fixed',
-            bottom: '16px',
-            right: 'calc(16px + 75px + 16px)',
-            width: 'auto',
-            zIndex: 40,
-            borderRadius: '0px',
-            backgroundColor: BRAND_COLORS.secondary,
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-            cursor: 'pointer',
-            borderColor: BRAND_COLORS.dark,
-            borderWidth: '2px',
-          }}
-          onClick={() => {
-            setIsOpen(true)
-            setShowNotification(false)
-          }}
-        >
-          <div
-            style={{
-              padding: '14px 16px',
-              width: '100%',
-            }}
-          >
-            <div className="flex justify-between items-center gap-2">
-              <div className="flex-1">
-                <p className="font-semibold text-gray-900">Have any questions?</p>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setShowNotification(false)
-                }}
-                className="text-black hover:text-gray-800 flex-shrink-0 leading-none transition-colors cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-          </div>
-        </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Floating Button */}
-      <motion.button
-        onClick={() => {
-          setIsOpen(!isOpen)
-          if (!isOpen) setShowNotification(false)
-        }}
-        style={{
-          position: 'fixed',
-          bottom: '16px',
-          right: '16px',
-          width: '75px',
-          height: '75px',
-          borderRadius: '50%',
-          backgroundColor: BRAND_COLORS.secondary,
-          zIndex: 50,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: 'none',
-          cursor: 'pointer',
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="shadow-lg transition-colors hover:opacity-90"
-        aria-label={isOpen ? "Close chat" : "Open chat"}
-      >
-        {isOpen ? <X size={28} style={{ color: BRAND_COLORS.primary }} /> : <MessageCircle size={28} style={{ color: BRAND_COLORS.primary }} />}
-      </motion.button>
-
-      {/* Chat Window */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+      <AnimatePresence mode="wait">
+        {!isOpen && showChat ? (
+          <motion.button
+            key="button"
+            onClick={handleOpenChat}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-5 sm:w-96 sm:h-[600px] bg-white rounded-none sm:rounded-2xl shadow-2xl flex flex-col z-50"
             style={{
-              // Mobile: full viewport height with keyboard handling
-              height: typeof window !== 'undefined' && window.innerWidth < 640 ? '100vh' : undefined,
-              // @ts-ignore - dvh is valid CSS but TypeScript doesn't recognize it yet
-              height: typeof window !== 'undefined' && window.innerWidth < 640 ? '100dvh' : undefined,
-              maxHeight: typeof window !== 'undefined' && window.innerWidth < 640 ? 'calc(100dvh - env(keyboard-inset-height, 0px))' : 'calc(100vh - 80px)',
+              position: 'fixed',
+              bottom: 16,
+              left: '50%',
+              translate: '-50% 0',
+              zIndex: 50,
+              padding: '16px 24px',
+              backgroundColor: BRAND_COLORS.secondary,
+              border: `2px solid ${BRAND_COLORS.dark}`,
+              cursor: 'pointer',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
             }}
+            className="flex items-center justify-center gap-3 hover:opacity-95 relative"
+            aria-label="Open chat"
+          >
+            <MessageCircle size={24} style={{ color: BRAND_COLORS.dark }} />
+            <span className="font-bold text-gray-900 text-base whitespace-nowrap">
+              Have any questions?
+            </span>
+            {/* Red notification badge */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute -top-2 -right-2 bg-red-500 rounded-none w-4 h-4 flex items-center justify-center text-white text-xs font-bold border border-red-600"
+              style={{ borderWidth: '1px' }}
+            >
+              1
+            </motion.div>
+          </motion.button>
+        ) : isOpen ? (
+          <motion.div
+            key="chat"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            style={{
+              position: 'fixed',
+              width: typeof window !== 'undefined' && window.innerWidth < 640 ? '100vw' : '500px',
+              height: typeof window !== 'undefined' && window.innerWidth < 640 ? '100dvh' : '600px',
+              ...(typeof window !== 'undefined' && window.innerWidth < 640
+                ? { inset: 0 }
+                : { bottom: 16, left: '50%', translate: '-50% 0' }),
+              zIndex: 50,
+              border: `2px solid ${BRAND_COLORS.dark}`,
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
+              backgroundColor: 'white',
+            }}
+            className="flex flex-col"
             role="dialog"
             aria-label="Saad Tai Real Estate Chat Assistant"
           >
-            {/* Header */}
+            {/* Header - Blocky style */}
             <div
-              style={{ backgroundColor: BRAND_COLORS.primary }}
-              className="text-white px-6 py-4 rounded-none sm:rounded-t-2xl flex items-center justify-between flex-shrink-0"
+              style={{
+                backgroundColor: BRAND_COLORS.dark,
+                borderBottom: `2px solid ${BRAND_COLORS.dark}`,
+              }}
+              className="text-white px-6 py-4 flex items-center justify-between flex-shrink-0"
             >
               <div>
-                <h3 className="font-semibold">Saad Tai Real Estate Assistant</h3>
+                <h3 className="font-bold text-base">Saad Tai Assistant</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:opacity-80 p-1 rounded transition-opacity"
+                className="text-white hover:opacity-80 p-1 transition-opacity"
                 aria-label="Close chat"
               >
                 <X size={20} />
               </button>
             </div>
-
-            {/* Messages Container */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0" role="log" aria-label="Chat messages">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0 bg-white" role="log" aria-label="Chat messages">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -299,17 +250,14 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
                 >
                   <div
                     style={{
-                      backgroundColor: 'white',
-                      color: '#1f2937',
-                      border: '1px solid #e5e7eb'
+                      backgroundColor: message.sender === 'user' ? BRAND_COLORS.secondary : '#f3f4f6',
+                      color: message.sender === 'user' ? BRAND_COLORS.dark : '#1f2937',
+                      border: `2px solid ${message.sender === 'user' ? BRAND_COLORS.dark : '#e5e7eb'}`,
+                      borderRadius: '0px',
                     }}
-                    className={`max-w-[85%] sm:max-w-[70%] px-4 py-2 rounded-lg break-words ${
-                      message.sender === 'user'
-                        ? 'rounded-br-none'
-                        : 'rounded-bl-none'
-                    }`}
+                    className={`max-w-[85%] sm:max-w-[70%] px-6 py-4`}
                   >
-                    <p className="text-sm">{message.text}</p>
+                    <p className="text-base font-medium leading-relaxed">{message.text}</p>
                   </div>
                   {/* Action Buttons */}
                   {message.actionButtons && message.actionButtons.length > 0 && (
@@ -318,8 +266,8 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
                         <Button
                           key={idx}
                           onClick={() => handleActionButtonClick(btn.action)}
-                          variant="default"
-                          className="hover:-translate-y-0.5"
+                          variant="secondary"
+                          className="hover:-translate-y-0.5 text-xs"
                         >
                           {btn.label}
                         </Button>
@@ -335,20 +283,38 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-white text-gray-800 px-4 py-2 rounded-lg rounded-bl-none border border-gray-200">
-                    <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
+                  <div style={{ backgroundColor: '#f3f4f6', border: `2px solid #e5e7eb`, borderRadius: '0px' }} className="text-gray-800 px-6 py-4 flex gap-3">
+                    {[0, 1, 2].map((index) => (
+                      <motion.div
+                        key={index}
+                        style={{
+                          width: '12px',
+                          height: '12px',
+                        }}
+                        animate={{
+                          scale: [1, 1.4, 1],
+                          rotateZ: [0, 180, 360],
+                          backgroundColor: [
+                            [BRAND_COLORS.secondary, BRAND_COLORS.dark, BRAND_COLORS.primary],
+                            [BRAND_COLORS.dark, BRAND_COLORS.primary, BRAND_COLORS.secondary],
+                            [BRAND_COLORS.primary, BRAND_COLORS.secondary, BRAND_COLORS.dark],
+                          ][index],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.2,
+                        }}
+                      />
+                    ))}
                   </div>
                 </motion.div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Area */}
-            <div className="border-t border-gray-200 p-4 rounded-none sm:rounded-b-2xl flex-shrink-0">
+            {/* Input Area - Blocky style */}
+            <div style={{ borderTop: `2px solid ${BRAND_COLORS.dark}`, backgroundColor: BRAND_COLORS.secondary }} className="p-4 flex-shrink-0">
               <div className="relative">
                 <input
                   type="text"
@@ -362,9 +328,11 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
                   }}
                   placeholder="Ask a question..."
                   style={{
-                    borderColor: BRAND_COLORS.secondary,
+                    borderColor: BRAND_COLORS.dark,
+                    borderWidth: '2px',
+                    borderRadius: '0px',
                   } as React.CSSProperties}
-                  className="w-full px-4 py-4 pr-8 border rounded-lg focus:outline-none transition-all text-base bg-gray-50"
+                  className="w-full px-6 py-4 pr-14 focus:outline-none text-base bg-white font-medium placeholder-gray-400"
                   disabled={isLoading}
                   aria-label="Chat message input"
                 />
@@ -372,9 +340,9 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
                   onClick={handleSendMessage}
                   disabled={isLoading || !inputValue.trim()}
                   style={{
-                    color: BRAND_COLORS.primary,
+                    color: BRAND_COLORS.dark,
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-70 disabled:opacity-50"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-70 disabled:opacity-30"
                   aria-label="Send message"
                 >
                   <Send size={20} />
@@ -382,15 +350,14 @@ export function Chatbot({ userRole }: ChatbotProps = {}) {
               </div>
               {/* AI Disclaimer */}
               <div className="mt-2">
-                <p className="text-xs text-gray-500 text-center">
-                  <span className="font-semibold">AI can make mistakes.</span> For important decisions, please speak with our team directly.
+                <p className="text-xs text-gray-700 text-center font-medium">
+                  <span className="font-bold">AI can make mistakes.</span> Speak with our team for important decisions.
                 </p>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
     </>
   )
 }

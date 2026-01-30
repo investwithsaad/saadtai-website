@@ -79,6 +79,11 @@ export function HomeContent({ hero }: HomeContentProps) {
           trackEvent('cta_clicked', { location: 'hero', label: hero?.ctaText || 'Talk through your next move' })
           setIsModalOpen(true)
         }}
+        testimonial={{
+          text: "If you're looking for a reliable and hardworking agent who truly cares about his clients, I highly recommend Saad Tai!",
+          author: "Nicholas Totaram",
+          tag: "Buyer & Investor"
+        }}
       />
 
       {/* The Problem Section */}
