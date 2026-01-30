@@ -81,7 +81,7 @@ export function HomeContent({ hero }: HomeContentProps) {
       {/* The Problem Section */}
       <Section background='dark' className='!pt-0'>
         <Container>
-          <div ref={problemRef} className="max-w-7xl mx-auto">
+          <div ref={problemRef} className="max-w-3xl mx-auto">
             <FadeIn>
               <div className="mb-12">
                 <Heading size="h2" color='white' className='!mt-6'>
@@ -113,7 +113,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
-                    <Heading size="h3" className="!mb-4">For Sellers</Heading>
+                    <Heading size="h3" className="!mb-4">If you're selling</Heading>
                     <p className="text-slate-600 mb-6 flex-grow">
                       Our system handles professional photography, tenant coordination, buyer qualification, and negotiation.<br />You maximize proceeds without the chaos.
                     </p>
@@ -141,7 +141,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
-                    <Heading size="h3" className="!mb-4">For Buyers</Heading>
+                    <Heading size="h3" className="!mb-4">If you're buying</Heading>
                     <p className="text-slate-600 mb-6 flex-grow">
                       Our system finds off-market deals, runs rigorous underwriting, and coordinates due diligence.<br />You avoid overpaying and close with confidence.
                     </p>
