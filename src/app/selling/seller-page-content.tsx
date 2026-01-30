@@ -64,10 +64,10 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
         ref={heroRef}
         headline={hero?.headline || ''}
         description={hero?.description || ''}
-        ctaText={hero?.ctaText || 'Talk through your next move'}
+        ctaText={hero?.ctaText || 'Maximize Your Sale Price'}
         backgroundImage="/home seller.webp"
         onCtaClick={() => {
-          trackEvent('cta_clicked', { location: 'seller_hero', label: hero?.ctaText || 'Talk through your next move' })
+          trackEvent('cta_clicked', { location: 'seller_hero', label: hero?.ctaText || 'Maximize Your Sale Price' })
           setIsModalOpen(true)
         }}
       />
@@ -184,11 +184,11 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
                 <Button
                   variant="default"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'seller_expertise', label: 'Talk through your next move' })
+                    trackEvent('cta_clicked', { location: 'seller_expertise', label: 'Plan Your Exit' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Talk through your next move →
+                  Plan Your Exit →
                 </Button>
               </div>
             </FadeIn>
@@ -334,11 +334,11 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
               image="/saad.png"
               imageAlt="Saad Tai profile photo"
               onClick={() => {
-                trackEvent('cta_clicked', { location: 'seller_cta', label: 'Talk through your next move' })
+                trackEvent('cta_clicked', { location: 'seller_cta', label: 'Get Your Exit Strategy' })
                 setIsModalOpen(true)
               }}
             >
-              Talk through your next move →
+              Get Your Exit Strategy →
             </Button>
           </div>
         </Container>

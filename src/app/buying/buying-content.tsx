@@ -65,10 +65,10 @@ export function BuyingContent({ hero }: BuyingContentProps) {
         ref={heroRef}
         headline={hero?.headline || ''}
         description={hero?.description || ''}
-        ctaText={hero?.ctaText || 'Talk through your next move'}
+        ctaText={hero?.ctaText || 'Find Your Next Deal'}
         backgroundImage="/home buyer.webp"
         onCtaClick={() => {
-          trackEvent('cta_clicked', { location: 'buyer_hero', label: hero?.ctaText || 'Talk through your next move' })
+          trackEvent('cta_clicked', { location: 'buyer_hero', label: hero?.ctaText || 'Find Your Next Deal' })
           setIsModalOpen(true)
         }}
       />
@@ -153,11 +153,11 @@ export function BuyingContent({ hero }: BuyingContentProps) {
                 <Button
                   variant="default"
                   onClick={() => {
-                    trackEvent('cta_clicked', { location: 'buyer_expertise', label: 'Talk through your next move' })
+                    trackEvent('cta_clicked', { location: 'buyer_expertise', label: 'Get Decision Clarity' })
                     setIsModalOpen(true)
                   }}
                 >
-                  Talk through your next move →
+                  Get Decision Clarity →
                 </Button>
               </div>
             </FadeIn>
