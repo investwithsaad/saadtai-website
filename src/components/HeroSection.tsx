@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { forwardRef } from 'react'
 import { Container, Button, Heading, Text } from '@/components/ui'
 import { formatTextWithLineBreaks } from '@/lib/format-text'
@@ -13,6 +14,11 @@ interface HeroSectionProps {
   backgroundImage?: string
   onCtaClick?: () => void
   showProfile?: boolean
+  testimonial?: {
+    text: string
+    author: string
+    tag: string
+  }
 }
 
 export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
@@ -23,7 +29,8 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
       ctaText = 'Talk through your next move',
       backgroundImage = '/Home image.webp',
       onCtaClick,
-      showProfile = true
+      showProfile = true,
+      testimonial
     },
     ref
   ) => {
@@ -57,23 +64,41 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
 
         <Container className="relative z-10 !mx-0">
           <div className="fade-in-lcp">
-            <div className="max-w-3xl text-left pb-8 pt-16">
+            <div className="max-w-xl text-left pb-8 pt-16">
               <Heading size="h1" color="white">
                 {formatTextWithLineBreaks(headline)}
               </Heading>
-              <Text size="lg" className="text-white/90 mb-12 leading-relaxed">
+              <Text size="lg" className="text-white/90 mb-2 leading-relaxed">
                 {formatTextWithLineBreaks(description)}
               </Text>
 
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              {testimonial && (
+                <div className="mb-4 p-3 rounded-lg border-2 border-white/30 bg-white/5 backdrop-blur-sm">
+                  <div className="flex gap-0.5 mb-1">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-yellow-400 text-lg">★</span>
+                    ))}
+                  </div>
+                  <p className="text-white/95 mb-2 font-medium italic text-sm">"{testimonial.text}"</p>
+                  <p className="text-white/85 text-xs"><span className="font-semibold">{testimonial.author}</span> • {testimonial.tag}</p>
+                </div>
+              )}
+
+              <div className="flex flex-row gap-3 mt-2 w-full">
                 <Button
                   variant="default"
                   image={showProfile ? '/saad.png' : undefined}
                   imageAlt={showProfile ? 'Saad Tai - multifamily real estate investment advisor' : undefined}
                   onClick={handleCtaClick}
+                  className="flex-1 whitespace-nowrap"
                 >
                   {ctaText} →
                 </Button>
+                <Link href="/about" className="flex-1">
+                  <Button variant="secondary" className="w-full whitespace-nowrap py-8">
+                    About Saad →
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
