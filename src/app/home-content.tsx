@@ -24,6 +24,9 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
 import { formatTextWithLineBreaks } from '@/lib/format-text'
+import { TestimonialsSection } from '@/components/TestimonialsSection'
+import { StatsSection } from '@/components/StatsSection'
+import { SectionHeader } from '@/components/SectionHeader'
 
 interface HomeContentProps {
   hero?: {
@@ -100,7 +103,7 @@ export function HomeContent({ hero }: HomeContentProps) {
 
               {/* Selling Section */}
               <FadeIn delay={0.2}>
-                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                <Card variant="flat" className="bg-white h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
                   <div className="w-full h-64 bg-slate-200 overflow-hidden">
                     <Image
                       src="/house4.webp"
@@ -128,7 +131,7 @@ export function HomeContent({ hero }: HomeContentProps) {
 
               {/* Buying Section */}
               <FadeIn>
-                <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                <Card variant="flat" className="bg-white h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
                   <div className="w-full h-64 bg-slate-200 overflow-hidden">
                     <Image
                       src="/house3.webp"
@@ -163,20 +166,7 @@ export function HomeContent({ hero }: HomeContentProps) {
       <Section background='background'>
         <Container>
           <div ref={testimonialsRef}>
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {testimonials.map((testimonial, i) => (
-                <Card key={i} className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="p-6">
-                    <p className="text-slate-700 mb-4 italic">
-                      "{testimonial.text}"
-                    </p>
-                    <p className="font-semibold text-slate-900">
-                      — {testimonial.author}{testimonial.tag && `, ${testimonial.tag}`}
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </StaggerContainer>
+            <TestimonialsSection testimonials={testimonials} />
           </div>
         </Container>
       </Section>
@@ -186,12 +176,15 @@ export function HomeContent({ hero }: HomeContentProps) {
         <Container>
           <FadeIn>
             <div className="max-w-4xl mx-auto">
-              <Heading size="h2" color='white' className='text-center mb-4'>
-                What Happens When You Get It Wrong
-              </Heading>
-              <Text size="lg" color='white' className='text-center mb-12 italic'>
-                The cost isn't just money. It's opportunity lost, years wasted, and growth arrested.
-              </Text>
+              <SectionHeader 
+                title="What Happens When You Get It Wrong"
+                subtitle="The cost isn't just money. It's opportunity lost, years wasted, and growth arrested."
+                titleColor="white"
+                subtitleColor="white"
+                centered
+                className="mb-12"
+                withFadeIn={false}
+              />
 
               <div className="space-y-8">
                 {/* Buyer Trap */}
@@ -261,14 +254,13 @@ export function HomeContent({ hero }: HomeContentProps) {
         <Container>
           <FadeIn>
             <div className="max-w-4xl mx-auto">
-              <div className='text-center mb-4'>
-                <Heading size="h2" className='mb-0'>
-                  {formatTextWithLineBreaks('What Changes When You Have [Clarity]')}
-                </Heading>
-              </div>
-              <Text size="lg" className='text-center mb-12 text-slate-600'>
-                These aren't small shifts. They're foundational changes to how you make decisions.
-              </Text>
+              <SectionHeader 
+                title="What Changes When You Have [Clarity]"
+                subtitle="These aren't small shifts. They're foundational changes to how you make decisions."
+                centered
+                className="mb-12"
+                withFadeIn={false}
+              />
 
               <div className="space-y-6">
                 {/* Buyers Benefit */}
@@ -337,33 +329,23 @@ export function HomeContent({ hero }: HomeContentProps) {
       <Section background='dark'>
         <Container>
           <div ref={proofRef}>
-            <FadeIn>
-              <div className="max-w-3xl text-center mx-auto mb-12">
-                <Heading size="h2" color='white'>
-                  {formatTextWithLineBreaks('[Clarity] That Gets Results')}
-                </Heading>
-                <Text size="lg" color='white'>
-                  My system moves investor-grade multifamily fast,<br />typically above asking and within days.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="[Clarity] That Gets Results"
+              subtitle="My system moves investor-grade multifamily fast,\ntypically above asking and within days."
+              titleColor="white"
+              subtitleColor="white"
+              centered
+              className="max-w-3xl mx-auto mb-12"
+            />
 
-            <FadeIn>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-                <div className="text-center">
-                  <p className="text-5xl font-bold" style={{ color: COLORS.secondary }}>13</p>
-                  <p className="text-white text-sm mt-2">Average days to sale<br />for listings</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-5xl font-bold text-white">97%</p>
-                  <p className="text-white text-sm mt-2">At or above asking price<br />(last 12 months)</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-5xl font-bold" style={{ color: COLORS.secondary }}>300+</p>
-                  <p className="text-white text-sm mt-2">Deals analyzed<br />in past 5 years</p>
-                </div>
-              </div>
-            </FadeIn>
+            <StatsSection 
+              stats={[
+                { value: '13', label: 'Average days to sale\nfor listings', color: COLORS.secondary },
+                { value: '97%', label: 'At or above asking price\n(last 12 months)', color: 'white' },
+                { value: '300+', label: 'Deals analyzed\nin past 5 years', color: COLORS.secondary }
+              ]}
+              className="mb-12"
+            />
 
             <FadeIn className="mb-12">
               <div
@@ -487,7 +469,7 @@ export function HomeContent({ hero }: HomeContentProps) {
               <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
                 {/* Buying Journey */}
                 <FadeIn>
-                  <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                  <Card variant="flat" className="bg-white h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
                     <div className="p-8 flex flex-col h-full">
                       <div className="mb-6">
                         <Heading size="h3" className="mb-2">You're Buying</Heading>
@@ -527,7 +509,7 @@ export function HomeContent({ hero }: HomeContentProps) {
 
                 {/* Selling Journey */}
                 <FadeIn delay={0.1}>
-                  <Card className="!overflow-hidden !shadow-none !rounded-none !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px', backgroundColor: COLORS.secondary }}>
+                  <Card variant="flat" className="h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px', backgroundColor: COLORS.secondary }}>
                     <div className="p-8 flex flex-col h-full">
                       <div className="mb-6">
                         <Heading size="h3" className="mb-2" style={{ color: COLORS.dark }}>You're Selling</Heading>
@@ -567,7 +549,7 @@ export function HomeContent({ hero }: HomeContentProps) {
 
                 {/* Holding Journey */}
                 <FadeIn delay={0.2}>
-                  <Card className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0 h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                  <Card variant="flat" className="bg-white h-full flex flex-col" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
                     <div className="p-8 flex flex-col h-full">
                       <div className="mb-6">
                         <Heading size="h3" className="mb-2">You're Holding</Heading>

@@ -22,6 +22,8 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
 import { formatTextWithLineBreaks } from '@/lib/format-text'
+import { TestimonialsSection } from '@/components/TestimonialsSection'
+import { SectionHeader } from '@/components/SectionHeader'
 
 interface AboutPageContentProps {
   hero?: any
@@ -253,17 +255,15 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
       <Section background='background'>
         <Container>
           <div ref={credentialsRef}>
-            <FadeIn>
-              <div className="max-w-3xl mx-auto text-center mb-16">
-                <Heading size="h2">
-                  What My Clients Say
-                </Heading>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="What My Clients Say"
+              centered
+              className="max-w-3xl mx-auto mb-16"
+            />
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {testimonials.map((testimonial, i) => (
-                <Card key={i} className="!overflow-hidden !shadow-none !rounded-none !bg-white !p-0 hover:!translate-y-0" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
+                <Card key={i} variant="flat" className="bg-white" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-start gap-1">

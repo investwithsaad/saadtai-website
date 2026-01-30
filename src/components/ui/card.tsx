@@ -21,8 +21,11 @@ export const cardColorStyles = {
   }
 } as const
 
+type CardVariant = 'default' | 'flat'
+
 interface CardProps {
   color?: CardColorOption
+  variant?: CardVariant
   hoverColor?: string
   className?: string
   style?: React.CSSProperties
@@ -31,7 +34,7 @@ interface CardProps {
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, color, style, hoverColor, ...props }, ref) => {
+  ({ className, color, variant = 'default', style, hoverColor, ...props }, ref) => {
     const cardRef = useRef<HTMLDivElement>(null)
     const mergedRef = ref || cardRef
 
@@ -39,6 +42,29 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       ...cardColorStyles.white,
       ...(color && color in cardColorStyles ? cardColorStyles[color as keyof typeof cardColorStyles] : {}),
       ...(style || {}),
+    }
+
+    // For flat variant, override styles
+    if (variant === 'flat') {
+      const flatCardClass = "relative z-10 p-0 overflow-hidden transition-all duration-300 border-2 rounded-none shadow-none"
+      const bgColor = cardStyle.backgroundColor || COLORS.white
+      
+      return (
+        <motion.div
+          ref={mergedRef}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+          }}
+          className={[flatCardClass, className].filter(Boolean).join(' ')}
+          style={{
+            ...cardStyle,
+            borderColor: style?.borderColor || COLORS.dark,
+            borderWidth: style?.borderWidth || '2px',
+          }}
+          {...props}
+        />
+      )
     }
 
     const bgColor = (cardStyle.backgroundColor as string) || COLORS.white

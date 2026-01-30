@@ -21,6 +21,8 @@ import { MortgageCalculator } from '@/components/MortgageCalculator'
 import { AffordabilityCalculator } from '@/components/AffordabilityCalculator'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
+import { StatsSection } from '@/components/StatsSection'
+import { SectionHeader } from '@/components/SectionHeader'
 
 // Filter for buying-related FAQs
 const buyingFAQs = multifamilyInvestorFAQs.filter(faq =>
@@ -77,16 +79,14 @@ export function BuyingContent({ hero }: BuyingContentProps) {
       <Section background='dark' className='!pt-0'>
         <Container>
           <div ref={problemRef} className="max-w-3xl mx-auto">
-            <FadeIn>
-              <div className="text-center mb-12">
-                <Heading size="h2" color='white' className='!mt-6'>
-                  Finding the Right Property<br />Takes Time & Strategy
-                </Heading>
-                <Text size="lg" color='white'>
-                  Sourcing, analyzing, financing, closing;<br />It's a lot to do alone.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="Finding the Right Property\nTakes Time & Strategy"
+              subtitle="Sourcing, analyzing, financing, closing;\nIt's a lot to do alone."
+              titleColor="white"
+              subtitleColor="white"
+              centered
+              className="mb-12"
+            />
 
             <FadeIn delay={0.2}>
               <Card color="dark">
@@ -120,18 +120,12 @@ export function BuyingContent({ hero }: BuyingContentProps) {
       {/* Credibility Stats Section */}
       <Section background='white'>
         <Container>
-          <FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <p className="text-5xl font-bold" style={{ color: COLORS.dark }}>13</p>
-                <p className="text-slate-600 text-sm mt-2">Days on Market Average</p>
-              </div>
-              <div className="text-center">
-                <p className="text-5xl font-bold text-green-700">97%</p>
-                <p className="text-slate-600 text-sm mt-2">Sell at or Above Asking Price</p>
-              </div>
-            </div>
-          </FadeIn>
+          <StatsSection 
+            stats={[
+              { value: '13', label: 'Days on Market Average', color: COLORS.dark },
+              { value: '97%', label: 'Sell at or Above Asking Price', color: '#15803d' }
+            ]}
+          />
         </Container>
       </Section>
 
@@ -184,16 +178,12 @@ export function BuyingContent({ hero }: BuyingContentProps) {
       <Section background='white'>
         <Container>
           <div ref={proofRef}>
-            <FadeIn>
-              <div className="max-w-3xl text-center mx-auto mb-16">
-                <Heading size="h2">
-                  Avoid the 3 Biggest Investor Mistakes
-                </Heading>
-                <Text className="text-lg text-slate-600">
-                  Most investors stumble on the same three pitfalls. Here's how I help you avoid them and protect your capital.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="Avoid the 3 Biggest Investor Mistakes"
+              subtitle="Most investors stumble on the same three pitfalls. Here's how I help you avoid them and protect your capital."
+              centered
+              className="max-w-3xl mx-auto mb-16"
+            />
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               <Card

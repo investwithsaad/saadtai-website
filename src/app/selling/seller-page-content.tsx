@@ -21,6 +21,8 @@ import { EventBanner } from '@/components/EventBanner'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
 import { SELLING_PROCESS_STEPS } from './constants'
+import { SectionHeader } from '@/components/SectionHeader'
+import { StatsSection } from '@/components/StatsSection'
 
 // Filter for selling-related FAQs
 const sellingFAQs = multifamilyInvestorFAQs.filter(faq =>
@@ -76,16 +78,12 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
       <Section background='white' className='!pt-2'>
         <Container>
           <div ref={valuationRef}>
-            <FadeIn>
-              <div className="max-w-3xl mx-auto text-center mb-16">
-                <Heading size="h2">
-                  What's Your Property Worth?
-                </Heading>
-                <Text className="text-lg text-slate-600 mb-8">
-                  Get a free, accurate property valuation from a trusted local expert.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="What's Your Property Worth?"
+              subtitle="Get a free, accurate property valuation from a trusted local expert."
+              centered
+              className="max-w-3xl mx-auto mb-16"
+            />
 
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto text-center">
@@ -104,16 +102,14 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
       <Section background='dark'>
         <Container>
           <div ref={problemRef} className="max-w-3xl mx-auto">
-            <FadeIn>
-              <div className="text-center mb-12">
-                <Heading size="h2" color='white' className='!mt-6'>
-                  Selling Takes Strategy & Execution
-                </Heading>
-                <Text size="lg" color='white'>
-                  Whether you're burned out and want a clean exit,<br />recycling capital into a better deal, or scaling your portfolio<br />You need more than a real estate agent<br />You need a strategist.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="Selling Takes Strategy & Execution"
+              subtitle="Whether you're burned out and want a clean exit,\nrecycling capital into a better deal, or scaling your portfolio\nYou need more than a real estate agent\nYou need a strategist."
+              titleColor="white"
+              subtitleColor="white"
+              centered
+              className="mb-12"
+            />
 
             <FadeIn delay={0.2}>
               <Card color="dark">
@@ -215,16 +211,12 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
       <Section background='white'>
         <Container>
           <div ref={proofRef}>
-            <FadeIn>
-              <div className="max-w-3xl text-center mx-auto mb-16">
-                <Heading size="h2">
-                  Fast Sales, Strong Prices
-                </Heading>
-                <Text className="text-lg text-slate-600">
-                  When I list investor-grade multifamily, it moves—typically above asking, within days.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="Fast Sales, Strong Prices"
+              subtitle="When I list investor-grade multifamily, it moves—typically above asking, within days."
+              centered
+              className="max-w-3xl mx-auto mb-16"
+            />
 
             <FadeIn className="mb-12">
               <div
@@ -348,16 +340,12 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
       <Section background='background'>
         <Container>
           <div ref={processRef}>
-            <FadeIn>
-              <div className="max-w-3xl mx-auto text-center mb-12">
-                <Heading size="h2">
-                  Our Proven Approach
-                </Heading>
-                <Text className="text-lg text-slate-600 mb-4">
-                  A proven 6-step process designed to attract serious buyers and close faster. Each step is built to get your property in front of qualified investors and maximize your sale price.
-                </Text>
-              </div>
-            </FadeIn>
+            <SectionHeader 
+              title="Our Proven Approach"
+              subtitle="A proven 6-step process designed to attract serious buyers and close faster. Each step is built to get your property in front of qualified investors and maximize your sale price."
+              centered
+              className="max-w-3xl mx-auto mb-12"
+            />
 
             <FadeIn delay={0.2}>
               <div className="max-w-3xl mx-auto space-y-6">
