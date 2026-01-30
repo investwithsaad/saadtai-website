@@ -5,6 +5,8 @@ import {
   Section,
   Container,
   FadeIn,
+  Heading,
+  Text,
 } from '@/components/ui'
 import { BlogHeroFadeIn } from '@/components/blog-hero-fade-in'
 import { Breadcrumb } from '@/components/breadcrumb'
@@ -186,6 +188,21 @@ export default async function BlogPost({ params }: Props) {
           <FadeIn className="max-w-3xl mx-auto">
             {renderMarkdoc(content)}
           </FadeIn>
+
+          <div className="max-w-3xl mx-auto mt-12">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+              <Heading size="h3" className="mb-2">About Saad Tai</Heading>
+              <Text className="text-slate-700 mb-4">
+                Saad Tai is a multifamily investor and advisor serving the Capital Region (Albany, Schenectady, Troy)
+                and Jacksonville, FL. He specializes in underwriting accuracy, pricing strategy, and clean exits for
+                small multifamily owners and investors.
+              </Text>
+              <ul className="space-y-2 text-slate-700">
+                <li><strong>NY License:</strong> #10401373295</li>
+                <li><strong>FL License:</strong> #SL3651394</li>
+              </ul>
+            </div>
+          </div>
 
           {/* Social Share Buttons */}
           <SocialShareButtons

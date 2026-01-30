@@ -378,6 +378,31 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
         </Container>
       </Section>
 
+      {/* E-E-A-T Section */}
+      <Section background='white'>
+        <Container>
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <Heading size="h2" className="mb-4 text-center">
+                About Saad Tai
+              </Heading>
+              <Text className="text-lg text-slate-600 mb-6 text-center">
+                Multifamily investor and advisor specializing in strategic exits, pricing, and buyer alignment.
+                Serving Albany, Schenectady, Troy, and Jacksonville with a data‑first approach.
+              </Text>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <ul className="space-y-2 text-slate-700">
+                  <li><strong>NY License:</strong> #10401373295</li>
+                  <li><strong>FL License:</strong> #SL3651394</li>
+                  <li><strong>Results:</strong> 97% at or above asking price (last 12 months)</li>
+                  <li><strong>Focus:</strong> Tenant-occupied assets, investor buyers, and clean exits</li>
+                </ul>
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
       {/* FAQ Section */}
       <Section background='white'>
         <Container>

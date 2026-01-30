@@ -5,6 +5,120 @@
 
 ---
 
+# Repo-Based Action Plan (Prioritized)
+
+## Phase 1 — Same Week (0–7 days)
+
+### 1) Clarify Audience & Search Intent on Core Pages
+**Why:** The homepage + metadata are explicitly “multifamily investor” focused, which narrows organic capture.
+
+**Actions**
+- [ ] Add city/service keywords to key hero + supporting sections on Home, Buying, Selling (without diluting investor positioning).
+- [ ] Make “investor” vs “seller” intent explicit in H2s and section intros.
+
+**Where**
+- Home hero + problem framing: [src/app/page.tsx](src/app/page.tsx#L4-L18), [src/app/home-content.tsx](src/app/home-content.tsx#L67-L103)
+- Buying hero + intro: [src/app/buying/page.tsx](src/app/buying/page.tsx#L1-L18), [src/app/buying/buying-content.tsx](src/app/buying/buying-content.tsx#L41-L96)
+- Selling hero + intro: [src/app/selling/page.tsx](src/app/selling/page.tsx#L1-L20), [src/app/selling/seller-page-content.tsx](src/app/selling/seller-page-content.tsx#L45-L96)
+
+### 2) Segment CTAs by Intent
+**Why:** Current CTAs are mostly the same; visitors with different intent need different hooks.
+
+**Actions**
+- [ ] Add distinct CTAs for buyers, sellers, and investors on Home.
+- [ ] Add a second CTA on Blog page for “Download a guide” or “Get market report.”
+
+**Where**
+- Home hero CTA and section CTAs: [src/app/home-content.tsx](src/app/home-content.tsx#L70-L77)
+- Blog CTA: [src/components/BlogPageCTA.tsx](src/components/BlogPageCTA.tsx#L19-L26)
+
+### 3) Confirm Technical SEO Baseline (Already Strong)
+**Why:** You already have sitemap, robots, and global schema. Make sure they remain correct and complete.
+
+**Actions**
+- [ ] Keep robots + sitemap in place and add any new pages you create.
+- [ ] Keep Organization + Website schema in layout; add missing schemas where needed.
+
+**Where**
+- Robots/sitemap: [public/robots.txt](public/robots.txt#L1-L45), [src/app/sitemap.ts](src/app/sitemap.ts#L1-L54)
+- Global schema: [src/app/layout.tsx](src/app/layout.tsx#L88-L92)
+
+---
+
+## Phase 2 — 2–4 Weeks (Lead Capture + Local SEO Expansion)
+
+### 4) Create Local Landing Pages
+**Why:** Core pages are generic. You need city‑intent pages for Albany, Schenectady, Troy, and Jacksonville.
+
+**Actions**
+- [ ] Create pages like “Multifamily Realtor in Albany NY,” “Schenectady Duplex Investing,” etc.
+- [ ] Add each page to sitemap and internal links from home/buy/sell.
+
+**Where**
+- Add new pages under: [src/app](src/app)
+- Add to sitemap: [src/app/sitemap.ts](src/app/sitemap.ts#L8-L54)
+
+### 5) Add Lead Magnets (3 Variants)
+**Why:** You have one universal lead form; add audience‑specific hooks to capture more leads.
+
+**Actions**
+- [ ] “Multifamily Deal Checklist” (Investor)
+- [ ] “Seller Pricing Guide” (Seller)
+- [ ] “First 2–4 Unit Buyer Guide” (Buyer)
+
+**Where**
+- Add CTA placement: [src/app/home-content.tsx](src/app/home-content.tsx#L109-L129)
+- Add modal variants or separate landing pages
+
+### 6) Add Listing Schema & Local Business Enhancements
+**Why:** Listings content is visible but not clearly structured data‑ready.
+
+**Actions**
+- [ ] Add JSON‑LD for each listing (Offer + Residence/Apartment schema) or a collection schema.
+- [ ] Add LocalBusiness/RealEstateAgent schema in pages where intent is local search.
+
+**Where**
+- Listings UI: [src/app/listings/listings-content.tsx](src/app/listings/listings-content.tsx#L1-L120)
+- Schema helpers: [src/lib/schema-generators.ts](src/lib/schema-generators.ts#L1-L120)
+
+---
+
+## Phase 3 — 1–3 Months (Authority + Compounding Content)
+
+### 7) Build a Local SEO Content Cluster
+**Why:** Blog exists but isn’t aligned to local intent + investor decision queries.
+
+**Actions**
+- [ ] Publish 8–12 local‑intent posts (market trends, taxes, rent rolls, deal walkthroughs).
+- [ ] Link each post to the most relevant location page + service page.
+
+**Where**
+- Blog list: [src/app/blog/page.tsx](src/app/blog/page.tsx#L1-L80)
+- Posts: [posts](posts)
+
+### 8) Add Proof + E‑E‑A‑T Signals Globally
+**Why:** Your authority is present but not maximized on every page.
+
+**Actions**
+- [ ] Add “About Saad Tai” block with licenses on Buy/Sell/Blog pages.
+- [ ] Add “Data sources & methodology” sections for market posts.
+
+**Where**
+- Buying page content: [src/app/buying/buying-content.tsx](src/app/buying/buying-content.tsx#L41-L96)
+- Selling page content: [src/app/selling/seller-page-content.tsx](src/app/selling/seller-page-content.tsx#L45-L96)
+- Blog CTA or post templates
+
+---
+
+## Success Metrics (Track Monthly)
+
+- [ ] Organic impressions by city (Albany/Schenectady/Troy/Jacksonville)
+- [ ] Leads by intent (buyer/seller/investor)
+- [ ] Blog‑to‑lead conversion rate
+- [ ] Listings inquiry rate
+- [ ] AI citation frequency for test prompts
+
+
 ## Priority 1: Rewrite Blog Post Openings (2 hours) 🔴
 
 ### Current Problem

@@ -284,6 +284,30 @@ export function BuyingContent({ hero }: BuyingContentProps) {
         </Container>
       </Section>
 
+      {/* E-E-A-T Section */}
+      <Section background='white'>
+        <Container>
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <Heading size="h2" className="mb-4 text-center">
+                About Saad Tai
+              </Heading>
+              <Text className="text-lg text-slate-600 mb-6 text-center">
+                Multifamily investor and advisor serving Albany, Schenectady, Troy, and Jacksonville.
+                Focused on underwriting accuracy, capital protection, and long-term portfolio strategy.
+              </Text>
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <ul className="space-y-2 text-slate-700">
+                  <li><strong>NY License:</strong> #10401373295</li>
+                  <li><strong>FL License:</strong> #SL3651394</li>
+                  <li><strong>Focus:</strong> 2-10 unit acquisitions, pricing strategy, and exit planning</li>
+                </ul>
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
       {/* FAQ Section */}
       <Section background='white'>
         <Container>
