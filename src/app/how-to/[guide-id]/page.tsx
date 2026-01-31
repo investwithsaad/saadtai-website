@@ -239,6 +239,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  const defaultImage = `${BASE_URL}/main-bg.png`
+
   return {
     title: `${guide.title} | Saad Tai`,
     description: guide.excerpt,
@@ -250,6 +252,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: guide.excerpt,
       url: `${BASE_URL}/how-to/${guide.id}`,
       type: 'article',
+      images: [
+        {
+          url: defaultImage,
+          width: 1200,
+          height: 630,
+          alt: guide.title,
+        },
+      ],
     },
   }
 }
