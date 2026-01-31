@@ -13,6 +13,8 @@ interface ValidationResult {
 
 const TITLE_MAX_LENGTH = 70
 const EXCERPT_MAX_LENGTH = 160
+const BLOG_TITLE_SUFFIX = ' | Saad Tai' // Applied to blog posts in metadata
+const BLOG_TITLE_MAX_LENGTH = TITLE_MAX_LENGTH - BLOG_TITLE_SUFFIX.length // 61 chars max for frontmatter
 
 function extractFrontmatter(content: string): Record<string, string> {
   const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/)
@@ -39,6 +41,7 @@ function extractFrontmatter(content: string): Record<string, string> {
  */
 function validateDirectory(dirName: string, dirLabel: string): ValidationResult[] {
   const dir = path.join(process.cwd(), dirName)
+  const isBlogDir = dirName === 'posts'
 
   if (!fs.existsSync(dir)) {
     return []
@@ -58,8 +61,12 @@ function validateDirectory(dirName: string, dirLabel: string): ValidationResult[
     const excerptLength = excerpt.length
     const errors: string[] = []
 
-    if (titleLength > TITLE_MAX_LENGTH) {
-      errors.push(`Title too long (${titleLength}/${TITLE_MAX_LENGTH} chars): "${title}"`)
+    // For blog posts, check against the final title length (with " | Saad Tai" suffix)
+    const maxTitleLength = isBlogDir ? BLOG_TITLE_MAX_LENGTH : TITLE_MAX_LENGTH
+    const finalTitleLength = isBlogDir ? titleLength + BLOG_TITLE_SUFFIX.length : titleLength
+
+    if (titleLength > maxTitleLength) {
+      errors.push(`Title too long (${finalTitleLength}/${TITLE_MAX_LENGTH} chars in browser): "${title}${isBlogDir ? BLOG_TITLE_SUFFIX : ''}"`)
     }
 
     if (excerptLength > EXCERPT_MAX_LENGTH) {
