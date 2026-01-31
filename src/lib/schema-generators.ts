@@ -59,20 +59,7 @@ export const getOrganizationSchema = (config?: {
     "jobTitle": "Multifamily Investment Advisor",
     "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
     "url": `${BASE_URL}/`,
-    "license": [
-      {
-        "@type": "License",
-        "name": "New York Real Estate License",
-        "licenseNumber": "10401373295",
-        "validIn": { "@type": "State", "name": "New York" }
-      },
-      {
-        "@type": "License",
-        "name": "Florida Real Estate License",
-        "licenseNumber": "SL3651394",
-        "validIn": { "@type": "State", "name": "Florida" }
-      }
-    ]
+    "description": "NY License #10401373295 | FL License #SL3651394"
   },
   "knowsAbout": [
     "Multifamily Investing",
@@ -204,7 +191,7 @@ export const getPersonSchema = (person: {
   "name": person.name,
   "jobTitle": person.jobTitle,
   "description": person.description,
-  "image": person.image,
+  ...(person.image && { "image": person.image }),
   ...(person.linkedinUrl && { "sameAs": person.linkedinUrl }),
   ...(person.education && {
     "alumniOf": {
@@ -234,7 +221,7 @@ export const getHowToSchema = (howTo: {
   "name": howTo.name,
   "description": howTo.description,
   ...(howTo.image && { "image": howTo.image }),
-  "step": howTo.steps.map((step, index) => ({
+  "steps": howTo.steps.map((step, index) => ({
     "@type": "HowToStep",
     "position": index + 1,
     "name": step.name,
@@ -284,48 +271,14 @@ export const getWebsiteSchema = () => ({
   "url": `${BASE_URL}/`,
   "name": "Invest with Saad - Multifamily Investment Advisor",
   "description": "Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL",
-  "potentialAction": [
-    {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${BASE_URL}/blog?search={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${BASE_URL}/blog?search={search_term_string}`
     },
-    {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${BASE_URL}/buying`
-      },
-      "name": "Buying Guidance"
-    },
-    {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${BASE_URL}/selling`
-      },
-      "name": "Selling Strategy"
-    },
-    {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${BASE_URL}/blog`
-      },
-      "name": "Investment Blog"
-    },
-    {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${BASE_URL}/how-to`
-      },
-      "name": "How-To Guides"
-    }
-  ]
+    "query-input": "required name=search_term_string"
+  }
 })
 
 // ============================================================================
