@@ -29,13 +29,13 @@ export function CookieConsentBanner() {
   }, [showBanner])
 
   const handleAccept = () => {
-    document.cookie = 'cookie-consent=true; path=/; max-age=31536000'
+    document.cookie = 'cookie-consent=true; path=/; max-age=31536000; SameSite=Lax; Secure'
     setShowBanner(false)
     window.location.reload()
   }
 
   const handleDecline = () => {
-    document.cookie = 'cookie-consent=false; path=/; max-age=31536000'
+    document.cookie = 'cookie-consent=false; path=/; max-age=31536000; SameSite=Lax; Secure'
     setShowBanner(false)
   }
 
