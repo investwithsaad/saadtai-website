@@ -292,6 +292,38 @@ export const getWebsiteSchema = () => ({
         "urlTemplate": `${BASE_URL}/blog?search={search_term_string}`
       },
       "query-input": "required name=search_term_string"
+    },
+    {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${BASE_URL}/buying`
+      },
+      "name": "Buying Guidance"
+    },
+    {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${BASE_URL}/selling`
+      },
+      "name": "Selling Strategy"
+    },
+    {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${BASE_URL}/blog`
+      },
+      "name": "Investment Blog"
+    },
+    {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${BASE_URL}/how-to`
+      },
+      "name": "How-To Guides"
     }
   ]
 })
