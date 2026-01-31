@@ -94,10 +94,6 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${lora.variable}`}>
       <head>
-        {/* Preconnect to critical third-party origins */}
-        <link rel="dns-prefetch" href="https://saadinfo.up.railway.app" />
-        <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
 
         {/* Schema Markup */}
         <SchemaRenderer schema={getOrganizationSchema()} nonce={nonce} />
