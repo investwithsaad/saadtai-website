@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
 
   return createPageMetadata({
     title: page?.title || 'Exit on Your Timeline | Maximize Multifamily Sale Price',
-    description: page?.description || 'Our system tells you if now is the right time, positions your property properly, and finds the right buyer at the right price. Maximize proceeds without chaos in Albany, Schenectady, Capital Region, and Jacksonville.',
+    description: page?.description || 'Know the right time to exit. Position properly and find the right buyer at the right price in Albany, Schenectady, and Jacksonville.',
     path: '/selling',
     ogImage: page?.ogImage?.asset?.url,
   })
