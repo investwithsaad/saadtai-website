@@ -40,7 +40,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
     }
 
     return (
-      <div ref={ref} className="relative flex pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
+      <div ref={ref} className="relative h-[560px] md:h-[640px] flex pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image
           src={backgroundImage}
           alt="Multifamily real estate investment advisor Saad Tai - expert guidance on property investing"
