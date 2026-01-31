@@ -18,6 +18,7 @@ export function createPageMetadata({
   ogImage,
 }: PageMetadataProps): Metadata {
   const url = `${BASE_URL}${path}`
+  const defaultImage = `${BASE_URL}/main-bg.png`
 
   const metadata: Metadata = {
     title,
@@ -30,25 +31,20 @@ export function createPageMetadata({
       description,
       url,
       type: 'website',
-    },
-  }
-
-  if (keywords) {
-    metadata.keywords = keywords
-  }
-
-  if (ogImage) {
-    metadata.openGraph = {
-      ...metadata.openGraph,
+      siteName: 'Invest with Saad',
       images: [
         {
-          url: ogImage,
+          url: ogImage || defaultImage,
           width: 1200,
           height: 630,
           alt: title,
         },
       ],
-    }
+    },
+  }
+
+  if (keywords) {
+    metadata.keywords = keywords
   }
 
   return metadata

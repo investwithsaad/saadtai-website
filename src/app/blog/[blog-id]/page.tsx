@@ -250,6 +250,15 @@ export async function generateMetadata({ params }: Props) {
       description: blogPost.excerpt,
       url: `${BASE_URL}/blog/${blogPost.id}`,
       type: 'article',
+      siteName: 'Invest with Saad',
+      images: [
+        {
+          url: `${BASE_URL}/main-bg.png`,
+          width: 1200,
+          height: 630,
+          alt: blogPost.title,
+        },
+      ],
     },
   }
 }
