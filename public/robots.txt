@@ -1,14 +1,15 @@
 # robots.txt for Invest with Saad
 # Optimized for both traditional SEO and AI discovery
-# Last Updated: 2025-12-31
+# Last Updated: 2026-01-31
 
 # Allow all bots (including AI crawlers and Bing for ChatGPT access)
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
-Disallow: /*.json$
 Disallow: /api/
+Disallow: /*.json$
+Disallow: /_next/
 Crawl-delay: 1
 
 # Specific: Bing Bot (feeds ChatGPT)
