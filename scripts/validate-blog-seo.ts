@@ -41,7 +41,8 @@ function extractFrontmatter(content: string): Record<string, string> {
  */
 function validateDirectory(dirName: string, dirLabel: string): ValidationResult[] {
   const dir = path.join(process.cwd(), dirName)
-  const isBlogDir = dirName === 'posts'
+  // Both posts and how-to guides get the " | Saad Tai" suffix
+  const addsSuffix = dirName === 'posts' || dirName === 'how-to'
 
   if (!fs.existsSync(dir)) {
     return []
@@ -61,12 +62,12 @@ function validateDirectory(dirName: string, dirLabel: string): ValidationResult[
     const excerptLength = excerpt.length
     const errors: string[] = []
 
-    // For blog posts, check against the final title length (with " | Saad Tai" suffix)
-    const maxTitleLength = isBlogDir ? BLOG_TITLE_MAX_LENGTH : TITLE_MAX_LENGTH
-    const finalTitleLength = isBlogDir ? titleLength + BLOG_TITLE_SUFFIX.length : titleLength
+    // For content with suffix, check against the final title length (with " | Saad Tai" suffix)
+    const maxTitleLength = addsSuffix ? BLOG_TITLE_MAX_LENGTH : TITLE_MAX_LENGTH
+    const finalTitleLength = addsSuffix ? titleLength + BLOG_TITLE_SUFFIX.length : titleLength
 
     if (titleLength > maxTitleLength) {
-      errors.push(`Title too long (${finalTitleLength}/${TITLE_MAX_LENGTH} chars in browser): "${title}${isBlogDir ? BLOG_TITLE_SUFFIX : ''}"`)
+      errors.push(`Title too long (${finalTitleLength}/${TITLE_MAX_LENGTH} chars in browser): "${title}${addsSuffix ? BLOG_TITLE_SUFFIX : ''}"`)
     }
 
     if (excerptLength > EXCERPT_MAX_LENGTH) {
