@@ -40,11 +40,6 @@ export const headerNavConfig: HeaderNavConfig = {
     },
     {
       type: 'link',
-      label: 'VIP Investor List',
-      href: '/vip-investor-list'
-    },
-    {
-      type: 'link',
       label: 'Buying',
       href: '/buying'
     },
@@ -60,8 +55,13 @@ export const headerNavConfig: HeaderNavConfig = {
     },
     {
       type: 'link',
-      label: 'Blog',
-      href: '/blog'
+      label: 'How-To Guides',
+      href: '/how-to'
+    },
+    {
+      type: 'link',
+      label: 'VIP Investor List',
+      href: '/vip-investor-list'
     }
   ]
 }

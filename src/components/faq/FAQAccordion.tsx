@@ -32,7 +32,7 @@ export default function FAQAccordion({ items, className = '' }: FAQAccordionProp
             className="w-full px-6 py-4 flex items-center justify-between transition-colors text-left"
             style={{ backgroundColor: openId === item.id ? COLORS.background : 'white' }}
           >
-            <Heading size="h4" className="pr-4 mb-0">{item.q}</Heading>
+            <Heading size="h3" className="pr-4 mb-0">{item.q}</Heading>
             <ChevronDown
               className={`w-5 h-5 flex-shrink-0 transition-transform ${
                 openId === item.id ? 'rotate-180' : ''

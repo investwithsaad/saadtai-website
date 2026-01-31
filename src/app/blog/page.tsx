@@ -10,17 +10,20 @@ import {
   Button,
   FadeIn
 } from '@/components/ui'
-import { HeroFadeIn } from '@/components/hero-fade-in'
+import { HeroStatic } from '@/components/hero-static'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { BlogPageCTA } from '@/components/BlogPageCTA'
 import { EventBanner } from '@/components/EventBanner'
+import { FAQSectionServer } from '@/components/faq/FAQSectionServer'
 import { getBlogPosts } from '@/lib/blog-utils'
+import { getHowToGuides } from '@/lib/how-to-utils'
 import Link from 'next/link'
 import { createPageMetadata } from '@/lib/metadata-factory'
 import { BASE_URL } from '@/lib/metadata-factory'
 import { getPage } from '@/lib/sanity.queries'
 import { formatTextWithLineBreaks } from '@/lib/format-text'
+import { blogIndexFaqs } from '@/data/ai-faqs'
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPage('blog')
@@ -44,6 +47,11 @@ export default async function BlogPage() {
   const sortedPosts = [...blogPosts].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
+
+  const guides = getHowToGuides()
+  const recentGuides = [...guides]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3)
 
   // Blog collection schema
   const blogCollectionSchema = {
@@ -83,7 +91,7 @@ export default async function BlogPage() {
       <EventBanner />
 
       {/* Hero Section */}
-      <HeroFadeIn
+      <HeroStatic
         title={heroHeadline}
         subtitle={heroDescription}
       />
@@ -125,6 +133,48 @@ export default async function BlogPage() {
           </StaggerContainer>
         </Container>
       </Section>
+
+      {/* Related How-To Guides */}
+      {recentGuides.length > 0 && (
+        <Section background="background">
+          <Container>
+            <FadeIn>
+              <div className="max-w-3xl mx-auto text-center mb-12">
+                <Heading size="h2">How-To Guides</Heading>
+                <Text size="lg" className="text-gray-700">
+                  Step-by-step playbooks that pair with the insights in the blog.
+                </Text>
+              </div>
+            </FadeIn>
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {recentGuides.map((guide) => (
+                <Link key={guide.id} href={`/how-to/${guide.id}`}>
+                  <Card className="p-6 h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                    <Heading size="h4" className="mb-2 text-olive-900 group-hover:text-gold-500 transition-colors">
+                      {guide.title}
+                    </Heading>
+                    <Text className="text-gray-700 mb-4 leading-relaxed">
+                      {guide.excerpt}
+                    </Text>
+                    <Button variant="default" className="p-0 flex items-center gap-2 w-fit">
+                      Start Guide <ArrowRight size={16} />
+                    </Button>
+                  </Card>
+                </Link>
+              ))}
+            </StaggerContainer>
+          </Container>
+        </Section>
+      )}
+
+      {/* Blog FAQ */}
+      <FAQSectionServer
+        title="Blog FAQs"
+        description="Quick answers to help you get the most value from the articles."
+        faqs={blogIndexFaqs}
+        background="white"
+        maxDisplay={4}
+      />
 
       {/* CTA Section */}
       <BlogPageCTA />

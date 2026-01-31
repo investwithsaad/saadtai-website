@@ -44,7 +44,7 @@ export function Breadcrumb({ items, renderSchema = true }: BreadcrumbProps) {
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="hover:opacity-80 transition-opacity duration-200"
+                  className="hover:opacity-80 transition-opacity duration-200 nav-link"
                   style={{color: COLORS.primary}}
                 >
                   {item.label}

@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
+import { headers } from 'next/headers'
 import { LayoutContent } from "@/app/layout-content"
 import { SchemaRenderer } from "@/components/SchemaRenderer"
 import { getOrganizationSchema, getWebsiteSchema } from "@/lib/schema-generators"
 import { BASE_URL } from "@/lib/metadata-factory"
 import { CookieConsentBanner } from "@/components/CookieConsent"
 import { TrackingScripts } from "@/components/TrackingScripts"
+import { getBlogPosts } from "@/lib/blog-utils"
+import { getHowToGuides } from "@/lib/how-to-utils"
 import "@/app/globals.css"
 import { Poppins, Lora } from 'next/font/google'
 
@@ -71,24 +74,32 @@ export const viewport: Viewport = {
 // Global revalidate - 24 hour fallback for all routes (overridden by webhook)
 export const revalidate = 86400
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const nonce = headersList.get('x-nonce') || undefined
+
+  // Fetch blog posts and guides for footer
+  const allPosts = getBlogPosts()
+  const recentPosts = allPosts
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map(post => ({ id: post.id, title: post.title }))
+
+  const allGuides = getHowToGuides()
+    .map(guide => ({ id: guide.id, title: guide.title }))
+
   return (
     <html lang="en" className={`${poppins.variable} ${lora.variable}`}>
       <head>
         {/* Preconnect to critical third-party origins */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://saadinfo.up.railway.app" />
-        <link rel="preconnect" href="https://capig.datah04.com" />
-        <link rel="dns-prefetch" href="https://capig.datah04.com" />
 
         {/* Schema Markup */}
-        <SchemaRenderer schema={getOrganizationSchema()} />
-        <SchemaRenderer schema={getWebsiteSchema()} />
+        <SchemaRenderer schema={getOrganizationSchema()} nonce={nonce} />
+        <SchemaRenderer schema={getWebsiteSchema()} nonce={nonce} />
 
         {/* Umami Analytics */}
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
@@ -96,6 +107,7 @@ export default function RootLayout({
             src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
             strategy="lazyOnload"
+            nonce={nonce}
           />
         )}
 
@@ -106,6 +118,7 @@ export default function RootLayout({
           <Script
             id="clarity-script"
             strategy="lazyOnload"
+            nonce={nonce}
             dangerouslySetInnerHTML={{
               __html: `
                 (function(c,l,a,r,i,t,y){
@@ -119,14 +132,15 @@ export default function RootLayout({
         )}
       </head>
       <body className="bg-white flex flex-col min-h-screen">
-        <TrackingScripts />
-        <LayoutContent>
+        <TrackingScripts nonce={nonce} />
+        <LayoutContent recentPosts={recentPosts} allGuides={allGuides}>
           {children}
         </LayoutContent>
         <CookieConsentBanner />
         <Script
           id="register-sw"
           strategy="afterInteractive"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {

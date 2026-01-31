@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { forwardRef } from 'react'
 import { Container, Button, Heading, Text } from '@/components/ui'
 import { formatTextWithLineBreaks } from '@/lib/format-text'
-import { trackEvent } from '@/lib/tracking'
 
 interface HeroSectionProps {
   headline: string
@@ -41,14 +40,15 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
     }
 
     return (
-      <div ref={ref} className="relative h-auto flex pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
+      <div ref={ref} className="relative h-[560px] md:h-[640px] flex pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
         <Image
           src={backgroundImage}
           alt="Multifamily real estate investment advisor Saad Tai - expert guidance on property investing"
           fill
+          sizes="100vw"
           className="object-cover object-center"
           priority
-          quality={75}
+          quality={90}
           fetchPriority="high"
         />
         {/* Blur overlay on left side */}
@@ -80,11 +80,11 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                     ))}
                   </div>
                   <p className="text-white/95 mb-2 font-medium italic text-sm">"{testimonial.text}"</p>
-                  <p className="text-white/85 text-xs"><span className="font-semibold">{testimonial.author}</span> • {testimonial.tag}</p>
+                  <p className="text-white/85 text-xs"><span className="font-semibold">{testimonial.author}</span></p>
                 </div>
               )}
 
-              <div className="flex flex-row gap-3 mt-2 w-full">
+              <div className={`flex flex-row gap-3 w-full ${testimonial ? 'mt-2' : 'mt-8'}`}>
                 <Button
                   variant="default"
                   image={showProfile ? '/saad.png' : undefined}

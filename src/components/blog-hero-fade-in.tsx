@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from "framer-motion"
 import Image from "next/image"
 import { COLORS } from "@/lib/colors"
 import { LAYOUT } from "@/lib/layout"
@@ -39,12 +38,7 @@ export const BlogHeroFadeIn = ({ title, subtitle, date, author, authorTitle, aut
     />
 
     <Container className="relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-3xl mx-auto"
-      >
+      <div className="max-w-3xl mx-auto fade-in-lcp">
         {category && (
           <Text size="sm" className="text-white/70 mb-4">
             {category}
@@ -95,7 +89,7 @@ export const BlogHeroFadeIn = ({ title, subtitle, date, author, authorTitle, aut
             )}
           </div>
         )}
-      </motion.div>
+      </div>
     </Container>
   </Section>
 )

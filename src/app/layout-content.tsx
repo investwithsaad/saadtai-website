@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation"
 import dynamic from "next/dynamic"
 import { useState, useEffect } from "react"
 import { Header } from "@/components/Header"
-import { Footer } from "@/components/Footer"
+import { Footer } from "@/components/footer/Footer"
 import { LeadFormModal } from "@/components/LeadFormModal"
 import { ScrollToTop } from "@/components/ScrollToTop"
 import { MetaParamBuilderInit } from "@/components/MetaParamBuilderInit"
@@ -13,11 +13,17 @@ const Chatbot = dynamic(() => import("@/components/Chatbot").then(mod => ({ defa
   loading: () => null,
 })
 
+interface LayoutContentProps {
+  children: React.ReactNode
+  recentPosts: Array<{ id: string; title: string }>
+  allGuides: Array<{ id: string; title: string }>
+}
+
 export function LayoutContent({
   children,
-}: {
-  children: React.ReactNode
-}) {
+  recentPosts,
+  allGuides,
+}: LayoutContentProps) {
   const pathname = usePathname()
   const isLandingPage = pathname === '/landing'
   const [isFormModalOpen, setIsFormModalOpen] = useState(false)
@@ -43,7 +49,7 @@ export function LayoutContent({
       <main className={`flex-grow ${!isLandingPage ? 'pt-20' : ''}`}>
         {children}
       </main>
-      {!isLandingPage && <Footer />}
+      {!isLandingPage && <Footer recentPosts={recentPosts} allGuides={allGuides} />}
       {!isLandingPage && <Chatbot />}
       <LeadFormModal
         isOpen={isFormModalOpen}
