@@ -90,7 +90,55 @@ function validateDirectory(dirName: string, dirLabel: string): ValidationResult[
 }
 
 /**
- * Validate all content (posts + guides)
+ * Validate page metadata descriptions
+ */
+function validatePageMetadata(): ValidationResult[] {
+  const results: ValidationResult[] = []
+  const pagesDir = path.join(process.cwd(), 'src/app')
+
+  // Check specific pages that have generateMetadata with descriptions
+  const pagesToCheck = [
+    { path: 'src/app/page.tsx', label: 'Home' },
+    { path: 'src/app/buying/page.tsx', label: 'Buying' },
+    { path: 'src/app/selling/page.tsx', label: 'Selling' },
+  ]
+
+  for (const { path: filePath, label } of pagesToCheck) {
+    const fullPath = path.join(process.cwd(), filePath)
+    if (!fs.existsSync(fullPath)) continue
+
+    const content = fs.readFileSync(fullPath, 'utf-8')
+
+    // Extract description from createPageMetadata call specifically
+    const createPageMetadataMatch = content.match(
+      /createPageMetadata\(\{[\s\S]*?description:\s*(?:page\?\.description\s*\|\|\s*)?['"`]([^'"`]+)['"`]/
+    )
+    if (!createPageMetadataMatch) continue
+
+    const description = createPageMetadataMatch[1]
+    const descLength = description.length
+    const errors: string[] = []
+
+    if (descLength > EXCERPT_MAX_LENGTH) {
+      errors.push(`Meta description too long (${descLength}/${EXCERPT_MAX_LENGTH} chars): "${description}"`)
+    }
+
+    results.push({
+      file: label,
+      title: label,
+      titleLength: 0,
+      excerpt: description,
+      excerptLength: descLength,
+      valid: errors.length === 0,
+      errors
+    })
+  }
+
+  return results
+}
+
+/**
+ * Validate all content (posts + guides + pages)
  */
 function validateAllContent(): void {
   const allResults: Array<{ label: string; results: ValidationResult[] }> = []
@@ -105,6 +153,12 @@ function validateAllContent(): void {
   const guideResults = validateDirectory('how-to', 'How-To Guides')
   if (guideResults.length > 0) {
     allResults.push({ label: 'How-To Guides', results: guideResults })
+  }
+
+  // Validate page metadata
+  const pageResults = validatePageMetadata()
+  if (pageResults.length > 0) {
+    allResults.push({ label: 'Pages (Meta Descriptions)', results: pageResults })
   }
 
   // Display results
@@ -125,7 +179,7 @@ function validateAllContent(): void {
     if (validResults.length > 0) {
       console.log(`  ✅ Valid (${validResults.length}):`)
       validResults.forEach(r => {
-        console.log(`    ✓ ${r.file} (Title: ${r.titleLength}, Excerpt: ${r.excerptLength})`)
+        console.log(`    ✓ ${r.file} (Excerpt: ${r.excerptLength})`)
       })
     }
 

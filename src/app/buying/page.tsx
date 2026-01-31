@@ -16,7 +16,7 @@ export function generateMetadata() {
 
   return createPageMetadata({
     title: page?.title || 'Multifamily Deals That Pencil | Expert Investment Analysis',
-    description: page?.description || 'Our system evaluates opportunities with rigorous underwriting, honest comps, and portfolio alignment. You avoid overpaying and close with confidence in Albany, Schenectady, Capital Region, and Jacksonville.',
+    description: page?.description || 'Rigorous underwriting, honest comps, and portfolio alignment. Avoid overpaying and close with confidence in Albany, Schenectady, and Jacksonville.',
     path: '/buying',
     ogImage: page?.ogImage?.asset?.url,
   })
