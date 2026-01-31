@@ -1,7 +1,13 @@
 import React, { ReactNode } from 'react'
+import dynamic from 'next/dynamic'
 import { Callout } from '@/components/markdoc/Callout'
-import { RelatedPosts } from '@/components/markdoc/RelatedPosts'
 import { InternalLink } from '@/components/markdoc/InternalLink'
+
+// Lazy load RelatedPosts to improve performance
+const RelatedPosts = dynamic(() => import('@/components/markdoc/RelatedPosts').then(mod => ({ default: mod.RelatedPosts })), {
+  loading: () => null,
+  ssr: true
+})
 
 const componentMap: Record<string, any> = {
   callout: Callout,
@@ -86,7 +92,7 @@ export function renderMarkdoc(content: any): ReactNode {
       const config = elementConfig[name]
       if (config) {
         const Tag = config.tag as any
-        if (name === 'img') {
+        if (name === 'img' || name === 'br') {
           return <Tag key={keyCounter++} className={config.className} {...attributes} />
         }
         return (

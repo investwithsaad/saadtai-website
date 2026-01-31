@@ -2,6 +2,7 @@
 
 import { TrendingUp, Users, Target, Facebook, Instagram, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -24,9 +25,18 @@ import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { getReviewSchema } from '@/lib/schema-generators'
 import { testimonials } from '@/data/testimonials'
 import { formatTextWithLineBreaks } from '@/lib/format-text'
-import { TestimonialsSection } from '@/components/TestimonialsSection'
-import { StatsSection } from '@/components/StatsSection'
+const TestimonialsSection = dynamic(
+  () => import('@/components/TestimonialsSection').then((mod) => mod.TestimonialsSection),
+  { ssr: false, loading: () => <div className="h-48" /> }
+)
+
+const StatsSection = dynamic(
+  () => import('@/components/StatsSection').then((mod) => mod.StatsSection),
+  { ssr: false, loading: () => <div className="h-48" /> }
+)
 import { SectionHeader } from '@/components/SectionHeader'
+import { FAQSectionWithSchema } from '@/components/faq/FAQSection'
+import { homeFaqs } from '@/data/ai-faqs'
 
 interface HomeContentProps {
   hero?: {
@@ -115,6 +125,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                       alt="Sell Your Home"
                       width={600}
                       height={400}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="w-full h-full object-cover"
                       quality={75}
                       loading="lazy"
@@ -143,6 +154,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                       alt="Find Your Home"
                       width={600}
                       height={400}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="w-full h-full object-cover"
                       quality={75}
                       loading="lazy"
@@ -165,7 +177,6 @@ export function HomeContent({ hero }: HomeContentProps) {
           </div>
         </Container>
       </Section>
-
 
       {/* Testimonials Section */}
       <Section background='background'>
@@ -376,6 +387,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                       alt="153 2nd Ave - John Hooper House"
                       width={416}
                       height={250}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 400px"
                       className="w-full h-full object-cover"
                       quality={75}
                       loading="lazy"
@@ -634,6 +646,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                     alt="Saad Tai"
                     width={200}
                     height={240}
+                    sizes="(max-width: 768px) 100vw, 200px"
                     className="w-full rounded-lg mb-6 object-cover"
                   />
                   <Heading size="h3">SAAD TAI</Heading>
@@ -691,6 +704,59 @@ export function HomeContent({ hero }: HomeContentProps) {
           </div>
         </Container>
       </Section>
+
+      {/* Resource Hub */}
+      <Section background="white">
+        <Container>
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <Heading size="h2">Investor Resources</Heading>
+              <Text size="lg" className="text-gray-700">
+                Use the guides, blog, and calculator to make clear decisions faster.
+              </Text>
+            </div>
+          </FadeIn>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link href="/how-to">
+              <Card className="p-6 h-full hover:shadow-lg transition-all duration-300">
+                <Heading size="h3" className="mb-2">How-To Guides</Heading>
+                <Text className="text-gray-700 mb-4">
+                  Step-by-step playbooks for buying, selling, and investing.
+                </Text>
+                <Button variant="default" className="p-0">Browse Guides →</Button>
+              </Card>
+            </Link>
+            <Link href="/blog">
+              <Card className="p-6 h-full hover:shadow-lg transition-all duration-300">
+                <Heading size="h3" className="mb-2">Investor Blog</Heading>
+                <Text className="text-gray-700 mb-4">
+                  Frameworks and market insights to improve your underwriting.
+                </Text>
+                <Button variant="default" className="p-0">Read Articles →</Button>
+              </Card>
+            </Link>
+            <Link href="/calculator">
+              <Card className="p-6 h-full hover:shadow-lg transition-all duration-300">
+                <Heading size="h3" className="mb-2">Investment Calculator</Heading>
+                <Text className="text-gray-700 mb-4">
+                  Evaluate cap rate, cash flow, and projections in minutes.
+                </Text>
+                <Button variant="default" className="p-0">Run the Calculator →</Button>
+              </Card>
+            </Link>
+          </StaggerContainer>
+        </Container>
+      </Section>
+
+      {/* Home FAQ */}
+      <FAQSectionWithSchema
+        title="Common Investor Questions"
+        description="Quick answers to the most common questions we hear from buyers and small multifamily investors."
+        faqs={homeFaqs}
+        background="background"
+        maxDisplay={4}
+        schemaName="Multifamily Investment Advisory"
+      />
 
       {/* Lead Form Modal */}
       <LeadFormModal 

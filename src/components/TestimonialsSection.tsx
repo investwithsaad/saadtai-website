@@ -6,7 +6,6 @@ import { COLORS } from '@/lib/colors'
 interface Testimonial {
   text: string
   author: string
-  tag?: string
 }
 
 interface TestimonialsSectionProps {
@@ -52,7 +51,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
               "{renderHighlightedText(testimonial.text)}"
             </p>
             <p className="font-semibold text-slate-900">
-              — {testimonial.author}{testimonial.tag && `, ${testimonial.tag}`}
+              — {testimonial.author}
             </p>
           </div>
         </Card>

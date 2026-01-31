@@ -255,38 +255,15 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
       <Section background='background'>
         <Container>
           <div ref={credentialsRef}>
-            <SectionHeader 
+            <SectionHeader
               title="What My Clients Say"
               centered
               className="max-w-3xl mx-auto mb-16"
             />
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {testimonials.map((testimonial, i) => (
-                <Card key={i} variant="flat" className="bg-white" style={{ borderColor: COLORS.dark, borderWidth: '2px' }}>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-start gap-1">
-                        {[...Array(5)].map((_, idx) => (
-                          <span key={idx} className="text-yellow-400 text-lg">★</span>
-                        ))}
-                      </div>
-                      {testimonial.tag && (
-                        <span className="text-xs font-bold px-2 py-1 rounded" style={{ backgroundColor: COLORS.secondary, color: 'white' }}>
-                          {testimonial.tag}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-slate-700 mb-4 italic">
-                      "{testimonial.text}"
-                    </p>
-                    <p className="font-semibold text-slate-900">
-                      — {testimonial.author}
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </StaggerContainer>
+            <FadeIn>
+              <TestimonialsSection testimonials={testimonials} />
+            </FadeIn>
 
             <FadeIn className="mt-16">
               <div className="flex justify-center">

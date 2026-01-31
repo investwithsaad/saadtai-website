@@ -34,20 +34,21 @@ function extractFrontmatter(content: string): Record<string, string> {
   return frontmatter
 }
 
-function validateBlogPosts(): void {
-  const postsDir = path.join(process.cwd(), 'posts')
+/**
+ * Validate all Markdoc content in a directory
+ */
+function validateDirectory(dirName: string, dirLabel: string): ValidationResult[] {
+  const dir = path.join(process.cwd(), dirName)
 
-  if (!fs.existsSync(postsDir)) {
-    console.error('❌ Posts directory not found')
-    process.exit(1)
+  if (!fs.existsSync(dir)) {
+    return []
   }
 
-  const mdocFiles = fs.readdirSync(postsDir).filter(file => file.endsWith('.mdoc'))
+  const mdocFiles = fs.readdirSync(dir).filter(file => file.endsWith('.mdoc'))
   const results: ValidationResult[] = []
-  let hasErrors = false
 
   for (const file of mdocFiles) {
-    const filePath = path.join(postsDir, file)
+    const filePath = path.join(dir, file)
     const content = fs.readFileSync(filePath, 'utf-8')
     const frontmatter = extractFrontmatter(content)
 
@@ -76,37 +77,73 @@ function validateBlogPosts(): void {
     }
 
     results.push(result)
-    if (!result.valid) hasErrors = true
+  }
+
+  return results
+}
+
+/**
+ * Validate all content (posts + guides)
+ */
+function validateAllContent(): void {
+  const allResults: Array<{ label: string; results: ValidationResult[] }> = []
+
+  // Validate posts
+  const postResults = validateDirectory('posts', 'Blog Posts')
+  if (postResults.length > 0) {
+    allResults.push({ label: 'Blog Posts', results: postResults })
+  }
+
+  // Validate how-to guides
+  const guideResults = validateDirectory('how-to', 'How-To Guides')
+  if (guideResults.length > 0) {
+    allResults.push({ label: 'How-To Guides', results: guideResults })
   }
 
   // Display results
   console.log('\n📋 SEO Validation Report\n')
-  console.log(`Checked ${mdocFiles.length} blog posts\n`)
 
-  const validResults = results.filter(r => r.valid)
-  const invalidResults = results.filter(r => !r.valid)
+  let totalFiles = 0
+  let totalValid = 0
+  let hasErrors = false
 
-  if (validResults.length > 0) {
-    console.log(`✅ Valid (${validResults.length}):`)
-    validResults.forEach(r => {
-      console.log(`  ✓ ${r.file} (Title: ${r.titleLength}, Excerpt: ${r.excerptLength})`)
-    })
+  for (const { label, results } of allResults) {
+    const validResults = results.filter(r => r.valid)
+    const invalidResults = results.filter(r => !r.valid)
+    totalFiles += results.length
+    totalValid += validResults.length
+
+    console.log(`${label} (${results.length} files):`)
+
+    if (validResults.length > 0) {
+      console.log(`  ✅ Valid (${validResults.length}):`)
+      validResults.forEach(r => {
+        console.log(`    ✓ ${r.file} (Title: ${r.titleLength}, Excerpt: ${r.excerptLength})`)
+      })
+    }
+
+    if (invalidResults.length > 0) {
+      console.log(`  ❌ Invalid (${invalidResults.length}):`)
+      invalidResults.forEach(r => {
+        console.log(`    ✗ ${r.file}`)
+        r.errors.forEach(error => {
+          console.log(`      → ${error}`)
+        })
+      })
+      hasErrors = true
+    }
+
     console.log()
   }
 
-  if (invalidResults.length > 0) {
-    console.log(`❌ Invalid (${invalidResults.length}):`)
-    invalidResults.forEach(r => {
-      console.log(`\n  ✗ ${r.file}`)
-      r.errors.forEach(error => {
-        console.log(`    → ${error}`)
-      })
-    })
-    console.log()
+  // Summary
+  console.log(`📊 Summary: ${totalValid}/${totalFiles} files pass validation\n`)
+
+  if (hasErrors) {
     process.exit(1)
   }
 
-  console.log('✨ All blog posts pass SEO validation!\n')
+  console.log('✨ All content passes SEO validation!\n')
 }
 
-validateBlogPosts()
+validateAllContent()

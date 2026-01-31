@@ -6,7 +6,7 @@ import { BuyingContent } from './buying-content'
 const defaultHero = {
   headline: 'Get [Clarity]\non Your Next Move\nwith Deals That Pencil.',
   description: 'Our system evaluates opportunities with rigorous underwriting,\nhonest comps, and portfolio alignment.\nYou avoid overpaying and close with confidence.',
-  ctaText: 'Talk through your next move'
+  ctaText: "Let's Talk"
 }
 
 export function generateMetadata() {

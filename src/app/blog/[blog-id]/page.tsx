@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { Suspense } from 'react'
 import Markdoc from '@markdoc/markdoc'
 import {
   Section,
@@ -7,17 +8,22 @@ import {
   FadeIn,
   Heading,
   Text,
+  Card,
+  Button,
 } from '@/components/ui'
 import { BlogHeroFadeIn } from '@/components/blog-hero-fade-in'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { SchemaRenderer } from '@/components/SchemaRenderer'
 import { SocialShareButtons } from '@/components/SocialShareButtons'
 import { BlogPostCTA } from '@/components/BlogPostCTA'
-import { getArticleSchema } from '@/lib/schema-generators'
+import { InlineFAQ } from '@/components/faq/FAQSection'
+import { getArticleSchema, getHowToSchema } from '@/lib/schema-generators'
 import { BASE_URL } from '@/lib/metadata-factory'
 import { notFound } from 'next/navigation'
 import { config } from '@/markdoc/config'
 import { renderMarkdoc } from '@/markdoc/renderer'
+import { getHowToGuides } from '@/lib/how-to-utils'
+import Link from 'next/link'
 
 interface Props {
   params: Promise<{
@@ -35,7 +41,27 @@ interface BlogPost {
   category?: string
   authorImage?: string
   ast?: any
+  rawContent?: string
+  faqs?: Array<{ q: string; a: string }>
   [key: string]: any
+}
+
+function parseFrontmatterValue(value: string) {
+  const cleanValue = value.replace(/^["']|["']$/g, '')
+
+  if (cleanValue === 'true') return true
+  if (cleanValue === 'false') return false
+  if (!isNaN(Number(cleanValue)) && cleanValue !== '') return Number(cleanValue)
+
+  if ((cleanValue.startsWith('[') && cleanValue.endsWith(']')) || (cleanValue.startsWith('{') && cleanValue.endsWith('}'))) {
+    try {
+      return JSON.parse(cleanValue)
+    } catch {
+      return cleanValue
+    }
+  }
+
+  return cleanValue
 }
 
 // Get all blog post IDs from posts directory
@@ -88,13 +114,7 @@ function getBlogPost(slug: string): BlogPost | null {
       const [key, ...valueParts] = line.split(':')
       if (key && valueParts.length > 0) {
         const value = valueParts.join(':').trim()
-        // Remove quotes if present
-        const cleanValue = value.replace(/^["']|["']$/g, '')
-        // Convert date strings to strings, numbers to numbers
-        if (cleanValue === 'true') frontmatter[key.trim()] = true
-        else if (cleanValue === 'false') frontmatter[key.trim()] = false
-        else if (!isNaN(Number(cleanValue)) && cleanValue !== '') frontmatter[key.trim()] = Number(cleanValue)
-        else frontmatter[key.trim()] = cleanValue
+        frontmatter[key.trim()] = parseFrontmatterValue(value)
       }
     }
     // Remove frontmatter from content
@@ -107,7 +127,106 @@ function getBlogPost(slug: string): BlogPost | null {
     id: slug,
     ...frontmatter,
     ast,
+    rawContent: contentSource,
   }
+}
+
+function cleanMarkdown(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/_{1,2}([^_]+)_{1,2}/g, '$1')
+    .replace(/^[-*+]\s+/gm, '')
+    .replace(/#+\s+/g, '')
+    .replace(/\n+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function extractHowToSteps(markdown: string): Array<{ name: string; description: string }> {
+  if (!markdown) return []
+
+  const matches = Array.from(markdown.matchAll(/^###\s+(Step\s*\d+[^\n]*)/gm))
+  if (matches.length === 0) return []
+
+  return matches.map((match, index) => {
+    const heading = match[1]
+    const startIndex = (match.index || 0) + match[0].length
+    const endIndex = index + 1 < matches.length ? (matches[index + 1].index || markdown.length) : markdown.length
+    const section = markdown.slice(startIndex, endIndex)
+    const firstParagraph = section.split('\n\n').find((p) => p.trim().length > 0) || ''
+
+    return {
+      name: cleanMarkdown(heading),
+      description: cleanMarkdown(firstParagraph),
+    }
+  })
+}
+
+function getFaqSchema(faqs: Array<{ q: string; a: string }>) {
+  return {
+    "@context": 'https://schema.org',
+    "@type": 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      "@type": 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": 'Answer',
+        text: faq.a,
+      },
+    })),
+  }
+}
+
+function toKeywordArray(value: any): string[] {
+  if (!value) return []
+  if (Array.isArray(value)) return value.map((v) => String(v).toLowerCase())
+  if (typeof value === 'string') {
+    const normalized = value.replace(/^\[/, '').replace(/\]$/, '')
+    return normalized.split(',').map((v) => v.trim().toLowerCase()).filter(Boolean)
+  }
+  return []
+}
+
+function extractTokens(text: string): Set<string> {
+  return new Set(
+    text
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .split(/\s+/)
+      .filter((token) => token.length > 3)
+  )
+}
+
+function getRelatedGuidesForPost(post: BlogPost, limit = 3) {
+  const guides = getHowToGuides()
+  const postKeywords = new Set(toKeywordArray(post.keywords))
+  const postTokens = extractTokens(`${post.title || ''} ${post.excerpt || ''} ${post.category || ''}`)
+
+  const scored = guides.map((guide) => {
+    const guideKeywords = new Set(toKeywordArray(guide.keywords))
+    const guideTokens = extractTokens(`${guide.title || ''} ${guide.excerpt || ''} ${guide.category || ''}`)
+
+    let score = 0
+    guideKeywords.forEach((keyword) => {
+      if (postKeywords.has(keyword)) score += 3
+    })
+    guideTokens.forEach((token) => {
+      if (postTokens.has(token)) score += 1
+    })
+
+    return { guide, score }
+  })
+
+  const filtered = scored.filter((item) => item.score > 0)
+  const ordered = (filtered.length > 0 ? filtered : scored)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((item) => item.guide)
+
+  return ordered
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -144,26 +263,60 @@ export default async function BlogPost({ params }: Props) {
   }
 
   const formattedDate = formatDate(blogPost.date!)
+  const isoDate = new Date(blogPost.date!).toISOString().split('T')[0]
 
   // Transform Markdoc AST using config
   const content = Markdoc.transform(blogPost.ast, config)
 
-  // Generate article schema
+  // Determine if this is a how-to post based on category or title
+  const isHowToPost = 
+    blogPost.category?.toLowerCase() === 'how-to' ||
+    blogPost.title?.toLowerCase().includes('how to') ||
+    blogPost.title?.toLowerCase().includes('guide') ||
+    ['60-second-multifamily-deal-analysis', 'multifamily-deal-evaluation-framework', 'house-hacking-live-free-real-estate', 'three-ways-spot-profitable-multifamily-deals', 'sell-rental-property-without-disturbing-tenants', 'selling-tenant-occupied-property-strategy'].includes(blogId)
+
+  // Generate article schema with full metadata
   const articleSchema = getArticleSchema({
     headline: blogPost.title!,
     description: blogPost.excerpt!,
-    datePublished: formattedDate,
+    image: blogPost.authorImage,
+    datePublished: isoDate,
     author: {
       name: blogPost.author!,
       url: `${BASE_URL}/about`
     },
-    content: blogPost.excerpt!
+    content: blogPost.keyTakeaway || blogPost.excerpt!,
+    keywords: Array.isArray(blogPost.keywords) ? blogPost.keywords : (blogPost.keywords ? blogPost.keywords.split(',').map((k: string) => k.trim()) : [])
   })
+
+  // Generate HowTo schema if applicable
+  const faqs = Array.isArray(blogPost.faqs) ? blogPost.faqs : []
+  const schemas: any[] = [articleSchema, ...(faqs.length > 0 ? [getFaqSchema(faqs)] : [])]
+  if (isHowToPost) {
+    const extractedSteps = extractHowToSteps(blogPost.rawContent || '')
+    const steps = extractedSteps.length > 0 ? extractedSteps : [
+      {
+        name: blogPost.keyTakeaway?.split('\n')[0] || 'Get Started',
+        description: blogPost.keyTakeaway || blogPost.excerpt || 'Follow the steps in this guide to make a clear decision.'
+      }
+    ]
+
+    const howToSchema = getHowToSchema({
+      name: blogPost.title!,
+      description: blogPost.keyTakeaway || blogPost.excerpt || '',
+      steps
+    })
+    schemas.push(howToSchema)
+  }
+
+  const relatedGuides = getRelatedGuidesForPost(blogPost)
 
   return (
     <>
       {/* Schema Markup */}
-      <SchemaRenderer schema={articleSchema} />
+      {schemas.map((schema, index) => (
+        <SchemaRenderer key={index} schema={schema} />
+      ))}
 
       {/* Breadcrumb - includes schema */}
       <Breadcrumb items={[
@@ -186,12 +339,27 @@ export default async function BlogPost({ params }: Props) {
       <Section background="white">
         <Container>
           <FadeIn className="max-w-3xl mx-auto">
+            {/* Key Takeaway */}
+            {blogPost.keyTakeaway && (
+              <div className="bg-gray-100 p-4 rounded mb-8">
+                <Text className="text-gray-700 text-base">
+                  <span className="font-semibold">Key Takeaway:</span> {blogPost.keyTakeaway}
+                </Text>
+              </div>
+            )}
             {renderMarkdoc(content)}
+
+            {faqs.length > 0 && (
+              <div className="mt-10">
+                <Heading size="h2" className="mb-4">FAQs</Heading>
+                <InlineFAQ faqs={faqs} />
+              </div>
+            )}
           </FadeIn>
 
           <div className="max-w-3xl mx-auto mt-12">
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-              <Heading size="h3" className="mb-2">About Saad Tai</Heading>
+              <Heading size="h2" className="mb-2">About Saad Tai</Heading>
               <Text className="text-slate-700 mb-4">
                 Saad Tai is a multifamily investor and advisor serving the Capital Region (Albany, Schenectady, Troy)
                 and Jacksonville, FL. He specializes in underwriting accuracy, pricing strategy, and clean exits for
@@ -210,6 +378,27 @@ export default async function BlogPost({ params }: Props) {
             excerpt={blogPost.excerpt!}
             url={`${BASE_URL}/blog/${blogPost.id}`}
           />
+
+          {relatedGuides.length > 0 && (
+            <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-200">
+              <Heading size="h2" className="mb-4">Related How-To Guides</Heading>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {relatedGuides.map((guide) => (
+                  <Link key={guide.id} href={`/how-to/${guide.id}`}>
+                    <Card className="p-4 h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                      <Heading size="h4" className="mb-2 text-olive-900 group-hover:text-gold-500 transition-colors">
+                        {guide.title}
+                      </Heading>
+                      <Text className="text-gray-700 text-sm mb-3">
+                        {guide.excerpt}
+                      </Text>
+                      <Button variant="default" className="p-0 text-sm">Start Guide →</Button>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </Container>
       </Section>
 

@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'recharts'],
   },
 
   // Use Turbopack (Next.js 16 default)
@@ -38,7 +38,15 @@ const nextConfig: NextConfig = {
   compress: true,
   
   // Production optimizations
-  productionBrowserSourceMaps: false,
+  productionBrowserSourceMaps: true,
+  
+  // Reduce initial JavaScript payload
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.optimization.minimize = true
+    }
+    return config
+  },
   
   // Configure headers for caching and security
   async headers() {
@@ -72,20 +80,10 @@ const nextConfig: NextConfig = {
             value: 'camera=(), microphone=(), geolocation=()'
           },
           {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://snap.licdn.com https://saadinfo.up.railway.app https://va.vercel-scripts.com https://ddwl4m2hdecbv.cloudfront.net https://connect.facebook.net https://www.facebook.com https://www.clarity.ms https://widgetbe.com https://capi-automation.s3.us-east-2.amazonaws.com https://scripts.clarity.ms https://umami-production-25e0.up.railway.app",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: https: blob:",
-              "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://saadinfo.up.railway.app https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://q.clarity.ms https://e.clarity.ms https://c.clarity.ms https://j.clarity.ms https://y.clarity.ms https://widgetbe.com https://capig.datah04.com https://umami-production-25e0.up.railway.app",
-              "frame-src 'self' https://www.facebook.com https://m.facebook.com",
-              "frame-ancestors 'self'",
-              "base-uri 'self'",
-              "form-action 'self'"
-            ].join('; ')
-          }
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin-allow-popups'
+          },
+          
         ],
       },
       // Static asset caching
@@ -262,6 +260,42 @@ const nextConfig: NextConfig = {
       {
         source: "/hello-world",
         destination: "/blog",
+        permanent: true,
+      },
+      // How-to guide redirects
+      {
+        source: "/first-time-buyer-guide",
+        destination: "/how-to/first-time-homebuyer",
+        permanent: true,
+      },
+      {
+        source: "/first-time-homebuyer",
+        destination: "/how-to/first-time-homebuyer",
+        permanent: true,
+      },
+      {
+        source: "/1031-exchange-multifamily-strategy",
+        destination: "/how-to/1031-exchange-multifamily-strategy",
+        permanent: true,
+      },
+      {
+        source: "/best-multifamily-markets-2026",
+        destination: "/how-to/best-multifamily-markets-2026",
+        permanent: true,
+      },
+      {
+        source: "/negative-cash-flow-warning-signs",
+        destination: "/how-to/negative-cash-flow-warning-signs",
+        permanent: true,
+      },
+      {
+        source: "/cap-rate-vs-cash-flow",
+        destination: "/how-to/cap-rate-vs-cash-flow",
+        permanent: true,
+      },
+      {
+        source: "/evaluate-multifamily-deals-capital-region",
+        destination: "/how-to/evaluate-multifamily-deals-capital-region",
         permanent: true,
       },
     ];

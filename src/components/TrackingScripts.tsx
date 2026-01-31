@@ -3,7 +3,7 @@
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 
-export function TrackingScripts() {
+export function TrackingScripts({ nonce }: { nonce?: string }) {
   const [hasConsent, setHasConsent] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -36,6 +36,7 @@ export function TrackingScripts() {
           <Script
             id="meta-pixel"
             strategy="lazyOnload"
+            nonce={nonce}
             dangerouslySetInnerHTML={{
               __html: `
                 !function(f,b,e,v,n,t,s)
@@ -69,6 +70,7 @@ export function TrackingScripts() {
           id="meta-param-builder"
           src="https://capi-automation.s3.us-east-2.amazonaws.com/public/client_js/capiParamBuilder/clientParamBuilder.bundle.js"
           strategy="lazyOnload"
+          nonce={nonce}
         />
       )}
     </>

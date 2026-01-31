@@ -39,7 +39,7 @@ function NavItem({ href, label, isActive, onAnchorClick }: NavItemProps) {
     <Link
       href={href}
       onClick={handleClick}
-      className="text-white font-heading text-base tracking-wide uppercase transition-colors duration-200"
+      className="text-white font-heading text-base tracking-wide uppercase transition-colors duration-200 nav-link"
       style={{ color: isActive ? COLORS.secondary : COLORS.white, '--tw-text-opacity': '1' } as any}
       onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.secondary)}
       onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? COLORS.secondary : COLORS.white)}
@@ -64,7 +64,7 @@ function NavDropdown({ label, items, basePath, onAnchorClick, type = 'pages', is
       <Link
         href={basePath}
         onClick={() => trackNavClick(label, basePath)}
-        className="font-heading text-base tracking-wide uppercase transition-colors duration-200 flex items-center gap-1.5"
+        className="font-heading text-base tracking-wide uppercase transition-colors duration-200 flex items-center gap-1.5 nav-link"
         style={{ color: isActive ? COLORS.secondary : COLORS.white }}
         onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.secondary)}
         onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? COLORS.secondary : COLORS.white)}
@@ -141,7 +141,7 @@ export function Header() {
         {/* Header Layout - Logo and Nav row */}
         <div className="relative flex items-center justify-between gap-8 py-5">
           {/* Logo - Left */}
-          <Link href="/" className="flex items-center gap-2 transition-transform duration-300 flex-shrink-0 hover:opacity-80">
+          <Link href="/" className="flex items-center gap-2 transition-transform duration-300 flex-shrink-0 hover:opacity-80 nav-link">
             <Image
               src="/logo.png"
               alt="Invest with Saad - Multifamily Real Estate Investment Advisor"
@@ -220,7 +220,7 @@ export function Header() {
                         trackNavClick(item.label, item.href)
                         closeMenu()
                       }}
-                      className="block text-base font-heading uppercase py-3 border-b text-white transition-colors"
+                      className="block text-base font-heading uppercase py-3 border-b text-white transition-colors nav-link"
                       style={{ borderColor: COLORS.primary, color: isActiveMobile ? COLORS.secondary : COLORS.white }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.secondary)}
                       onMouseLeave={(e) => (e.currentTarget.style.color = isActiveMobile ? COLORS.secondary : COLORS.white)}

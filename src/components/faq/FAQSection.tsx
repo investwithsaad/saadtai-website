@@ -29,7 +29,7 @@ function FAQAccordionItem({ question, answer }: { question: string; answer: stri
         className="w-full p-6 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors text-left"
         aria-expanded={isOpen}
       >
-        <Heading size="h4" className="text-olive-900 pr-4">
+        <Heading size="h3" className="text-olive-900 pr-4">
           {question}
         </Heading>
         <ChevronDown

@@ -14,7 +14,7 @@ import {
 import { HeroSection } from '@/components/HeroSection'
 import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
-import FAQAccordion from '@/components/FAQAccordion'
+import FAQAccordion from '@/components/faq/FAQAccordion'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { EventBanner } from '@/components/EventBanner'
 import { MortgageCalculator } from '@/components/MortgageCalculator'

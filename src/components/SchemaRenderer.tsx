@@ -16,9 +16,10 @@ import { ReactNode } from 'react'
 interface SchemaRendererProps {
   schema?: Record<string, any>
   schemas?: Record<string, any>[]
+  nonce?: string
 }
 
-export function SchemaRenderer({ schema, schemas }: SchemaRendererProps) {
+export function SchemaRenderer({ schema, schemas, nonce }: SchemaRendererProps) {
   // Use single schema or array of schemas
   const schemaData = schema ? [schema] : schemas || []
 
@@ -34,6 +35,7 @@ export function SchemaRenderer({ schema, schemas }: SchemaRendererProps) {
       <script
         type="application/ld+json"
         suppressHydrationWarning
+        nonce={nonce}
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(schemaContent)
         }}
@@ -48,11 +50,11 @@ export function SchemaRenderer({ schema, schemas }: SchemaRendererProps) {
 /**
  * Helper to render multiple schemas efficiently
  */
-export function SchemaRendererBatch({ schemas }: { schemas: Record<string, any>[] }) {
+export function SchemaRendererBatch({ schemas, nonce }: { schemas: Record<string, any>[]; nonce?: string }) {
   return (
     <>
       {schemas.map((schema, index) => (
-        <SchemaRenderer key={index} schema={schema} />
+        <SchemaRenderer key={index} schema={schema} nonce={nonce} />
       ))}
     </>
   )

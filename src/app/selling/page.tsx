@@ -10,7 +10,7 @@ import { createPageMetadata } from '@/lib/metadata-factory'
 const defaultHero = {
   headline: 'Exit on Your Timeline\nExit with [Clarity]',
   description: 'Our system tells you if now is the right time,\npositions your property properly,\nand finds the right buyer at the right price.\nYou maximize proceeds without the chaos.',
-  ctaText: 'Talk through your next move'
+  ctaText: "Let's Talk"
 }
 
 export function generateMetadata(): Metadata {

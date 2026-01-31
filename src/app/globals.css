@@ -14,10 +14,21 @@
 }
 */
 
-/* Font display optimization */
+/* Font display optimization - Critical for LCP */
 @layer base {
-  * {
+  html {
     font-display: swap;
+  }
+}
+
+/* Reduce animation duration for better performance on slow devices */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -32,7 +43,7 @@
   }
 }
 
-/* CSS-only fade animation for LCP-critical content */
+/* CSS-only fade animation for LCP-critical content - no transforms */
 @keyframes cssOnlyFadeIn {
   from {
     opacity: 0;
@@ -46,14 +57,13 @@
   animation: cssOnlyFadeIn 0.6s ease-out;
 }
 
+/* Reduce performance impact of slideIn - use opacity only */
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -95,11 +105,6 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
-  }
-
-  /* Navigation item underline effect */
-  a[style*="--underline-color"]::after {
-    background-color: var(--underline-color) !important;
   }
 }
 

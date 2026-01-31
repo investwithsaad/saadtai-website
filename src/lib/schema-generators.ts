@@ -138,12 +138,13 @@ export const getArticleSchema = (article: {
     url?: string
   }
   content: string
+  keywords?: string[]
 }) => ({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": article.headline,
   "description": article.description,
-  "image": article.image,
+  ...(article.image && { "image": article.image }),
   "datePublished": article.datePublished,
   "dateModified": article.dateModified || article.datePublished,
   "author": {
@@ -161,7 +162,8 @@ export const getArticleSchema = (article: {
       "height": 607
     }
   },
-  "articleBody": article.content
+  "articleBody": article.content,
+  ...(article.keywords && article.keywords.length > 0 && { "keywords": article.keywords.join(", ") })
 })
 
 // ============================================================================
