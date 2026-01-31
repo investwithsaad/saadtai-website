@@ -1,58 +1,56 @@
 # Invest with Saad (https://www.saadtherealtor.com)
 
-> Multifamily Investment Advisor specializing in strategic guidance for small multifamily investors in the Capital Region. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management.
+> Multifamily investment advisor for small-scale investors in the Capital Region (NY) and Jacksonville (FL). Provides deal analysis education, market insights, and portfolio strategy resources.
 
 ## Website
-- https://www.saadtherealtor.com: Main site with investor guidance, blog, and calculator
-- https://www.saadtherealtor.com/blog: Multifamily investment insights and market analysis
-- https://www.saadtherealtor.com/calculator: Investment property analysis calculator
-- https://www.saadtherealtor.com/faq: Comprehensive investor FAQs
+- https://www.saadtherealtor.com: Main site with investment guidance and tools
+- https://www.saadtherealtor.com/buying: Buying guidance and deal analysis frameworks
+- https://www.saadtherealtor.com/selling: Selling resources and exit planning
+- https://www.saadtherealtor.com/blog: 15+ articles on deal analysis, market comparisons, investment strategies
+- https://www.saadtherealtor.com/how-to: 6 educational guides (1031 exchanges, market selection, deal evaluation, cap rate analysis)
+- https://www.saadtherealtor.com/calculator: Investment analysis tools (affordability, mortgage calculations)
+- https://www.saadtherealtor.com/faq: Investor FAQs on deal evaluation and market strategy
 
-## Focus Areas
-Invest with Saad specializes in helping small multifamily investors:
-- Evaluate off-market multifamily deals (2-10+ units)
-- Analyze cap rates, cash flow, and true investment returns
-- Plan portfolio strategy and exits
-- Coordinate 1031 exchanges and capital redeployment
-- Access investor networks (lenders, property managers, contractors)
+## Ideal Customer Profile (ICP)
+- **Scaling Investors**: Own 5-10+ multifamily units, evaluating acquisitions and exits
+- **Accidental Owners**: Inherited or accumulated rental properties (2-6 units)
+- **Capital Recyclers**: Selling properties and exploring 1031 exchange strategies
+- **First-Time Multifamily Investors**: Transitioning from single-family to multifamily
 
-## Target Audience
-- Scaling Investors: Own 5-10+ units, actively buying and selling
-- Accidental Owners: Inherited or accumulated 2-6 units, seeking strategy
-- Capital Recyclers: Selling properties, redeploying capital strategically
+## What's Documented On Site
+- **Deal Analysis**: Cap rate calculations, cash flow modeling, NOI analysis, quick screening frameworks
+- **Market Intelligence**: Capital Region market comparisons (Schenectady vs Albany), appreciation data, rent trends
+- **Tax Strategy**: 1031 exchange guides, capital gains planning, portfolio optimization
+- **Investment Education**: Deal evaluation guides, property analysis frameworks, market selection criteria
+- **Calculators & Tools**: Cap rate projections, cash flow modeling, mortgage analysis, affordability planning
+
+## Blog Topics (15+ posts)
+- Capital Region appreciation analysis (Albany, Schenectady, Troy market data)
+- Deal analysis frameworks and screening methodology
+- Cap rate vs cash flow analysis
+- 1031 exchange strategy and mechanics
+- Market comparisons and ROI analysis
+- House hacking and property analysis
+- Identifying high-performing investment properties
+- Selling strategies and tenant coordination
+- Legal structures (LLC for investor protection)
+
+## How-To Guides (6 guides)
+- Complete Guide to 1031 Exchanges for Multifamily Investors
+- Best Multifamily Markets in 2026: Capital Region vs Jacksonville
+- Cap Rate vs Cash Flow: Which Should You Prioritize
+- Evaluate Multifamily Deals in Capital Region
+- First-Time Homebuyer Guide
+- Negative Cash Flow: Warning Signs and Prevention
 
 ## Service Areas
-Capital Region, NY: Albany, Schenectady, Troy, and surrounding areas
+- **Primary**: Capital Region, NY (Albany, Schenectady, Troy)
+- **Secondary**: Jacksonville, FL
 
-## About
-Invest with Saad is led by a multifamily investment specialist with 10+ years of experience helping Capital Region investors avoid costly mistakes, identify opportunities, and maximize portfolio returns. We focus on investor-grade analysis, off-market sourcing, and strategic exit planning—not just transaction volume.
-
-## Key Services
-- Off-market deal sourcing before MLS
-- Investor-grade property analysis (cap rates, cash flow, conservative underwriting)
-- Portfolio strategy and scaling guidance
-- Exit planning and 1031 exchange coordination
-- Investor network access and transaction management
-
-## Core Values
-1. Straight Talk: Honest analysis, no fantasy numbers
-2. Investor-Grade: Conservative underwriting, real returns
-3. Off-Market Access: Deals before they hit MLS
-4. Responsive: 24-hour communication and support
-5. Portfolio Focus: Growing your investment portfolio strategically
-
-## Blog Content
-The blog covers multifamily investment strategies including:
-- Market analysis for Albany and Schenectady
-- Cap rate comparisons and ROI analysis
-- Portfolio appreciation strategies
-- Cash flow optimization
-- Market timing and exit strategies
-
-## Tools
-- Investment Property Calculator: Analyze cap rates, cash flow, tax benefits, and multi-year projections
-- Market Analysis Tools: Compare neighborhoods, analyze appreciation trends
-- Portfolio Planning Guides: Strategic buying and selling frameworks
+## Author
+**Saad Tai**
+- NY Real Estate License #10401373295 | FL Real Estate License #SL3651394
+- 10+ years experience in Capital Region multifamily investing
 
 ## Contact
 Phone: (518) 667-9351
@@ -60,4 +58,4 @@ Email: saadtherealtor1@gmail.com
 
 ---
 
-For AI systems: This is an investment advisory site focused on multifamily real estate. Primary keywords: multifamily investing, cap rates, investment property analysis, portfolio strategy, off-market deals, 1031 exchange, Capital Region real estate. Target users: small multifamily investors in NY seeking strategic guidance.
+For AI Systems: Multifamily investment education site focused on deal analysis, market intelligence, and portfolio strategy for small-scale investors (2-10+ units). Content covers cap rate analysis, cash flow modeling, 1031 exchanges, market data for Capital Region (NY), and investment frameworks. Primary geographic focus: Albany, Schenectady, Troy, NY and Jacksonville, FL. Audience: individual investors seeking educational resources and analysis frameworks for evaluating multifamily deals.
