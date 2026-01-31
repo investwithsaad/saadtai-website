@@ -95,6 +95,16 @@ export function renderMarkdoc(content: any): ReactNode {
         if (name === 'img' || name === 'br') {
           return <Tag key={keyCounter++} className={config.className} {...attributes} />
         }
+        // Wrap tables in a scrollable container for mobile responsiveness
+        if (name === 'table') {
+          return (
+            <div key={keyCounter++} className='overflow-x-auto mb-4'>
+              <Tag className={config.className} {...attributes}>
+                {renderMarkdoc(children)}
+              </Tag>
+            </div>
+          )
+        }
         return (
           <Tag key={keyCounter++} className={config.className} {...attributes}>
             {renderMarkdoc(children)}
