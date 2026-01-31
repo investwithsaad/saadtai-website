@@ -25,7 +25,6 @@ export function middleware(request: NextRequest) {
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",
-    ...(isProduction ? ["require-trusted-types-for 'script'"] : []),
   ].join('; ')
 
   const requestHeaders = new Headers(request.headers)
