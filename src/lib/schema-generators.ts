@@ -57,7 +57,6 @@ export const getOrganizationSchema = (config?: {
     "@type": "Person",
     "name": "Saad Tai",
     "jobTitle": "Multifamily Investment Advisor",
-    "knows": ["Real Estate Investing", "Multifamily Properties", "Portfolio Strategy"],
     "url": `${BASE_URL}/`,
     "description": "NY License #10401373295 | FL License #SL3651394"
   },
