@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createPageMetadata({
     title: page?.title || 'Saad Tai | Multifamily Investment Advisor',
-    description: page?.description || 'Saad Tai is a licensed real estate advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and investor-grade transaction management. Serving Capital Region, NY and Kissimmee, FL.',
+    description: page?.description || 'Licensed real estate advisor specializing in multifamily investing, cap rate analysis, and portfolio strategy. Capital Region, NY and Kissimmee, FL.',
     path: '/about',
     ogImage: page?.ogImage?.asset?.url || '/saad tai 2.png',
   })

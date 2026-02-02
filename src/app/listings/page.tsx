@@ -8,7 +8,7 @@ export async function generateMetadata() {
 
   return createPageMetadata({
     title: page?.title || 'Multifamily Investment Properties | Saad Tai',
-    description: page?.description || 'Browse available multifamily investment properties and listings across Albany County, Schenectady County, and Rensselaer County. Find your next investment opportunity.',
+    description: page?.description || 'Browse multifamily investment properties across Albany, Schenectady, and Rensselaer counties. Find your next investment opportunity.',
     path: '/listings',
     ogImage: page?.ogImage?.asset?.url || '/House1.webp',
   })

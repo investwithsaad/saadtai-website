@@ -5,7 +5,7 @@ import { AlbanyMultifamilyContent } from '@/app/investing/albany-multifamily-inv
 export async function generateMetadata(): Promise<Metadata> {
   return createPageMetadata({
     title: 'Albany NY Multifamily Investing Guide | Analyze Albany Rental Properties',
-    description: 'Invest in Albany multifamily properties: 8.2% cap rates, $1,550 2BR rent, +5.4% appreciation. Market analysis, property examples, and investment framework for Albany NY.',
+    description: 'Invest in Albany multifamily: 8.2% cap rates, $1,550 2BR rent, +5.4% appreciation. Market analysis and investment framework for Albany NY.',
     path: '/investing/albany-multifamily-investing',
     ogImage: '/saad.png',
   })
