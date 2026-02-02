@@ -92,7 +92,7 @@ export function renderMarkdoc(content: any): ReactNode {
       const config = elementConfig[name]
       if (config) {
         const Tag = config.tag as any
-        if (name === 'img' || name === 'br') {
+        if (name === 'img' || name === 'br' || name === 'hr') {
           return <Tag key={keyCounter++} className={config.className} {...attributes} />
         }
         // Wrap tables in a scrollable container for mobile responsiveness

@@ -14,10 +14,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'recharts'],
   },
 
-  // Use Turbopack (Next.js 16 default)
-  turbopack: {
-    resolveAlias: {},
-  },
+  turbopack: {},
   
   // Optimize images
   images: {
