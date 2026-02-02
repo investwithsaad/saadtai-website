@@ -1,6 +1,6 @@
 # Invest with Saad (https://www.saadtherealtor.com)
 
-> Multifamily investment advisor for small-scale investors in the Capital Region (NY) and Jacksonville (FL). Provides deal analysis education, market insights, and portfolio strategy resources.
+> Multifamily investment advisor for small-scale investors in the Capital Region (NY) and Kissimmee (FL). Provides deal analysis education, market insights, and portfolio strategy resources.
 
 ## Website
 - https://www.saadtherealtor.com: Main site with investment guidance and tools
@@ -37,7 +37,7 @@
 
 ## How-To Guides (6 guides)
 - Complete Guide to 1031 Exchanges for Multifamily Investors
-- Best Multifamily Markets in 2026: Capital Region vs Jacksonville
+- Best Multifamily Markets in 2026: Capital Region vs Kissimmee
 - Cap Rate vs Cash Flow: Which Should You Prioritize
 - Evaluate Multifamily Deals in Capital Region
 - First-Time Homebuyer Guide
@@ -45,7 +45,7 @@
 
 ## Service Areas
 - **Primary**: Capital Region, NY (Albany, Schenectady, Troy)
-- **Secondary**: Jacksonville, FL
+- **Secondary**: Kissimmee, FL
 
 ## Author
 **Saad Tai**

@@ -10,7 +10,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     q: 'What markets do you serve?',
-    a: 'Primary markets include the Capital Region (Albany, Schenectady, Troy) and Jacksonville, Florida.'
+    a: 'Primary markets include the Capital Region (Albany, Schenectady, Troy) and Kissimmee, Florida.'
   },
   {
     q: 'How do I evaluate a multifamily deal quickly?',
@@ -37,7 +37,7 @@ export const blogIndexFaqs: FAQItem[] = [
   },
   {
     q: 'Are the blog posts location-specific?',
-    a: 'Many examples reference the Capital Region and Jacksonville, but the frameworks apply to most U.S. markets.'
+    a: 'Many examples reference the Capital Region and Kissimmee, but the frameworks apply to most U.S. markets.'
   }
 ]
 

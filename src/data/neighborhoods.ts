@@ -285,6 +285,86 @@ export const neighborhoods: Neighborhood[] = [
     demographics:
       'Families with school-age children, established professionals, empty nesters attracted by quality schools. Higher median income than Albany and Schenectady. Strong community engagement.',
   },
+
+  {
+    id: 'troy',
+    name: 'Troy',
+    tagline: 'Arts, Culture, & Creative Revival',
+    shortDescription:
+      'Historic riverfront city experiencing cultural renaissance. Median price ($275K) attracts creative professionals and investors. Strong walkability, arts scene, and younger demographic growth make Troy an emerging opportunity in the Capital Region.',
+
+    marketData: {
+      medianHomePrice: '$275,000 - $287,000',
+      propertyTaxRate: '$3.45 per $1,000 assessed value (city)',
+      schoolDistrictRating: 'B- (Niche.com, 2025)',
+      walkScore: 72,
+      appreciation1Year: '+5.2%',
+      medianRent2BR: '$1,350 - $1,550/month',
+    },
+
+    buyerPersonas: {
+      valueInvestor:
+        'Troy offers balanced entry points ($275K median) with solid rental potential ($1,350-$1,550/month, 6.1% gross yield). Strong appreciation (+5.2%) and cultural revitalization momentum (arts scene, younger demographic influx) create long-term growth potential. Lower price than Albany, walkable urban amenities.',
+      urbanProfessional:
+        'Troy attracts creative professionals with historic architecture, thriving arts scene, revitalized waterfront, and walkable downtown (Walk Score 72). Growing coffee shops, galleries, and restaurants. Proximity to Albany (10 miles) and Saratoga (30 miles). More affordable than Saratoga, more vibrant cultural scene than suburbs.',
+      qualityOfLifeFamily:
+        'Historic neighborhoods with character and community feel. Growing influx of young families attracted by walkability, cultural amenities, and lower costs. Schools rated B- (improving). Waterfront access and parks provide recreation. Good balance of urban energy and affordability.',
+    },
+
+    highIntentQuestions: [
+      {
+        question: 'Why is Troy becoming an investment hotspot?',
+        answer:
+          'Cultural renaissance driven by younger professionals (ages 25-40), arts scene growth, and waterfront revitalization. Median price $275K is 4-5% lower than Albany ($285K) with comparable rental potential. Appreciation +5.2% YoY as demographic shifts attract investment. Combination of affordability, walkability, and cultural momentum creates strong investor interest.',
+        category: 'investment',
+      },
+      {
+        question: 'What rental yields can I expect in Troy?',
+        answer:
+          'Median 2BR rent: $1,350-$1,550/month. Median home price: $275K. Gross rent-to-price ratio: 6.1% (strong for northeast). After expenses (taxes, insurance, maintenance ~35%), net yield: ~4.0%. Plus appreciation at +5.2% YoY. Good for investors seeking balance of cash flow and growth.',
+        category: 'investment',
+      },
+      {
+        question: 'Is Troy walkable? What is the Walk Score?',
+        answer:
+          'Troy Walk Score: 72 (Very Walkable). Revitalized downtown is compact and pedestrian-friendly with shops, restaurants, galleries, and cultural venues within walking distance. Riverfront access and historic neighborhoods like Rensselaer Street and Federal Street are particularly walkable. Good public transit (CDTA buses). Most daily errands can be accomplished on foot.',
+        category: 'lifestyle',
+      },
+      {
+        question: 'What are Troy property taxes compared to Schenectady and Albany?',
+        answer:
+          'Troy: $3.45 per $1,000 assessed value. Albany: $2.73 per $1,000. Schenectady: $13.37 per $1,000. While Troy is higher than Albany, it\'s significantly lower than Schenectady. For example: $275K Troy home = ~$950/year. $285K Albany home = ~$777/year. Troy tax premium is ~$200/year but offset by cultural amenities and growth momentum.',
+        category: 'taxes',
+      },
+      {
+        question: 'What neighborhoods in Troy are best for rental investment?',
+        answer:
+          'Downtown/River Street: Highest walkability, most cultural activity, strongest tenant demand from young professionals. Federal Street: Historic charm, walkable, improving appreciation. Rensselaer Street: Established residential, family-friendly, good tenant stability. Waterfront areas: Emerging, revitalization ongoing, upside potential. Focus on walkable neighborhoods with cultural amenities.',
+        category: 'investment',
+      },
+      {
+        question: 'Commute from Troy to Albany vs Schenectady?',
+        answer:
+          'Troy to Albany downtown: 15-20 minutes via I-87 off-peak, 25-35 minutes rush hour. Troy to Schenectady: 20-25 minutes via I-87/I-890. Troy to GE campus: 25-35 minutes. Proximity to Albany jobs is strong advantage. Many younger professionals choose Troy for affordability while commuting to Albany state jobs.',
+        category: 'commute',
+      },
+    ],
+
+    features: [
+      'Median price $275K (lowest after Schenectady)',
+      'Walk Score 72 (very walkable)',
+      'Thriving arts and culture scene',
+      'Historic architecture and riverfront',
+      'Growing younger professional population',
+      'Solid rental market ($1,350-$1,550/month)',
+      'Emerging revitalization momentum',
+      'Close proximity to Albany (15 min)',
+    ],
+    lifestyle:
+      'Creative professional or young investor seeking walkable urban neighborhood with cultural amenities and affordability. Arts scene, historic character, and emerging revitalization momentum.',
+    demographics:
+      'Younger professionals (25-40), creative professionals, artists, early-stage investors. Growing population of families attracted by walkability and lower costs. Increasingly diverse community.',
+  },
 ];
 
 /**

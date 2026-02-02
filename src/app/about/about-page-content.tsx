@@ -34,7 +34,7 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
 
   // Defaults from Sanity or fallback
   const heroHeadline = hero?.headline || 'Straight Talk. No Fluff.'
-  const heroDescription = hero?.description || 'Licensed REALTOR® serving New York State and Florida. With deep expertise in New York\'s Capital Region (Albany-Schenectady) and Jacksonville, Florida. I\'m a portfolio-focused advisor—not just a transaction agent.'
+  const heroDescription = hero?.description || 'Licensed REALTOR® serving New York State and Florida. With deep expertise in New York\'s Capital Region (Albany-Schenectady) and Kissimmee, Florida. I\'m a portfolio-focused advisor—not just a transaction agent.'
   const heroCtaText = hero?.ctaText || 'Talk through your next move'
 
   // Generate Review schemas for testimonials (all 5-star reviews)
@@ -91,7 +91,7 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
     { icon: Award, text: 'Licensed Realtor® - New York & Florida' },
     { icon: Briefcase, text: 'NY Real Estate License #10401373295' },
     { icon: Briefcase, text: 'FL Real Estate License #SL3651394' },
-    { icon: MapPin, text: 'Capital Region & Jacksonville Specialist' },
+    { icon: MapPin, text: 'Capital Region & Kissimmee Specialist' },
     { icon: Target, text: 'Specialist in Multifamily Portfolio Strategy' },
     { icon: TrendingUp, text: '95%+ Repeat & Referral Client Rate' },
     { icon: CheckCircle, text: 'Investor-Focused Approach' }
@@ -165,7 +165,7 @@ export default function AboutPageContent({ hero }: AboutPageContentProps = {}) {
 
                   <div className="space-y-6 text-slate-700 leading-relaxed mb-8 max-w-2xl">
                     <p>
-                      <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving New York State and Florida, with deep expertise in the Capital Region and Jacksonville. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
+                      <span className="font-semibold text-slate-900">Licensed REALTOR®</span> serving New York State and Florida, with deep expertise in the Capital Region and Kissimmee. I'm a portfolio-focused advisor—not just a transaction agent. I work with small multifamily investors who are buying, selling, or trading multiple properties.
                     </p>
 
                     <p>

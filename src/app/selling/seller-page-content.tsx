@@ -376,7 +376,7 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
               </Heading>
               <Text className="text-lg text-slate-600 mb-6 text-center">
                 Multifamily investor and advisor specializing in strategic exits, pricing, and buyer alignment.
-                Serving Albany, Schenectady, Troy, and Jacksonville with a data‑first approach.
+                Serving Albany, Schenectady, Troy, and Kissimmee with a data‑first approach.
               </Text>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
                 <ul className="space-y-2 text-slate-700">

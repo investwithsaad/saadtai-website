@@ -371,7 +371,7 @@ export default async function BlogPost({ params }: Props) {
               <Heading size="h2" className="mb-2">About Saad Tai</Heading>
               <Text className="text-slate-700 mb-4">
                 Saad Tai is a multifamily investor and advisor serving the Capital Region (Albany, Schenectady, Troy)
-                and Jacksonville, FL. He specializes in underwriting accuracy, pricing strategy, and clean exits for
+                and Kissimmee, FL. He specializes in underwriting accuracy, pricing strategy, and clean exits for
                 small multifamily owners and investors.
               </Text>
               <ul className="space-y-2 text-slate-700">

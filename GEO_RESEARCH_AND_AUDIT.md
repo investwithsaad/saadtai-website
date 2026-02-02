@@ -7,7 +7,7 @@
 
 ### Current State
 ✅ **Strong Foundation:**
-- Organization schema with areaServed includes primary markets (Albany, Schenectady, Troy, Jacksonville)
+- Organization schema with areaServed includes primary markets (Albany, Schenectady, Troy, Kissimmee)
 - Schema markup is properly implemented
 - Two license locations (NY & FL) documented
 
@@ -60,7 +60,7 @@ Your HIGH_INTENT_QUESTIONS document shows 18 location-specific queries. You're a
   "Schenectady",
   "Troy",
   "Florida",
-  "Jacksonville",
+  "Kissimmee",
   "Duval County"
 ]
 ```
@@ -167,7 +167,7 @@ Hub Page: /buying/albany/
 **Issue:** Is it consistent across citations?
 
 **Audit Checklist:**
-- [ ] Google Business Profile (Albany & Jacksonville listings)
+- [ ] Google Business Profile (Albany & Kissimmee listings)
 - [ ] Yelp (if relevant for "real estate advisor" services)
 - [ ] Industry directories (Zillow, Redfin, Realtor.com)
 - [ ] Local chamber of commerce listings
@@ -234,14 +234,14 @@ When someone asks ChatGPT "what's happening in Schenectady real estate market 20
 
 **Your Gap:**
 You have: "capital-region-multifamily-market-update-2026.mdoc"
-You need: Individual city reports (Albany, Schenectady, Troy, Jacksonville)
+You need: Individual city reports (Albany, Schenectady, Troy, Kissimmee)
 
 **Quick Implementation:**
 Create 4 market report pages:
 1. `/market-reports/albany-2026/`
 2. `/market-reports/schenectady-2026/`
 3. `/market-reports/troy-2026/`
-4. `/market-reports/jacksonville-2026/`
+4. `/market-reports/kissimmee-2026/`
 
 ---
 
@@ -250,7 +250,7 @@ Create 4 market report pages:
 **Google Maps Integration:**
 - Do you have Google Business Profiles for each office location?
 - Are office locations geotagged in your schema?
-- Can users see "how to contact me in Albany vs Jacksonville"?
+- Can users see "how to contact me in Albany vs Kissimmee"?
 
 **Current Gap:** Likely not differentiating office locations geographically on site.
 
@@ -383,7 +383,7 @@ Create 4 market report pages:
 ### Phase 2 (Week 3-4): Content Clusters
 **Effort: 12-16 hours | Impact: VERY HIGH**
 
-1. ✅ Create 4 market report pages (Albany, Schenectady, Troy, Jacksonville)
+1. ✅ Create 4 market report pages (Albany, Schenectady, Troy, Kissimmee)
 
 2. ✅ Build 2-3 neighborhood guides per city (12-15 pages total)
 

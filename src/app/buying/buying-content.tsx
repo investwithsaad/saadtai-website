@@ -283,7 +283,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
                 About Saad Tai
               </Heading>
               <Text className="text-lg text-slate-600 mb-6 text-center">
-                Multifamily investor and advisor serving Albany, Schenectady, Troy, and Jacksonville.
+                Multifamily investor and advisor serving Albany, Schenectady, Troy, and Kissimmee.
                 Focused on underwriting accuracy, capital protection, and long-term portfolio strategy.
               </Text>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">

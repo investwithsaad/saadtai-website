@@ -14,7 +14,7 @@ export async function generateMetadata() {
 
   return createPageMetadata({
     title: 'Buy or Exit Multifamily Properties with Clarity | Saad Tai',
-    description: 'Professional underwriting, analysis, and buyer alignment—all handled. Get clear decisions without chaos in Albany, Schenectady, and Jacksonville.',
+    description: 'Professional underwriting, analysis, and buyer alignment—all handled. Get clear decisions without chaos in Albany, Schenectady, and Kissimmee.',
     path: '/',
     ogImage: undefined,
   })

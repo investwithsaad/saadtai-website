@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createPageMetadata({
     title: page?.title || 'Saad Tai | Multifamily Investment Advisor',
-    description: page?.description || 'Saad Tai is a licensed real estate advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and investor-grade transaction management. Serving Capital Region, NY and Jacksonville, FL.',
+    description: page?.description || 'Saad Tai is a licensed real estate advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and investor-grade transaction management. Serving Capital Region, NY and Kissimmee, FL.',
     path: '/about',
     ogImage: page?.ogImage?.asset?.url || '/saad tai 2.png',
   })
@@ -24,7 +24,7 @@ const saadTaiPersonSchema = {
   "url": `${BASE_URL}/about`,
   "image": `${BASE_URL}/saad.png`,
   "jobTitle": "Multifamily Investment Advisor",
-  "description": "Licensed Real Estate Advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and exit planning. Serving Capital Region, NY and Jacksonville, FL investors.",
+  "description": "Licensed Real Estate Advisor specializing in multifamily investing, cap rate analysis, portfolio strategy, and exit planning. Serving Capital Region, NY and Kissimmee, FL investors.",
   "telephone": "+1-518-667-9351",
   "email": "saadtherealtor1@gmail.com",
   "sameAs": [
@@ -45,10 +45,10 @@ const saadTaiPersonSchema = {
     },
     {
       "@type": "Place",
-      "name": "Jacksonville",
+      "name": "Kissimmee",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Jacksonville",
+        "addressLocality": "Kissimmee",
         "addressRegion": "FL",
         "addressCountry": "USA"
       }

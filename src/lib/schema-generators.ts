@@ -49,8 +49,8 @@ export const getOrganizationSchema = (config?: {
     "Schenectady",
     "Troy",
     "Florida",
-    "Jacksonville",
-    "Duval County"
+    "Kissimmee",
+    "Osceola County"
   ],
   "foundingDate": "2015",
   "founder": {
@@ -269,7 +269,7 @@ export const getWebsiteSchema = () => ({
   "@id": `${BASE_URL}/#website`,
   "url": `${BASE_URL}/`,
   "name": "Invest with Saad - Multifamily Investment Advisor",
-  "description": "Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL",
+  "description": "Strategic multifamily investment guidance in Albany, NY and Kissimmee, FL",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {

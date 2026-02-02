@@ -358,7 +358,7 @@ GOOD (Bing-friendly): "What's a realistic cap rate in Albany, NY in 2026?"
 
 1. Read this document + audit document together
 2. Prioritize Phase 1 (geo schema + location hubs)
-3. Get exact coordinates for: Albany, Schenectady, Troy, Jacksonville
+3. Get exact coordinates for: Albany, Schenectady, Troy, Kissimmee
 4. Audit your current NAP data
 5. Set up IndexNow for URL submission
 
