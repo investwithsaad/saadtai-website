@@ -29,14 +29,14 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: "Clarity for Buy, Sell, Hold Decisions | Saad Tai",
-  description: "I help multifamily investors think through buy, sell, and hold decisions. Off-market deals, rigorous analysis, and execution. Albany, NY & Jacksonville, FL.",
-  keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany NY, Schenectady NY, Jacksonville FL, Capital Region, small multifamily, portfolio strategy, cash flow analysis",
+  description: "I help multifamily investors think through buy, sell, and hold decisions. Off-market deals, rigorous analysis, and execution. Albany, NY & Kissimmee, FL.",
+  keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany NY, Schenectady NY, Kissimmee FL, Capital Region, small multifamily, portfolio strategy, cash flow analysis",
   alternates: {
     canonical: `${BASE_URL}/`,
   },
   openGraph: {
-    title: "Multifamily Investment Advisor | Saad Tai | Albany & Jacksonville",
-    description: "Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL. Scale smarter, exit cleaner, maximize earnings.",
+    title: "Multifamily Investment Advisor | Saad Tai | Albany & Kissimmee",
+    description: "Strategic multifamily investment guidance in Albany, NY and Kissimmee, FL. Scale smarter, exit cleaner, maximize earnings.",
     url: `${BASE_URL}/`,
     siteName: "Invest with Saad",
     type: "website",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Multifamily Investment Advisor | Saad Tai",
-    description: "Scale smarter. Exit cleaner. Strategic multifamily investment guidance in Albany, NY and Jacksonville, FL.",
+    description: "Scale smarter. Exit cleaner. Strategic multifamily investment guidance in Albany, NY and Kissimmee, FL.",
   },
   robots: "index, follow",
   icons: {
@@ -99,19 +99,38 @@ export default async function RootLayout({
         <SchemaRenderer schema={getOrganizationSchema()} nonce={nonce} />
         <SchemaRenderer schema={getWebsiteSchema()} nonce={nonce} />
 
-        {/* Umami Analytics */}
-        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+        {/* Google Tag Manager */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
           <Script
-            src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="lazyOnload"
+            id="gtm-script"
+            strategy="afterInteractive"
             nonce={nonce}
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+              `,
+            }}
           />
         )}
 
         {/* Meta Pixel and Clarity - Moved to TrackingScripts component with consent check */}
       </head>
       <body className="bg-white flex flex-col min-h-screen">
+        {/* Google Tag Manager (noscript) */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         <TrackingScripts nonce={nonce} />
         <LayoutContent recentPosts={recentPosts} allGuides={allGuides}>
           {children}

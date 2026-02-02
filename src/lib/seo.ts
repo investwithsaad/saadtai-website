@@ -15,20 +15,20 @@ export interface PageMeta {
 export const pageMetaData: Record<string, PageMeta> = {
   home: {
     title: "Multifamily Investment Advisor | NY & FL | Saad Tai",
-    description: "Clarity before you commit capital. I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, investor analysis, portfolio strategy. Serving Capital Region, NY and Jacksonville, FL.",
-    keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, Jacksonville, Florida, small multifamily, portfolio strategy, cash flow analysis",
+    description: "Clarity before you commit capital. I help multifamily investors think through buy, sell, and hold decisions while my team handles the execution. Off-market deals, investor analysis, portfolio strategy. Serving Capital Region, NY and Kissimmee, FL.",
+    keywords: "multifamily investing, cap rates, off-market deals, investment property analysis, 1031 exchange, investor real estate advisor, Albany, Schenectady, Kissimmee, Florida, small multifamily, portfolio strategy, cash flow analysis",
     canonical: `${BASE_URL}/`
   },
   buying: {
     title: "Buying Multifamily Properties | NY & FL | Saad Tai",
-    description: "Strategic guidance for buying multifamily properties. Investor-grade analysis, honest underwriting, cap rate expertise. Avoid costly mistakes. Capital Region & Jacksonville focus.",
-    keywords: "buy multifamily property, off-market deals, investment property analysis, cap rate analysis, multifamily investing strategies, Jacksonville, Florida",
+    description: "Strategic guidance for buying multifamily properties. Investor-grade analysis, honest underwriting, cap rate expertise. Avoid costly mistakes. Capital Region & Kissimmee focus.",
+    keywords: "buy multifamily property, off-market deals, investment property analysis, cap rate analysis, multifamily investing strategies, Kissimmee, Florida",
     canonical: `${BASE_URL}/buying`
   },
   selling: {
     title: "Selling Multifamily Properties | NY & FL | Saad Tai",
-    description: "Strategic exit planning for multifamily investors. 1031 exchange coordination, portfolio optimization, maximize proceeds. Expert execution. Capital Region & Jacksonville specialist.",
-    keywords: "sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale, Jacksonville, Florida",
+    description: "Strategic exit planning for multifamily investors. 1031 exchange coordination, portfolio optimization, maximize proceeds. Expert execution. Capital Region & Kissimmee specialist.",
+    keywords: "sell multifamily property, 1031 exchange, exit strategy, portfolio simplification, maximize property sale, Kissimmee, Florida",
     canonical: `${BASE_URL}/selling`
   },
   listings: {
@@ -76,7 +76,7 @@ export const generateServiceSchema = (title: string, description: string) => ({
     "telephone": "+1-518-667-9351",
     "email": "saadtherealtor1@gmail.com"
   },
-  "areaServed": ["Albany, NY", "Schenectady, NY", "Jacksonville, FL"],
+  "areaServed": ["Albany, NY", "Schenectady, NY", "Kissimmee, FL"],
   "serviceType": "Real Estate Services"
 })
 

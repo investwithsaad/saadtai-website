@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import { ScrollToTop } from "@/components/ScrollToTop"
 import { SchemaRenderer } from "@/components/SchemaRenderer"
 import { getOrganizationSchema } from "@/lib/schema-generators"
@@ -36,14 +35,7 @@ export default function LandingLayout({
         {/* Schema Markup */}
         <SchemaRenderer schema={getOrganizationSchema()} />
 
-        {/* Umami Analytics */}
-        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
-          <Script
-            src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="afterInteractive"
-          />
-        )}
+        {/* GTM is loaded in root layout to avoid duplicate initialization */}
       </head>
       <body className="bg-white flex flex-col min-h-screen">
         <ScrollToTop />

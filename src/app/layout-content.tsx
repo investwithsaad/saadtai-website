@@ -8,6 +8,8 @@ import { Footer } from "@/components/footer/Footer"
 import { LeadFormModal } from "@/components/LeadFormModal"
 import { ScrollToTop } from "@/components/ScrollToTop"
 import { MetaParamBuilderInit } from "@/components/MetaParamBuilderInit"
+import { PageViewTracker } from "@/components/PageViewTracker"
+import { EnhancedMeasurement } from "@/components/EnhancedMeasurement"
 
 const Chatbot = dynamic(() => import("@/components/Chatbot").then(mod => ({ default: mod.Chatbot })), {
   loading: () => null,
@@ -44,6 +46,8 @@ export function LayoutContent({
   return (
     <>
       <MetaParamBuilderInit />
+      <PageViewTracker />
+      <EnhancedMeasurement />
       {!isLandingPage && <ScrollToTop />}
       {!isLandingPage && <Header />}
       <main className={`flex-grow ${!isLandingPage ? 'pt-20' : ''}`}>

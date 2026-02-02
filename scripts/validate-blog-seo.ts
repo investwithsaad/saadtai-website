@@ -97,26 +97,69 @@ function validatePageMetadata(): ValidationResult[] {
   const results: ValidationResult[] = []
   const pagesDir = path.join(process.cwd(), 'src/app')
 
-  // Check specific pages that have generateMetadata with descriptions
+  // Check all pages from sitemap
   const pagesToCheck = [
+    // Main navigation pages
     { path: 'src/app/page.tsx', label: 'Home' },
+    { path: 'src/app/about/page.tsx', label: 'About' },
     { path: 'src/app/buying/page.tsx', label: 'Buying' },
     { path: 'src/app/selling/page.tsx', label: 'Selling' },
+    { path: 'src/app/blog/page.tsx', label: 'Blog' },
+    { path: 'src/app/how-to/page.tsx', label: 'How-To Guides' },
+    { path: 'src/app/listings/page.tsx', label: 'Listings' },
+    { path: 'src/app/vip-investor-list/page.tsx', label: 'VIP Investor List' },
+    // Investment guide pages
+    { path: 'src/app/investing/page.tsx', label: 'Investing' },
+    { path: 'src/app/investing/multifamily-investment-guide/page.tsx', label: 'Multifamily Investment Guide' },
+    { path: 'src/app/investing/cap-rate-guide/page.tsx', label: 'Cap Rate Guide' },
+    { path: 'src/app/investing/albany-multifamily-investing/page.tsx', label: 'Albany Multifamily Investing' },
+    { path: 'src/app/investing/schenectady-multifamily-investing/page.tsx', label: 'Schenectady Multifamily Investing' },
+    { path: 'src/app/investing/troy-multifamily-investing/page.tsx', label: 'Troy Multifamily Investing' },
+    // Utility pages
+    { path: 'src/app/calculator/page.tsx', label: 'Calculator' },
+    { path: 'src/app/faq/page.tsx', label: 'FAQ' },
+    // Legal pages
+    { path: 'src/app/privacy-policy/page.tsx', label: 'Privacy Policy' },
+    { path: 'src/app/terms-of-service/page.tsx', label: 'Terms of Service' },
   ]
 
   for (const { path: filePath, label } of pagesToCheck) {
     const fullPath = path.join(process.cwd(), filePath)
-    if (!fs.existsSync(fullPath)) continue
+    if (!fs.existsSync(fullPath)) {
+      // File doesn't exist - skip it
+      continue
+    }
 
     const content = fs.readFileSync(fullPath, 'utf-8')
 
-    // Extract description from createPageMetadata call specifically
-    const createPageMetadataMatch = content.match(
+    // Extract description from createPageMetadata call
+    // Handles patterns like:
+    // - createPageMetadata({ description: 'text' })
+    // - createPageMetadata({ description: page?.description || 'text' })
+    // - metadata: { description: 'text' }
+    let description: string | null = null
+
+    // Try pattern 1: createPageMetadata with description
+    let match = content.match(
       /createPageMetadata\(\{[\s\S]*?description:\s*(?:page\?\.description\s*\|\|\s*)?['"`]([^'"`]+)['"`]/
     )
-    if (!createPageMetadataMatch) continue
+    if (match) {
+      description = match[1]
+    } else {
+      // Try pattern 2: export const metadata with description in object
+      match = content.match(
+        /description:\s*['"`]([^'"`]+)['"`]/
+      )
+      if (match) {
+        description = match[1]
+      }
+    }
 
-    const description = createPageMetadataMatch[1]
+    if (!description) {
+      // No description found - skip validation
+      continue
+    }
+
     const descLength = description.length
     const errors: string[] = []
 

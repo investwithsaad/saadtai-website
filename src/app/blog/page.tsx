@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return createPageMetadata({
     title: page?.title || 'Multifamily Investment Blog | Saad Tai',
-    description: page?.description || 'Multifamily investment strategies, cap rates, cash flow analysis, and portfolio guidance for small investors in Albany and Jacksonville.',
+    description: page?.description || 'Multifamily investment strategies, cap rates, cash flow analysis, and portfolio guidance for small investors in Albany and Kissimmee.',
     path: '/blog',
     ogImage: page?.ogImage?.asset?.url || '/House1.webp',
   })

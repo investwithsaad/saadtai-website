@@ -80,7 +80,7 @@ src/
 │   └── ui/                     # Design system components
 ├── data/
 │   ├── company-info.ts         # Master data hub (update here first!)
-│   ├── neighborhoods.ts        # Market data (Capital Region & Jacksonville)
+│   ├── neighborhoods.ts        # Market data (Capital Region & Kissimmee)
 │   └── [other data files]
 ├── lib/
 │   ├── ai.ts                   # AI system prompt builders

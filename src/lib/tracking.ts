@@ -6,12 +6,12 @@
 'use client'
 
 import { UserData } from './meta-conversions'
+import { UtmParameters, getUtmParameters } from './utm'
+import { getUserProperties } from './user-properties'
 
 declare global {
   interface Window {
-    umami?: {
-      track: (name: string, properties?: Record<string, string | number | boolean>) => void
-    }
+    dataLayer?: Array<Record<string, any>>
     fbq?: {
       (action: 'track', eventName: string, params?: Record<string, any>): void
       (action: 'trackCustom', eventName: string, params?: Record<string, any>): void
@@ -46,6 +46,40 @@ function getCookie(name: string): string | undefined {
   const parts = value.split(`; ${name}=`)
   if (parts.length === 2) return parts.pop()?.split(';').shift()
   return undefined
+}
+
+/**
+ * Get GA4 Client ID from gtag global
+ */
+async function getGA4ClientId(): Promise<string | undefined> {
+  if (typeof window === 'undefined' || typeof (window as any).gtag === 'undefined') return undefined
+
+  return new Promise((resolve) => {
+    try {
+      (window as any).gtag('get', 'client_id', (id: string) => {
+        resolve(id || undefined)
+      })
+    } catch (error) {
+      resolve(undefined)
+    }
+  })
+}
+
+/**
+ * Get GA4 Session ID from gtag global
+ */
+async function getGA4SessionId(): Promise<string | undefined> {
+  if (typeof window === 'undefined' || typeof (window as any).gtag === 'undefined') return undefined
+
+  return new Promise((resolve) => {
+    try {
+      (window as any).gtag('get', 'session_id', (id: string) => {
+        resolve(id || undefined)
+      })
+    } catch (error) {
+      resolve(undefined)
+    }
+  })
 }
 
 /**
@@ -144,10 +178,81 @@ async function trackMetaDual(
 }
 
 /**
- * Track page view to Meta (for key pages only)
+ * Track event to Google Tag Manager dataLayer
+ * Includes GA4 IDs, UTM parameters, and user properties
  */
-export function trackMetaPageView(pageName: string) {
-  trackMetaDual('PageView', { page_name: pageName })
+async function trackGTM(
+  eventName: string,
+  properties?: Record<string, string | number | boolean>
+) {
+  if (typeof window === 'undefined' || !window.dataLayer) return
+
+  try {
+    // Get GA4 IDs (non-blocking async calls)
+    const [clientId, sessionId] = await Promise.all([
+      getGA4ClientId(),
+      getGA4SessionId(),
+    ])
+
+    // Get UTM parameters and user properties
+    const utmParams = getUtmParameters()
+    const userProps = getUserProperties()
+
+    // Build complete event object
+    const eventData = {
+      event: eventName,
+      ...properties,
+      // GA4 IDs
+      ...(clientId && { ga_client_id: clientId }),
+      ...(sessionId && { ga_session_id: sessionId }),
+      // UTM parameters
+      ...utmParams,
+      // User properties
+      ...userProps,
+    }
+
+    window.dataLayer.push(eventData)
+  } catch (error) {
+    // Fallback to basic event if GA4 ID extraction fails
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: eventName,
+        ...properties,
+      })
+    }
+  }
+}
+
+/**
+ * Track page view via GTM and Meta
+ * @param pageName - Page name or path
+ * @param pageUrl - Full URL for page tracking
+ * @param utmParams - Optional UTM parameters (usually auto-populated)
+ */
+export async function trackPageView(
+  pageName: string,
+  pageUrl?: string,
+  utmParams?: Record<string, string>
+) {
+  const properties: Record<string, any> = { page_name: pageName }
+
+  if (pageUrl) {
+    properties.page_location = pageUrl
+  }
+
+  if (utmParams) {
+    Object.assign(properties, utmParams)
+  }
+
+  await trackGTM('page_view', properties)
+  trackMetaDual('PageView', properties)
+}
+
+/**
+ * Track page view (legacy - prefer trackPageView)
+ */
+export async function trackMetaPageView(pageName: string) {
+  await trackPageView(pageName)
 }
 
 /**
@@ -159,7 +264,7 @@ export function trackChatbotScheduleCall() {
 }
 
 /**
- * Track a custom event in Umami Analytics
+ * Track a custom event via Google Tag Manager
  * @param eventName - Name of the event (e.g., 'form_submit_intro_call')
  * @param properties - Optional properties to attach to the event
  */
@@ -167,9 +272,8 @@ export function trackEvent(
   eventName: string,
   properties?: Record<string, string | number | boolean>
 ) {
-  if (typeof window !== 'undefined' && window.umami?.track) {
-    window.umami.track(eventName, properties)
-  }
+  // Send to GTM
+  trackGTM(eventName, properties)
 
   // Add Meta tracking for key events
   const metaEventMap: Record<string, string> = {

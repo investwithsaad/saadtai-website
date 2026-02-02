@@ -161,7 +161,7 @@ Pages with **original data earn 4.1x more AI citations**. SaaS companies adding 
 | Albany | $285K | 8.2% | 4.1% | 1.85% | Value investors |
 | Schenectady | $215K | 9.1% | 3.8% | 1.92% | Cash flow focus |
 | Troy | $245K | 8.7% | 3.9% | 1.88% | Balanced |
-| Jacksonville | $380K | 7.9% | 5.2% | 0.71% | Growth focus |
+| Kissimmee | $356K | 6.8% | -5.6% | 0.93% | High cash flow, cooling market |
 
 *Source: Saad Tai analysis of 2024-2025 market data, 50+ transaction review*
 ```

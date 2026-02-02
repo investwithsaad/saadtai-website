@@ -3,7 +3,7 @@
  *
  * Master information hub for the investment advisory business
  * Focus: Multifamily property investing & portfolio strategy
- * Locations: Albany/Schenectady, NY area (Capital Region) & Jacksonville, FL
+ * Locations: Albany/Schenectady, NY area (Capital Region) & Kissimmee, FL
  * Licenses: NY #10401373295 | FL #SL3651394
  */
 
@@ -15,7 +15,7 @@ export const companyInfo = {
   name: "Invest with Saad",
   tagline: "Multifamily Investment Advisor & Portfolio Strategy Guide",
 
-  description: "Invest with Saad specializes in strategic guidance for small multifamily investors in New York's Capital Region and Jacksonville, Florida. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management. With 10+ years of boots-on-the-ground market knowledge across both markets, we help you avoid costly mistakes and maximize your portfolio returns.",
+  description: "Invest with Saad specializes in strategic guidance for small multifamily investors in New York's Capital Region and Kissimmee, Florida. We help investors scale smarter, sell faster, and plan better exits through disciplined analysis, off-market deal sourcing, and responsive transaction management. With 10+ years of boots-on-the-ground market knowledge across both markets, we help you avoid costly mistakes and maximize your portfolio returns.",
 
   contact: {
     phone: "+1 518-667-9351",
@@ -44,8 +44,8 @@ export const companyInfo = {
       stateCode: "FL",
       number: "SL3651394",
       title: "Realtor®",
-      primaryMarket: "Jacksonville",
-      cities: ["Jacksonville", "Duval County"]
+      primaryMarket: "Kissimmee",
+      cities: ["Kissimmee", "Osceola County"]
     }
   ],
   // Keep legacy field for backwards compatibility
@@ -56,7 +56,7 @@ export const companyInfo = {
 
   // Company metrics
   metrics: {
-    areaServed: "NY Capital Region & Jacksonville, FL",
+    areaServed: "NY Capital Region & Kissimmee, FL",
     yearInBusiness: "Active",
     repeatClientRate: "95%+",
     clientSatisfaction: "Highly recommended by clients"
@@ -98,7 +98,7 @@ export const coreValues = [
   {
     acronym: "T",
     value: "Territory Knowledge",
-    description: "I've walked, shown, or knocked on just about every street from Albany to Schenectady and throughout Jacksonville, FL. That boots-on-the-ground insight in both markets helps you price right and spot hidden value."
+    description: "I've walked, shown, or knocked on just about every street from Albany to Schenectady and throughout Kissimmee, FL. That boots-on-the-ground insight in both markets helps you price right and spot hidden value."
   },
   {
     acronym: "R",

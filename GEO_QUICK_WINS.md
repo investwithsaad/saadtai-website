@@ -49,7 +49,7 @@
 ## Phase 2 — 2–4 Weeks (Lead Capture + Local SEO Expansion)
 
 ### 4) Create Local Landing Pages
-**Why:** Core pages are generic. You need city‑intent pages for Albany, Schenectady, Troy, and Jacksonville.
+**Why:** Core pages are generic. You need city‑intent pages for Albany, Schenectady, Troy, and Kissimmee.
 
 **Actions**
 - [ ] Create pages like “Multifamily Realtor in Albany NY,” “Schenectady Duplex Investing,” etc.
@@ -99,7 +99,7 @@
 
 ## Success Metrics (Track Monthly)
 
-- [ ] Organic impressions by city (Albany/Schenectady/Troy/Jacksonville)
+- [ ] Organic impressions by city (Albany/Schenectady/Troy/Kissimmee)
 - [ ] Leads by intent (buyer/seller/investor)
 - [ ] Blog‑to‑lead conversion rate
 - [ ] Listings inquiry rate
@@ -177,7 +177,7 @@ NY License #10401373295 | FL License #SL3651394
 ## About Saad Tai
 
 Saad Tai is a multifamily real estate investor and advisor specializing
-in Capital Region (Albany, Schenectady, Troy) and Jacksonville markets.
+in Capital Region (Albany, Schenectady, Troy) and Kissimmee markets.
 With 15+ years of experience and 50+ portfolio properties managed,
 Saad helps small investors (2-10 units) identify high-ROI opportunities
 and execute investment strategies.
@@ -242,13 +242,13 @@ appreciate 3.8-4.1% annually with favorable tax environments
 
 ## Market Comparison Table
 
-| Metric | Albany | Schenectady | Troy | Jacksonville |
+| Metric | Albany | Schenectady | Troy | Kissimmee |
 |--------|--------|-------------|------|--------------|
 | Median Price | $285K | $215K | $245K | $380K |
 | Cap Rate | 8.2% | 8.9% | 8.7% | 7.9% |
 | 5-Yr Appreciation | 4.1% | 3.8% | 3.9% | 5.2% |
 | Property Tax | 1.85% | 1.92% | 1.88% | 0.71% |
-| Median 2BR Rent | $1,250 | $1,100 | $1,150 | $1,400 |
+| Median 2BR Rent | $1,250 | $1,100 | $1,150 | $1,922 |
 | School District Avg | 7.2/10 | 6.8/10 | 7.1/10 | 6.9/10 |
 
 ## Why Each Market Wins
@@ -271,7 +271,7 @@ appreciate 3.8-4.1% annually with favorable tax environments
 - Growing tech hub presence
 - **Ideal for:** Balanced portfolios
 
-### Jacksonville: Best for Appreciation
+### Kissimmee: Best for Appreciation
 - Highest 5-year appreciation (5.2%)
 - Lower tax burden (0.71% property tax)
 - Stronger rental growth
@@ -284,7 +284,7 @@ appreciate 3.8-4.1% annually with favorable tax environments
 → Typical 5-unit yield: $1,625/month at 25% down
 
 **Goal: Long-term Appreciation**
-→ Choose Jacksonville (5.2% 5-yr appreciation)
+→ Choose Kissimmee (5.2% 5-yr appreciation)
 → Typical 5-unit equity gain: $45K-60K over 5 years
 
 **Goal: Balanced Returns**

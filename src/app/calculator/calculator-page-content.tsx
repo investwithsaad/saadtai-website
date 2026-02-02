@@ -5,10 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { InvestmentCalculator } from '@/components/InvestmentCalculator'
 import { CalculatorLandingPage } from '@/components/CalculatorLandingPage'
 import { Container, Section, Heading, Text } from '@/components/ui'
+import { useScrollTracking } from '@/hooks/useScrollTracking'
 
 export function CalculatorPageContent() {
   const [hasAccess, setHasAccess] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const heroRef = useScrollTracking({ sectionName: 'calculator_hero' })
+  const calculatorRef = useScrollTracking({ sectionName: 'calculator_tool' })
 
   useEffect(() => {
     // Check if user has already accessed the calculator
@@ -37,7 +40,7 @@ export function CalculatorPageContent() {
           transition={{ duration: 0.5 }}
         >
           {/* Hero Section */}
-          <Section background="white" className="py-12 md:py-16">
+          <Section background="white" className="py-12 md:py-16" ref={heroRef}>
             <Container>
               <div className="max-w-4xl mx-auto text-center mb-12">
                 <Heading size="h1" className="mb-4">
@@ -52,7 +55,9 @@ export function CalculatorPageContent() {
           </Section>
 
           {/* Calculator Section */}
-          <InvestmentCalculator />
+          <div ref={calculatorRef}>
+            <InvestmentCalculator />
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
