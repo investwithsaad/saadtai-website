@@ -1,6 +1,6 @@
 'use client'
 
-import { CTA } from '@/components/cta'
+import { CTA } from '@/components/CTA'
 
 export function BlogPageCTA() {
   return (

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import {
   ChevronDown
 } from 'lucide-react'
-import { CTA } from '@/components/cta'
+import { CTA } from '@/components/CTA'
 import {
   Section,
   Container,
