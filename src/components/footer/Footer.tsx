@@ -138,7 +138,7 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
 
             <div className="flex justify-end items-center">
               <Text size="sm" color="white">
-                Copyright © 2026 Saad Tai | <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
+                Copyright © 2026 Saad Tai | <FooterLink href="/privacy-policy">Privacy Policy</FooterLink> | <FooterLink href="/terms-of-service">Terms of Service</FooterLink>
               </Text>
             </div>
           </div>
