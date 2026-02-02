@@ -12,7 +12,7 @@ import {
 } from '@/components/ui'
 import { HeroFadeIn } from '@/components/hero-fade-in'
 import { COLORS } from '@/lib/colors'
-import { CTA } from '@/components/CTA'
+import { CTA } from '@/components/cta'
 import { EventBanner } from '@/components/EventBanner'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
