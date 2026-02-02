@@ -50,8 +50,8 @@ export const headerNavConfig: HeaderNavConfig = {
     },
     {
       type: 'link',
-      label: 'Blog',
-      href: '/blog'
+      label: 'Investing',
+      href: '/investing'
     },
     {
       type: 'link',

@@ -48,11 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // High-impact guide & resource pages (GEO optimized)
   const guideResourceRoutes = [
-    { path: '/multifamily-investment-guide', priority: 0.85, file: 'src/app/multifamily-investment-guide/page.tsx' },
-    { path: '/cap-rate-guide', priority: 0.85, file: 'src/app/cap-rate-guide/page.tsx' },
-    { path: '/albany-multifamily-investing', priority: 0.8, file: 'src/app/albany-multifamily-investing/page.tsx' },
-    { path: '/schenectady-multifamily-investing', priority: 0.8, file: 'src/app/schenectady-multifamily-investing/page.tsx' },
-    { path: '/troy-multifamily-investing', priority: 0.8, file: 'src/app/troy-multifamily-investing/page.tsx' },
+    { path: '/investing', priority: 0.9, file: 'src/app/investing/page.tsx' },
+    { path: '/investing/multifamily-investment-guide', priority: 0.85, file: 'src/app/investing/multifamily-investment-guide/page.tsx' },
+    { path: '/investing/cap-rate-guide', priority: 0.85, file: 'src/app/investing/cap-rate-guide/page.tsx' },
+    { path: '/investing/albany-multifamily-investing', priority: 0.8, file: 'src/app/investing/albany-multifamily-investing/page.tsx' },
+    { path: '/investing/schenectady-multifamily-investing', priority: 0.8, file: 'src/app/investing/schenectady-multifamily-investing/page.tsx' },
+    { path: '/investing/troy-multifamily-investing', priority: 0.8, file: 'src/app/investing/troy-multifamily-investing/page.tsx' },
   ].map((route) => ({
     url: `${BASE_URL}${route.path}`,
     lastModified: getFileModificationDate(path.join(process.cwd(), route.file)),

@@ -4,15 +4,13 @@ import { useState } from 'react'
 import {
   ChevronDown
 } from 'lucide-react'
-import { LeadFormModal } from '@/components/LeadFormModal'
+import { CTA } from '@/components/CTA'
 import {
   Section,
   Container,
   Heading,
   Text,
   StaggerContainer,
-  Button,
-  FadeIn
 } from '@/components/ui'
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -46,8 +44,6 @@ interface FAQClientProps {
 }
 
 export default function FAQClient({ faqs }: FAQClientProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
   return (
     <div className="bg-white font-sans text-gray-800">
       {/* FAQ Section */}
@@ -62,21 +58,20 @@ export default function FAQClient({ faqs }: FAQClientProps) {
       </Section>
 
       {/* Contact Section */}
-      <Section background="background">
-        <Container>
-          <FadeIn className="flex flex-col items-center text-center">
-            <Heading size="h2">Ready to talk to Saad?</Heading>
-            <Text className="mt-4 text-gray-600 max-w-2xl mx-auto mb-8">
-              Book a personal consultation to discuss your real estate needs, whether buying, selling, or valuating.
-            </Text>
-            <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
-              Schedule a Call
-            </Button>
-          </FadeIn>
-        </Container>
-      </Section>
-
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CTA
+        heading="Ready to talk to Saad?"
+        description="Book a personal consultation to discuss your real estate needs, whether buying, selling, or valuating."
+        background="background"
+        buttons={[
+          {
+            label: 'Schedule a Call',
+            isModal: true,
+            variant: 'secondary',
+            trackingLocation: 'faq_cta',
+            trackingLabel: 'Schedule Call'
+          }
+        ]}
+      />
     </div>
   )
 }

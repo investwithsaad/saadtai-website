@@ -4,16 +4,15 @@ import { useState } from 'react'
 import {
   ChevronDown
 } from 'lucide-react'
-import { LeadFormModal } from '@/components/LeadFormModal'
+import { CTA } from '@/components/CTA'
 import {
   Section,
   Container,
   Heading,
   Text,
   StaggerContainer,
-  Button,
-  FadeIn
 } from '@/components/ui'
+import { useScrollTracking } from '@/hooks/useScrollTracking'
 
 interface FAQItem {
   id: string
@@ -60,7 +59,7 @@ interface FAQClientCategorizedProps {
 
 export default function FAQClientCategorized({ categories }: FAQClientCategorizedProps) {
   const [activeCategory, setActiveCategory] = useState(categories[0]?.category || '')
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const faqContentRef = useScrollTracking({ sectionName: 'faq_content' })
 
   const activeCategoryData = categories.find(cat => cat.category === activeCategory)
 
@@ -89,7 +88,7 @@ export default function FAQClientCategorized({ categories }: FAQClientCategorize
 
       {/* Active Category Content */}
       {activeCategoryData && (
-        <Section className="pt-4">
+        <Section className="pt-4" ref={faqContentRef}>
           <Container>
             <div className="mb-12">
               <Heading size="h2" className="mb-3 text-olive-900">
@@ -110,21 +109,20 @@ export default function FAQClientCategorized({ categories }: FAQClientCategorize
       )}
 
       {/* Contact Section */}
-      <Section background="background">
-        <Container>
-          <FadeIn className="flex flex-col items-center text-center">
-            <Heading size="h2">Ready to talk to Saad?</Heading>
-            <Text className="mt-4 text-gray-600 max-w-2xl mx-auto mb-8">
-              Book a personal consultation to discuss your real estate needs, whether buying, selling, or valuating.
-            </Text>
-            <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
-              Schedule a Call
-            </Button>
-          </FadeIn>
-        </Container>
-      </Section>
-
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CTA
+        heading="Ready to talk to Saad?"
+        description="Book a personal consultation to discuss your real estate needs, whether buying, selling, or valuating."
+        background="background"
+        buttons={[
+          {
+            label: 'Schedule a Call',
+            isModal: true,
+            variant: 'secondary',
+            trackingLocation: 'faq_categorized_cta',
+            trackingLabel: 'Schedule Call'
+          }
+        ]}
+      />
     </div>
   )
 }

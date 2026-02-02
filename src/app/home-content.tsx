@@ -716,7 +716,16 @@ export function HomeContent({ hero }: HomeContentProps) {
               </Text>
             </div>
           </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link href="/investing">
+              <Card className="p-6 h-full hover:shadow-lg transition-all duration-300">
+                <Heading size="h3" className="mb-2">Investing Guides</Heading>
+                <Text className="text-gray-700 mb-4">
+                  Master multifamily fundamentals, cap rates, and market analysis.
+                </Text>
+                <Button variant="default" className="p-0">Browse Guides →</Button>
+              </Card>
+            </Link>
             <Link href="/how-to">
               <Card className="p-6 h-full hover:shadow-lg transition-all duration-300">
                 <Heading size="h3" className="mb-2">How-To Guides</Heading>
