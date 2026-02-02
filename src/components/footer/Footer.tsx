@@ -119,14 +119,8 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
           </div>
 
           {/* Bottom Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-t border-white/20">
-            <div className="flex items-center">
-              <Text size="sm" color="white" className="opacity-90">
-                NY License #10401373295 | FL License #SL3651394 | Realtor®
-              </Text>
-            </div>
-
-            <div className="flex justify-center">
+          <div className="flex flex-col md:flex-row md:items-center gap-6 py-8">
+            <div className="flex items-center md:justify-start justify-center md:flex-1 gap-3">
               <Image
                 src="/footersmallimg.png"
                 alt="Invest with Saad - multifamily real estate advisory"
@@ -134,11 +128,18 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
                 height={40}
                 className="h-auto"
               />
+              <Text size="sm" color="white" className="opacity-90 text-center md:text-left">
+                NY License #10401373295 | FL License #SL3651394 | Realtor®
+              </Text>
             </div>
 
-            <div className="flex justify-end items-center">
-              <Text size="sm" color="white">
-                Copyright © 2026 Saad Tai | <FooterLink href="/privacy-policy">Privacy Policy</FooterLink> | <FooterLink href="/terms-of-service">Terms of Service</FooterLink>
+            <div className="flex items-center md:justify-end justify-center md:flex-1 md:ml-auto">
+              <Text size="sm" color="white" className="flex flex-wrap md:flex-nowrap items-center justify-center md:justify-end text-center md:text-right w-full md:w-auto">
+                <span className="whitespace-nowrap">Copyright © 2026 Saad Tai</span>
+                <span aria-hidden="true" className="opacity-70 mx-2">|</span>
+                <FooterLink href="/privacy-policy" className="whitespace-nowrap">Privacy Policy</FooterLink>
+                <span aria-hidden="true" className="opacity-70 mx-2">|</span>
+                <FooterLink href="/terms-of-service" className="whitespace-nowrap">Terms of Service</FooterLink>
               </Text>
             </div>
           </div>
