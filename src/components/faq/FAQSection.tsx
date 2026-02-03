@@ -23,23 +23,23 @@ function FAQAccordionItem({ question, answer }: { question: string; answer: stri
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="relative z-10 border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500 transition-colors">
+    <div className="border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500 transition-colors">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors text-left"
+        className="w-full p-6 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors"
         aria-expanded={isOpen}
       >
-        <Heading size="h3" className="text-olive-900 pr-4">
+        <Heading size="h4" className="text-left text-olive-900">
           {question}
         </Heading>
         <ChevronDown
           size={24}
-          className={`text-gold-500 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          className={`text-gold-500 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
       {isOpen && (
         <div className="border-t border-gray-200 bg-gray-50 p-6">
-          <Text className="text-gray-700 leading-relaxed">{answer}</Text>
+          <Text className="text-gray-700">{answer}</Text>
         </div>
       )}
     </div>

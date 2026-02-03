@@ -17,6 +17,24 @@ export const metadata: Metadata = createPageMetadata({
 // Organize FAQs by category
 const categorizedFAQs = [
   {
+    category: 'first-time-investor',
+    categoryName: 'First-Time Investor Onboarding',
+    description: 'Essential concepts and first steps for new multifamily investors',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('why-multifamily-real-estate-good-investment') || faq.id.includes('multifamily-risks-framework') || faq.id.includes('how-much-money-needed-get-started') || faq.id.includes('first-step-becoming-multifamily-investor') || faq.id.includes('most-common-first-multifamily-deal'))
+  },
+  {
+    category: 'financial-fundamentals',
+    categoryName: 'Financial Fundamentals',
+    description: 'Master cap rates, cash flow, and deal analysis metrics to evaluate properties accurately',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('cap-rate-vs-cash-on-cash-vs-roi') || faq.id.includes('how-to-calculate-real-cash-flow') || faq.id.includes('operating-expenses-3-unit-vs-4-unit') || faq.id.includes('how-to-know-deal-pencils') || faq.id.includes('maintenance-reserves-percent-noi') || faq.id.includes('model-rent-growth-expense-inflation'))
+  },
+  {
+    category: 'capital-region-market',
+    categoryName: 'Capital Region Market',
+    description: 'Local market insights for Albany, Schenectady, and Troy. Rent trends, cap rates, neighborhoods, and investment opportunities.',
+    faqs: multifamilyInvestorFAQs.filter(faq => faq.id.includes('capital-region-multifamily-market-2026') || faq.id.includes('capital-region-neighborhoods-improving-declining') || faq.id.includes('what-drives-rent-growth-capital-region') || faq.id.includes('capital-region-realistic-cap-rate') || faq.id.includes('capital-region-neighborhoods-best-appreciation') || faq.id.includes('average-rent-capital-region-by-unit-count') || faq.id.includes('why-capital-region-cap-rates-differ-by-city') || faq.id.includes('capital-region-properties-for-sale-count') || faq.id.includes('capital-region-typical-tenant-profile') || faq.id.includes('capital-region-hidden-costs-regulations'))
+  },
+  {
     category: 'buying-multifamily',
     categoryName: 'Buying Multifamily',
     description: 'Evaluating deals, underwriting, financing, and closing on 2-4 unit properties',

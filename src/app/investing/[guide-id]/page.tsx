@@ -7,9 +7,7 @@ import {
   Container,
   FadeIn,
   Heading,
-  Text,
-  Card,
-  Button,
+  Text
 } from '@/components/ui'
 import { BlogHeroFadeIn } from '@/components/blog-hero-fade-in'
 import { Breadcrumb } from '@/components/breadcrumb'
@@ -22,8 +20,6 @@ import { BASE_URL } from '@/lib/metadata-factory'
 import { notFound } from 'next/navigation'
 import { config } from '@/markdoc/config'
 import { renderMarkdoc } from '@/markdoc/renderer'
-import { getBlogPosts } from '@/lib/blog-utils'
-import Link from 'next/link'
 
 interface Props {
   params: Promise<{
@@ -31,7 +27,7 @@ interface Props {
   }>
 }
 
-interface HowToGuidePost {
+interface InvestingGuide {
   id: string
   title?: string
   subtitle?: string
@@ -64,9 +60,9 @@ function parseFrontmatterValue(value: string) {
   return cleanValue
 }
 
-// Get all how-to guide IDs from how-to directory
+// Get all guide IDs from guides directory
 function getGuideIds() {
-  const guideDir = path.join(process.cwd(), 'how-to')
+  const guideDir = path.join(process.cwd(), 'guides')
   if (!fs.existsSync(guideDir)) return []
 
   return fs.readdirSync(guideDir)
@@ -92,8 +88,8 @@ const formatDate = (dateString: string) => {
 }
 
 // Read and parse Markdoc file
-function getGuide(slug: string): HowToGuidePost | null {
-  const guidePath = path.join(process.cwd(), 'how-to', `${slug}.mdoc`)
+function getGuide(slug: string): InvestingGuide | null {
+  const guidePath = path.join(process.cwd(), 'guides', `${slug}.mdoc`)
 
   if (!fs.existsSync(guidePath)) {
     return null
@@ -180,55 +176,6 @@ function getFaqSchema(faqs: Array<{ q: string; a: string }>) {
   }
 }
 
-function toKeywordArray(value: any): string[] {
-  if (!value) return []
-  if (Array.isArray(value)) return value.map((v) => String(v).toLowerCase())
-  if (typeof value === 'string') {
-    const normalized = value.replace(/^\[/, '').replace(/\]$/, '')
-    return normalized.split(',').map((v) => v.trim().toLowerCase()).filter(Boolean)
-  }
-  return []
-}
-
-function extractTokens(text: string): Set<string> {
-  return new Set(
-    text
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, ' ')
-      .split(/\s+/)
-      .filter((token) => token.length > 3)
-  )
-}
-
-function getRelatedBlogPostsForGuide(guide: HowToGuidePost, limit = 3) {
-  const posts = getBlogPosts()
-  const guideKeywords = new Set(toKeywordArray(guide.keywords))
-  const guideTokens = extractTokens(`${guide.title || ''} ${guide.excerpt || ''} ${guide.category || ''}`)
-
-  const scored = posts.map((post) => {
-    const postKeywords = new Set(toKeywordArray(post.keywords))
-    const postTokens = extractTokens(`${post.title || ''} ${post.excerpt || ''} ${post.category || ''}`)
-
-    let score = 0
-    postKeywords.forEach((keyword) => {
-      if (guideKeywords.has(keyword)) score += 3
-    })
-    postTokens.forEach((token) => {
-      if (guideTokens.has(token)) score += 1
-    })
-
-    return { post, score }
-  })
-
-  const filtered = scored.filter((item) => item.score > 0)
-  const ordered = (filtered.length > 0 ? filtered : scored)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit)
-    .map((item) => item.post)
-
-  return ordered
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { 'guide-id': guideId } = await params
   const guide = getGuide(guideId)
@@ -245,12 +192,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${guide.title} | Saad Tai`,
     description: guide.excerpt,
     alternates: {
-      canonical: `${BASE_URL}/how-to/${guide.id}`,
+      canonical: `${BASE_URL}/investing/${guide.id}`,
     },
     openGraph: {
       title: guide.title,
       description: guide.excerpt,
-      url: `${BASE_URL}/how-to/${guide.id}`,
+      url: `${BASE_URL}/investing/${guide.id}`,
       type: 'article',
       images: [
         {
@@ -264,7 +211,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function HowToGuidePage({ params }: Props) {
+export default async function InvestingGuidePage({ params }: Props) {
   const { 'guide-id': guideId } = await params
   const guide = getGuide(guideId)
 
@@ -307,8 +254,6 @@ export default async function HowToGuidePage({ params }: Props) {
     steps,
   })
 
-  const relatedPosts = getRelatedBlogPostsForGuide(guide)
-
   const faqs = Array.isArray(guide.faqs) ? guide.faqs : []
 
   return (
@@ -318,7 +263,7 @@ export default async function HowToGuidePage({ params }: Props) {
 
       {/* Breadcrumb - includes schema */}
       <Breadcrumb items={[
-        { label: 'How-To Guides', href: '/how-to' },
+        { label: 'Investing', href: '/investing' },
         { label: guide.title! }
       ]} />
 
@@ -355,27 +300,6 @@ export default async function HowToGuidePage({ params }: Props) {
             )}
           </FadeIn>
 
-          {relatedPosts.length > 0 && (
-            <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-200">
-              <Heading size="h3" className="mb-4">Related Articles</Heading>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {relatedPosts.map((post) => (
-                  <Link key={post.id} href={`/blog/${post.id}`}>
-                    <Card className="p-4 h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
-                      <Heading size="h4" className="mb-2 text-olive-900 group-hover:text-gold-500 transition-colors">
-                        {post.title}
-                      </Heading>
-                      <Text className="text-gray-700 text-sm mb-3">
-                        {post.excerpt}
-                      </Text>
-                      <Button variant="default" className="p-0 text-sm">Read Article →</Button>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
           <div className="max-w-3xl mx-auto mt-12">
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <Heading size="h3" className="mb-2">About Saad Tai</Heading>
@@ -395,7 +319,7 @@ export default async function HowToGuidePage({ params }: Props) {
           <SocialShareButtons
             title={guide.title!}
             excerpt={guide.excerpt!}
-            url={`${BASE_URL}/how-to/${guide.id}`}
+            url={`${BASE_URL}/investing/${guide.id}`}
           />
         </Container>
       </Section>

@@ -46,7 +46,7 @@ export function HowToGuidesSection({ guidesByCategory }: HowToGuidesSectionProps
 
               <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {section.guides.map((guide) => (
-                  <Link key={guide.id} href={`/how-to/${guide.id}`}>
+                  <Link key={guide.id} href={`/investing/${guide.id}`}>
                     <Card className="p-8 h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer group">
                       <div className="flex items-center gap-2 mb-4">
                         <Bookmark size={16} style={{ color: COLORS.secondary }} />

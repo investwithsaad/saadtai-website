@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/buying', priority: 0.9, file: 'src/app/buying/page.tsx' },
     { path: '/selling', priority: 0.9, file: 'src/app/selling/page.tsx' },
     { path: '/blog', priority: 0.8, file: 'src/app/blog/page.tsx' },
-    { path: '/how-to', priority: 0.8, file: 'src/app/how-to/page.tsx' },
+    { path: '/investing', priority: 0.8, file: 'src/app/investing/page.tsx' },
     { path: '/listings', priority: 0.85, file: 'src/app/listings/page.tsx' },
     { path: '/vip-investor-list', priority: 0.85, file: 'src/app/vip-investor-list/page.tsx' },
   ].map((route) => ({
@@ -45,29 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
     priority: route.priority,
   }))
-
-  // High-impact guide & resource pages (GEO optimized)
-  const guideResourceRoutes = [
-    { path: '/investing', priority: 0.9, file: 'src/app/investing/page.tsx' },
-    { path: '/investing/multifamily-investment-guide', priority: 0.85, file: 'src/app/investing/multifamily-investment-guide/page.tsx' },
-    { path: '/investing/cap-rate-guide', priority: 0.85, file: 'src/app/investing/cap-rate-guide/page.tsx' },
-    { path: '/investing/albany-multifamily-investing', priority: 0.8, file: 'src/app/investing/albany-multifamily-investing/page.tsx' },
-    { path: '/investing/schenectady-multifamily-investing', priority: 0.8, file: 'src/app/investing/schenectady-multifamily-investing/page.tsx' },
-    { path: '/investing/troy-multifamily-investing', priority: 0.8, file: 'src/app/investing/troy-multifamily-investing/page.tsx' },
-  ].map((route) => ({
-    url: `${BASE_URL}${route.path}`,
-    lastModified: getFileModificationDate(path.join(process.cwd(), route.file)),
-    changeFrequency: 'weekly' as const,
-    priority: route.priority,
-  })).filter(route => {
-    // Only include routes that actually exist
-    try {
-      fs.statSync(new URL(route.url).pathname)
-      return true
-    } catch {
-      return true // Include even if file check fails (may be dynamic)
-    }
-  })
 
   // Utility pages
   const utilityRoutes = [
@@ -101,11 +78,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dynamic how-to guide routes - use actual guide dates
   const guideRoutes = howToGuides.map((guide) => ({
-    url: `${BASE_URL}/how-to/${guide.id}`,
+    url: `${BASE_URL}/investing/${guide.id}`,
     lastModified: parseDate(guide.date),
     changeFrequency: 'monthly' as const,
     priority: 0.75,
   }))
 
-  return [...mainNavRoutes, ...guideResourceRoutes, ...blogRoutes, ...guideRoutes, ...utilityRoutes, ...legalRoutes]
+  const allRoutes = [...mainNavRoutes, ...blogRoutes, ...guideRoutes, ...utilityRoutes, ...legalRoutes]
+
+  // De-dupe by URL (keep first occurrence for priority ordering)
+  const uniqueRoutes = new Map<string, MetadataRoute.Sitemap[number]>()
+  for (const route of allRoutes) {
+    if (!uniqueRoutes.has(route.url)) {
+      uniqueRoutes.set(route.url, route)
+    }
+  }
+
+  return Array.from(uniqueRoutes.values())
 }

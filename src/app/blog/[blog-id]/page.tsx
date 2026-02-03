@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { Suspense } from 'react'
 import Markdoc from '@markdoc/markdoc'
 import {
   Section,
@@ -393,7 +392,7 @@ export default async function BlogPost({ params }: Props) {
               <Heading size="h2" className="mb-4">Related How-To Guides</Heading>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {relatedGuides.map((guide) => (
-                  <Link key={guide.id} href={`/how-to/${guide.id}`}>
+                  <Link key={guide.id} href={`/investing/${guide.id}`}>
                     <Card className="p-4 h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
                       <Heading size="h4" className="mb-2 text-olive-900 group-hover:text-gold-500 transition-colors">
                         {guide.title}
