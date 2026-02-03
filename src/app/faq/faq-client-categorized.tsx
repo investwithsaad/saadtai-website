@@ -1,9 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import {
-  ChevronDown
-} from 'lucide-react'
+import { useState, useEffect } from 'react'
 import { CTA } from '@/components/cta'
 import {
   Section,
@@ -12,6 +9,7 @@ import {
   Text,
   StaggerContainer,
 } from '@/components/ui'
+import { InlineFAQ } from '@/components/faq/FAQSection'
 import { useScrollTracking } from '@/hooks/useScrollTracking'
 
 interface FAQItem {
@@ -27,32 +25,6 @@ interface FAQCategory {
   faqs: FAQItem[]
 }
 
-function FAQItemAccordion({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <div className="border border-gray-200 rounded-xl overflow-hidden hover:border-gold-500 transition-colors">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors"
-      >
-        <Heading size="h4" className="text-left text-olive-900">
-          {question}
-        </Heading>
-        <ChevronDown
-          size={24}
-          className={`text-gold-500 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-        />
-      </button>
-      {isOpen && (
-        <div className="border-t border-gray-200 bg-gray-50 p-6">
-          <Text className="text-gray-700">{answer}</Text>
-        </div>
-      )}
-    </div>
-  )
-}
-
 interface FAQClientCategorizedProps {
   categories: FAQCategory[]
 }
@@ -60,6 +32,25 @@ interface FAQClientCategorizedProps {
 export default function FAQClientCategorized({ categories }: FAQClientCategorizedProps) {
   const [activeCategory, setActiveCategory] = useState(categories[0]?.category || '')
   const faqContentRef = useScrollTracking({ sectionName: 'faq_content' })
+
+  // Handle URL hash to set active category on mount and when hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (typeof window !== 'undefined') {
+        const hash = window.location.hash.slice(1) // Remove the # symbol
+        if (hash && categories.some(cat => cat.category === hash)) {
+          setActiveCategory(hash)
+        }
+      }
+    }
+
+    // Check hash on initial load
+    handleHashChange()
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [categories])
 
   const activeCategoryData = categories.find(cat => cat.category === activeCategory)
 
@@ -88,7 +79,7 @@ export default function FAQClientCategorized({ categories }: FAQClientCategorize
 
       {/* Active Category Content */}
       {activeCategoryData && (
-        <Section className="pt-4" ref={faqContentRef}>
+        <Section className="pt-4" id={activeCategory} ref={faqContentRef}>
           <Container>
             <div className="mb-12">
               <Heading size="h2" className="mb-3 text-olive-900">
@@ -99,10 +90,8 @@ export default function FAQClientCategorized({ categories }: FAQClientCategorize
               </Text>
             </div>
 
-            <StaggerContainer className="max-w-3xl mx-auto space-y-4 mb-12">
-              {activeCategoryData.faqs.map((faq, index) => (
-                <FAQItemAccordion key={faq.id || index} question={faq.q} answer={faq.a} />
-              ))}
+            <StaggerContainer className="max-w-3xl mx-auto mb-12">
+              <InlineFAQ faqs={activeCategoryData.faqs} />
             </StaggerContainer>
           </Container>
         </Section>

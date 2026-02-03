@@ -148,7 +148,7 @@ export default async function BlogPage() {
             </FadeIn>
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {recentGuides.map((guide) => (
-                <Link key={guide.id} href={`/how-to/${guide.id}`}>
+                <Link key={guide.id} href={`/investing/${guide.id}`}>
                   <Card className="p-6 h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
                     <Heading size="h4" className="mb-2 text-olive-900 group-hover:text-gold-500 transition-colors">
                       {guide.title}

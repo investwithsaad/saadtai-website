@@ -41,8 +41,8 @@ function extractFrontmatter(content: string): Record<string, string> {
  */
 function validateDirectory(dirName: string, dirLabel: string): ValidationResult[] {
   const dir = path.join(process.cwd(), dirName)
-  // Both posts and how-to guides get the " | Saad Tai" suffix
-  const addsSuffix = dirName === 'posts' || dirName === 'how-to'
+  // Posts, guides, and how-to guides get the " | Saad Tai" suffix
+  const addsSuffix = dirName === 'posts' || dirName === 'guides' || dirName === 'how-to'
 
   if (!fs.existsSync(dir)) {
     return []
@@ -193,7 +193,13 @@ function validateAllContent(): void {
     allResults.push({ label: 'Blog Posts', results: postResults })
   }
 
-  // Validate how-to guides
+  // Validate investing guides (consolidated into /guides directory)
+  const investingGuideResults = validateDirectory('guides', 'Investing Guides')
+  if (investingGuideResults.length > 0) {
+    allResults.push({ label: 'Investing Guides', results: investingGuideResults })
+  }
+
+  // Validate how-to guides (kept for backwards compatibility, may be empty)
   const guideResults = validateDirectory('how-to', 'How-To Guides')
   if (guideResults.length > 0) {
     allResults.push({ label: 'How-To Guides', results: guideResults })

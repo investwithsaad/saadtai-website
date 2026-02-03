@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Container, Text, Heading } from "../ui"
 import { COLORS } from "@/lib/colors"
 import { FooterClient } from "./FooterClient"
-import { SocialIcon, FooterLink, FooterSection } from "./FooterComponents"
+import { SocialIcon, FooterLink } from "./FooterComponents"
 
 interface FooterProps {
   recentPosts: Array<{ id: string; title: string }>
@@ -19,9 +19,9 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
             <FooterClient />
           </div>
 
-          {/* ROW 1: 4-Column Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            {/* Column 1: Logo and Socials */}
+          {/* Main Footer Grid: 4-Column Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 pb-12 border-b border-white/20">
+            {/* Column 1: Logo and Contact */}
             <div className="flex flex-col gap-6">
               <Image
                 src="/real.png"
@@ -30,14 +30,6 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
                 height={60}
                 className="h-auto"
               />
-              <div className="flex gap-4">
-                <SocialIcon href="https://www.facebook.com/profile.php?id=61577367974508" label="Visit us on Facebook" type="facebook" />
-                <SocialIcon href="https://www.instagram.com/saadtherealtor/" label="Visit us on Instagram" type="instagram" />
-              </div>
-            </div>
-
-            {/* Column 2: Contact */}
-            <div>
               <div className="space-y-4 text-sm">
                 <div className="flex items-center gap-3">
                   <svg className="w-5 h-5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -53,59 +45,48 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
                   <FooterLink href="mailto:saadtherealtor1@gmail.com">saadtherealtor1@gmail.com</FooterLink>
                 </div>
               </div>
+              <div className="flex gap-4 pt-2">
+                <SocialIcon href="https://www.facebook.com/profile.php?id=61577367974508" label="Visit us on Facebook" type="facebook" />
+                <SocialIcon href="https://www.instagram.com/saadtherealtor/" label="Visit us on Instagram" type="instagram" />
+              </div>
             </div>
 
-            {/* Column 3: Navigation Part 1 */}
-            <div className="flex flex-col">
-              <div className="space-y-3">
+            {/* Column 2: Main Navigation */}
+            <div>
+              <Heading size="h4" color="white" className="mb-4">NAVIGATION</Heading>
+              <div className="space-y-3 text-sm">
                 <FooterLink href="/">Home</FooterLink>
                 <FooterLink href="/about">About</FooterLink>
                 <FooterLink href="/buying">For Buyers</FooterLink>
                 <FooterLink href="/selling">For Sellers</FooterLink>
-              </div>
-            </div>
-
-            {/* Column 4: Navigation Part 2 */}
-            <div className="flex flex-col">
-              <div className="space-y-3">
                 <FooterLink href="/vip-investor-list">VIP Investor List</FooterLink>
                 <FooterLink href="/calculator">Calculator</FooterLink>
                 <FooterLink href="/faq">FAQ</FooterLink>
               </div>
             </div>
-          </div>
 
-          {/* ROW 2: 3-Column Layout for Guides/Posts Lists */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 pb-12 border-b border-white/20">
-            {/* Investment Guides */}
-            <FooterSection title="INVESTING GUIDES">
-              <div className="space-y-2">
+            {/* Column 3: Guides (Consolidated) */}
+            <div>
+              <Heading size="h4" color="white" className="mb-4">GUIDES</Heading>
+              <div className="space-y-2 text-sm">
                 <FooterLink href="/investing/multifamily-investment-guide" className="line-clamp-2">Multifamily Investing</FooterLink>
                 <FooterLink href="/investing/cap-rate-guide" className="line-clamp-2">Cap Rate Guide</FooterLink>
                 <FooterLink href="/investing/albany-multifamily-investing" className="line-clamp-2">Albany Market</FooterLink>
                 <FooterLink href="/investing/schenectady-multifamily-investing" className="line-clamp-2">Schenectady Market</FooterLink>
                 <FooterLink href="/investing/troy-multifamily-investing" className="line-clamp-2">Troy Market</FooterLink>
-                <FooterLink href="/investing" className="font-semibold mt-4 text-secondary" secondary>All Guides →</FooterLink>
-              </div>
-            </FooterSection>
-
-            {/* How-To Guides */}
-            <FooterSection title="HOW-TO GUIDES">
-              <div className="space-y-2">
-                {allGuides.slice(0, 5).map((guide) => (
-                  <FooterLink key={guide.id} href={`/how-to/${guide.id}`} className="line-clamp-2">
+                {allGuides.slice(0, 2).map((guide) => (
+                  <FooterLink key={guide.id} href={`/investing/${guide.id}`} className="line-clamp-2">
                     {guide.title}
                   </FooterLink>
                 ))}
-                <FooterLink href="/how-to" className="font-semibold mt-4 text-secondary" secondary>
-                  See all guides →
-                </FooterLink>
+                <FooterLink href="/investing" className="font-semibold mt-4 text-secondary" secondary>All Guides →</FooterLink>
               </div>
-            </FooterSection>
+            </div>
 
-            {/* Recent Posts */}
-            <FooterSection title="RECENT POSTS">
-              <div className="space-y-2">
+            {/* Column 4: Recent Posts */}
+            <div>
+              <Heading size="h4" color="white" className="mb-4">RECENT POSTS</Heading>
+              <div className="space-y-2 text-sm">
                 {recentPosts.slice(0, 5).map((post) => (
                   <FooterLink key={post.id} href={`/blog/${post.id}`} className="line-clamp-2">
                     {post.title}
@@ -115,7 +96,7 @@ export function Footer({ recentPosts, allGuides }: FooterProps) {
                   See more posts →
                 </FooterLink>
               </div>
-            </FooterSection>
+            </div>
           </div>
 
           {/* Bottom Section */}

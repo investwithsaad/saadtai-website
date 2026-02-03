@@ -295,6 +295,28 @@ const nextConfig: NextConfig = {
         destination: "/how-to/evaluate-multifamily-deals-capital-region",
         permanent: true,
       },
+      // Old how-to routes consolidated to /investing/[guide-id]
+      {
+        source: "/how-to/:guide",
+        destination: "/investing/:guide",
+        permanent: true,
+      },
+      // Old FAQ route consolidation to main /faq page with hash anchors
+      {
+        source: "/investing/capital-region-faq",
+        destination: "/faq#capital-region-market",
+        permanent: true,
+      },
+      {
+        source: "/investing/financial-fundamentals",
+        destination: "/faq#financial-fundamentals",
+        permanent: true,
+      },
+      {
+        source: "/investing/first-time-investor-faq",
+        destination: "/faq#first-time-investor",
+        permanent: true,
+      },
     ];
   },
 };

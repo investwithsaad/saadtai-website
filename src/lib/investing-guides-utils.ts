@@ -1,36 +1,36 @@
 import { getMarkdocContent, getMarkdocContentIds, getMarkdocContentByCategory, type MarkdocContent } from './content-utils'
 
 /**
- * How-to guide is just a MarkdocContent from the /guides directory
+ * Investing guide is just a MarkdocContent from the /investing directory
  */
-export type HowToGuide = MarkdocContent
+export type InvestingGuide = MarkdocContent
 
 /**
- * Get all how-to guides from /guides directory
+ * Get all investing guides from /guides directory
  */
-export function getHowToGuides(): HowToGuide[] {
+export function getInvestingGuides(): InvestingGuide[] {
   return getMarkdocContent('guides')
 }
 
 /**
- * Get all how-to guide IDs
+ * Get all investing guide IDs
  */
-export function getHowToGuideIds(): string[] {
+export function getInvestingGuideIds(): string[] {
   return getMarkdocContentIds('guides')
 }
 
 /**
- * Get how-to guides by category
+ * Get investing guides by category
  */
-export function getGuidesByCategory(category: string): HowToGuide[] {
+export function getGuidesByCategory(category: string): InvestingGuide[] {
   return getMarkdocContentByCategory('guides', category)
 }
 
 /**
  * Get related guides by category (excluding current guide)
  */
-export function getRelatedGuides(currentId: string, limit: number = 3): HowToGuide[] {
-  const guides = getHowToGuides()
+export function getRelatedGuides(currentId: string, limit: number = 3): InvestingGuide[] {
+  const guides = getInvestingGuides()
   const currentGuide = guides.find(g => g.id === currentId)
 
   if (!currentGuide) return []
