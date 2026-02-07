@@ -726,7 +726,7 @@ export function HomeContent({ hero }: HomeContentProps) {
                 <Button variant="default" className="p-0">Browse Guides →</Button>
               </Card>
             </Link>
-            <Link href="/how-to">
+            <Link href="/investing">
               <Card className="p-6 h-full hover:shadow-lg transition-all duration-300">
                 <Heading size="h3" className="mb-2">How-To Guides</Heading>
                 <Text className="text-gray-700 mb-4">

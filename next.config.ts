@@ -301,6 +301,12 @@ const nextConfig: NextConfig = {
         destination: "/investing/:guide",
         permanent: true,
       },
+      // Redirect /how-to to /investing where how-to guides are displayed
+      {
+        source: "/how-to",
+        destination: "/investing",
+        permanent: true,
+      },
       // Old FAQ route consolidation to main /faq page with hash anchors
       {
         source: "/investing/capital-region-faq",
