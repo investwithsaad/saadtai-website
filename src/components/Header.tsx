@@ -5,7 +5,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
-import { Container } from "./ui"
+import { Container, Button } from "./ui"
 import { motion } from "framer-motion"
 import { trackNavClick } from "@/lib/tracking"
 import { COLORS } from "@/lib/colors"
@@ -183,8 +183,21 @@ export function Header() {
             })}
           </nav>
 
-          {/* Right side: Mobile Menu */}
+          {/* Right side: Intro Call Button and Mobile Menu */}
           <div className="flex items-center gap-4">
+            {/* Intro Call Button */}
+            <Button asChild variant="secondary">
+              <a
+                href="https://calendly.com/stai2795/meeting-w-saad?month=2026-02"
+                onClick={() => trackNavClick('Intro Call', 'https://calendly.com/stai2795/meeting-w-saad?month=2026-02')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-sm font-heading uppercase tracking-wide nav-link"
+              >
+                Intro Call
+              </a>
+            </Button>
+
             {/* Mobile Menu Button - Animated */}
             <div className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <HamburgerIcon isOpen={isMenuOpen} />
