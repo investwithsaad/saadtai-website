@@ -194,7 +194,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="px-4 py-2 text-sm font-heading uppercase tracking-wide nav-link"
               >
-                Intro Call
+                Let's Talk
               </a>
             </Button>
 
