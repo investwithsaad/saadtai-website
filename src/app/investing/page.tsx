@@ -22,7 +22,7 @@ import { BASE_URL } from '@/lib/metadata-factory'
 export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Investment Guides for Multifamily Real Estate Investors | Saad Tai',
-    description: 'Complete investment guides covering multifamily basics, cap rates, market analysis, and location-specific guides for Albany, Schenectady, and Troy NY.',
+    description: 'Investment guides covering multifamily basics, cap rates, and market-specific guides for Albany, Schenectady, Troy NY, Jacksonville FL, and Kissimmee FL.',
     path: '/investing',
     ogImage: '/saad.png',
   })
@@ -36,7 +36,7 @@ export default function InvestmentPage() {
 
   // Separate guides by type
   const coreGuides = sortedGuides.filter(g => ['multifamily-investment-guide', 'cap-rate-guide', 'best-multifamily-markets-2026'].includes(g.id))
-  const locationGuides = sortedGuides.filter(g => ['albany-multifamily-investing', 'schenectady-multifamily-investing', 'troy-multifamily-investing', 'kissimmee-multifamily-investment-guide'].includes(g.id))
+  const locationGuides = sortedGuides.filter(g => ['albany-multifamily-investing', 'schenectady-multifamily-investing', 'troy-multifamily-investing', 'jacksonville-multifamily-investing', 'kissimmee-multifamily-investment-guide'].includes(g.id))
   const howToGuides = sortedGuides.filter(g => ['1031-exchange-multifamily-strategy', 'evaluate-multifamily-deals-capital-region', 'cap-rate-vs-cash-flow', 'first-time-homebuyer', 'negative-cash-flow-warning-signs'].includes(g.id))
 
   // Collection schema
@@ -71,7 +71,7 @@ export default function InvestmentPage() {
       {/* Hero Section */}
       <HeroStatic
         title="Master Multifamily Investing"
-        subtitle="Complete guides covering fundamentals, market analysis, cap rates, and location-specific opportunities in Capital Region markets."
+        subtitle="Complete guides covering fundamentals, market analysis, cap rates, and location-specific opportunities in Capital Region NY, Jacksonville FL, and Kissimmee FL."
       />
 
       {/* Core Guides Section */}
@@ -118,7 +118,7 @@ export default function InvestmentPage() {
               <div className="max-w-3xl mx-auto text-center mb-12">
                 <Heading size="h2">Market-Specific Guides</Heading>
                 <Text size="lg" className="text-gray-700">
-                  Deep dives into Albany, Schenectady, Troy, and Kissimmee markets with specific data and investment frameworks.
+                  Deep dives into Albany, Schenectady, Troy, Jacksonville, and Kissimmee markets with specific data and investment frameworks.
                 </Text>
               </div>
             </FadeIn>
