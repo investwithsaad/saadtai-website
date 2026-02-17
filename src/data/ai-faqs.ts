@@ -5,20 +5,36 @@ export interface FAQItem {
 
 export const homeFaqs: FAQItem[] = [
   {
-    q: 'What does Saad Tai help investors decide?',
-    a: 'Saad helps small multifamily investors make clear buy, sell, or hold decisions with underwriting, market context, and execution support.'
+    q: 'What cap rate should I target for a multifamily in Albany NY?',
+    a: 'Most 2-4 unit multifamily properties in Albany trade at 7.2-7.8% cap rates, with median prices of $276K-$295K and 2BR rents around $1,550/month. Target at least a 7% cap rate for cash flow, or accept lower if the appreciation thesis is strong (Albany appreciated +5.4% last year).'
   },
   {
-    q: 'What markets do you serve?',
-    a: 'Primary markets include the Capital Region (Albany, Schenectady, Troy) and Kissimmee, Florida.'
+    q: 'How do I evaluate a multifamily deal in the Capital Region?',
+    a: 'Start with verified rent rolls and actual expenses—not pro forma. Calculate NOI (net operating income), then divide by purchase price for your cap rate. Stress-test with a 10% vacancy rate and 5% rent decline. In the Capital Region, expect expense ratios around 35-40% of gross rent for 2-4 units.'
   },
   {
-    q: 'How do I evaluate a multifamily deal quickly?',
-    a: 'Use a structured approach: verify income, model expenses, calculate NOI and cap rate, then stress-test cash flow and exit value.'
+    q: 'Is Kissimmee FL a good market for multifamily investing in 2026?',
+    a: 'Kissimmee benefits from strong tourism-driven demand (Disney, Universal\'s Epic Universe opened May 2025), a growing population of ~485,000 in Osceola County, and 300+ STR-zoned communities. Insurance rates are trending down for 2026 (State Farm -10%, Heritage -7%). The market suits investors targeting both long-term rentals and short-term vacation rentals.'
   },
   {
-    q: 'Do you work with first-time investors and buyers?',
-    a: 'Yes. We guide first-time buyers and investors through financing, underwriting, and negotiation so they avoid costly mistakes.'
+    q: 'What is the difference between cap rate and cash-on-cash return?',
+    a: 'Cap rate measures property-level yield: NOI divided by purchase price, ignoring financing. Cash-on-cash return measures your actual return on invested capital: annual pre-tax cash flow divided by total cash invested (down payment + closing costs). A property can have a 7.5% cap rate but a 12% cash-on-cash return with leverage.'
+  },
+  {
+    q: 'Should I buy a 2-unit or 4-unit for my first investment property?',
+    a: 'A 2-unit (duplex) is simpler to manage and easier to finance with conventional loans (including FHA house-hacking with 3.5% down). A 4-unit generates more cash flow and spreads vacancy risk across more tenants, but requires more capital and management. In the Capital Region, 2-units start around $275K while 4-units range $350K-$450K.'
+  },
+  {
+    q: 'What markets does Saad Tai serve?',
+    a: 'Saad Tai is licensed in New York (License #10401373295) and Florida (License #SL3651394). Primary markets include Albany, Schenectady, and Troy in New York\'s Capital Region, plus Kissimmee in Osceola County, Florida. Specialization is 2-4 unit multifamily properties for investors.'
+  },
+  {
+    q: 'Do you work with first-time multifamily investors?',
+    a: 'Yes. Many clients are first-time investors buying their first duplex or triplex. The process includes financing guidance, deal analysis with conservative underwriting, negotiation support, and connections to vetted property managers, contractors, and lenders. No experience required—just willingness to learn the numbers.'
+  },
+  {
+    q: 'How do I start investing in multifamily properties?',
+    a: 'Start by getting pre-approved for financing (FHA allows 3.5% down on 2-4 units if you owner-occupy). Then learn to evaluate deals using NOI, cap rate, and cash-on-cash return. Pick a market, analyze 10-20 deals on paper, and make offers on the best ones. Working with an advisor who specializes in multifamily can shorten the learning curve significantly.'
   }
 ]
 
@@ -86,6 +102,6 @@ export const howToGuideFaqs: FAQItem[] = [
   },
   {
     q: 'Can you help execute this plan?',
-    a: 'Yes. Saad’s team supports underwriting, negotiation, and execution for buyers, sellers, and investors.'
+    a: 'Yes. Saad\'s team supports underwriting, negotiation, and execution for buyers, sellers, and investors.'
   }
 ]

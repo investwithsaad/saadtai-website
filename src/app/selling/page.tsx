@@ -19,8 +19,8 @@ export function generateMetadata(): Metadata {
   const page: any = null
 
   return createPageMetadata({
-    title: page?.title || 'Exit on Your Timeline | Maximize Multifamily Sale Price',
-    description: page?.description || 'Know the right time to exit. Position properly and find the right buyer at the right price in Albany, Schenectady, and Kissimmee.',
+    title: page?.title || 'Sell Multifamily Property | Albany NY & Kissimmee FL | Saad Tai',
+    description: page?.description || 'Sell your multifamily property above asking in days. Strategic pricing, investor buyer outreach, and clean exits in Albany, Schenectady, Troy, and Kissimmee.',
     path: '/selling',
     ogImage: page?.ogImage?.asset?.url,
   })

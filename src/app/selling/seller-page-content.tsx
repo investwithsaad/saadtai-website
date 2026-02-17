@@ -15,7 +15,8 @@ import {
 import { HeroSection } from '@/components/HeroSection'
 import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
-import FAQAccordion from '@/components/faq/FAQAccordion'
+import { FAQSectionWithSchema } from '@/components/faq/FAQSection'
+import Link from 'next/link'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { EventBanner } from '@/components/EventBanner'
 import { trackEvent, trackMetaPageView } from '@/lib/tracking'
@@ -391,29 +392,43 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
         </Container>
       </Section>
 
-      {/* FAQ Section */}
-      <Section background='white'>
+      {/* Related Resources */}
+      <Section background='background'>
         <Container>
-          <div ref={faqRef}>
-            <FadeIn>
-              <div className="text-center mb-16 max-w-3xl mx-auto">
-                <Heading size="h2">
-                  Seller Questions Answered
-                </Heading>
-                <Text className="text-lg text-slate-600">
-                  Get answers about the selling process, pricing strategy, marketing, timeline, and more.
-                </Text>
+          <FadeIn>
+            <div className="max-w-3xl mx-auto">
+              <Heading size="h2" className="mb-6 text-center">
+                Explore More Selling Resources
+              </Heading>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <Link href="/investing/cap-rate-guide" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">Cap Rate Guide</Text>
+                  <Text className="text-sm text-slate-600">Understand how cap rates affect your sale price.</Text>
+                </Link>
+                <Link href="/how-to/1031-exchange-multifamily-strategy" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">1031 Exchange Strategy</Text>
+                  <Text className="text-sm text-slate-600">Defer taxes and redeploy capital into your next deal.</Text>
+                </Link>
+                <Link href="/calculator" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">Home Sale Calculator</Text>
+                  <Text className="text-sm text-slate-600">Estimate your net proceeds after closing costs.</Text>
+                </Link>
               </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="max-w-3xl mx-auto">
-                <FAQAccordion items={sellingFAQs} />
-              </div>
-            </FadeIn>
-          </div>
+            </div>
+          </FadeIn>
         </Container>
       </Section>
+
+      {/* FAQ Section */}
+      <div ref={faqRef}>
+        <FAQSectionWithSchema
+          title="Seller Questions Answered"
+          description="Get answers about the selling process, pricing strategy, marketing, timeline, and more."
+          faqs={sellingFAQs}
+          background="white"
+          schemaName="Multifamily Selling Advisory"
+        />
+      </div>
 
       {/* Lead Form Modal */}
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

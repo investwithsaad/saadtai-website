@@ -4,7 +4,7 @@ import { createPageMetadata } from '@/lib/metadata-factory'
 
 const defaultHero = {
   headline: '[Clarity] Before\nYou Commit Capital',
-  description: 'Professional underwriting, photography, tenant coordination,\nand buyer alignment—all handled. You get a clear decision\nwithout managing the chaos.',
+  description: 'Multifamily investment advisor for Albany, Schenectady, Troy NY\nand Kissimmee FL. Honest underwriting, off-market deals,\nand strategic guidance—all handled.',
   ctaText: "Let's Talk"
 }
 
@@ -13,8 +13,8 @@ export async function generateMetadata() {
   // const page = await getPage('home')
 
   return createPageMetadata({
-    title: 'Buy or Exit Multifamily Properties with Clarity | Saad Tai',
-    description: 'Professional underwriting, analysis, and buyer alignment—all handled. Get clear decisions without chaos in Albany, Schenectady, and Kissimmee.',
+    title: 'Multifamily Investment Advisor | Albany NY & Kissimmee FL | Saad Tai',
+    description: 'Multifamily investment advisor serving Albany, Schenectady, Troy NY and Kissimmee FL. Honest underwriting, off-market deals, and strategic exit planning.',
     path: '/',
     ogImage: undefined,
   })

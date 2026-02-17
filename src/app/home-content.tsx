@@ -37,6 +37,7 @@ const StatsSection = dynamic(
 import { SectionHeader } from '@/components/SectionHeader'
 import { FAQSectionWithSchema } from '@/components/faq/FAQSection'
 import { homeFaqs } from '@/data/ai-faqs'
+import { neighborhoods } from '@/data/neighborhoods'
 
 interface HomeContentProps {
   hero?: {
@@ -95,6 +96,15 @@ export function HomeContent({ hero }: HomeContentProps) {
           tag: "Buyer & Investor"
         }}
       />
+
+      {/* Authority Intro — entity declaration for search engines and LLMs */}
+      <section className="bg-white py-8">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <p className="text-slate-600 text-base leading-relaxed">
+            <strong className="text-slate-900">Saad Tai</strong> is a licensed multifamily investment advisor serving <strong className="text-slate-900">Albany, Schenectady, and Troy</strong> in New York&apos;s Capital Region and <strong className="text-slate-900">Kissimmee, Florida</strong>. Specializing in 2–4 unit properties, Saad helps investors make confident buy, sell, and hold decisions through rigorous underwriting, off-market deal sourcing, and strategic exit planning.
+          </p>
+        </div>
+      </section>
 
       {/* The Problem Section */}
       <Section background='dark' className='!pt-0'>
@@ -710,7 +720,7 @@ export function HomeContent({ hero }: HomeContentProps) {
         <Container>
           <FadeIn>
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <Heading size="h2">Investor Resources</Heading>
+              <Heading size="h2">Multifamily Investing Resources</Heading>
               <Text size="lg" className="text-gray-700">
                 Use the guides, blog, and calculator to make clear decisions faster.
               </Text>
@@ -757,13 +767,68 @@ export function HomeContent({ hero }: HomeContentProps) {
         </Container>
       </Section>
 
+      {/* Market Snapshot Table — data tables get 4.1x more AI citations */}
+      <Section background="white">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <Heading size="h2" className="text-center">Capital Region Market Snapshot — 2026</Heading>
+            <Text size="lg" className="text-gray-700 text-center mb-8">
+              Key metrics for multifamily investors across Albany, Schenectady, and Troy.
+            </Text>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-sm">
+                <thead>
+                  <tr className="border-b-2 border-slate-300">
+                    <th className="text-left py-3 px-4 font-semibold text-slate-900">Market</th>
+                    <th className="text-left py-3 px-4 font-semibold text-slate-900">Median Price</th>
+                    <th className="text-left py-3 px-4 font-semibold text-slate-900">Est. Cap Rate</th>
+                    <th className="text-left py-3 px-4 font-semibold text-slate-900">Rent (2BR)</th>
+                    <th className="text-left py-3 px-4 font-semibold text-slate-900">1-Yr Appreciation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(() => {
+                    const capRates: Record<string, string> = {
+                      albany: '7.2–7.8%',
+                      schenectady: '7.5–8.2%',
+                      troy: '7.8–8.5%',
+                    }
+                    return ['albany', 'schenectady', 'troy'].map((id) => {
+                      const n = neighborhoods.find((nb) => nb.id === id)
+                      if (!n) return null
+                      return (
+                        <tr key={id} className="border-b border-slate-200 hover:bg-slate-50">
+                          <td className="py-3 px-4 font-medium text-slate-900">{n.name}</td>
+                          <td className="py-3 px-4 text-slate-700">{n.marketData.medianHomePrice}</td>
+                          <td className="py-3 px-4 text-slate-700">{capRates[id]}</td>
+                          <td className="py-3 px-4 text-slate-700">{n.marketData.medianRent2BR}</td>
+                          <td className="py-3 px-4 text-slate-700">{n.marketData.appreciation1Year}</td>
+                        </tr>
+                      )
+                    })
+                  })()}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-slate-500 mt-4 text-center">
+              Source: Capital Region MLS data and neighborhood analysis. Cap rates estimated from 2–4 unit multifamily sales.{' '}
+              <Link href="/investing/albany-multifamily-investing" className="underline hover:text-slate-700">Full Albany guide</Link>
+              {' · '}
+              <Link href="/investing/schenectady-multifamily-investing" className="underline hover:text-slate-700">Full Schenectady guide</Link>
+              {' · '}
+              <Link href="/investing/troy-multifamily-investing" className="underline hover:text-slate-700">Full Troy guide</Link>
+            </p>
+          </div>
+        </Container>
+      </Section>
+
       {/* Home FAQ */}
       <FAQSectionWithSchema
-        title="Common Investor Questions"
-        description="Quick answers to the most common questions we hear from buyers and small multifamily investors."
+        title="Multifamily Investment FAQ"
+        description="Answers to common questions from multifamily investors in Albany, Schenectady, Troy, and Kissimmee."
         faqs={homeFaqs}
         background="background"
-        maxDisplay={4}
+        maxDisplay={8}
         schemaName="Multifamily Investment Advisory"
       />
 
