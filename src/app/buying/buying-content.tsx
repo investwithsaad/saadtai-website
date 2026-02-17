@@ -14,7 +14,8 @@ import {
 import { HeroSection } from '@/components/HeroSection'
 import { COLORS } from '@/lib/colors'
 import { multifamilyInvestorFAQs } from '@/data/faq-data'
-import FAQAccordion from '@/components/faq/FAQAccordion'
+import { FAQSectionWithSchema } from '@/components/faq/FAQSection'
+import Link from 'next/link'
 import { LeadFormModal } from '@/components/LeadFormModal'
 import { EventBanner } from '@/components/EventBanner'
 import { MortgageCalculator } from '@/components/MortgageCalculator'
@@ -79,8 +80,8 @@ export function BuyingContent({ hero }: BuyingContentProps) {
       <Section background='dark' className='!pt-0'>
         <Container>
           <div ref={problemRef} className="max-w-3xl mx-auto">
-            <SectionHeader 
-              title="Finding the Right Property\nTakes Time & Strategy"
+            <SectionHeader
+              title="How Do You Find the Right\nMultifamily Property?"
               subtitle="Sourcing, analyzing, financing, closing;\nIt's a lot to do alone."
               titleColor="white"
               subtitleColor="white"
@@ -136,7 +137,7 @@ export function BuyingContent({ hero }: BuyingContentProps) {
             <FadeIn>
               <div>
                 <Heading size="h2" className="mb-6">
-                  Build Your Portfolio<br />on Strategy, Not Guesswork.
+                  How Do You Build a Portfolio<br />Without Guessing?
                 </Heading>
                 <Text className="text-lg text-slate-600 mb-6">
                   Smart investors aren't waiting for the "right" market—they're making disciplined decisions with data, underwriting, and clear criteria.
@@ -178,8 +179,8 @@ export function BuyingContent({ hero }: BuyingContentProps) {
       <Section background='white'>
         <Container>
           <div ref={proofRef}>
-            <SectionHeader 
-              title="Avoid the 3 Biggest Investor Mistakes"
+            <SectionHeader
+              title="What Are the 3 Biggest Multifamily Investor Mistakes?"
               subtitle="Most investors stumble on the same three pitfalls. Here's how I help you avoid them and protect your capital."
               centered
               className="max-w-3xl mx-auto mb-16"
@@ -298,29 +299,47 @@ export function BuyingContent({ hero }: BuyingContentProps) {
         </Container>
       </Section>
 
-      {/* FAQ Section */}
-      <Section background='white'>
+      {/* Related Resources */}
+      <Section background='background'>
         <Container>
-          <div ref={faqRef}>
-            <FadeIn>
-              <div className="text-center mb-16 max-w-3xl mx-auto">
-                <Heading size="h2">
-                  Buyer Questions Answered
-                </Heading>
-                <Text className="text-lg text-slate-600">
-                  Get answers about the buying process, neighborhoods, pre-approval, down payments, and more.
-                </Text>
+          <FadeIn>
+            <div className="max-w-3xl mx-auto">
+              <Heading size="h2" className="mb-6 text-center">
+                Explore More Investment Resources
+              </Heading>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Link href="/investing/cap-rate-guide" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">Cap Rate Guide</Text>
+                  <Text className="text-sm text-slate-600">Understand cap rates and how to use them to evaluate deals.</Text>
+                </Link>
+                <Link href="/investing/multifamily-investment-guide" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">Multifamily Investment Guide</Text>
+                  <Text className="text-sm text-slate-600">Complete guide to buying and owning small multifamily properties.</Text>
+                </Link>
+                <Link href="/investing/albany-multifamily-investing" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">Albany Market Guide</Text>
+                  <Text className="text-sm text-slate-600">Cap rates, rents, and neighborhoods in Albany NY.</Text>
+                </Link>
+                <Link href="/how-to/evaluate-multifamily-deals-capital-region" className="block p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
+                  <Text className="font-semibold text-slate-900">How to Evaluate Deals</Text>
+                  <Text className="text-sm text-slate-600">Step-by-step deal analysis framework for the Capital Region.</Text>
+                </Link>
               </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="max-w-3xl mx-auto">
-                <FAQAccordion items={buyingFAQs} />
-              </div>
-            </FadeIn>
-          </div>
+            </div>
+          </FadeIn>
         </Container>
       </Section>
+
+      {/* FAQ Section */}
+      <div ref={faqRef}>
+        <FAQSectionWithSchema
+          title="Buyer Questions Answered"
+          description="Get answers about the buying process, neighborhoods, pre-approval, down payments, and more."
+          faqs={buyingFAQs}
+          background="white"
+          schemaName="Multifamily Buying Advisory"
+        />
+      </div>
 
       {/* Lead Form Modal */}
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

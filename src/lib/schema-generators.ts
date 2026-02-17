@@ -21,7 +21,7 @@ export const getOrganizationSchema = (config?: {
   }
 }) => ({
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "FinancialService"],
+  "@type": ["Organization", "LocalBusiness", "FinancialService", "RealEstateAgent"],
   "@id": `${BASE_URL}/`,
   "name": companyInfo.name,
   "alternateName": "Invest with Saad",
