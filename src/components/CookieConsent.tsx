@@ -30,6 +30,17 @@ export function CookieConsentBanner() {
 
   const handleAccept = () => {
     document.cookie = 'cookie-consent=true; path=/; max-age=31536000; SameSite=Lax; Secure'
+
+    // Update Google Consent Mode to granted
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+      })
+    }
+
     setShowBanner(false)
     window.location.reload()
   }
