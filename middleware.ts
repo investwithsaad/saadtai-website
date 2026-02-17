@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data: https://fonts.gstatic.com",
-    "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://q.clarity.ms https://e.clarity.ms https://c.clarity.ms https://j.clarity.ms https://y.clarity.ms https://h.clarity.ms https://k.clarity.ms https://widgetbe.com https://capig.datah04.com https://www.googletagmanager.com",
+    "connect-src 'self' https://snap.licdn.com https://px.ads.linkedin.com https://www.facebook.com https://graph.facebook.com https://www.clarity.ms https://q.clarity.ms https://e.clarity.ms https://c.clarity.ms https://j.clarity.ms https://y.clarity.ms https://h.clarity.ms https://k.clarity.ms https://widgetbe.com https://capig.datah04.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com",
     "frame-src 'self' https://www.facebook.com https://m.facebook.com https://www.googletagmanager.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
