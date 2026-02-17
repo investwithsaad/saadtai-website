@@ -99,6 +99,25 @@ export default async function RootLayout({
         <SchemaRenderer schema={getOrganizationSchema()} nonce={nonce} />
         <SchemaRenderer schema={getWebsiteSchema()} nonce={nonce} />
 
+        {/* Google Consent Mode v2 - must be set before gtag loads */}
+        <Script
+          id="consent-defaults"
+          strategy="beforeInteractive"
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+              });
+            `,
+          }}
+        />
+
         {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MBTB275X6E"

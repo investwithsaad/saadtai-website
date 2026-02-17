@@ -14,8 +14,19 @@ export function TrackingScripts({ nonce }: { nonce?: string }) {
       .find(row => row.startsWith('cookie-consent='))
       ?.split('=')[1]
 
-    setHasConsent(cookieValue === 'true')
+    const consented = cookieValue === 'true'
+    setHasConsent(consented)
     setIsLoading(false)
+
+    // Update Google Consent Mode for returning visitors who already accepted
+    if (consented && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+      })
+    }
   }, [])
 
   // If still loading, don't render anything
