@@ -81,8 +81,8 @@ export function BuyingContent({ hero }: BuyingContentProps) {
         <Container>
           <div ref={problemRef} className="max-w-3xl mx-auto">
             <SectionHeader
-              title="How Do You Find the Right\nMultifamily Property?"
-              subtitle="Sourcing, analyzing, financing, closing;\nIt's a lot to do alone."
+              title={"How Do You Find the Right\nMultifamily Property?"}
+              subtitle={"Sourcing, analyzing, financing, closing;\nIt's a lot to do alone."}
               titleColor="white"
               subtitleColor="white"
               centered

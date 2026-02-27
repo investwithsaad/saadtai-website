@@ -105,7 +105,7 @@ export default function SellerPageContent({ hero }: SellerPageContentProps) {
           <div ref={problemRef} className="max-w-3xl mx-auto">
             <SectionHeader 
               title="Selling Takes Strategy & Execution"
-              subtitle="Whether you're burned out and want a clean exit,\nrecycling capital into a better deal, or scaling your portfolio\nYou need more than a real estate agent\nYou need a strategist."
+              subtitle={"Whether you're burned out and want a clean exit,\nrecycling capital into a better deal, or scaling your portfolio\nYou need more than a real estate agent\nYou need a strategist."}
               titleColor="white"
               subtitleColor="white"
               centered

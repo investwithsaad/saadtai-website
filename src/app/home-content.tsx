@@ -357,7 +357,7 @@ export function HomeContent({ hero }: HomeContentProps) {
           <div ref={proofRef}>
             <SectionHeader 
               title="[Clarity] That Gets Results"
-              subtitle="My system moves investor-grade multifamily fast,\ntypically above asking and within days."
+              subtitle={"My system moves investor-grade multifamily fast,\ntypically above asking and within days."}
               titleColor="white"
               subtitleColor="white"
               centered
