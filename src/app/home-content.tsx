@@ -1,6 +1,6 @@
 'use client'
 
-import { TrendingUp, Users, Target, Facebook, Instagram, ArrowRight } from 'lucide-react'
+import { TrendingUp, Users, Target, Facebook, Instagram, ArrowRight, Check } from 'lucide-react'
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
@@ -290,10 +290,10 @@ export function HomeContent({ hero }: HomeContentProps) {
 
               <div className="space-y-6">
                 {/* Buyers Benefit */}
-                <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
-                    <Heading size="h3" className='mb-0'>Buyers stop overpaying</Heading>
+                <div className="border-l-4 pl-6 py-5" style={{ borderColor: COLORS.secondary }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Check className="w-6 h-6 shrink-0" strokeWidth={3} style={{ color: COLORS.secondary }} aria-hidden="true" />
+                    <Heading size="h3" className='mb-0 leading-tight font-semibold'>Buyers stop overpaying</Heading>
                   </div>
                   <Text className='text-slate-700 mb-3'>
                     You see real comps, real rent potential, real exit scenarios. You bid with confidence because you know your numbers are solid. You close on deals that actually pencil.
@@ -304,10 +304,10 @@ export function HomeContent({ hero }: HomeContentProps) {
                 </div>
 
                 {/* Sellers Benefit */}
-                <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
-                    <Heading size="h3" className='mb-0'>Sellers exit with confidence, not regret</Heading>
+                <div className="border-l-4 pl-6 py-5" style={{ borderColor: COLORS.secondary }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Check className="w-6 h-6 shrink-0" strokeWidth={3} style={{ color: COLORS.secondary }} aria-hidden="true" />
+                    <Heading size="h3" className='mb-0 leading-tight font-semibold'>Sellers exit with confidence, not regret</Heading>
                   </div>
                   <Text className='text-slate-700 mb-3'>
                     You know the market. You know your timing. You know what price is realistic and when to push for more. You sell fast, at the right price, without second-guessing yourself for the next five years.
@@ -318,10 +318,10 @@ export function HomeContent({ hero }: HomeContentProps) {
                 </div>
 
                 {/* Holders Benefit */}
-                <div className="border-l-4 pl-6 py-4" style={{ borderColor: COLORS.secondary }}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl font-bold" style={{ color: COLORS.secondary }}>✓</span>
-                    <Heading size="h3" className='mb-0'>Holders make peace with their decision</Heading>
+                <div className="border-l-4 pl-6 py-5" style={{ borderColor: COLORS.secondary }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Check className="w-6 h-6 shrink-0" strokeWidth={3} style={{ color: COLORS.secondary }} aria-hidden="true" />
+                    <Heading size="h3" className='mb-0 leading-tight font-semibold'>Holders make peace with their decision</Heading>
                   </div>
                   <Text className='text-slate-700 mb-3'>
                     You have a clear thesis for why you're holding. You know the economics. You know your exit window. When doubt creeps in, you have data, not just feelings. You sleep better.
